@@ -1,13 +1,25 @@
 @import "tailwindcss";
 
 @layer base {
+  html {
+    font-size: 18px; /* Scales all rem font sizes across the entire site */
+  }
   body {
     font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
     color: #061a2e;
     background-color: #f7f9fc;
     overflow-x: hidden;
+    font-size: 1.125rem; /* ~20px body font size */
+    line-height: 1.7;
+    font-weight: 450;
   }
 }
+
+/* Font Family Classes */
+.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+.font-inter { font-family: 'Inter', sans-serif; }
+.font-outfit { font-family: 'Outfit', sans-serif; }
+.font-sora { font-family: 'Sora', sans-serif; }
 
 /* Brand Theme Variables */
 :root {

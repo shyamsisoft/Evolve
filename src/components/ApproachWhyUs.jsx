@@ -5,97 +5,167 @@ export const ApproachWhyUs = ({ data }) => {
   const getWhyUsIcon = (iconName) => {
     switch (iconName) {
       case 'BarChart3':
-        return <BarChart3 className="w-5 h-5 text-[#007791]" />;
+        return <BarChart3 className="w-5 h-5 text-[#2bb673]" />;
       case 'Settings':
-        return <Settings className="w-5 h-5 text-[#007791]" />;
+        return <Settings className="w-5 h-5 text-[#2bb673]" />;
       case 'Target':
-        return <Target className="w-5 h-5 text-[#007791]" />;
+        return <Target className="w-5 h-5 text-[#2bb673]" />;
       case 'Users':
-        return <Users className="w-5 h-5 text-[#007791]" />;
+        return <Users className="w-5 h-5 text-[#2bb673]" />;
       case 'Shield':
       default:
-        return <Shield className="w-5 h-5 text-[#007791]" />;
+        return <Shield className="w-5 h-5 text-[#2bb673]" />;
     }
   };
 
-  return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          
-          {/* Left Column: Our Approach (How We Work) */}
-          <div className="lg:col-span-6 space-y-6">
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#061a2e] tracking-tight">
-                {data.approachTitle}
-              </h2>
-              <p className="text-sm font-bold text-[#007791] uppercase tracking-wider mt-1">
-                {data.approachSubtitle}
-              </p>
-            </div>
+  const defaultApproachImages = [
+    "/images/approach_understand.jpg",
+    "/images/approach_diagnose.jpg",
+    "/images/approach_design.jpg",
+    "/images/approach_deliver.jpg"
+  ];
 
-            {/* 4 Process Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {data.approachSteps.map((step, idx) => (
-                <div
-                  key={idx}
-                  className="bg-[#f7f9fc] p-5 rounded-2xl border border-slate-100 hover:border-[#007791]/30 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md relative group flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs font-bold text-[#007791] tracking-wider">
+  const defaultWhyUsImages = [
+    "/images/why_experience.jpg",
+    "/images/why_transformation.jpg",
+    "/images/why_practical.jpg",
+    "/images/why_flexible.jpg",
+    "/images/why_independent.jpg"
+  ];
+
+  return (
+    <section className="py-20 bg-[#f7f9fc]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        
+        {/* SECTION 1: OUR APPROACH (DESIGN MATCHED TO WHAT WE DO) */}
+        <div>
+          {/* Header */}
+          <div className="mb-10 text-center sm:text-left">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#061a2e] tracking-tight">
+              {data.approachTitle}
+            </h2>
+            <p className="text-sm font-bold text-[#007791] uppercase tracking-wider mt-1.5">
+              {data.approachSubtitle}
+            </p>
+          </div>
+
+          {/* 4 Image Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {data.approachSteps.map((step, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-2xl overflow-hidden border border-slate-200/80 hover:border-[#007791]/50 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group"
+              >
+                <div>
+                  {/* Photo Header with Step Badge */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={step.image || defaultApproachImages[idx % defaultApproachImages.length]}
+                      alt={step.title}
+                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent"></div>
+                    
+                    {/* Step Number Badge */}
+                    <div className="absolute top-4 left-4 px-3 py-1 bg-white/95 backdrop-blur-md rounded-full shadow-lg border border-white/50">
+                      <span className="text-xs font-black text-[#007791] tracking-wider">
                         {step.num}
                       </span>
-                      {idx < data.approachSteps.length - 1 && (
-                        <ArrowRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-[#2bb673] transition-colors" />
-                      )}
                     </div>
-                    <h3 className="text-base font-extrabold text-[#061a2e] mb-2">
-                      {step.title}
-                    </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
+
+                    {/* Step Title Overlay */}
+                    <div className="absolute bottom-3 left-4 right-4">
+                      <h3 className="text-xl font-extrabold text-white leading-tight">
+                        {step.title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Content Body with Increased Font Size */}
+                  <div className="p-6">
+                    <p className="text-sm text-slate-700 leading-relaxed font-medium">
                       {step.desc}
                     </p>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Right Column: Why Us? */}
-          <div className="lg:col-span-6 space-y-6">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#061a2e] tracking-tight">
-              {data.whyUsTitle}
-            </h2>
-
-            {/* List / Grid of 5 Benefit Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {data.whyUsItems.map((item, idx) => (
-                <div
-                  key={item.id || idx}
-                  className={`bg-[#f0f5fa] p-5 rounded-2xl border border-slate-100/80 hover:bg-white hover:shadow-md transition-all duration-300 ${
-                    idx === data.whyUsItems.length - 1 ? 'sm:col-span-2' : ''
-                  }`}
-                >
-                  <div className="flex items-start space-x-3">
-                    <div className="p-2 rounded-xl bg-white shadow-xs text-[#007791] mt-0.5">
-                      {getWhyUsIcon(item.icon)}
-                    </div>
-                    <div>
-                      <h3 className="text-sm font-extrabold text-[#061a2e] mb-1">
-                        {item.title}
-                      </h3>
-                      <p className="text-xs text-slate-600 leading-relaxed">
-                        {item.desc}
-                      </p>
-                    </div>
+                {/* Card Footer Connector */}
+                <div className="px-6 pb-6 pt-0 flex items-center justify-between">
+                  <span className="text-xs font-extrabold text-[#007791] uppercase tracking-wider">
+                    Step {step.num}
+                  </span>
+                  <div className="p-2 rounded-full bg-teal-50 group-hover:bg-[#007791] text-[#007791] group-hover:text-white transition-colors">
+                    <ArrowRight className="w-4 h-4" />
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* SECTION 2: WHY US? (DESIGN MATCHED TO WHAT WE DO) */}
+        <div>
+          {/* Header */}
+          <div className="mb-10 text-center sm:text-left">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#061a2e] tracking-tight">
+              {data.whyUsTitle}
+            </h2>
+            <p className="text-base font-normal text-slate-600 mt-1.5">
+              Proven expertise, practical delivery, and strategic clarity for your organisation.
+            </p>
           </div>
 
+          {/* 5 Premium Image Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {data.whyUsItems.map((item, idx) => (
+              <div
+                key={item.id || idx}
+                className={`bg-white rounded-2xl overflow-hidden border border-slate-200/80 hover:border-[#2bb673]/60 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group ${
+                  idx === data.whyUsItems.length - 1 ? 'sm:col-span-2 lg:col-span-1' : ''
+                }`}
+              >
+                <div>
+                  {/* Photo Header */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={item.image || defaultWhyUsImages[idx % defaultWhyUsImages.length]}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/50 to-transparent"></div>
+                    
+                    {/* Icon Badge */}
+                    <div className="absolute top-4 left-4 p-2.5 bg-white/95 backdrop-blur-md rounded-xl shadow-lg border border-white/50">
+                      {getWhyUsIcon(item.icon)}
+                    </div>
+
+                    {/* Title Overlay */}
+                    <div className="absolute bottom-3 left-4 right-4">
+                      <h3 className="text-xl font-extrabold text-white leading-tight">
+                        {item.title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Content Body with Increased Font Size */}
+                  <div className="p-6">
+                    <p className="text-sm text-slate-700 leading-relaxed font-medium">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Footer Tag */}
+                <div className="px-6 pb-6 pt-0">
+                  <span className="inline-flex items-center text-xs font-extrabold text-[#2bb673]">
+                    <span>Why Choose Evolve</span>
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
+
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, Building2, TrendingUp, Users2, Landmark } from 'lucide-react';
 
-export const WhoWeHelp = ({ data }) => {
+export const WhoWeHelp = ({ data, onSelectAudience }) => {
   const getAudienceIcon = (index) => {
     switch (index) {
       case 0:
@@ -26,17 +26,17 @@ export const WhoWeHelp = ({ data }) => {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#061a2e] tracking-tight mb-2">
               {data.heading}
             </h2>
-            <p className="text-base text-slate-600 font-normal">
+            <p className="text-base sm:text-lg text-slate-600 font-normal">
               {data.subtitle}
             </p>
           </div>
           <div className="mt-4 sm:mt-0">
-            <a
-              href="#contact"
-              className="inline-flex items-center space-x-1.5 text-xs font-bold text-[#007791] hover:text-[#2bb673] transition-colors"
+            <button
+              onClick={() => onSelectAudience && onSelectAudience('who-we-help-overview')}
+              className="inline-flex items-center space-x-1.5 text-xs font-bold text-[#007791] hover:text-[#2bb673] transition-colors cursor-pointer"
             >
               <span>{data.exploreAllText}</span>
-            </a>
+            </button>
           </div>
         </div>
 
@@ -45,7 +45,8 @@ export const WhoWeHelp = ({ data }) => {
           {data.items.map((item, idx) => (
             <div
               key={item.id || idx}
-              className="relative rounded-2xl overflow-hidden shadow-lg group h-80 flex flex-col justify-between p-6 border border-slate-200/80 hover:shadow-2xl transition-all duration-500"
+              onClick={() => onSelectAudience && onSelectAudience(item.id)}
+              className="relative rounded-2xl overflow-hidden shadow-lg group h-84 flex flex-col justify-between p-6 border border-slate-200/80 hover:shadow-2xl transition-all duration-500 cursor-pointer"
             >
               {/* Background Photo */}
               <img
@@ -54,7 +55,7 @@ export const WhoWeHelp = ({ data }) => {
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
               />
               {/* Dark Overlay Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/65 to-[#061a2e]/30"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/70 to-[#061a2e]/30"></div>
 
               {/* Top Icon Badge */}
               <div className="relative z-10 self-start p-2.5 bg-white/10 backdrop-blur-md rounded-xl border border-white/20">
@@ -66,17 +67,21 @@ export const WhoWeHelp = ({ data }) => {
                 <h3 className="text-xl font-extrabold text-white leading-tight group-hover:text-emerald-300 transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-xs text-gray-200 leading-relaxed font-normal">
+                <p className="text-sm text-gray-100 leading-relaxed font-normal">
                   {item.desc}
                 </p>
                 <div className="pt-2">
-                  <a
-                    href="#contact"
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onSelectAudience && onSelectAudience(item.id);
+                    }}
                     className="inline-flex items-center space-x-1.5 text-xs font-bold text-[#2bb673] group-hover:text-white transition-colors"
                   >
-                    <span>Explore</span>
+                    <span>Explore Page</span>
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>

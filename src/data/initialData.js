@@ -7,7 +7,7 @@ export const initialSiteData = {
   header: {
     navLinks: [
       { label: "Home", href: "#home" },
-      { label: "Who We Help", href: "#who-we-help" },
+      { label: "Who We Help", href: "#who-we-help", hasDropdown: true },
       { label: "What We Do", href: "#what-we-do", hasDropdown: true },
       { label: "Insights", href: "#insights" },
       { label: "About", href: "#about" },
@@ -60,22 +60,26 @@ export const initialSiteData = {
       {
         num: "01",
         title: "Understand",
-        desc: "We start with the organisation, not the solution. We understand your objectives, challenges, operating environment and current capability."
+        desc: "We start with the organisation, not the solution. We understand your objectives, challenges, operating environment and current capability.",
+        image: "/images/approach_understand.jpg"
       },
       {
         num: "02",
         title: "Diagnose",
-        desc: "We identify what is working, what is not and where the greatest opportunities exist."
+        desc: "We identify what is working, what is not and where the greatest opportunities exist.",
+        image: "/images/approach_diagnose.jpg"
       },
       {
         num: "03",
         title: "Design",
-        desc: "We develop a practical solution that aligns people, processes, systems, data and financial objectives."
+        desc: "We develop a practical solution that aligns people, processes, systems, data and financial objectives.",
+        image: "/images/approach_design.jpg"
       },
       {
         num: "04",
         title: "Deliver",
-        desc: "We don't stop at recommendations. Where required, we work alongside your team to implement the solution and build sustainable capability."
+        desc: "We don't stop at recommendations. Where required, we work alongside your team to implement the solution and build sustainable capability.",
+        image: "/images/approach_deliver.jpg"
       }
     ],
     whyUsTitle: "Why us?",
@@ -84,31 +88,36 @@ export const initialSiteData = {
         id: "w1",
         title: "Finance experience",
         desc: "Practical finance experience across complex organisations, transformation environments and changing business needs.",
-        icon: "BarChart3"
+        icon: "BarChart3",
+        image: "/images/why_experience.jpg"
       },
       {
         id: "w2",
         title: "Transformation capability",
         desc: "Finance, technology, data and process improvement brought together rather than treated as separate disciplines.",
-        icon: "Settings"
+        icon: "Settings",
+        image: "/images/why_transformation.jpg"
       },
       {
         id: "w3",
         title: "Practical delivery",
         desc: "We focus on solutions that can be implemented and used — not reports that sit on a shelf.",
-        icon: "Target"
+        icon: "Target",
+        image: "/images/why_practical.jpg"
       },
       {
         id: "w4",
         title: "Flexible engagement",
         desc: "Engage for a specific project, going advisory support, additional capability or transformation program.",
-        icon: "Users"
+        icon: "Users",
+        image: "/images/why_flexible.jpg"
       },
       {
         id: "w5",
         title: "Independent perspective",
         desc: "An experienced external perspective can often identify issues and opportunities that are difficult to see from inside an organisation.",
-        icon: "Shield"
+        icon: "Shield",
+        image: "/images/why_independent.jpg"
       }
     ]
   },
@@ -150,35 +159,289 @@ export const initialSiteData = {
       }
     ]
   },
+  serviceDetailPages: {
+    lead: {
+      id: "lead",
+      pillar: "LEAD",
+      title: "CFO & FP&A Advisory",
+      tagline: "Strategic financial leadership and performance insight for organisations requiring senior capability, board reporting, and capital optimization.",
+      bgImage: "/images/cfo_advisory.jpg",
+      iconType: "lead",
+      challenges: [
+        "Lack of forward-looking financial visibility beyond historical accounting metrics",
+        "Need for executive board and investor-ready reporting models",
+        "Complex cash flow forecasting and capital allocation decisions",
+        "Transitional growth phases requiring interim or fractional CFO expertise"
+      ],
+      capabilities: [
+        { name: "Fractional & Interim CFO Leadership", desc: "Executive financial leadership provided on a flexible, ongoing basis to align strategy with business goals." },
+        { name: "FP&A & Financial Modeling", desc: "Driver-based financial modeling, dynamic multi-year forecasting, and scenario analysis." },
+        { name: "Board & Stakeholder Reporting", desc: "Creating executive dashboards and performance narratives that translate complex metrics into actionable insights." },
+        { name: "Capital & Working Capital Strategy", desc: "Optimizing cash flow management, debt/equity readiness, working capital efficiency, and capital deployment." }
+      ],
+      methodology: [
+        { step: "01", title: "Diagnostic Baseline", desc: "Evaluate existing FP&A processes, metrics, reporting structure, and strategic alignment." },
+        { step: "02", title: "Model Architecture", desc: "Engineered driver-based financial models and dynamic forecasting dashboards." },
+        { step: "03", title: "Executive Execution", desc: "Lead financial reviews, cash management, investor relations, and board presentations." },
+        { step: "04", title: "Capability Transfer", desc: "Train internal finance personnel to sustain long-term operational excellence." }
+      ],
+      outcomes: [
+        { metric: "100%", label: "Board & Investor Clarity" },
+        { metric: "40%", label: "Faster Forecasting Cycles" },
+        { metric: "3.5x", label: "Average Capital Allocation ROI" }
+      ]
+    },
+    build: {
+      id: "build",
+      pillar: "BUILD",
+      title: "Finance Functions & Operating Models",
+      tagline: "Build a high-performing finance function with the right people, processes, governance, and operating structures.",
+      bgImage: "/images/finance_build.jpg",
+      iconType: "build",
+      challenges: [
+        "Inefficient manual workflows and delayed month-end close schedules",
+        "Unclear role definitions, matrix responsibilities, and team capacity constraints",
+        "Inconsistent financial controls, policy gaps, and compliance exposure",
+        "Legacy processes failing to keep pace with organizational expansion"
+      ],
+      capabilities: [
+        { name: "Finance Operating Model Design", desc: "Structuring finance team capabilities, service level targets, and matrices aligned to strategic growth." },
+        { name: "Month-End Close Optimization", desc: "Streamlining financial close schedules from weeks to days using standardized checklists and workflow triggers." },
+        { name: "Process Standardization & SOPs", desc: "Documenting rigorous standard operating procedures across AP, AR, general ledger, and payroll." },
+        { name: "Governance & Internal Control Frameworks", desc: "Establishing risk mitigation protocols, segregation of duties, delegation of authority matrices, and policy compliance." }
+      ],
+      methodology: [
+        { step: "01", title: "Workflow Mapping", desc: "Document end-to-end finance processes and pin-point operational bottlenecks." },
+        { step: "02", title: "Target Model Blueprint", desc: "Design an agile, scalable operating model with defined governance structures." },
+        { step: "03", title: "Standardized Rollout", desc: "Deploy optimized SOPs, close schedules, controls, and team role frameworks." },
+        { step: "04", title: "Performance Benchmarking", desc: "Track performance metrics across close velocity, accuracy, and team productivity." }
+      ],
+      outcomes: [
+        { metric: "50%", label: "Faster Month-End Close" },
+        { metric: "100%", label: "Control Framework Compliance" },
+        { metric: "2.5x", label: "Operational Productivity Gain" }
+      ]
+    },
+    transform: {
+      id: "transform",
+      pillar: "TRANSFORM",
+      title: "Finance Transformation, Data & Technology",
+      tagline: "Connect people, process, technology, and data to elevate performance, automate workflows, and drive digital transformation.",
+      bgImage: "/images/finance_transform.jpg",
+      iconType: "transform",
+      challenges: [
+        "Siloed financial and operational datasets spread across disparate software systems",
+        "Over-reliance on fragile, manual spreadsheet workarounds and human errors",
+        "Inability to generate real-time executive BI dashboards and automated metrics",
+        "Friction during enterprise cloud software migrations and system integrations"
+      ],
+      capabilities: [
+        { name: "ERP & Financial System Selection", desc: "Independent evaluation, selection, architecture design, and implementation management for cloud financial software." },
+        { name: "Business Intelligence & BI Analytics", desc: "Building automated data pipelines, executive scorecards, PowerBI dashboards, and real-time telemetry." },
+        { name: "Data Architecture & Integration", desc: "Connecting multi-entity financial, CRM, billing, and operational data stores into a single source of truth." },
+        { name: "Digital Process Automation", desc: "Automating accounts payable, invoice processing, expense management, reconciliations, and reporting flows." }
+      ],
+      methodology: [
+        { step: "01", title: "Architecture Audit", desc: "Evaluate existing systems, integrations, manual workarounds, and data hygiene." },
+        { step: "02", title: "Transformation Roadmap", desc: "Define target digital architecture, software selection, and integration specs." },
+        { step: "03", title: "System Build & Pipeline", desc: "Configure software, construct automated data pipelines, and migrate datasets." },
+        { step: "04", title: "Change Management", desc: "Deliver comprehensive team training, user onboarding, and ongoing optimization." }
+      ],
+      outcomes: [
+        { metric: "80%", label: "Reduction in Manual Data Entry" },
+        { metric: "Real-Time", label: "Executive BI Visibility" },
+        { metric: "100%", label: "Data Integrity Single Source" }
+      ]
+    },
+    protect: {
+      id: "protect",
+      pillar: "PROTECT",
+      title: "Tax & Compliance",
+      tagline: "Build unshakeable financial foundations that mitigate risk, protect assets, and ensure full statutory compliance.",
+      bgImage: "/images/tax_compliance.jpg",
+      iconType: "protect",
+      challenges: [
+        "Navigating complex corporate tax statutes, cross-border rules, and changing codes",
+        "Risk of regulatory audit exposure, penalties, or compliance filing delays",
+        "Absence of proactive tax structuring during corporate restructuring or capital events",
+        "Governance oversight gaps in statutory financial statement preparation"
+      ],
+      capabilities: [
+        { name: "Corporate Tax Strategy & Structuring", desc: "Proactive tax planning to optimize corporate tax positions while maintaining absolute statutory compliance." },
+        { name: "Statutory Reporting & Filings", desc: "Preparation and audit-proof submission of annual financial statements, tax returns, GST/VAT, and statutory filings." },
+        { name: "Audit Readiness & Defense", desc: "Constructing comprehensive audit working papers, managing auditor relationships, and representing clients." },
+        { name: "Regulatory Risk & Compliance Assessments", desc: "Periodic health checks across corporate governance, statutory compliance, payroll tax, and regulatory reporting." }
+      ],
+      methodology: [
+        { step: "01", title: "Compliance Review", desc: "Audit historical filings, tax positions, regulatory risks, and governance gaps." },
+        { step: "02", title: "Strategy Alignment", desc: "Structure proactive tax planning and compliance schedules tailored to business goals." },
+        { step: "03", title: "Statutory Execution", desc: "Prepare rigorous statutory documentation and submit audit-proof filings." },
+        { step: "04", title: "Continuous Monitoring", desc: "Maintain ongoing compliance monitoring, statutory updates, and audit defense readiness." }
+      ],
+      outcomes: [
+        { metric: "0", label: "Penalty or Filing Exposure" },
+        { metric: "100%", label: "On-Time Compliance Filings" },
+        { metric: "Full", label: "Audit Readiness Confidence" }
+      ]
+    }
+  },
+  whoWeHelpDetailPages: {
+    "growing-businesses": {
+      id: "growing-businesses",
+      title: "Growing Businesses",
+      subtitle: "When growth creates financial complexity.",
+      tagline: "Specialist financial leadership, scalable operating models, and FP&A insight tailored for fast-scaling mid-market enterprises.",
+      bgImage: "/images/growing_businesses.jpg",
+      challenges: [
+        "Outgrowing basic accounting software and manual spreadsheets",
+        "Managing cash flow burn while scaling operations and inventory",
+        "Need for investor and lender-ready financial presentations",
+        "Structuring finance team roles without heavy permanent overhead"
+      ],
+      solutions: [
+        "Fractional CFO & Growth Strategy",
+        "Driver-Based Financial Forecasting",
+        "Working Capital & Burn Management",
+        "Scalable ERP System Selection"
+      ]
+    },
+    "established-corporate": {
+      id: "established-corporate",
+      title: "Established & Corporate",
+      subtitle: "Specialist finance capability when you need it.",
+      tagline: "Unlocking corporate performance, business intelligence automation, governance defense, and enterprise transformation.",
+      bgImage: "/images/established_corporate.jpg",
+      challenges: [
+        "Complex multi-entity financial consolidation and reporting friction",
+        "Legacy technology debt impeding real-time executive decision-making",
+        "Internal capacity bottlenecks during major acquisitions or restructuring",
+        "Enhancing board reporting governance and risk controls"
+      ],
+      solutions: [
+        "Multi-Entity Finance Operating Models",
+        "PowerBI Data & Analytics Pipelines",
+        "M&A Financial Integration Support",
+        "Corporate Governance & Internal Controls"
+      ]
+    },
+    "non-profit-community": {
+      id: "non-profit-community",
+      title: "Not-for-Profit & Community",
+      subtitle: "Financial capability that supports your purpose.",
+      tagline: "Purpose-driven financial stewardship, grant acquittals, fund accounting, and board governance transparency.",
+      bgImage: "/images/non_profit_community.jpg",
+      challenges: [
+        "Managing tied and untied grant funding streams accurately",
+        "Demonstrating transparent financial stewardship to boards and donors",
+        "Navigating complex NFP tax exemptions and statutory reporting",
+        "Balancing mission delivery with long-term fiscal sustainability"
+      ],
+      solutions: [
+        "NFP Fund Accounting & Grant Management",
+        "Board Financial Visibility & Governance",
+        "Cost Allocation & Program Profitability",
+        "Audit Preparation & Statutory Filings"
+      ]
+    },
+    "local-government": {
+      id: "local-government",
+      title: "Local Government & Public Sector",
+      subtitle: "Better financial insight for better public outcomes.",
+      tagline: "Public sector financial management, long-term asset planning, rate-setting analytics, and community transparency.",
+      bgImage: "/images/local_government.jpg",
+      challenges: [
+        "Long-term financial planning across municipal infrastructure assets",
+        "Meeting statutory local government reporting frameworks and audits",
+        "Optimizing rate setting and public service budget allocations",
+        "Modernizing legacy civic software and financial systems"
+      ],
+      solutions: [
+        "Long-Term Financial Strategy (LTFS)",
+        "Civic Asset & Capital Works Financial Modeling",
+        "Statutory Annual Financial Statements",
+        "Public Finance Transformation & Training"
+      ]
+    }
+  },
   whoWeHelp: {
     heading: "Who We Help",
     subtitle: "We work with organisations at every stage of their journey.",
     exploreAllText: "Explore All →",
     items: [
       {
-        id: "h1",
+        id: "growing-businesses",
         title: "Growing Businesses",
         desc: "When growth creates financial complexity.",
         image: "/images/growing_businesses.jpg"
       },
       {
-        id: "h2",
+        id: "established-corporate",
         title: "Established & Corporate",
         desc: "Specialist finance capability when you need it.",
         image: "/images/established_corporate.jpg"
       },
       {
-        id: "h3",
+        id: "non-profit-community",
         title: "Not-for-Profit & Community",
         desc: "Financial capability that supports your purpose.",
         image: "/images/non_profit_community.jpg"
       },
       {
-        id: "h4",
+        id: "local-government",
         title: "Local Government",
         desc: "Better financial insight for better public outcomes.",
         image: "/images/local_government.jpg"
       }
+    ]
+  },
+  insightsData: {
+    title: "Executive Insights & Industry Thought Leadership",
+    subtitle: "Expert articles, FP&A whitepapers, case studies, and corporate finance research.",
+    articles: [
+      {
+        id: "a1",
+        title: "Beyond the Spreadsheet: Modernizing FP&A for Mid-Market Enterprises",
+        category: "FP&A Advisory",
+        date: "September 2025",
+        readTime: "5 min read",
+        summary: "How finance leaders are shifting from historical reporting to driver-based predictive forecasting.",
+        image: "/images/cfo_advisory.jpg"
+      },
+      {
+        id: "a2",
+        title: "Closing the Book in 3 Days: A Blueprint for Finance Function Efficiency",
+        category: "Operating Models",
+        date: "August 2025",
+        readTime: "7 min read",
+        summary: "Standardizing SOPs, checklists, and close workflows to cut month-end close cycle times in half.",
+        image: "/images/finance_build.jpg"
+      },
+      {
+        id: "a3",
+        title: "Unifying Disparate ERP Data into Real-Time PowerBI Analytics",
+        category: "Data & Tech",
+        date: "July 2025",
+        readTime: "6 min read",
+        summary: "Architecting a single source of truth for multi-entity corporate decision makers.",
+        image: "/images/finance_transform.jpg"
+      }
+    ]
+  },
+  aboutData: {
+    title: "About EVOLVE Corporate & Business Solutions",
+    subtitle: "Empowering organisations through specialist financial leadership, operating capability, and strategic insight.",
+    mission: "To partner with leadership teams to turn financial complexity into clear strategic direction, scalable capability, and lasting value.",
+    values: [
+      { title: "Clarity", desc: "Translating complex financial data into plain, actionable executive stories." },
+      { title: "Capability", desc: "We don't just advise; we work alongside your team to build sustainable internal strength." },
+      { title: "Independence", desc: "Unbiased, objective guidance focused purely on your long-term organizational success." }
+    ]
+  },
+  contactData: {
+    title: "Contact Our Advisory Team",
+    subtitle: "We're here to help. Reach out to discuss how we can support your financial, transformation, or compliance goals.",
+    offices: [
+      { city: "Corporate Headquarters", address: "Financial District Executive Tower", phone: "+1 (800) 555-EVOLVE", email: "advisory@evolve.com" }
     ]
   },
   ctaBanner: {

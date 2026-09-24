@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X, Save, RotateCcw, Image, Download, Upload, Sparkles, Check, ChevronRight } from 'lucide-react';
 
-export const CMSDrawer = ({ isOpen, onClose, data, onUpdateData, onResetData }) => {
+export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onUpdateData, onResetData }) => {
   const [activeTab, setActiveTab] = useState('hero');
   const [toastMessage, setToastMessage] = useState('');
 
@@ -107,6 +107,7 @@ export const CMSDrawer = ({ isOpen, onClose, data, onUpdateData, onResetData }) 
         {[
           { id: 'hero', label: 'Hero' },
           { id: 'section2', label: 'More Than Numbers' },
+          { id: 'approach', label: 'Approach & Why Us' },
           { id: 'whatWeDo', label: 'What We Do' },
           { id: 'whoWeHelp', label: 'Who We Help' },
           { id: 'ctaBanner', label: 'CTA Banner' },
@@ -330,6 +331,152 @@ export const CMSDrawer = ({ isOpen, onClose, data, onUpdateData, onResetData }) 
           </div>
         )}
 
+        {/* TAB 2.5: APPROACH & WHY US */}
+        {activeTab === 'approach' && (
+          <div className="space-y-6">
+            <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider">Our Approach (4 Steps)</h4>
+            {data.approachAndWhyUs.approachSteps.map((step, idx) => (
+              <div key={idx} className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <span className="text-[10px] font-extrabold text-[#007791] uppercase">Step {step.num}: {step.title}</span>
+                <input
+                  type="text"
+                  value={step.title}
+                  onChange={(e) => {
+                    const updated = [...data.approachAndWhyUs.approachSteps];
+                    updated[idx].title = e.target.value;
+                    onUpdateData({
+                      ...data,
+                      approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
+                    });
+                  }}
+                  className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs font-bold"
+                  placeholder="Step Title"
+                />
+                <textarea
+                  rows={2}
+                  value={step.desc}
+                  onChange={(e) => {
+                    const updated = [...data.approachAndWhyUs.approachSteps];
+                    updated[idx].desc = e.target.value;
+                    onUpdateData({
+                      ...data,
+                      approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
+                    });
+                  }}
+                  className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs"
+                  placeholder="Step Description"
+                />
+                <div className="flex space-x-2">
+                  <input
+                    type="text"
+                    value={step.image || ''}
+                    onChange={(e) => {
+                      const updated = [...data.approachAndWhyUs.approachSteps];
+                      updated[idx].image = e.target.value;
+                      onUpdateData({
+                        ...data,
+                        approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
+                      });
+                    }}
+                    className="flex-1 px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs"
+                    placeholder="Image URL"
+                  />
+                  <label className="px-2 py-1 bg-white border border-slate-300 rounded text-[11px] font-bold cursor-pointer hover:bg-slate-100 flex items-center">
+                    <Upload className="w-3 h-3 mr-1" />
+                    <span>Upload</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) =>
+                        handleFileUpload(e, (url) => {
+                          const updated = [...data.approachAndWhyUs.approachSteps];
+                          updated[idx].image = url;
+                          onUpdateData({
+                            ...data,
+                            approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
+                          });
+                        })
+                      }
+                    />
+                  </label>
+                </div>
+              </div>
+            ))}
+
+            <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider pt-4 border-t border-slate-200">Why Us? (5 Benefit Cards)</h4>
+            {data.approachAndWhyUs.whyUsItems.map((item, idx) => (
+              <div key={item.id || idx} className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <span className="text-[10px] font-extrabold text-[#2bb673] uppercase">Benefit Card {idx + 1}</span>
+                <input
+                  type="text"
+                  value={item.title}
+                  onChange={(e) => {
+                    const updated = [...data.approachAndWhyUs.whyUsItems];
+                    updated[idx].title = e.target.value;
+                    onUpdateData({
+                      ...data,
+                      approachAndWhyUs: { ...data.approachAndWhyUs, whyUsItems: updated }
+                    });
+                  }}
+                  className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs font-bold"
+                  placeholder="Benefit Title"
+                />
+                <textarea
+                  rows={2}
+                  value={item.desc}
+                  onChange={(e) => {
+                    const updated = [...data.approachAndWhyUs.whyUsItems];
+                    updated[idx].desc = e.target.value;
+                    onUpdateData({
+                      ...data,
+                      approachAndWhyUs: { ...data.approachAndWhyUs, whyUsItems: updated }
+                    });
+                  }}
+                  className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs"
+                  placeholder="Benefit Description"
+                />
+                <div className="flex space-x-2">
+                  <input
+                    type="text"
+                    value={item.image || ''}
+                    onChange={(e) => {
+                      const updated = [...data.approachAndWhyUs.whyUsItems];
+                      updated[idx].image = e.target.value;
+                      onUpdateData({
+                        ...data,
+                        approachAndWhyUs: { ...data.approachAndWhyUs, whyUsItems: updated }
+                      });
+                    }}
+                    className="flex-1 px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs"
+                    placeholder="Image URL"
+                  />
+                  <label className="px-2 py-1 bg-white border border-slate-300 rounded text-[11px] font-bold cursor-pointer hover:bg-slate-100 flex items-center">
+                    <Upload className="w-3 h-3 mr-1" />
+                    <span>Upload</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) =>
+                        handleFileUpload(e, (url) => {
+                          const updated = [...data.approachAndWhyUs.whyUsItems];
+                          updated[idx].image = url;
+                          onUpdateData({
+                            ...data,
+                            approachAndWhyUs: { ...data.approachAndWhyUs, whyUsItems: updated }
+                          });
+                        })
+                      }
+                    />
+                  </label>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+
         {/* TAB 3: WHAT WE DO */}
         {activeTab === 'whatWeDo' && (
           <div className="space-y-4">
@@ -513,7 +660,34 @@ export const CMSDrawer = ({ isOpen, onClose, data, onUpdateData, onResetData }) 
         {/* TAB 6: BACKUP & IMPORT */}
         {activeTab === 'tools' && (
           <div className="space-y-6">
+            {/* Live Typography Font Switcher */}
             <div>
+              <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider mb-2">Live Corporate Typography Selector</h4>
+              <p className="text-xs text-slate-500 mb-3">Test top executive font pairings live across the entire website with 1 click.</p>
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { id: 'font-jakarta', label: 'Plus Jakarta Sans (Default)', desc: 'Modern geometric executive' },
+                  { id: 'font-inter', label: 'Inter', desc: 'Precision Fintech & Enterprise' },
+                  { id: 'font-outfit', label: 'Outfit', desc: 'Sleek premium luxury corporate' },
+                  { id: 'font-sora', label: 'Sora', desc: 'Bold tech-forward advisory' }
+                ].map((f) => (
+                  <button
+                    key={f.id}
+                    onClick={() => onChangeFont(f.id)}
+                    className={`p-3 rounded-xl border text-left transition-all ${
+                      activeFont === f.id
+                        ? 'border-[#007791] bg-teal-50/80 shadow-xs'
+                        : 'border-slate-200 bg-white hover:bg-slate-50'
+                    }`}
+                  >
+                    <span className={`text-xs font-extrabold block ${f.id}`}>{f.label}</span>
+                    <span className="text-[10px] text-slate-500 font-normal">{f.desc}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-slate-200">
               <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider mb-2">Export / Backup Site Configuration</h4>
               <p className="text-xs text-slate-500 mb-3">Download all current site text, imagery, and pillar configurations as a clean JSON file.</p>
               <button
@@ -524,6 +698,7 @@ export const CMSDrawer = ({ isOpen, onClose, data, onUpdateData, onResetData }) 
                 <span>Export Site Data (JSON)</span>
               </button>
             </div>
+
 
             <div className="pt-4 border-t border-slate-200">
               <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider mb-2">Import JSON Configuration</h4>

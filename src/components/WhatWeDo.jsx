@@ -2,7 +2,7 @@ import React from 'react';
 import { PillarIcon } from './BrandLogo';
 import { ArrowRight } from 'lucide-react';
 
-export const WhatWeDo = ({ data }) => {
+export const WhatWeDo = ({ data, onSelectService }) => {
   return (
     <section id="what-we-do" className="py-20 bg-[#061a2e] text-white relative overflow-hidden">
       {/* Background Decorative Lighting */}
@@ -25,11 +25,12 @@ export const WhatWeDo = ({ data }) => {
           {data.items.map((item) => (
             <div
               key={item.id}
-              className="bg-[#0b2542] rounded-2xl overflow-hidden border border-slate-700/60 hover:border-[#2bb673]/60 transition-all duration-300 hover:-translate-y-1.5 shadow-xl flex flex-col justify-between group"
+              onClick={() => onSelectService && onSelectService(item.id)}
+              className="bg-[#0b2542] rounded-2xl overflow-hidden border border-slate-700/60 hover:border-[#2bb673]/60 transition-all duration-300 hover:-translate-y-1.5 shadow-xl flex flex-col justify-between group cursor-pointer"
             >
               <div>
                 {/* Header Photo with Overlay */}
-                <div className="relative h-44 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -45,13 +46,13 @@ export const WhatWeDo = ({ data }) => {
 
                 {/* Content */}
                 <div className="p-6 space-y-3">
-                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#2bb673]">
+                  <span className="text-xs font-extrabold uppercase tracking-widest text-[#2bb673]">
                     {item.pillar}
                   </span>
-                  <h3 className="text-lg font-extrabold text-white leading-snug group-hover:text-emerald-300 transition-colors">
+                  <h3 className="text-xl font-extrabold text-white leading-snug group-hover:text-emerald-300 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                  <p className="text-sm text-slate-200 leading-relaxed font-normal">
                     {item.desc}
                   </p>
                 </div>
@@ -59,13 +60,17 @@ export const WhatWeDo = ({ data }) => {
 
               {/* Action Link Footer */}
               <div className="p-6 pt-0">
-                <a
-                  href="#contact"
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onSelectService && onSelectService(item.id);
+                  }}
                   className="inline-flex items-center space-x-2 text-xs font-bold text-[#34d399] group-hover:text-white transition-colors"
                 >
-                  <span>Explore {item.pillar}</span>
+                  <span>Explore {item.pillar} Page</span>
                   <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                </a>
+                </button>
               </div>
             </div>
           ))}

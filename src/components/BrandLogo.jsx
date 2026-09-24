@@ -8,14 +8,14 @@ export const BrandLogo = ({ variant = "full", size = "normal", className = "" })
       {/* Top Main Wordmark */}
       <div className="flex items-center space-x-1 sm:space-x-1.5">
         {/* E (Three horizontal bars) */}
-        <div className="flex flex-col justify-between h-5 sm:h-6 w-3.5 sm:w-4 my-auto py-[1px]">
+        <div className="flex flex-col justify-between h-5 sm:h-5.5 w-3.5 sm:w-4 my-auto py-[1px]">
           <span className={`h-[2.5px] w-full rounded-full ${isDark ? 'bg-white' : 'bg-[#061a2e]'}`}></span>
           <span className={`h-[2.5px] w-full rounded-full ${isDark ? 'bg-white' : 'bg-[#061a2e]'}`}></span>
           <span className={`h-[2.5px] w-full rounded-full ${isDark ? 'bg-white' : 'bg-[#061a2e]'}`}></span>
         </div>
 
         {/* Dynamic Stylized 'V' ribbon with Upward Green Arrow */}
-        <div className="relative w-6 sm:w-7 h-6 sm:h-7 mx-0.5">
+        <div className="relative w-6 sm:w-6.5 h-6 sm:h-6.5 mx-0.5">
           <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full overflow-visible">
             <defs>
               <linearGradient id="vRibbonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -60,7 +60,7 @@ export const BrandLogo = ({ variant = "full", size = "normal", className = "" })
         </span>
 
         {/* E (Three horizontal bars) */}
-        <div className="flex flex-col justify-between h-5 sm:h-6 w-3.5 sm:w-4 my-auto py-[1px]">
+        <div className="flex flex-col justify-between h-5 sm:h-5.5 w-3.5 sm:w-4 my-auto py-[1px]">
           <span className={`h-[2.5px] w-full rounded-full ${isDark ? 'bg-white' : 'bg-[#061a2e]'}`}></span>
           <span className={`h-[2.5px] w-full rounded-full ${isDark ? 'bg-white' : 'bg-[#061a2e]'}`}></span>
           <span className={`h-[2.5px] w-full rounded-full ${isDark ? 'bg-white' : 'bg-[#061a2e]'}`}></span>
@@ -68,13 +68,13 @@ export const BrandLogo = ({ variant = "full", size = "normal", className = "" })
       </div>
 
       {/* Subtext 1: CORPORATE & BUSINESS SOLUTIONS */}
-      <span className={`text-[9px] sm:text-[10px] font-semibold tracking-[0.22em] uppercase mt-0.5 ${isDark ? 'text-gray-300' : 'text-[#061a2e]'}`}>
+      <span className={`text-[9px] sm:text-[10px] font-bold tracking-[0.22em] uppercase mt-0.5 ${isDark ? 'text-gray-300' : 'text-[#061a2e]'}`}>
         Corporate & Business Solutions
       </span>
 
       {/* Subtext 2: Finance | Transformation | Insight (if variant === full) */}
       {variant === "full" && (
-        <span className="text-[9px] font-medium tracking-wider text-[#007791] mt-0.5 flex items-center space-x-2">
+        <span className="text-[9px] font-semibold tracking-wider text-[#007791] mt-0.5 flex items-center space-x-2">
           <span>Finance</span>
           <span className="text-gray-400">|</span>
           <span>Transformation</span>
