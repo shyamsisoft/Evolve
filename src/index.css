@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    font-size: 18px; /* Scales all rem font sizes across the entire site */
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    color: #061a2e;
+    background-color: #f7f9fc;
+    overflow-x: hidden;
+    font-size: 1.125rem; /* ~20px body font size */
+    line-height: 1.7;
+    font-weight: 450;
+  }
+}
+
+/* Font Family Classes */
+.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+.font-inter { font-family: 'Inter', sans-serif; }
+.font-outfit { font-family: 'Outfit', sans-serif; }
+.font-sora { font-family: 'Sora', sans-serif; }
+
+/* Brand Theme Variables */
+:root {
+  --color-navy: #061a2e;
+  --color-navy-light: #0d2847;
+  --color-teal: #007791;
+  --color-teal-light: #00a8b5;
+  --color-emerald: #2bb673;
+  --color-emerald-light: #34d399;
+  --color-bg-light: #f0f5fa;
+  --color-card-bg: #ffffff;
+}
+
+/* Custom Gradients */
+.brand-gradient-text {
+  background: linear-gradient(135deg, #061a2e 0%, #007791 50%, #2bb673 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-gradient-bg {
+  background: linear-gradient(135deg, #005f73 0%, #008e9b 50%, #2bb673 100%);
+}
+
+.brand-button-gradient {
+  background: linear-gradient(135deg, #007791 0%, #006680 40%, #0a8494 70%, #2bb673 100%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brand-button-gradient:hover {
+  background: linear-gradient(135deg, #006680 0%, #007791 40%, #2bb673 100%);
+  box-shadow: 0 8px 24px -4px rgba(43, 182, 115, 0.4);
+  transform: translateY(-1px);
+}
+
+.brand-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brand-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(6, 26, 46, 0.12), 0 4px 12px -2px rgba(43, 182, 115, 0.08);
+}
+
+/* Glassmorphism effects */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.dark-glass-panel {
+  background: rgba(6, 26, 46, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #007791;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2bb673;
+}
