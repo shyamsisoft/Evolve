@@ -86,7 +86,7 @@ export const ContactPage = ({ data, onBack }) => {
         </div>
       </section>
 
-      {/* CONTACT FORM & OFFICES */}
+      {/* CONTACT FORM & OFFICES WITH HEADQUARTERS PHOTO */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -177,22 +177,38 @@ export const ContactPage = ({ data, onBack }) => {
               )}
             </div>
 
-            {/* Offices & FAQ Column */}
+            {/* Offices & FAQ Column with Photo */}
             <div className="lg:col-span-5 space-y-8">
-              <div className="bg-[#061a2e] text-white p-8 rounded-3xl space-y-4 shadow-xl border border-slate-800">
-                <h3 className="text-xl font-extrabold text-white">Advisory Headquarters</h3>
-                <div className="space-y-4 text-sm text-gray-300">
-                  <div className="flex items-center space-x-3">
-                    <MapPin className="w-5 h-5 text-[#2bb673] flex-shrink-0" />
-                    <span>Financial District Executive Plaza, Level 24</span>
+              
+              {/* Headquarters Photo Card */}
+              <div className="relative rounded-3xl overflow-hidden shadow-xl border border-slate-800 bg-[#061a2e] group">
+                <div className="h-44 overflow-hidden relative">
+                  <img
+                    src="/images/contact_office.jpg"
+                    alt="Corporate Headquarters"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-transparent to-transparent"></div>
+                  <div className="absolute top-4 left-4 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-xs font-black text-[#2bb673]">
+                    Executive Headquarters
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <Phone className="w-5 h-5 text-[#2bb673] flex-shrink-0" />
-                    <span>+1 (800) 555-EVOLVE</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Mail className="w-5 h-5 text-[#2bb673] flex-shrink-0" />
-                    <span>advisory@evolve.com</span>
+                </div>
+
+                <div className="p-7 space-y-3 text-white">
+                  <h3 className="text-xl font-extrabold text-white">Advisory Headquarters</h3>
+                  <div className="space-y-3 text-sm text-gray-300">
+                    <div className="flex items-center space-x-3">
+                      <MapPin className="w-5 h-5 text-[#2bb673] flex-shrink-0" />
+                      <span>Financial District Executive Plaza, Level 24</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Phone className="w-5 h-5 text-[#2bb673] flex-shrink-0" />
+                      <span>+1 (800) 555-EVOLVE</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Mail className="w-5 h-5 text-[#2bb673] flex-shrink-0" />
+                      <span>advisory@evolve.com</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -216,6 +232,7 @@ export const ContactPage = ({ data, onBack }) => {
                   </div>
                 ))}
               </div>
+
             </div>
 
           </div>

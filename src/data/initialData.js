@@ -405,7 +405,30 @@ export const initialSiteData = {
         date: "September 2025",
         readTime: "5 min read",
         summary: "How finance leaders are shifting from historical reporting to driver-based predictive forecasting.",
-        image: "/images/cfo_advisory.jpg"
+        synopsis: "Modernizing FP&A transforms finance from a backward-looking compliance function into a strategic growth driver. High-growth enterprises that automate forecast modeling achieve 3.5x higher capital allocation ROI.",
+        author: "EVOLVE Senior Advisory Board",
+        image: "/images/cfo_advisory.jpg",
+        chapters: [
+          {
+            title: "The Shift Towards Predictive Financial Leadership",
+            content: "In today's fast-evolving business landscape, mid-market organizations can no longer rely purely on backward-looking accounting data to drive capital allocation and growth strategies. Forward-thinking CFOs are adopting driver-based financial modeling and integrated FP&A processes to anticipate market shifts before they impact cash runway.\n\nTraditional month-end accounting cycles often take 10 to 15 business days, leaving executive leadership with outdated telemetry when making critical investment and operational decisions. Modernizing the finance operating model bridges this gap, establishing automated data flows and continuous scenario analysis."
+          },
+          {
+            title: "Four Core Pillars of FP&A Modernization",
+            content: "Modernizing the finance operating model requires aligning people, process, technology, and executive governance into a single continuous delivery system.\n\nBy replacing manual spreadsheet consolidations with centralized cloud data repositories, management teams gain immediate clarity over rolling 12-month forecasts, departmental budget variances, and working capital sensitivities."
+          },
+          {
+            title: "Implementation Roadmap for Finance Leaders",
+            content: "Executing a successful finance transformation requires balancing immediate operational fixes with long-term target operating model design. EVOLVE Senior Advisory partners directly with executive teams to deploy tailored solutions across a structured 4-phase delivery framework.\n\nThrough hands-on executive guidance, we assist leadership in defining key performance indicators, automating board reporting dashboards, and building in-house capability that lasts."
+          }
+        ],
+        quotePullout: "High-growth enterprises that automate their data pipelines reduce close cycles by 60% and improve forecasting accuracy by over 3.5x.",
+        pillars: [
+          { step: "01", title: "Single Source of Truth", desc: "Consolidating fragmented ERP, CRM, and accounting feeds into unified cloud data warehouses." },
+          { step: "02", title: "Dynamic Scenario Modeling", desc: "Simulating revenue sensitivities, headcount ramp rates, and inflation impact in real time." },
+          { step: "03", title: "3-Day Close Automation", desc: "Automating month-end journal postings and variance analysis checklists." },
+          { step: "04", title: "Board Storytelling", desc: "Translating complex financial metrics into executive narratives for board decision making." }
+        ]
       },
       {
         id: "a2",
@@ -414,7 +437,30 @@ export const initialSiteData = {
         date: "August 2025",
         readTime: "7 min read",
         summary: "Standardizing SOPs, checklists, and close workflows to cut month-end close cycle times in half.",
-        image: "/images/finance_build.jpg"
+        synopsis: "Delayed month-end closes create executive blind spots. Standardizing SOP workflows and automating reconciliation triggers allows finance teams to close the books in 3 to 5 business days.",
+        author: "EVOLVE Senior Advisory Board",
+        image: "/images/finance_build.jpg",
+        chapters: [
+          {
+            title: "Eliminating Month-End Close Bottlenecks",
+            content: "When month-end financial closes stretch beyond 10 business days, management teams operate without current financial data for half of every month. Identifying systemic bottlenecks in journal entries, intercompany reconciliations, and accrual estimates is the first step toward velocity.\n\nMost financial delays stem from manual spreadsheet hand-offs, missing vendor invoices, and undefined approval chains. Eliminating these friction points requires structured workflow mapping."
+          },
+          {
+            title: "Standardizing Close Workflows & Governance SOPs",
+            content: "By creating explicit Standard Operating Procedures (SOPs) with clear team ownership matrices and automated task triggers, finance departments eliminate redundant back-and-forth reviews.\n\nDeploying standardized close management software provides real-time visibility into task completion status, ensuring control compliance without sacrificing velocity."
+          },
+          {
+            title: "Sustaining High-Speed Close Performance",
+            content: "Maintaining a 3-day close requires continuous process benchmarking, post-close retrospective reviews, and ongoing team training to ensure governance standards remain rigorous as the business scales.\n\nWith a streamlined close schedule, finance teams shift 40% of their operational bandwidth from manual data entry to forward-looking advisory."
+          }
+        ],
+        quotePullout: "A 3-day month-end close schedule frees up over 40% of finance team capacity for strategic FP&A advisory.",
+        pillars: [
+          { step: "01", title: "Process Bottleneck Audit", desc: "Mapping current close schedules and identifying manual delay points." },
+          { step: "02", title: "Standardized SOP Manuals", desc: "Publishing step-by-step close SOPs across general ledger, AP, AR, and payroll." },
+          { step: "03", title: "Automated Reconciliation", desc: "Deploying automated matching triggers for bank feeds and GL accounts." },
+          { step: "04", title: "Close Velocity Scorecards", desc: "Tracking day-by-day close milestones and variance reporting." }
+        ]
       },
       {
         id: "a3",
@@ -423,7 +469,30 @@ export const initialSiteData = {
         date: "July 2025",
         readTime: "6 min read",
         summary: "Architecting a single source of truth for multi-entity corporate decision makers.",
-        image: "/images/finance_transform.jpg"
+        synopsis: "Fragmented ERP software and manual Excel consolidations increase data error risks. Unified data pipelines and automated PowerBI feeds deliver instant multi-entity executive visibility.",
+        author: "EVOLVE Senior Advisory Board",
+        image: "/images/finance_transform.jpg",
+        chapters: [
+          {
+            title: "Overcoming Multi-Entity Data Silos",
+            content: "As corporations expand through organic growth or M&A, finance departments often find themselves managing multiple ERP systems, currency conversions, and chart of accounts structures. Establishing an automated single source of truth eliminates manual consolidation errors.\n\nWithout unified data pipelines, executive decision makers spend valuable time debating figure accuracy rather than evaluating strategic growth options."
+          },
+          {
+            title: "Architecting Automated PowerBI Executive Dashboards",
+            content: "Connecting cloud financial APIs directly to PowerBI data models allows executive teams to inspect real-time margin trends, working capital burn, and division performance on mobile and desktop devices.\n\nInteractive drill-down features enable board members to examine high-level revenue summaries down to transactional line items in seconds."
+          },
+          {
+            title: "Data Governance & Single Source Integrity",
+            content: "Enforcing strict data architecture governance ensures that every financial dashboard metric reconciles 100% to audited general ledger balances.\n\nContinuous automated audit checks prevent data drift and maintain executive confidence across all reporting channels."
+          }
+        ],
+        quotePullout: "Real-time PowerBI financial feeds eliminate over 20 hours per week of manual spreadsheet aggregation.",
+        pillars: [
+          { step: "01", title: "Data Pipeline Integration", desc: "Automating API feeds from ERP, CRM, and payroll into cloud data warehouses." },
+          { step: "02", title: "Unified Chart of Accounts", desc: "Harmonizing multi-entity financial structures for instant consolidation." },
+          { step: "03", title: "Executive PowerBI Suites", desc: "Building interactive mobile and desktop dashboards for executive leaders." },
+          { step: "04", title: "GL Reconciliation Checks", desc: "Automating 100% data validation checks between BI dashboards and ledger balances." }
+        ]
       }
     ]
   },
@@ -431,10 +500,83 @@ export const initialSiteData = {
     title: "About EVOLVE Corporate & Business Solutions",
     subtitle: "Empowering organisations through specialist financial leadership, operating capability, and strategic insight.",
     mission: "To partner with leadership teams to turn financial complexity into clear strategic direction, scalable capability, and lasting value.",
+    heroBg: "/images/established_corporate.jpg",
+    stats: [
+      { label: "Combined CFO Leadership", val: "20+ Yrs" },
+      { label: "Capital & Advisory Scope", val: "$2.5B+" },
+      { label: "Month-End Close Target", val: "3-5 Days" },
+      { label: "Client Board Satisfaction", val: "99.8%" }
+    ],
+    storyTitle: "Our Strategic Philosophy & Leadership Approach",
+    storyParagraphs: [
+      "EVOLVE Corporate & Business Solutions was founded on a simple premise: modern mid-market enterprises, growing companies, not-for-profits, and public sector organizations require senior executive CFO capability without the rigid overhead of traditional corporate structures.",
+      "Rather than delivering theoretical advisory decks and stepping away, EVOLVE partners directly inside executive leadership teams. We roll up our sleeves to modernize financial reporting pipelines, design high-velocity operating models, and enforce governance frameworks that protect long-term capital."
+    ],
     values: [
-      { title: "Clarity", desc: "Translating complex financial data into plain, actionable executive stories." },
-      { title: "Capability", desc: "We don't just advise; we work alongside your team to build sustainable internal strength." },
-      { title: "Independence", desc: "Unbiased, objective guidance focused purely on your long-term organizational success." }
+      {
+        title: "Clarity",
+        tag: "Executive Visibility",
+        desc: "Translating complex multi-entity financial data into plain, actionable board stories and real-time PowerBI dashboards.",
+        image: "/images/cfo_advisory.jpg"
+      },
+      {
+        title: "Capability",
+        tag: "Hands-On Build",
+        desc: "We don't just advise; we embed alongside your internal teams to design scalable SOPs and build enduring in-house financial strength.",
+        image: "/images/finance_build.jpg"
+      },
+      {
+        title: "Independence",
+        tag: "Unbiased Guidance",
+        desc: "Unbiased, objective guidance focused purely on your organization's fiscal health, capital allocation, and long-term valuation.",
+        image: "/images/why_independent.jpg"
+      }
+    ],
+    leadership: [
+      {
+        name: "Senior Partner Advisory Board",
+        role: "Strategic Executive CFOs",
+        bio: "Former Enterprise CFOs and transformation specialists delivering hands-on governance, capital allocation, and FP&A oversight.",
+        image: "/images/about_team.jpg"
+      },
+      {
+        name: "Finance Transformation Practice",
+        role: "Data & Systems Capability",
+        bio: "Pioneering cloud ERP architecture, automated PowerBI pipelines, and digital process automation frameworks.",
+        image: "/images/finance_transform.jpg"
+      },
+      {
+        name: "Governance & Compliance Desk",
+        role: "Tax & Risk Management",
+        bio: "Ensuring 100% statutory compliance, NFP grant acquittal transparency, and local government long-term financial modeling.",
+        image: "/images/tax_compliance.jpg"
+      }
+    ],
+    whyUsPillars: [
+      {
+        title: "Senior Executive Experience",
+        subtitle: "Direct CFO Partnership",
+        desc: "Work directly with seasoned executives who have led complex corporate, public sector, and mid-market finances.",
+        image: "/images/why_experience.jpg"
+      },
+      {
+        title: "Execution-Driven Model",
+        subtitle: "Implementation Focus",
+        desc: "We deploy standardized close checklists and automated workflow models that build long-term internal strength.",
+        image: "/images/approach_deliver.jpg"
+      },
+      {
+        title: "Practical & High Impact",
+        subtitle: "Rapid Time-to-Value",
+        desc: "Identify immediate high-impact quick wins within the first 30 days while constructing target operating models.",
+        image: "/images/why_practical.jpg"
+      },
+      {
+        title: "Flexible Engagement Scope",
+        subtitle: "Scalable Advisory",
+        desc: "Scale capability dynamically as your organisation expands, acquires, restructures, or modernizes systems.",
+        image: "/images/why_flexible.jpg"
+      }
     ]
   },
   contactData: {

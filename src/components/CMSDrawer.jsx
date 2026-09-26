@@ -110,6 +110,7 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
           { id: 'approach', label: 'Approach & Why Us' },
           { id: 'whatWeDo', label: 'What We Do' },
           { id: 'whoWeHelp', label: 'Who We Help' },
+          { id: 'insights', label: 'Insights & Articles' },
           { id: 'ctaBanner', label: 'CTA Banner' },
           { id: 'tools', label: 'Backup / Import' }
         ].map((tab) => (
@@ -599,6 +600,174 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                       }
                     />
                   </label>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* TAB 4.5: EXECUTIVE INSIGHTS & ARTICLES */}
+        {activeTab === 'insights' && (
+          <div className="space-y-6">
+            <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider">Executive Insights & Articles Editor</h4>
+            
+            {(data.insightsData?.articles || data.insights || []).map((article, idx) => (
+              <div key={article.id || idx} className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-black text-[#2bb673] uppercase tracking-wider">
+                    Article #{idx + 1}: {article.category}
+                  </span>
+                  <span className="text-[10px] font-bold text-slate-400">ID: {article.id}</span>
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Article Title</label>
+                  <input
+                    type="text"
+                    value={article.title}
+                    onChange={(e) => {
+                      const articlesList = [...(data.insightsData?.articles || data.insights || [])];
+                      articlesList[idx].title = e.target.value;
+                      onUpdateData({
+                        ...data,
+                        insightsData: { ...data.insightsData, articles: articlesList },
+                        insights: articlesList
+                      });
+                    }}
+                    className="w-full px-2.5 py-1.5 bg-white rounded-lg border border-slate-300 text-xs font-bold"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <label className="block text-[10px] font-bold text-slate-600 mb-1">Category</label>
+                    <input
+                      type="text"
+                      value={article.category}
+                      onChange={(e) => {
+                        const articlesList = [...(data.insightsData?.articles || data.insights || [])];
+                        articlesList[idx].category = e.target.value;
+                        onUpdateData({
+                          ...data,
+                          insightsData: { ...data.insightsData, articles: articlesList },
+                          insights: articlesList
+                        });
+                      }}
+                      className="w-full px-2 py-1 bg-white rounded border border-slate-300 text-xs"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-bold text-slate-600 mb-1">Read Time</label>
+                    <input
+                      type="text"
+                      value={article.readTime}
+                      onChange={(e) => {
+                        const articlesList = [...(data.insightsData?.articles || data.insights || [])];
+                        articlesList[idx].readTime = e.target.value;
+                        onUpdateData({
+                          ...data,
+                          insightsData: { ...data.insightsData, articles: articlesList },
+                          insights: articlesList
+                        });
+                      }}
+                      className="w-full px-2 py-1 bg-white rounded border border-slate-300 text-xs"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Summary / Excerpt</label>
+                  <textarea
+                    rows={2}
+                    value={article.summary}
+                    onChange={(e) => {
+                      const articlesList = [...(data.insightsData?.articles || data.insights || [])];
+                      articlesList[idx].summary = e.target.value;
+                      onUpdateData({
+                        ...data,
+                        insightsData: { ...data.insightsData, articles: articlesList },
+                        insights: articlesList
+                      });
+                    }}
+                    className="w-full px-2.5 py-1.5 bg-white rounded-lg border border-slate-300 text-xs"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Executive Synopsis</label>
+                  <textarea
+                    rows={2}
+                    value={article.synopsis || ''}
+                    onChange={(e) => {
+                      const articlesList = [...(data.insightsData?.articles || data.insights || [])];
+                      articlesList[idx].synopsis = e.target.value;
+                      onUpdateData({
+                        ...data,
+                        insightsData: { ...data.insightsData, articles: articlesList },
+                        insights: articlesList
+                      });
+                    }}
+                    className="w-full px-2.5 py-1.5 bg-white rounded-lg border border-slate-300 text-xs"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Key Takeaway Quote</label>
+                  <input
+                    type="text"
+                    value={article.quotePullout || ''}
+                    onChange={(e) => {
+                      const articlesList = [...(data.insightsData?.articles || data.insights || [])];
+                      articlesList[idx].quotePullout = e.target.value;
+                      onUpdateData({
+                        ...data,
+                        insightsData: { ...data.insightsData, articles: articlesList },
+                        insights: articlesList
+                      });
+                    }}
+                    className="w-full px-2.5 py-1.5 bg-white rounded-lg border border-slate-300 text-xs font-semibold"
+                  />
+                </div>
+
+                {/* Article Header Image */}
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Header Image URL</label>
+                  <div className="flex space-x-2">
+                    <input
+                      type="text"
+                      value={article.image || ''}
+                      onChange={(e) => {
+                        const articlesList = [...(data.insightsData?.articles || data.insights || [])];
+                        articlesList[idx].image = e.target.value;
+                        onUpdateData({
+                          ...data,
+                          insightsData: { ...data.insightsData, articles: articlesList },
+                          insights: articlesList
+                        });
+                      }}
+                      className="flex-1 px-2.5 py-1.5 bg-white rounded-lg border border-slate-300 text-xs"
+                    />
+                    <label className="px-2.5 py-1.5 bg-white border border-slate-300 rounded-lg text-xs font-bold cursor-pointer hover:bg-slate-100 flex items-center">
+                      <Upload className="w-3.5 h-3.5 mr-1" />
+                      <span>Upload</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={(e) =>
+                          handleFileUpload(e, (url) => {
+                            const articlesList = [...(data.insightsData?.articles || data.insights || [])];
+                            articlesList[idx].image = url;
+                            onUpdateData({
+                              ...data,
+                              insightsData: { ...data.insightsData, articles: articlesList },
+                              insights: articlesList
+                            });
+                          })
+                        }
+                      />
+                    </label>
+                  </div>
                 </div>
               </div>
             ))}

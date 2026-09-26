@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Search, Filter, BookOpen, Clock, Calendar, ArrowRight, Download } from 'lucide-react';
 
-export const InsightsPage = ({ data, onBack, onOpenContact }) => {
+export const InsightsPage = ({ data, onBack, onOpenContact, onSelectArticle }) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -87,7 +87,8 @@ export const InsightsPage = ({ data, onBack, onOpenContact }) => {
             {filteredArticles.map((art) => (
               <div
                 key={art.id}
-                className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group"
+                onClick={() => onSelectArticle && onSelectArticle(art.id)}
+                className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group cursor-pointer"
               >
                 <div>
                   <div className="relative h-52 overflow-hidden">
@@ -122,11 +123,15 @@ export const InsightsPage = ({ data, onBack, onOpenContact }) => {
 
                 <div className="p-6 pt-0">
                   <button
-                    onClick={onOpenContact}
-                    className="inline-flex items-center space-x-1.5 text-xs font-bold text-[#007791] group-hover:text-[#2bb673] transition-colors"
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onSelectArticle && onSelectArticle(art.id);
+                    }}
+                    className="inline-flex items-center space-x-1.5 text-xs font-extrabold text-[#007791] group-hover:text-[#2bb673] transition-colors"
                   >
-                    <span>Read Full Whitepaper</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <span>Read Executive Article</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </button>
                 </div>
               </div>

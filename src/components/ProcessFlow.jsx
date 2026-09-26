@@ -13,9 +13,9 @@ export const ProcessFlow = ({ data }) => {
   }, [data.steps.length]);
 
   const stepDetails = [
-    { icon: <BarChart3 className="w-8 h-8 text-[#007791]" /> },
-    { icon: <Lightbulb className="w-8 h-8 text-[#2bb673]" /> },
-    { icon: <Users className="w-8 h-8 text-[#061a2e]" /> }
+    { icon: <BarChart3 className="w-6 h-6 text-white" />, image: "/images/step_numbers.jpg" },
+    { icon: <Lightbulb className="w-6 h-6 text-white" />, image: "/images/step_insight.jpg" },
+    { icon: <Users className="w-6 h-6 text-white" />, image: "/images/step_leadership.jpg" }
   ];
 
   return (
@@ -30,7 +30,7 @@ export const ProcessFlow = ({ data }) => {
           {data.heading}
         </h2>
 
-        {/* 3 Interactive Cards Step Flow */}
+        {/* 3 Interactive Photo Cards Step Flow */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative max-w-5xl mx-auto text-left">
           {data.steps.map((step, idx) => {
             const isActive = activeStep === idx;
@@ -40,7 +40,7 @@ export const ProcessFlow = ({ data }) => {
               <div
                 key={step.id || idx}
                 onClick={() => setActiveStep(idx)}
-                className={`cursor-pointer rounded-2xl p-8 transition-all duration-500 relative flex flex-col justify-between select-none ${
+                className={`cursor-pointer rounded-3xl overflow-hidden transition-all duration-500 relative flex flex-col justify-between select-none ${
                   isActive
                     ? 'bg-white shadow-2xl border-2 border-[#007791] scale-[1.03] z-20'
                     : 'bg-white/90 backdrop-blur-sm shadow-md border border-slate-200/80 hover:bg-white hover:shadow-lg opacity-90 hover:opacity-100 hover:scale-[1.01]'
@@ -48,58 +48,65 @@ export const ProcessFlow = ({ data }) => {
               >
                 {/* Active Top Gradient Line */}
                 {isActive && (
-                  <div className="absolute -top-[2px] left-0 right-0 h-1.5 bg-gradient-to-r from-[#007791] via-[#0a9396] to-[#2bb673] rounded-t-2xl animate-pulse"></div>
+                  <div className="absolute -top-[2px] left-0 right-0 h-1.5 bg-gradient-to-r from-[#007791] via-[#0a9396] to-[#2bb673] rounded-t-3xl z-30 animate-pulse"></div>
                 )}
 
                 <div>
-                  {/* Step Icon */}
-                  <div className="flex items-center justify-between mb-6">
-                    <div
-                      className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${
-                        isActive
-                          ? 'bg-gradient-to-br from-[#007791]/15 to-[#2bb673]/20 scale-110 shadow-inner'
-                          : 'bg-slate-100'
-                      }`}
-                    >
+                  {/* Photo Header */}
+                  <div className="relative h-44 overflow-hidden">
+                    <img
+                      src={details.image}
+                      alt={step.title}
+                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/60 to-transparent"></div>
+
+                    {/* Step Icon & Number Badges */}
+                    <div className="absolute top-4 left-4 p-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-lg">
                       {details.icon}
                     </div>
 
-                    <span
-                      className={`text-xs font-extrabold tracking-wider px-3 py-1 rounded-full ${
-                        isActive
-                          ? 'bg-[#007791] text-white shadow-md'
-                          : 'bg-slate-100 text-slate-500'
-                      }`}
-                    >
-                      0{idx + 1}
-                    </span>
+                    <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-md rounded-full shadow-md">
+                      <span className="text-xs font-black text-[#007791]">
+                        0{idx + 1}
+                      </span>
+                    </div>
+
+                    {/* Step Title Overlay */}
+                    <div className="absolute bottom-3 left-5 right-5">
+                      <h3 className="text-2xl font-black text-white tracking-wider uppercase leading-tight">
+                        {step.title}
+                      </h3>
+                    </div>
                   </div>
 
-                  {/* Step Title */}
-                  <h3 className="text-2xl font-black text-[#061a2e] tracking-wider uppercase mb-2">
-                    {step.title}
-                  </h3>
-
                   {/* Step Description */}
-                  <p className="text-base font-bold text-[#007791] mb-4">
-                    {step.desc}
-                  </p>
+                  <div className="p-6">
+                    <p className="text-base font-bold text-[#007791] mb-2">
+                      {step.desc}
+                    </p>
+                    <p className="text-xs text-slate-600 font-medium leading-relaxed">
+                      {idx === 0 ? "Historical accounting & data telemetry" : idx === 1 ? "Predictive modeling & root cause analysis" : "Strategic execution & capital allocation"}
+                    </p>
+                  </div>
                 </div>
 
                 {/* Progress Bar Indicator */}
-                <div className="pt-4 border-t border-slate-100">
-                  <div className="flex items-center justify-between text-xs font-extrabold text-slate-500 mb-1.5">
-                    <span>{isActive ? 'Active Step' : 'Step 0' + (idx + 1)}</span>
-                    <ArrowRight className={`w-4 h-4 transition-transform ${isActive ? 'translate-x-1 text-[#2bb673]' : 'text-slate-400'}`} />
-                  </div>
-                  <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                    <div
-                      className={`h-full transition-all duration-500 rounded-full ${
-                        isActive
-                          ? 'w-full bg-gradient-to-r from-[#007791] to-[#2bb673]'
-                          : 'w-0 bg-slate-300'
-                      }`}
-                    ></div>
+                <div className="px-6 pb-6 pt-0">
+                  <div className="pt-3 border-t border-slate-100">
+                    <div className="flex items-center justify-between text-xs font-extrabold text-slate-500 mb-1.5">
+                      <span>{isActive ? 'Active Phase' : 'Phase 0' + (idx + 1)}</span>
+                      <ArrowRight className={`w-4 h-4 transition-transform ${isActive ? 'translate-x-1 text-[#2bb673]' : 'text-slate-400'}`} />
+                    </div>
+                    <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                      <div
+                        className={`h-full transition-all duration-500 rounded-full ${
+                          isActive
+                            ? 'w-full bg-gradient-to-r from-[#007791] to-[#2bb673]'
+                            : 'w-0 bg-slate-300'
+                        }`}
+                      ></div>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -15,10 +15,12 @@ import { WhatWeDoOverviewPage } from './components/WhatWeDoOverviewPage';
 import { WhoWeHelpOverviewPage } from './components/WhoWeHelpOverviewPage';
 import { WhoWeHelpDetailPage } from './components/WhoWeHelpDetailPage';
 import { InsightsPage } from './components/InsightsPage';
+import { InsightDetailPage } from './components/InsightDetailPage';
 import { AboutPage } from './components/AboutPage';
 import { ContactPage } from './components/ContactPage';
 
 export function App() {
+  const [activeArticleId, setActiveArticleId] = useState('a1');
   const [siteData, setSiteData] = useState(() => {
     const saved = localStorage.getItem('evolve_site_cms_data');
     if (saved) {
@@ -126,6 +128,21 @@ export function App() {
             data={siteData.insightsData || initialSiteData.insightsData}
             onBack={() => setActivePage(null)}
             onOpenContact={() => setIsContactOpen(true)}
+            onSelectArticle={(id) => {
+              setActiveArticleId(id);
+              setActivePage('insight-detail');
+            }}
+          />
+        ) : activePage === 'insight-detail' ? (
+          <InsightDetailPage
+            articleId={activeArticleId}
+            articles={siteData.insightsData?.articles || initialSiteData.insightsData.articles}
+            onBack={() => setActivePage('insights')}
+            onOpenContact={() => setIsContactOpen(true)}
+            onSelectArticle={(id) => {
+              setActiveArticleId(id);
+              setActivePage('insight-detail');
+            }}
           />
         ) : activePage === 'about' ? (
           <AboutPage
