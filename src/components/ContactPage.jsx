@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Mail, Phone, MapPin, Send, CheckCircle, HelpCircle, Clock, ShieldCheck, Sparkles } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 export const ContactPage = ({ data, onBack }) => {
   const [formData, setFormData] = useState({
@@ -37,7 +38,7 @@ export const ContactPage = ({ data, onBack }) => {
       {/* HERO BANNER */}
       <section className="relative bg-[#061a2e] text-white py-16 overflow-hidden">
         <div className="absolute inset-0 opacity-25">
-          <img src="/images/hero_summit.jpg" alt="Contact" className="w-full h-full object-cover" />
+          <img src={imgUrl('/images/hero_summit.jpg')} alt="Contact" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/90 to-[#007791]/40"></div>
 
@@ -184,7 +185,7 @@ export const ContactPage = ({ data, onBack }) => {
               <div className="relative rounded-3xl overflow-hidden shadow-xl border border-slate-800 bg-[#061a2e] group">
                 <div className="h-44 overflow-hidden relative">
                   <img
-                    src="/images/contact_office.jpg"
+                    src={imgUrl('/images/contact_office.jpg')}
                     alt="Corporate Headquarters"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
                   />

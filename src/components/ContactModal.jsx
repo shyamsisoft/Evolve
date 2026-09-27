@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Send, CheckCircle, ArrowRight, Shield, Phone, Mail, Clock, Sparkles, Building2 } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 const services = [
   { value: 'CFO & FP&A Advisory', label: 'LEAD — CFO & FP&A Advisory', color: '#2bb673' },
@@ -59,7 +60,7 @@ export const ContactModal = ({ isOpen, onClose }) => {
           {/* Background image */}
           <div className="absolute inset-0 opacity-15">
             <img
-              src="/images/finance_meeting.jpg"
+              src={imgUrl('/images/finance_meeting.jpg')}
               alt="Executive Advisory"
               className="w-full h-full object-cover"
             />

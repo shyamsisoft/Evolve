@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PillarIcon } from './BrandLogo';
 import { ArrowRight, ArrowLeft, CheckCircle2, Sparkles, Layers, ShieldCheck, Cpu, Target, BarChart2, Activity, PieChart, Table, LayoutGrid, Zap } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 export const WhatWeDoOverviewPage = ({ onSelectService, onBack, onOpenContact }) => {
   const [matrixViewMode, setMatrixViewMode] = useState('matrix');
@@ -137,7 +138,7 @@ export const WhatWeDoOverviewPage = ({ onSelectService, onBack, onOpenContact })
       {/* 1. HERO BANNER */}
       <section className="relative bg-[#061a2e] text-white py-20 overflow-hidden border-b border-slate-800">
         <div className="absolute inset-0 opacity-25">
-          <img src="/images/hero_summit.jpg" alt="What We Do Overview" className="w-full h-full object-cover" />
+          <img src={imgUrl('/images/hero_summit.jpg')} alt="What We Do Overview" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/92 to-[#007791]/50"></div>
 

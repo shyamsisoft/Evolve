@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { ArrowRight, ArrowLeft, Building2, TrendingUp, Users2, Landmark, CheckCircle2 } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact }) => {
   useEffect(() => {
@@ -71,7 +72,7 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
       {/* HERO HEADER */}
       <section className="relative bg-[#061a2e] text-white py-16 overflow-hidden">
         <div className="absolute inset-0 opacity-25">
-          <img src="/images/hero_summit.jpg" alt="Who We Help" className="w-full h-full object-cover" />
+          <img src={imgUrl('/images/hero_summit.jpg')} alt="Who We Help" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/90 to-[#007791]/40"></div>
 

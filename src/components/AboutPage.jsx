@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { ArrowLeft, CheckCircle2, Shield, Target, Users, Award, Sparkles, Building2, TrendingUp, Cpu, Compass, ArrowRight, PhoneCall } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 export const AboutPage = ({ data, onBack, onOpenContact }) => {
   useEffect(() => {
@@ -137,7 +138,7 @@ export const AboutPage = ({ data, onBack, onOpenContact }) => {
             <div className="lg:col-span-6 relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 group">
                 <img
-                  src="/images/about_team.jpg"
+                  src={imgUrl('/images/about_team.jpg')}
                   alt="EVOLVE Executive Leadership Team"
                   className="w-full h-[460px] object-cover group-hover:scale-105 transition-transform duration-700"
                 />
@@ -306,7 +307,7 @@ export const AboutPage = ({ data, onBack, onOpenContact }) => {
       {/* 5. THE EVOLVE ADVANTAGE MATRIX (WHY US) */}
       <section className="py-20 bg-[#061a2e] text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <img src="/images/hero_summit.jpg" alt="Background" className="w-full h-full object-cover" />
+          <img src={imgUrl('/images/hero_summit.jpg')} alt="Background" className="w-full h-full object-cover" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">

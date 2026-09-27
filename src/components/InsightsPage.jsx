@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Search, Filter, BookOpen, Clock, Calendar, ArrowRight, Download } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 export const InsightsPage = ({ data, onBack, onOpenContact, onSelectArticle }) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -24,7 +25,7 @@ export const InsightsPage = ({ data, onBack, onOpenContact, onSelectArticle }) =
       {/* HERO BANNER */}
       <section className="relative bg-[#061a2e] text-white py-16 overflow-hidden">
         <div className="absolute inset-0 opacity-25">
-          <img src="/images/cfo_advisory.jpg" alt="Insights" className="w-full h-full object-cover" />
+          <img src={imgUrl('/images/cfo_advisory.jpg')} alt="Insights" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/90 to-[#007791]/40"></div>
 

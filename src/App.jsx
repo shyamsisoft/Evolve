@@ -18,6 +18,24 @@ import { InsightsPage } from './components/InsightsPage';
 import { InsightDetailPage } from './components/InsightDetailPage';
 import { AboutPage } from './components/AboutPage';
 import { ContactPage } from './components/ContactPage';
+import { imgUrl } from './utils/imgUrl';
+
+// Pre-process all image paths in a data object so they work on GitHub Pages
+const IMAGE_KEYS = new Set(['image','bgImage','heroBg','src']);
+function fixImagePaths(obj) {
+  if (typeof obj === 'string') return obj;
+  if (Array.isArray(obj)) return obj.map(fixImagePaths);
+  if (obj && typeof obj === 'object') {
+    return Object.fromEntries(
+      Object.entries(obj).map(([k, v]) => [
+        k,
+        IMAGE_KEYS.has(k) && typeof v === 'string' ? imgUrl(v) : fixImagePaths(v)
+      ])
+    );
+  }
+  return obj;
+}
+
 
 export function App() {
   const [activeArticleId, setActiveArticleId] = useState('a1');
@@ -81,11 +99,14 @@ export function App() {
     localStorage.removeItem('evolve_site_font');
   };
 
+  // Fix all data-driven image paths for GitHub Pages subpath deployment
+  const fixedData = fixImagePaths(siteData);
+
   return (
     <div className={`min-h-screen bg-[#f7f9fc] flex flex-col ${activeFont} text-[#061a2e] selection:bg-[#007791] selection:text-white transition-all duration-300`}>
       {/* Header Bar */}
       <Header
-        data={siteData.header}
+        data={fixedData.header}
         onOpenContact={() => setIsContactOpen(true)}
         onToggleCMS={() => setIsCMSOpen(!isCMSOpen)}
         isCMSOpen={isCMSOpen}
@@ -104,7 +125,7 @@ export function App() {
         ) : ['lead', 'build', 'transform', 'protect'].includes(activePage) ? (
           <ServiceDetailPage
             serviceId={activePage}
-            pageData={siteData.serviceDetailPages || initialSiteData.serviceDetailPages}
+            pageData={fixedData.serviceDetailPages || initialSiteData.serviceDetailPages}
             onBack={() => setActivePage('what-we-do')}
             onOpenContact={() => setIsContactOpen(true)}
             onSelectService={(id) => setActivePage(id)}
@@ -118,14 +139,14 @@ export function App() {
         ) : ['growing-businesses', 'established-corporate', 'non-profit-community', 'local-government'].includes(activePage) ? (
           <WhoWeHelpDetailPage
             audienceId={activePage}
-            data={siteData.whoWeHelpDetailPages || initialSiteData.whoWeHelpDetailPages}
+            data={fixedData.whoWeHelpDetailPages || initialSiteData.whoWeHelpDetailPages}
             onBack={() => setActivePage('who-we-help')}
             onOpenContact={() => setIsContactOpen(true)}
             onSelectAudience={(id) => setActivePage(id)}
           />
         ) : activePage === 'insights' ? (
           <InsightsPage
-            data={siteData.insightsData || initialSiteData.insightsData}
+            data={fixedData.insightsData || initialSiteData.insightsData}
             onBack={() => setActivePage(null)}
             onOpenContact={() => setIsContactOpen(true)}
             onSelectArticle={(id) => {
@@ -136,7 +157,7 @@ export function App() {
         ) : activePage === 'insight-detail' ? (
           <InsightDetailPage
             articleId={activeArticleId}
-            articles={siteData.insightsData?.articles || initialSiteData.insightsData.articles}
+            articles={fixedData.insightsData?.articles || initialSiteData.insightsData.articles}
             onBack={() => setActivePage('insights')}
             onOpenContact={() => setIsContactOpen(true)}
             onSelectArticle={(id) => {
@@ -146,48 +167,48 @@ export function App() {
           />
         ) : activePage === 'about' ? (
           <AboutPage
-            data={siteData.aboutData || initialSiteData.aboutData}
+            data={fixedData.aboutData || initialSiteData.aboutData}
             onBack={() => setActivePage(null)}
             onOpenContact={() => setIsContactOpen(true)}
           />
         ) : activePage === 'contact' ? (
           <ContactPage
-            data={siteData.contactData || initialSiteData.contactData}
+            data={fixedData.contactData || initialSiteData.contactData}
             onBack={() => setActivePage(null)}
           />
         ) : (
           <>
             {/* Hero Section */}
             <Hero
-              data={siteData.hero}
+              data={fixedData.hero}
               onOpenContact={() => setIsContactOpen(true)}
             />
 
             {/* Section 2: Finance is More Than Numbers */}
             <FinanceMoreThanNumbers
-              data={siteData.section2}
+              data={fixedData.section2}
               onSelectWhatWeDoOverview={() => setActivePage('what-we-do')}
             />
 
             {/* Section 3: Process Flow (From numbers to better decisions) */}
             <ProcessFlow
-              data={siteData.processFlow}
+              data={fixedData.processFlow}
             />
 
             {/* Section 4: Our Approach & Why Us */}
             <ApproachWhyUs
-              data={siteData.approachAndWhyUs}
+              data={fixedData.approachAndWhyUs}
             />
 
             {/* Section 5: What We Do (Service Pillars) */}
             <WhatWeDo
-              data={siteData.whatWeDo}
+              data={fixedData.whatWeDo}
               onSelectService={(id) => setActivePage(id)}
             />
 
             {/* Section 6: Who We Help */}
             <WhoWeHelp
-              data={siteData.whoWeHelp}
+              data={fixedData.whoWeHelp}
               onSelectAudience={(id) => setActivePage(id)}
             />
           </>
@@ -195,8 +216,8 @@ export function App() {
 
         {/* Pre-footer CTA & Footer */}
         <FooterCTA
-          ctaData={siteData.ctaBanner}
-          footerData={siteData.footer}
+          ctaData={fixedData.ctaBanner}
+          footerData={fixedData.footer}
           onOpenContact={() => setIsContactOpen(true)}
           onGoHome={() => setActivePage(null)}
           onNavigate={(pageId) => setActivePage(pageId)}
