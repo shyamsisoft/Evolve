@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrandLogo } from './BrandLogo';
 import { ArrowRight, Globe, Share2 } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 export const FooterCTA = ({ ctaData, footerData, onOpenContact }) => {
   return (
@@ -10,7 +11,7 @@ export const FooterCTA = ({ ctaData, footerData, onOpenContact }) => {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 opacity-25 pointer-events-none">
           <img
-            src={ctaData.bgImage || "/images/hero_summit.jpg"}
+            src={ctaData.bgImage || imgUrl("/images/hero_summit.jpg")}
             alt="Let's move forward"
             className="w-full h-full object-cover"
           />

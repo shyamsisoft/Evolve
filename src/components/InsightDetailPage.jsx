@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { ArrowLeft, ArrowRight, Calendar, Clock, Sparkles, User, Download, CheckCircle2, BookOpen, ShieldCheck, FileText, Share2 } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 export const InsightDetailPage = ({ articleId, articles = [], onBack, onOpenContact, onSelectArticle }) => {
   useEffect(() => {
@@ -13,7 +14,7 @@ export const InsightDetailPage = ({ articleId, articles = [], onBack, onOpenCont
     date: "September 2025",
     readTime: "5 min read",
     summary: "How finance leaders are shifting from historical reporting to driver-based predictive forecasting.",
-    image: "/images/cfo_advisory.jpg"
+    image: imgUrl("/images/cfo_advisory.jpg")
   };
 
   const related = articles.filter((a) => a.id !== article.id);

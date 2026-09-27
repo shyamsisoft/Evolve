@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart3, Lightbulb, Users, ArrowRight } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 export const ProcessFlow = ({ data }) => {
   const [activeStep, setActiveStep] = useState(0);
@@ -13,9 +14,9 @@ export const ProcessFlow = ({ data }) => {
   }, [data.steps.length]);
 
   const stepDetails = [
-    { icon: <BarChart3 className="w-6 h-6 text-white" />, image: "/images/step_numbers.jpg" },
-    { icon: <Lightbulb className="w-6 h-6 text-white" />, image: "/images/step_insight.jpg" },
-    { icon: <Users className="w-6 h-6 text-white" />, image: "/images/step_leadership.jpg" }
+    { icon: <BarChart3 className="w-6 h-6 text-white" />, image: imgUrl("/images/step_numbers.jpg") },
+    { icon: <Lightbulb className="w-6 h-6 text-white" />, image: imgUrl("/images/step_insight.jpg") },
+    { icon: <Users className="w-6 h-6 text-white" />, image: imgUrl("/images/step_leadership.jpg") }
   ];
 
   return (

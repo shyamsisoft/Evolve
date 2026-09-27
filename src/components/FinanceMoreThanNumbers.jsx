@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 export const FinanceMoreThanNumbers = ({ data, onSelectWhatWeDoOverview }) => {
   return (
@@ -41,7 +42,7 @@ export const FinanceMoreThanNumbers = ({ data, onSelectWhatWeDoOverview }) => {
           <div className="lg:col-span-6 relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl group border border-slate-100">
               <img
-                src={data.image || "/images/finance_meeting.jpg"}
+                src={data.image || imgUrl("/images/finance_meeting.jpg")}
                 alt="Executive finance strategy"
                 className="w-full h-[400px] sm:h-[480px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />

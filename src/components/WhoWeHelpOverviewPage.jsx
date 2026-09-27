@@ -13,7 +13,7 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
       title: "Growing Businesses",
       subtitle: "When growth creates financial complexity.",
       desc: "Specialist financial leadership, scalable operating models, and FP&A insight tailored for fast-scaling mid-market enterprises.",
-      image: "/images/growing_businesses.jpg",
+      image: imgUrl("/images/growing_businesses.jpg"),
       icon: <TrendingUp className="w-8 h-8 text-emerald-400" />,
       bullets: [
         "Fractional CFO & Growth Strategy",
@@ -27,7 +27,7 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
       title: "Established & Corporate",
       subtitle: "Specialist finance capability when you need it.",
       desc: "Unlocking corporate performance, business intelligence automation, governance defense, and enterprise transformation.",
-      image: "/images/established_corporate.jpg",
+      image: imgUrl("/images/established_corporate.jpg"),
       icon: <Building2 className="w-8 h-8 text-emerald-400" />,
       bullets: [
         "Multi-Entity Finance Operating Models",
@@ -41,7 +41,7 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
       title: "Not-for-Profit & Community",
       subtitle: "Financial capability that supports your purpose.",
       desc: "Purpose-driven financial stewardship, grant acquittals, fund accounting, and board governance transparency.",
-      image: "/images/non_profit_community.jpg",
+      image: imgUrl("/images/non_profit_community.jpg"),
       icon: <Users2 className="w-8 h-8 text-emerald-400" />,
       bullets: [
         "NFP Fund Accounting & Grant Management",
@@ -55,7 +55,7 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
       title: "Local Government & Public Sector",
       subtitle: "Better financial insight for better public outcomes.",
       desc: "Public sector financial management, long-term asset planning, rate-setting analytics, and community transparency.",
-      image: "/images/local_government.jpg",
+      image: imgUrl("/images/local_government.jpg"),
       icon: <Landmark className="w-8 h-8 text-emerald-400" />,
       bullets: [
         "Long-Term Financial Strategy (LTFS)",

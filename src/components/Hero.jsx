@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 export const Hero = ({ data, onOpenContact }) => {
   return (
@@ -7,7 +8,7 @@ export const Hero = ({ data, onOpenContact }) => {
       {/* Background Image with Gradient Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src={data.bgImage || "/images/hero_summit.jpg"}
+          src={data.bgImage || imgUrl("/images/hero_summit.jpg")}
           alt="Finance moves organisations forward"
           className="w-full h-full object-cover object-center transform scale-105 transition-transform duration-1000"
         />

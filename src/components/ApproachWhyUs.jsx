@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, BarChart3, Settings, Target, Users, Shield } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 export const ApproachWhyUs = ({ data }) => {
   const getWhyUsIcon = (iconName) => {
@@ -19,18 +20,18 @@ export const ApproachWhyUs = ({ data }) => {
   };
 
   const defaultApproachImages = [
-    "/images/approach_understand.jpg",
-    "/images/approach_diagnose.jpg",
-    "/images/approach_design.jpg",
-    "/images/approach_deliver.jpg"
+    imgUrl("/images/approach_understand.jpg"),
+    imgUrl("/images/approach_diagnose.jpg"),
+    imgUrl("/images/approach_design.jpg"),
+    imgUrl("/images/approach_deliver.jpg")
   ];
 
   const defaultWhyUsImages = [
-    "/images/why_experience.jpg",
-    "/images/why_transformation.jpg",
-    "/images/why_practical.jpg",
-    "/images/why_flexible.jpg",
-    "/images/why_independent.jpg"
+    imgUrl("/images/why_experience.jpg"),
+    imgUrl("/images/why_transformation.jpg"),
+    imgUrl("/images/why_practical.jpg"),
+    imgUrl("/images/why_flexible.jpg"),
+    imgUrl("/images/why_independent.jpg")
   ];
 
   return (

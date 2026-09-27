@@ -19,19 +19,19 @@ export const AboutPage = ({ data, onBack, onOpenContact }) => {
       title: "Clarity",
       tag: "Executive Visibility",
       desc: "Translating complex multi-entity financial data into plain, actionable board stories and real-time PowerBI dashboards.",
-      image: "/images/cfo_advisory.jpg"
+      image: imgUrl("/images/cfo_advisory.jpg")
     },
     {
       title: "Capability",
       tag: "Hands-On Build",
       desc: "We don't just advise; we embed alongside your internal teams to design scalable SOPs and build enduring in-house financial strength.",
-      image: "/images/finance_build.jpg"
+      image: imgUrl("/images/finance_build.jpg")
     },
     {
       title: "Independence",
       tag: "Unbiased Guidance",
       desc: "Unbiased, objective guidance focused purely on your organization's fiscal health, capital allocation, and long-term valuation.",
-      image: "/images/why_independent.jpg"
+      image: imgUrl("/images/why_independent.jpg")
     }
   ];
 
@@ -40,19 +40,19 @@ export const AboutPage = ({ data, onBack, onOpenContact }) => {
       name: "Senior Partner Advisory Board",
       role: "Strategic Executive CFOs",
       bio: "Former Enterprise CFOs and transformation specialists delivering hands-on governance, capital allocation, and FP&A oversight.",
-      image: "/images/about_team.jpg"
+      image: imgUrl("/images/about_team.jpg")
     },
     {
       name: "Finance Transformation Practice",
       role: "Data & Systems Capability",
       bio: "Pioneering cloud ERP architecture, automated PowerBI pipelines, and digital process automation frameworks.",
-      image: "/images/finance_transform.jpg"
+      image: imgUrl("/images/finance_transform.jpg")
     },
     {
       name: "Governance & Compliance Desk",
       role: "Tax & Risk Management",
       bio: "Ensuring 100% statutory compliance, NFP grant acquittal transparency, and local government long-term financial modeling.",
-      image: "/images/tax_compliance.jpg"
+      image: imgUrl("/images/tax_compliance.jpg")
     }
   ];
 
@@ -61,25 +61,25 @@ export const AboutPage = ({ data, onBack, onOpenContact }) => {
       title: "Senior Executive Experience",
       subtitle: "Direct CFO Partnership",
       desc: "Work directly with seasoned executives who have led complex corporate, public sector, and mid-market finances.",
-      image: "/images/why_experience.jpg"
+      image: imgUrl("/images/why_experience.jpg")
     },
     {
       title: "Execution-Driven Model",
       subtitle: "Implementation Focus",
       desc: "We deploy standardized close checklists and automated workflow models that build long-term internal strength.",
-      image: "/images/approach_deliver.jpg"
+      image: imgUrl("/images/approach_deliver.jpg")
     },
     {
       title: "Practical & High Impact",
       subtitle: "Rapid Time-to-Value",
       desc: "Identify immediate high-impact quick wins within the first 30 days while constructing target operating models.",
-      image: "/images/why_practical.jpg"
+      image: imgUrl("/images/why_practical.jpg")
     },
     {
       title: "Flexible Engagement Scope",
       subtitle: "Scalable Advisory",
       desc: "Scale capability dynamically as your organisation expands, acquires, restructures, or modernizes systems.",
-      image: "/images/why_flexible.jpg"
+      image: imgUrl("/images/why_flexible.jpg")
     }
   ];
 
@@ -89,7 +89,7 @@ export const AboutPage = ({ data, onBack, onOpenContact }) => {
       {/* 1. EXECUTIVE HERO BANNER */}
       <section className="relative bg-[#061a2e] text-white pt-32 pb-24 overflow-hidden">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
-          <img src={data.heroBg || "/images/established_corporate.jpg"} alt="About EVOLVE" className="w-full h-full object-cover" />
+          <img src={data.heroBg || imgUrl("/images/established_corporate.jpg")} alt="About EVOLVE" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/95 to-[#007791]/50"></div>
 
@@ -226,7 +226,7 @@ export const AboutPage = ({ data, onBack, onOpenContact }) => {
                 {/* Photo Header */}
                 <div className="relative h-48 overflow-hidden">
                   <img
-                    src={v.image || "/images/cfo_advisory.jpg"}
+                    src={v.image || imgUrl("/images/cfo_advisory.jpg")}
                     alt={v.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />

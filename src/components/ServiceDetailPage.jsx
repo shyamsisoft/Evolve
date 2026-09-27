@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { PillarIcon } from './BrandLogo';
 import { ArrowRight, ArrowLeft, CheckCircle2, ShieldCheck, Sparkles, TrendingUp, Layers, Cpu, FileText, BarChart2, Check, Zap, Target, DollarSign, PieChart, Activity, Search, AlertTriangle } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 export const ServiceDetailPage = ({ serviceId, pageData, onBack, onOpenContact, onSelectService }) => {
   const service = pageData[serviceId] || pageData.lead;
 
   const moduleImages = [
-    "/images/cap_module_1.jpg",
-    "/images/cap_module_2.jpg",
-    "/images/cap_module_3.jpg",
-    "/images/cap_module_4.jpg"
+    imgUrl("/images/cap_module_1.jpg"),
+    imgUrl("/images/cap_module_2.jpg"),
+    imgUrl("/images/cap_module_3.jpg"),
+    imgUrl("/images/cap_module_4.jpg")
   ];
 
   useEffect(() => {

@@ -79,7 +79,7 @@ export const WhatWeDoOverviewPage = ({ onSelectService, onBack, onOpenContact })
       pillar: "LEAD",
       title: "CFO & FP&A Advisory",
       desc: "Strategic financial leadership and performance insight for organisations that need greater clarity, capability, or senior finance support.",
-      image: "/images/cfo_advisory.jpg",
+      image: imgUrl("/images/cfo_advisory.jpg"),
       iconType: "lead",
       highlights: [
         "Fractional & Interim CFO Leadership",
@@ -93,7 +93,7 @@ export const WhatWeDoOverviewPage = ({ onSelectService, onBack, onOpenContact })
       pillar: "BUILD",
       title: "Finance Functions & Operating Models",
       desc: "Build a finance function that supports the organisation with the right people, processes, systems, and governance.",
-      image: "/images/finance_build.jpg",
+      image: imgUrl("/images/finance_build.jpg"),
       iconType: "build",
       highlights: [
         "Finance Target Operating Model Design",
@@ -107,7 +107,7 @@ export const WhatWeDoOverviewPage = ({ onSelectService, onBack, onOpenContact })
       pillar: "TRANSFORM",
       title: "Finance Transformation, Data & Technology",
       desc: "Connect people, process, technology, and data to improve performance, automate workflows, and enable enterprise change.",
-      image: "/images/finance_transform.jpg",
+      image: imgUrl("/images/finance_transform.jpg"),
       iconType: "transform",
       highlights: [
         "ERP & Cloud Financial System Selection",
@@ -121,7 +121,7 @@ export const WhatWeDoOverviewPage = ({ onSelectService, onBack, onOpenContact })
       pillar: "PROTECT",
       title: "Tax & Compliance",
       desc: "Strong financial foundations provide confidence and ensure your organisation meets all legal and statutory obligations.",
-      image: "/images/tax_compliance.jpg",
+      image: imgUrl("/images/tax_compliance.jpg"),
       iconType: "protect",
       highlights: [
         "Corporate Tax Strategy & Planning",

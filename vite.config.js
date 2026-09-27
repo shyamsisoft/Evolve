@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Evolve/',
+  base: process.env.NODE_ENV === 'production' ? '/Evolve/' : '/',
   plugins: [react(), tailwindcss()],
 })
 
