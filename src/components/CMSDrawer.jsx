@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Save, RotateCcw, Image, Download, Upload, Sparkles, Check, ChevronRight } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onUpdateData, onResetData }) => {
   const [activeTab, setActiveTab] = useState('hero');
@@ -59,16 +60,16 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
 
   // Preset Image Options for quick selection
   const imagePresets = [
-    { label: 'Mountain Summit', url: '/images/hero_summit.jpg' },
-    { label: 'Executive Meeting', url: '/images/finance_meeting.jpg' },
-    { label: 'CFO Boardroom', url: '/images/cfo_advisory.jpg' },
-    { label: 'Finance Desktop', url: '/images/finance_build.jpg' },
-    { label: 'Digital Transform', url: '/images/finance_transform.jpg' },
-    { label: 'Tax Compliance', url: '/images/tax_compliance.jpg' },
-    { label: 'Growing Plant Sprout', url: '/images/growing_businesses.jpg' },
-    { label: 'City Skyline', url: '/images/established_corporate.jpg' },
-    { label: 'Community Unity', url: '/images/non_profit_community.jpg' },
-    { label: 'Municipal City', url: '/images/local_government.jpg' }
+    { label: 'Mountain Summit', url: imgUrl('/images/hero_summit.jpg') },
+    { label: 'Executive Meeting', url: imgUrl('/images/finance_meeting.jpg') },
+    { label: 'CFO Boardroom', url: imgUrl('/images/cfo_advisory.jpg') },
+    { label: 'Finance Desktop', url: imgUrl('/images/finance_build.jpg') },
+    { label: 'Digital Transform', url: imgUrl('/images/finance_transform.jpg') },
+    { label: 'Tax Compliance', url: imgUrl('/images/tax_compliance.jpg') },
+    { label: 'Growing Plant Sprout', url: imgUrl('/images/growing_businesses.jpg') },
+    { label: 'City Skyline', url: imgUrl('/images/established_corporate.jpg') },
+    { label: 'Community Unity', url: imgUrl('/images/non_profit_community.jpg') },
+    { label: 'Municipal City', url: imgUrl('/images/local_government.jpg') }
   ];
 
   return (

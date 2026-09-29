@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { ArrowRight, ArrowLeft, CheckCircle2, Sparkles, Building2, TrendingUp, Users2, Landmark, ShieldCheck, Target, BarChart2, AlertTriangle, Zap } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 export const WhoWeHelpDetailPage = ({ audienceId, data, onBack, onOpenContact, onSelectAudience }) => {
   const audience = data[audienceId] || data["growing-businesses"];
@@ -13,28 +14,28 @@ export const WhoWeHelpDetailPage = ({ audienceId, data, onBack, onOpenContact, o
       id: 'growing-businesses',
       title: 'Growing Businesses',
       tag: 'Scale-Ups & Mid-Market',
-      image: '/images/growing_businesses.jpg',
+      image: imgUrl('/images/growing_businesses.jpg'),
       icon: <TrendingUp className="w-5 h-5 text-[#2bb673]" />
     },
     {
       id: 'established-corporate',
       title: 'Established Corporate',
       tag: 'Enterprise & M&A',
-      image: '/images/established_corporate.jpg',
+      image: imgUrl('/images/established_corporate.jpg'),
       icon: <Building2 className="w-5 h-5 text-[#2bb673]" />
     },
     {
       id: 'non-profit-community',
       title: 'Not-for-Profit & Community',
       tag: 'Purpose & Grants',
-      image: '/images/non_profit_community.jpg',
+      image: imgUrl('/images/non_profit_community.jpg'),
       icon: <Users2 className="w-5 h-5 text-[#2bb673]" />
     },
     {
       id: 'local-government',
       title: 'Local Government',
       tag: 'Public Sector LTFS',
-      image: '/images/local_government.jpg',
+      image: imgUrl('/images/local_government.jpg'),
       icon: <Landmark className="w-5 h-5 text-[#2bb673]" />
     }
   ];
