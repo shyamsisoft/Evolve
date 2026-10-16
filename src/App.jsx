@@ -46,6 +46,8 @@ export function App() {
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
+        const isOldOrExternal = (url) => !url || url.includes('unsplash.com') || url.includes('hero_leadership') || url.includes('boardroom');
+
         const mergedApproach = initialSiteData.approachAndWhyUs.approachSteps.map((step, idx) => ({
           ...step,
           ...(parsed.approachAndWhyUs?.approachSteps?.[idx] || {})
@@ -56,9 +58,52 @@ export function App() {
           ...(parsed.approachAndWhyUs?.whyUsItems?.[idx] || {})
         }));
 
+        const mergedWhatWeDo = initialSiteData.whatWeDo.items.map((item, idx) => {
+          const pItem = parsed.whatWeDo?.items?.[idx] || {};
+          return {
+            ...item,
+            ...pItem,
+            image: isOldOrExternal(pItem.image) ? item.image : pItem.image
+          };
+        });
+
+        const mergedWhoWeHelp = initialSiteData.whoWeHelp.items.map((item, idx) => {
+          const pItem = parsed.whoWeHelp?.items?.[idx] || {};
+          return {
+            ...item,
+            ...pItem,
+            image: isOldOrExternal(pItem.image) ? item.image : pItem.image
+          };
+        });
+
         return {
           ...initialSiteData,
           ...parsed,
+          hero: {
+            ...initialSiteData.hero,
+            ...(parsed.hero || {}),
+            bgImage: isOldOrExternal(parsed.hero?.bgImage) ? initialSiteData.hero.bgImage : parsed.hero.bgImage
+          },
+          section2: {
+            ...initialSiteData.section2,
+            ...(parsed.section2 || {}),
+            image: isOldOrExternal(parsed.section2?.image) ? initialSiteData.section2.image : parsed.section2.image
+          },
+          ctaBanner: {
+            ...initialSiteData.ctaBanner,
+            ...(parsed.ctaBanner || {}),
+            bgImage: isOldOrExternal(parsed.ctaBanner?.bgImage) ? initialSiteData.ctaBanner.bgImage : parsed.ctaBanner.bgImage
+          },
+          whatWeDo: {
+            ...initialSiteData.whatWeDo,
+            ...(parsed.whatWeDo || {}),
+            items: mergedWhatWeDo
+          },
+          whoWeHelp: {
+            ...initialSiteData.whoWeHelp,
+            ...(parsed.whoWeHelp || {}),
+            items: mergedWhoWeHelp
+          },
           approachAndWhyUs: {
             ...initialSiteData.approachAndWhyUs,
             approachSteps: mergedApproach,

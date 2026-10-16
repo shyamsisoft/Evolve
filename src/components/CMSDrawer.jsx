@@ -1,15 +1,58 @@
 import React, { useState } from 'react';
-import { X, Save, RotateCcw, Image, Download, Upload, Sparkles, Check, ChevronRight } from 'lucide-react';
+import { X, Save, RotateCcw, Image, Download, Upload, Sparkles, Check, ChevronRight, Eye, EyeOff, LayoutGrid, Search, Copy, CheckCheck, Maximize2, ArrowRight } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
+import { ImageFieldWithPreview, ALL_IMAGE_PRESETS } from './CMSImageTools';
 
 export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onUpdateData, onResetData }) => {
   const [activeTab, setActiveTab] = useState('hero');
   const [toastMessage, setToastMessage] = useState('');
+  const [showLivePreview, setShowLivePreview] = useState(true);
+  const [galleryCategory, setGalleryCategory] = useState('All');
+  const [gallerySearch, setGallerySearch] = useState('');
+  const [copiedId, setCopiedId] = useState(null);
+  const [zoomImage, setZoomImage] = useState(null);
 
   if (!isOpen) return null;
 
   const showToast = (msg) => {
     setToastMessage(msg);
     setTimeout(() => setToastMessage(''), 2500);
+  };
+
+  const handleApplyPreset = (targetKey, url) => {
+    if (targetKey === 'hero') {
+      onUpdateData({ ...data, hero: { ...data.hero, bgImage: url } });
+      showToast('Applied to Hero Background!');
+    } else if (targetKey === 'section2') {
+      onUpdateData({ ...data, section2: { ...data.section2, image: url } });
+      showToast('Applied to More Than Numbers!');
+    } else if (targetKey.startsWith('pillar-')) {
+      const idx = parseInt(targetKey.replace('pillar-', ''), 10);
+      const items = [...data.whatWeDo.items];
+      if (items[idx]) {
+        items[idx].image = url;
+        onUpdateData({ ...data, whatWeDo: { ...data.whatWeDo, items } });
+        showToast(`Applied to ${items[idx].pillar} Pillar!`);
+      }
+    } else if (targetKey.startsWith('sector-')) {
+      const idx = parseInt(targetKey.replace('sector-', ''), 10);
+      const items = [...data.whoWeHelp.items];
+      if (items[idx]) {
+        items[idx].image = url;
+        onUpdateData({ ...data, whoWeHelp: { ...data.whoWeHelp, items } });
+        showToast(`Applied to ${items[idx].title}!`);
+      }
+    } else if (targetKey === 'cta') {
+      onUpdateData({ ...data, ctaBanner: { ...data.ctaBanner, bgImage: url } });
+      showToast('Applied to CTA Pre-Footer Banner!');
+    }
+  };
+
+  const handleCopyPath = (url, id) => {
+    navigator.clipboard.writeText(url);
+    setCopiedId(id);
+    showToast(`Copied "${url}" to clipboard!`);
+    setTimeout(() => setCopiedId(null), 2000);
   };
 
   // Image File Reader Helper to allow uploading local images
@@ -57,20 +100,6 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
     }
   };
 
-  // Preset Image Options for quick selection
-  const imagePresets = [
-    { label: 'Mountain Summit', url: '/images/hero_summit.jpg' },
-    { label: 'Executive Meeting', url: '/images/finance_meeting.jpg' },
-    { label: 'CFO Boardroom', url: '/images/cfo_advisory.jpg' },
-    { label: 'Finance Desktop', url: '/images/finance_build.jpg' },
-    { label: 'Digital Transform', url: '/images/finance_transform.jpg' },
-    { label: 'Tax Compliance', url: '/images/tax_compliance.jpg' },
-    { label: 'Growing Plant Sprout', url: '/images/growing_businesses.jpg' },
-    { label: 'City Skyline', url: '/images/established_corporate.jpg' },
-    { label: 'Community Unity', url: '/images/non_profit_community.jpg' },
-    { label: 'Municipal City', url: '/images/local_government.jpg' }
-  ];
-
   return (
     <div className="fixed inset-y-0 right-0 z-50 w-full max-w-xl bg-white shadow-2xl border-l border-slate-200 flex flex-col animate-in slide-in-from-right duration-300">
       
@@ -81,8 +110,8 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
             <Sparkles className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="font-extrabold text-base tracking-tight">Dynamic CMS & Content Engine</h3>
-            <p className="text-[11px] text-gray-300">Live edit all site text, layout items and images</p>
+            <h3 className="font-extrabold text-base tracking-tight">Dynamic CMS & Full Preview Engine</h3>
+            <p className="text-[11px] text-gray-300">Live edit all site text, layout items and visual images</p>
           </div>
         </div>
 
@@ -107,11 +136,12 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
         {[
           { id: 'hero', label: 'Hero' },
           { id: 'section2', label: 'More Than Numbers' },
-          { id: 'approach', label: 'Approach & Why Us' },
           { id: 'whatWeDo', label: 'What We Do' },
           { id: 'whoWeHelp', label: 'Who We Help' },
+          { id: 'approach', label: 'Approach & Why Us' },
           { id: 'insights', label: 'Insights & Articles' },
           { id: 'ctaBanner', label: 'CTA Banner' },
+          { id: 'gallery', label: '🖼 Asset Gallery' },
           { id: 'tools', label: 'Backup / Import' }
         ].map((tab) => (
           <button
@@ -128,6 +158,26 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
         ))}
       </div>
 
+      {/* Live Preview Toggle Bar */}
+      <div className="px-6 py-2 bg-slate-100/90 border-b border-slate-200 flex items-center justify-between text-xs">
+        <div className="flex items-center space-x-1.5 text-slate-700 font-semibold">
+          <Sparkles className="w-3.5 h-3.5 text-[#007791]" />
+          <span>Live Preview Tool</span>
+        </div>
+        <button
+          type="button"
+          onClick={() => setShowLivePreview(!showLivePreview)}
+          className={`flex items-center space-x-1.5 px-3 py-1 rounded-md text-xs font-bold transition-all cursor-pointer ${
+            showLivePreview
+              ? 'bg-[#007791] text-white shadow-xs'
+              : 'bg-white text-slate-600 hover:bg-slate-200 border border-slate-300'
+          }`}
+        >
+          {showLivePreview ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+          <span>{showLivePreview ? 'Preview Mode: Active' : 'Preview Mode: Hidden'}</span>
+        </button>
+      </div>
+
       {/* Editor Body Content */}
       <div className="flex-1 overflow-y-auto p-6 space-y-6">
         
@@ -136,6 +186,36 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
           <div className="space-y-4">
             <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider">Hero Section Settings</h4>
             
+            {/* Live Component Preview */}
+            {showLivePreview && (
+              <div className="rounded-2xl overflow-hidden border border-slate-700 shadow-lg relative bg-[#061a2e] text-white p-5 space-y-3">
+                <div className="absolute inset-0 opacity-35 pointer-events-none">
+                  <img
+                    src={imgUrl(data.hero.bgImage || '/images/hero_summit.jpg')}
+                    alt="Preview"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/80 to-transparent"></div>
+                </div>
+                <div className="relative z-10 space-y-2">
+                  <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-emerald-300 bg-white/10 px-2.5 py-0.5 rounded-full border border-white/20">
+                    {data.hero.badge || 'Executive Strategy'}
+                  </span>
+                  <h3 className="text-sm font-extrabold text-white leading-snug line-clamp-2">
+                    {data.hero.title || 'Finance that moves organisations forward.'}
+                  </h3>
+                  <p className="text-[11px] text-gray-200 line-clamp-2 leading-relaxed">
+                    {data.hero.subtitle || 'Clarity for today. Capability for tomorrow.'}
+                  </p>
+                  <div className="pt-1">
+                    <span className="brand-button-gradient text-white text-[10px] font-bold px-3 py-1 rounded-full inline-block shadow-sm">
+                      {data.hero.ctaText || 'Start a Conversation →'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">Badge Subhead</label>
               <input
@@ -181,55 +261,18 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
               />
             </div>
 
-            {/* Hero Image Setting */}
-            <div className="pt-2 border-t border-slate-100">
-              <label className="block text-xs font-bold text-slate-700 mb-1">Hero Background Image</label>
-              <div className="flex space-x-2 mb-2">
-                <input
-                  type="text"
-                  value={data.hero.bgImage}
-                  onChange={(e) =>
-                    onUpdateData({
-                      ...data,
-                      hero: { ...data.hero, bgImage: e.target.value }
-                    })
-                  }
-                  className="flex-1 px-3 py-2 rounded-lg border border-slate-300 text-xs"
-                />
-                <label className="px-3 py-2 bg-slate-100 border border-slate-300 rounded-lg text-xs font-bold cursor-pointer hover:bg-slate-200 flex items-center space-x-1">
-                  <Upload className="w-3.5 h-3.5" />
-                  <span>Upload</span>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={(e) =>
-                      handleFileUpload(e, (url) =>
-                        onUpdateData({ ...data, hero: { ...data.hero, bgImage: url } })
-                      )
-                    }
-                  />
-                </label>
-              </div>
-
-              {/* Preset Selector */}
-              <span className="text-[11px] text-slate-500 font-semibold block mb-1">Quick Select Preset:</span>
-              <div className="grid grid-cols-2 gap-1.5">
-                {imagePresets.slice(0, 4).map((p, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() =>
-                      onUpdateData({ ...data, hero: { ...data.hero, bgImage: p.url } })
-                    }
-                    className={`text-[11px] p-1.5 rounded text-left border truncate ${
-                      data.hero.bgImage === p.url ? 'border-[#007791] bg-teal-50 font-bold' : 'border-slate-200'
-                    }`}
-                  >
-                    {p.label}
-                  </button>
-                ))}
-              </div>
-            </div>
+            {/* Hero Image with Full Live Preview Tools */}
+            <ImageFieldWithPreview
+              label="Hero Background Image"
+              value={data.hero.bgImage || '/images/hero_summit.jpg'}
+              onChange={(url) =>
+                onUpdateData({
+                  ...data,
+                  hero: { ...data.hero, bgImage: url }
+                })
+              }
+              onUpload={handleFileUpload}
+            />
           </div>
         )}
 
@@ -238,6 +281,35 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
           <div className="space-y-4">
             <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider">Finance is More Than Numbers Settings</h4>
             
+            {/* Live Component Preview */}
+            {showLivePreview && (
+              <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-white p-4 space-y-3">
+                <div className="flex flex-col sm:flex-row gap-3 items-center">
+                  <div className="w-full sm:w-2/5 h-24 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 relative shrink-0">
+                    <img
+                      src={imgUrl(data.section2.image || '/images/finance_meeting.jpg')}
+                      alt="Preview"
+                      className="w-full h-full object-cover"
+                    />
+                    <span className="absolute bottom-1 left-1 bg-[#061a2e]/80 text-[8px] font-bold text-white px-1.5 py-0.5 rounded">
+                      Live Card Preview
+                    </span>
+                  </div>
+                  <div className="w-full sm:w-3/5 space-y-1">
+                    <span className="inline-block text-[9px] font-bold text-[#2bb673] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                      {data.section2.calloutText || 'Executive Insight'}
+                    </span>
+                    <h4 className="text-xs font-black text-[#061a2e] leading-tight line-clamp-1">
+                      {data.section2.heading}
+                    </h4>
+                    <p className="text-[10px] text-slate-500 line-clamp-2 leading-relaxed">
+                      {data.section2.paragraph1}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">Heading</label>
               <input
@@ -298,37 +370,18 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
               />
             </div>
 
-            {/* Section 2 Image */}
-            <div className="pt-2 border-t border-slate-100">
-              <label className="block text-xs font-bold text-slate-700 mb-1">Card Image</label>
-              <div className="flex space-x-2 mb-2">
-                <input
-                  type="text"
-                  value={data.section2.image}
-                  onChange={(e) =>
-                    onUpdateData({
-                      ...data,
-                      section2: { ...data.section2, image: e.target.value }
-                    })
-                  }
-                  className="flex-1 px-3 py-2 rounded-lg border border-slate-300 text-xs"
-                />
-                <label className="px-3 py-2 bg-slate-100 border border-slate-300 rounded-lg text-xs font-bold cursor-pointer hover:bg-slate-200 flex items-center space-x-1">
-                  <Upload className="w-3.5 h-3.5" />
-                  <span>Upload</span>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={(e) =>
-                      handleFileUpload(e, (url) =>
-                        onUpdateData({ ...data, section2: { ...data.section2, image: url } })
-                      )
-                    }
-                  />
-                </label>
-              </div>
-            </div>
+            {/* Section 2 Image with Full Live Preview Tools */}
+            <ImageFieldWithPreview
+              label="Executive Meeting / Section Image"
+              value={data.section2.image || '/images/finance_meeting.jpg'}
+              onChange={(url) =>
+                onUpdateData({
+                  ...data,
+                  section2: { ...data.section2, image: url }
+                })
+              }
+              onUpload={handleFileUpload}
+            />
           </div>
         )}
 
@@ -367,41 +420,19 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                   className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs"
                   placeholder="Step Description"
                 />
-                <div className="flex space-x-2">
-                  <input
-                    type="text"
-                    value={step.image || ''}
-                    onChange={(e) => {
-                      const updated = [...data.approachAndWhyUs.approachSteps];
-                      updated[idx].image = e.target.value;
-                      onUpdateData({
-                        ...data,
-                        approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
-                      });
-                    }}
-                    className="flex-1 px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs"
-                    placeholder="Image URL"
-                  />
-                  <label className="px-2 py-1 bg-white border border-slate-300 rounded text-[11px] font-bold cursor-pointer hover:bg-slate-100 flex items-center">
-                    <Upload className="w-3 h-3 mr-1" />
-                    <span>Upload</span>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={(e) =>
-                        handleFileUpload(e, (url) => {
-                          const updated = [...data.approachAndWhyUs.approachSteps];
-                          updated[idx].image = url;
-                          onUpdateData({
-                            ...data,
-                            approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
-                          });
-                        })
-                      }
-                    />
-                  </label>
-                </div>
+                <ImageFieldWithPreview
+                  label={`Step ${step.num} Illustration`}
+                  value={step.image || ''}
+                  onChange={(url) => {
+                    const updated = [...data.approachAndWhyUs.approachSteps];
+                    updated[idx].image = url;
+                    onUpdateData({
+                      ...data,
+                      approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
+                    });
+                  }}
+                  onUpload={handleFileUpload}
+                />
               </div>
             ))}
 
@@ -437,41 +468,19 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                   className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs"
                   placeholder="Benefit Description"
                 />
-                <div className="flex space-x-2">
-                  <input
-                    type="text"
-                    value={item.image || ''}
-                    onChange={(e) => {
-                      const updated = [...data.approachAndWhyUs.whyUsItems];
-                      updated[idx].image = e.target.value;
-                      onUpdateData({
-                        ...data,
-                        approachAndWhyUs: { ...data.approachAndWhyUs, whyUsItems: updated }
-                      });
-                    }}
-                    className="flex-1 px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs"
-                    placeholder="Image URL"
-                  />
-                  <label className="px-2 py-1 bg-white border border-slate-300 rounded text-[11px] font-bold cursor-pointer hover:bg-slate-100 flex items-center">
-                    <Upload className="w-3 h-3 mr-1" />
-                    <span>Upload</span>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={(e) =>
-                        handleFileUpload(e, (url) => {
-                          const updated = [...data.approachAndWhyUs.whyUsItems];
-                          updated[idx].image = url;
-                          onUpdateData({
-                            ...data,
-                            approachAndWhyUs: { ...data.approachAndWhyUs, whyUsItems: updated }
-                          });
-                        })
-                      }
-                    />
-                  </label>
-                </div>
+                <ImageFieldWithPreview
+                  label={`Benefit ${idx + 1} Illustration`}
+                  value={item.image || ''}
+                  onChange={(url) => {
+                    const updated = [...data.approachAndWhyUs.whyUsItems];
+                    updated[idx].image = url;
+                    onUpdateData({
+                      ...data,
+                      approachAndWhyUs: { ...data.approachAndWhyUs, whyUsItems: updated }
+                    });
+                  }}
+                  onUpload={handleFileUpload}
+                />
               </div>
             ))}
           </div>
@@ -482,6 +491,28 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
         {activeTab === 'whatWeDo' && (
           <div className="space-y-4">
             <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider">What We Do (4 Service Pillars)</h4>
+
+            {/* Live Component Preview */}
+            {showLivePreview && (
+              <div className="grid grid-cols-2 gap-2">
+                {data.whatWeDo.items.map((item, idx) => (
+                  <div key={item.id || idx} className="rounded-xl overflow-hidden border border-slate-200 bg-white p-2.5 space-y-1.5 shadow-xs">
+                    <div className="h-16 rounded-lg overflow-hidden relative bg-slate-100">
+                      <img
+                        src={imgUrl(item.image)}
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <span className="absolute top-1 left-1 bg-[#061a2e]/80 text-[8px] font-black text-emerald-400 px-1.5 py-0.5 rounded">
+                        {item.pillar}
+                      </span>
+                    </div>
+                    <h5 className="text-[11px] font-extrabold text-[#061a2e] leading-tight line-clamp-1">{item.title}</h5>
+                    <p className="text-[9px] text-slate-500 line-clamp-2 leading-tight">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            )}
             
             {data.whatWeDo.items.map((item, idx) => (
               <div key={item.id} className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
@@ -508,35 +539,16 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                   className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs"
                   placeholder="Description"
                 />
-                <div className="flex space-x-2">
-                  <input
-                    type="text"
-                    value={item.image}
-                    onChange={(e) => {
-                      const updated = [...data.whatWeDo.items];
-                      updated[idx].image = e.target.value;
-                      onUpdateData({ ...data, whatWeDo: { ...data.whatWeDo, items: updated } });
-                    }}
-                    className="flex-1 px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs"
-                    placeholder="Image URL"
-                  />
-                  <label className="px-2 py-1 bg-white border border-slate-300 rounded text-[11px] font-bold cursor-pointer hover:bg-slate-100 flex items-center">
-                    <Upload className="w-3 h-3 mr-1" />
-                    <span>Upload</span>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={(e) =>
-                        handleFileUpload(e, (url) => {
-                          const updated = [...data.whatWeDo.items];
-                          updated[idx].image = url;
-                          onUpdateData({ ...data, whatWeDo: { ...data.whatWeDo, items: updated } });
-                        })
-                      }
-                    />
-                  </label>
-                </div>
+                <ImageFieldWithPreview
+                  label={`${item.pillar} Pillar Graphic`}
+                  value={item.image}
+                  onChange={(url) => {
+                    const updated = [...data.whatWeDo.items];
+                    updated[idx].image = url;
+                    onUpdateData({ ...data, whatWeDo: { ...data.whatWeDo, items: updated } });
+                  }}
+                  onUpload={handleFileUpload}
+                />
               </div>
             ))}
           </div>
@@ -546,6 +558,28 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
         {activeTab === 'whoWeHelp' && (
           <div className="space-y-4">
             <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider">Who We Help Target Cards</h4>
+
+            {/* Live Component Preview */}
+            {showLivePreview && (
+              <div className="grid grid-cols-2 gap-2">
+                {data.whoWeHelp.items.map((item, idx) => (
+                  <div key={item.id || idx} className="rounded-xl overflow-hidden border border-slate-200 bg-white p-2.5 space-y-1.5 shadow-xs">
+                    <div className="h-16 rounded-lg overflow-hidden relative bg-slate-100">
+                      <img
+                        src={imgUrl(item.image)}
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <span className="absolute bottom-1 left-1 bg-[#061a2e]/80 text-[8px] font-bold text-white px-1.5 py-0.5 rounded">
+                        Sector {idx + 1}
+                      </span>
+                    </div>
+                    <h5 className="text-[11px] font-extrabold text-[#061a2e] leading-tight line-clamp-1">{item.title}</h5>
+                    <p className="text-[9px] text-slate-500 line-clamp-2 leading-tight">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            )}
             
             {data.whoWeHelp.items.map((item, idx) => (
               <div key={item.id || idx} className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
@@ -572,35 +606,16 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                   className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs"
                   placeholder="Short Description"
                 />
-                <div className="flex space-x-2">
-                  <input
-                    type="text"
-                    value={item.image}
-                    onChange={(e) => {
-                      const updated = [...data.whoWeHelp.items];
-                      updated[idx].image = e.target.value;
-                      onUpdateData({ ...data, whoWeHelp: { ...data.whoWeHelp, items: updated } });
-                    }}
-                    className="flex-1 px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs"
-                    placeholder="Image URL"
-                  />
-                  <label className="px-2 py-1 bg-white border border-slate-300 rounded text-[11px] font-bold cursor-pointer hover:bg-slate-100 flex items-center">
-                    <Upload className="w-3 h-3 mr-1" />
-                    <span>Upload</span>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={(e) =>
-                        handleFileUpload(e, (url) => {
-                          const updated = [...data.whoWeHelp.items];
-                          updated[idx].image = url;
-                          onUpdateData({ ...data, whoWeHelp: { ...data.whoWeHelp, items: updated } });
-                        })
-                      }
-                    />
-                  </label>
-                </div>
+                <ImageFieldWithPreview
+                  label={`${item.title} Sector Graphic`}
+                  value={item.image}
+                  onChange={(url) => {
+                    const updated = [...data.whoWeHelp.items];
+                    updated[idx].image = url;
+                    onUpdateData({ ...data, whoWeHelp: { ...data.whoWeHelp, items: updated } });
+                  }}
+                  onUpload={handleFileUpload}
+                />
               </div>
             ))}
           </div>
@@ -729,46 +744,21 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                   />
                 </div>
 
-                {/* Article Header Image */}
-                <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Header Image URL</label>
-                  <div className="flex space-x-2">
-                    <input
-                      type="text"
-                      value={article.image || ''}
-                      onChange={(e) => {
-                        const articlesList = [...(data.insightsData?.articles || data.insights || [])];
-                        articlesList[idx].image = e.target.value;
-                        onUpdateData({
-                          ...data,
-                          insightsData: { ...data.insightsData, articles: articlesList },
-                          insights: articlesList
-                        });
-                      }}
-                      className="flex-1 px-2.5 py-1.5 bg-white rounded-lg border border-slate-300 text-xs"
-                    />
-                    <label className="px-2.5 py-1.5 bg-white border border-slate-300 rounded-lg text-xs font-bold cursor-pointer hover:bg-slate-100 flex items-center">
-                      <Upload className="w-3.5 h-3.5 mr-1" />
-                      <span>Upload</span>
-                      <input
-                        type="file"
-                        accept="image/*"
-                        className="hidden"
-                        onChange={(e) =>
-                          handleFileUpload(e, (url) => {
-                            const articlesList = [...(data.insightsData?.articles || data.insights || [])];
-                            articlesList[idx].image = url;
-                            onUpdateData({
-                              ...data,
-                              insightsData: { ...data.insightsData, articles: articlesList },
-                              insights: articlesList
-                            });
-                          })
-                        }
-                      />
-                    </label>
-                  </div>
-                </div>
+                {/* Article Header Image with Live Preview Tools */}
+                <ImageFieldWithPreview
+                  label="Article Header Image"
+                  value={article.image || ''}
+                  onChange={(url) => {
+                    const articlesList = [...(data.insightsData?.articles || data.insights || [])];
+                    articlesList[idx].image = url;
+                    onUpdateData({
+                      ...data,
+                      insightsData: { ...data.insightsData, articles: articlesList },
+                      insights: articlesList
+                    });
+                  }}
+                  onUpload={handleFileUpload}
+                />
               </div>
             ))}
           </div>
@@ -777,8 +767,37 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
         {/* TAB 5: CTA BANNER */}
         {activeTab === 'ctaBanner' && (
           <div className="space-y-4">
-            <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider">CTA Pre-Footer Banner</h4>
+            <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider">CTA Pre-Footer Banner Settings</h4>
             
+            {/* Live Component Preview */}
+            {showLivePreview && (
+              <div className="rounded-2xl overflow-hidden border border-slate-800 shadow-lg relative bg-[#061a2e] text-white p-4 space-y-2">
+                <div className="absolute inset-0 opacity-25 pointer-events-none">
+                  <img
+                    src={imgUrl(data.ctaBanner.bgImage || '/images/hero_summit.jpg')}
+                    alt="Preview"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="relative z-10 space-y-1">
+                  <span className="text-[9px] font-bold text-emerald-400 uppercase tracking-wider">
+                    {data.ctaBanner.tag || "LET'S MOVE FORWARD"}
+                  </span>
+                  <h4 className="text-xs font-black text-white leading-snug">
+                    {data.ctaBanner.title || 'Have a finance, transformation or compliance challenge?'}
+                  </h4>
+                  <p className="text-[10px] text-gray-300 leading-relaxed">
+                    {data.ctaBanner.subtitle}
+                  </p>
+                  <div className="pt-1">
+                    <span className="brand-button-gradient text-white text-[9px] font-bold px-3 py-1 rounded-full inline-block">
+                      {data.ctaBanner.buttonText || 'Start a Conversation →'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">Tagline</label>
               <input
@@ -822,6 +841,158 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                 }
                 className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs"
               />
+            </div>
+
+            <ImageFieldWithPreview
+              label="CTA Pre-Footer Background Graphic"
+              value={data.ctaBanner.bgImage || '/images/hero_summit.jpg'}
+              onChange={(url) =>
+                onUpdateData({
+                  ...data,
+                  ctaBanner: { ...data.ctaBanner, bgImage: url }
+                })
+              }
+              onUpload={handleFileUpload}
+            />
+          </div>
+        )}
+
+        {/* TAB 5.5: VISUAL ASSET GALLERY */}
+        {activeTab === 'gallery' && (
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider">Visual Asset Gallery & Characters</h4>
+                <p className="text-[11px] text-slate-500">Photorealistic visuals designed to represent each service pillar and sector</p>
+              </div>
+              <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                {ALL_IMAGE_PRESETS.length} Assets
+              </span>
+            </div>
+
+            {/* Filter Pills */}
+            <div className="flex items-center space-x-1.5 overflow-x-auto pb-1">
+              {['All', 'Service Pillars', 'Sectors (Who We Help)', 'Brand Story & Hero', 'Process Transformation', 'Corporate & Team'].map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setGalleryCategory(cat)}
+                  className={`px-2.5 py-1 text-[10px] font-bold rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
+                    galleryCategory === cat
+                      ? 'bg-[#007791] text-white shadow-xs'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200 border border-slate-200'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            {/* Search Input */}
+            <div className="relative">
+              <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input
+                type="text"
+                value={gallerySearch}
+                onChange={(e) => setGallerySearch(e.target.value)}
+                placeholder="Search assets by keywords, characters, or role..."
+                className="w-full pl-8 pr-3 py-1.5 bg-slate-50 rounded-xl border border-slate-200 text-xs outline-none focus:border-[#007791] focus:bg-white"
+              />
+            </div>
+
+            {/* Visual Grid */}
+            <div className="space-y-3">
+              {ALL_IMAGE_PRESETS
+                .filter((p) => {
+                  const matchesCat = galleryCategory === 'All' || p.category === galleryCategory;
+                  const matchesSearch =
+                    p.label.toLowerCase().includes(gallerySearch.toLowerCase()) ||
+                    p.description.toLowerCase().includes(gallerySearch.toLowerCase());
+                  return matchesCat && matchesSearch;
+                })
+                .map((asset) => (
+                  <div
+                    key={asset.id}
+                    className="p-3 bg-white rounded-2xl border border-slate-200 hover:border-[#007791] shadow-xs transition-all duration-200 flex flex-col sm:flex-row gap-3 items-start"
+                  >
+                    {/* Thumbnail with Zoom overlay */}
+                    <div
+                      className="relative w-full sm:w-36 h-24 rounded-xl overflow-hidden bg-slate-900 shrink-0 group cursor-pointer"
+                      onClick={() => setZoomImage(asset)}
+                    >
+                      <img
+                        src={imgUrl(asset.url)}
+                        alt={asset.label}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <Maximize2 className="w-4 h-4" />
+                      </div>
+                      <span className="absolute bottom-1 left-1 text-[8px] font-bold text-white bg-black/60 px-1.5 py-0.5 rounded">
+                        {asset.category.split(' ')[0]}
+                      </span>
+                    </div>
+
+                    {/* Metadata & Actions */}
+                    <div className="flex-1 space-y-1.5 w-full">
+                      <div className="flex items-start justify-between gap-2">
+                        <h5 className="text-xs font-black text-[#061a2e] leading-snug">{asset.label}</h5>
+                      </div>
+                      <p className="text-[10px] text-slate-500 leading-relaxed">{asset.description}</p>
+                      
+                      {/* Action Row */}
+                      <div className="pt-1 flex flex-wrap items-center gap-1.5">
+                        {/* Quick Apply Dropdown */}
+                        <select
+                          defaultValue=""
+                          onChange={(e) => {
+                            if (e.target.value) {
+                              handleApplyPreset(e.target.value, asset.url);
+                              e.target.value = '';
+                            }
+                          }}
+                          className="text-[10px] font-bold bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-lg px-2 py-1 outline-none cursor-pointer"
+                        >
+                          <option value="" disabled>Apply to Section ▾</option>
+                          <option value="hero">Hero Background</option>
+                          <option value="section2">Finance More Than Numbers</option>
+                          <option value="pillar-0">Pillar 1: LEAD (CFO & FP&A)</option>
+                          <option value="pillar-1">Pillar 2: BUILD (Operating Models)</option>
+                          <option value="pillar-2">Pillar 3: TRANSFORM (Data & Tech)</option>
+                          <option value="pillar-3">Pillar 4: PROTECT (Tax & Compliance)</option>
+                          <option value="sector-0">Sector 1: Growing Businesses</option>
+                          <option value="sector-1">Sector 2: Established & Corporate</option>
+                          <option value="sector-2">Sector 3: Not-for-Profit</option>
+                          <option value="sector-3">Sector 4: Local Government</option>
+                          <option value="cta">CTA Pre-Footer Banner</option>
+                        </select>
+
+                        {/* Copy Path Button */}
+                        <button
+                          type="button"
+                          onClick={() => handleCopyPath(asset.url, asset.id)}
+                          className="text-[10px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 rounded-lg px-2 py-1 flex items-center space-x-1 cursor-pointer transition-colors"
+                          title="Copy relative image path"
+                        >
+                          {copiedId === asset.id ? <CheckCheck className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3 text-slate-500" />}
+                          <span>{copiedId === asset.id ? 'Copied!' : 'Copy Path'}</span>
+                        </button>
+
+                        {/* Inspect Button */}
+                        <button
+                          type="button"
+                          onClick={() => setZoomImage(asset)}
+                          className="text-[10px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 rounded-lg px-2 py-1 flex items-center space-x-1 cursor-pointer transition-colors"
+                          title="View High-Resolution Graphic"
+                        >
+                          <Maximize2 className="w-3 h-3 text-[#007791]" />
+                          <span>Inspect</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
             </div>
           </div>
         )}
@@ -919,6 +1090,53 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
           Close Drawer
         </button>
       </div>
+
+      {/* High-Resolution Artwork Lightbox Inspector */}
+      {zoomImage && (
+        <div
+          className="fixed inset-0 z-60 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200"
+          onClick={() => setZoomImage(null)}
+        >
+          <div
+            className="relative w-full max-w-2xl bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative h-72 sm:h-96 w-full bg-slate-900 overflow-hidden">
+              <img
+                src={imgUrl(zoomImage.url)}
+                alt={zoomImage.label}
+                className="w-full h-full object-cover"
+              />
+              <button
+                type="button"
+                onClick={() => setZoomImage(null)}
+                className="absolute top-3 right-3 p-2 rounded-full bg-black/60 hover:bg-black/80 text-white transition-colors cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+              <span className="absolute bottom-3 left-3 text-xs font-bold uppercase tracking-wider bg-[#061a2e]/85 backdrop-blur-md text-emerald-400 px-3 py-1 rounded-lg">
+                {zoomImage.category}
+              </span>
+            </div>
+            <div className="p-5 space-y-2 bg-white">
+              <div className="flex items-center justify-between">
+                <h4 className="text-sm font-black text-[#061a2e]">{zoomImage.label}</h4>
+                <span className="text-[10px] font-mono text-slate-400 bg-slate-100 px-2 py-0.5 rounded">{zoomImage.url}</span>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed">{zoomImage.description}</p>
+              <div className="pt-2 flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => setZoomImage(null)}
+                  className="px-4 py-1.5 bg-[#007791] text-white text-xs font-bold rounded-xl cursor-pointer hover:bg-[#006075]"
+                >
+                  Close Inspection
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
