@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrandLogo } from './BrandLogo';
-import { ArrowRight, Globe, Share2 } from 'lucide-react';
+import { ArrowRight, Globe, Share2, Sparkles, Lock, LogOut, Settings } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 
-export const FooterCTA = ({ ctaData, footerData, onOpenContact }) => {
+export const FooterCTA = ({ ctaData, footerData, adminUser, onOpenLogin, onToggleCMS, onLogout, onOpenContact }) => {
   return (
     <>
       {/* Pre-footer CTA Banner */}
@@ -22,14 +22,14 @@ export const FooterCTA = ({ ctaData, footerData, onOpenContact }) => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Title & Tag */}
-            <div className="lg:col-span-7 space-y-3">
-              <span className="text-sm font-black uppercase tracking-widest text-[#2bb673]">
+            <div className="lg:col-span-7 space-y-2.5">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#2bb673]">
                 {ctaData.tag}
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight">
                 {ctaData.title}
               </h2>
-              <p className="text-lg sm:text-xl text-gray-200 max-w-xl font-medium pt-1">
+              <p className="text-sm sm:text-base text-gray-200 max-w-xl font-normal pt-0.5">
                 {ctaData.subtitle}
               </p>
             </div>
@@ -38,10 +38,10 @@ export const FooterCTA = ({ ctaData, footerData, onOpenContact }) => {
             <div className="lg:col-span-5 lg:flex lg:justify-end">
               <button
                 onClick={onOpenContact}
-                className="brand-button-gradient text-white text-lg font-extrabold px-9 py-4.5 rounded-full flex items-center space-x-3 shadow-2xl hover:scale-105 transition-transform"
+                className="brand-button-gradient text-white text-sm sm:text-base font-bold px-7 py-3.5 rounded-full flex items-center space-x-2.5 shadow-xl hover:scale-105 transition-transform"
               >
                 <span>{ctaData.buttonText}</span>
-                <ArrowRight className="w-6 h-6" />
+                <ArrowRight className="w-5 h-5" />
               </button>
             </div>
 
@@ -99,10 +99,38 @@ export const FooterCTA = ({ ctaData, footerData, onOpenContact }) => {
           {/* Bottom Copyright & Terms */}
           <div className="flex flex-col sm:flex-row items-center justify-between pt-8 text-sm text-gray-400 space-y-4 sm:space-y-0 font-medium">
             <p>{footerData.copyright}</p>
-            <div className="flex items-center space-x-6">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400">
               <a href="#privacy" className="hover:text-gray-200 transition-colors">Privacy Policy</a>
               <span>|</span>
               <a href="#terms" className="hover:text-gray-200 transition-colors">Terms</a>
+              <span>|</span>
+              {adminUser ? (
+                <div className="inline-flex items-center space-x-2.5">
+                  <button
+                    onClick={onToggleCMS}
+                    className="text-emerald-400 hover:text-emerald-300 font-bold flex items-center space-x-1 transition-colors cursor-pointer"
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Settings: Edit Site CMS</span>
+                  </button>
+                  <span>&bull;</span>
+                  <button
+                    onClick={onLogout}
+                    className="text-slate-400 hover:text-rose-400 font-semibold transition-colors cursor-pointer"
+                  >
+                    Logout ({adminUser.name})
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={onOpenLogin}
+                  className="hover:text-gray-200 transition-colors flex items-center space-x-1 cursor-pointer text-slate-500 hover:text-slate-300"
+                  title="Admin Portal Login"
+                >
+                  <Lock className="w-3 h-3" />
+                  <span>Admin Portal</span>
+                </button>
+              )}
             </div>
           </div>
 

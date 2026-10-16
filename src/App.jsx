@@ -18,6 +18,8 @@ import { InsightsPage } from './components/InsightsPage';
 import { InsightDetailPage } from './components/InsightDetailPage';
 import { AboutPage } from './components/AboutPage';
 import { ContactPage } from './components/ContactPage';
+import { AdminLoginModal } from './components/AdminLoginModal';
+import { Sparkles } from 'lucide-react';
 import { imgUrl } from './utils/imgUrl';
 
 // Pre-process all image paths in a data object so they work on GitHub Pages
@@ -77,6 +79,27 @@ export function App() {
   const [activePage, setActivePage] = useState(null);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isCMSOpen, setIsCMSOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [adminUser, setAdminUser] = useState(() => {
+    try {
+      const saved = localStorage.getItem('evolve_admin_user');
+      return saved ? JSON.parse(saved) : null;
+    } catch (e) {
+      return null;
+    }
+  });
+
+  const handleLoginSuccess = (user) => {
+    setAdminUser(user);
+    localStorage.setItem('evolve_admin_user', JSON.stringify(user));
+    setIsCMSOpen(true);
+  };
+
+  const handleLogout = () => {
+    setAdminUser(null);
+    setIsCMSOpen(false);
+    localStorage.removeItem('evolve_admin_user');
+  };
 
   // Sync to LocalStorage
   useEffect(() => {
@@ -107,9 +130,8 @@ export function App() {
       {/* Header Bar */}
       <Header
         data={fixedData.header}
+        activePage={activePage}
         onOpenContact={() => setIsContactOpen(true)}
-        onToggleCMS={() => setIsCMSOpen(!isCMSOpen)}
-        isCMSOpen={isCMSOpen}
         onNavigate={(pageId) => setActivePage(pageId)}
         onGoHome={() => setActivePage(null)}
       />
@@ -218,16 +240,56 @@ export function App() {
         <FooterCTA
           ctaData={fixedData.ctaBanner}
           footerData={fixedData.footer}
+          adminUser={adminUser}
+          onOpenLogin={() => setIsLoginOpen(true)}
+          onToggleCMS={() => setIsCMSOpen(!isCMSOpen)}
+          onLogout={handleLogout}
           onOpenContact={() => setIsContactOpen(true)}
           onGoHome={() => setActivePage(null)}
           onNavigate={(pageId) => setActivePage(pageId)}
         />
       </main>
 
+      {/* Floating Privileged User Quick Bar */}
+      {adminUser && (
+        <div className="fixed bottom-6 right-6 z-40 bg-[#061a2e]/95 hover:bg-[#061a2e] text-white backdrop-blur-md pl-4 pr-3 py-2 rounded-full shadow-2xl border border-slate-700/80 flex items-center space-x-3 transition-all duration-300 animate-in fade-in slide-in-from-bottom-2">
+          <div className="flex items-center space-x-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span className="text-xs font-bold text-slate-200">{adminUser.name}</span>
+            <span className="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20 font-semibold">
+              Privileged
+            </span>
+          </div>
+          <span className="text-slate-700">|</span>
+          <button
+            onClick={() => setIsCMSOpen(!isCMSOpen)}
+            className="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center space-x-1.5 cursor-pointer bg-emerald-500/15 hover:bg-emerald-500/25 px-2.5 py-1 rounded-full border border-emerald-500/30 transition-all"
+            title="Open Site CMS Content Editor"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>{isCMSOpen ? 'Close CMS' : 'Edit Site CMS'}</span>
+          </button>
+          <button
+            onClick={handleLogout}
+            className="text-xs font-semibold text-slate-400 hover:text-rose-400 px-1.5 py-0.5 transition-colors cursor-pointer"
+            title="Sign out of Admin Portal"
+          >
+            Logout
+          </button>
+        </div>
+      )}
+
       {/* Interactive Contact Modal */}
       <ContactModal
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
+      />
+
+      {/* Admin Portal Login Modal */}
+      <AdminLoginModal
+        isOpen={isLoginOpen}
+        onClose={() => setIsLoginOpen(false)}
+        onLoginSuccess={handleLoginSuccess}
       />
 
       {/* Dynamic Live CMS & Content Manager Drawer */}

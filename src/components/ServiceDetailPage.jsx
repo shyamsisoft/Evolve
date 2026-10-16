@@ -72,10 +72,10 @@ export const ServiceDetailPage = ({ serviceId, pageData, onBack, onOpenContact, 
             {service.tagline}
           </p>
 
-          <div className="pt-3 flex flex-wrap items-center gap-4">
+          <div className="pt-2 flex flex-wrap items-center gap-4">
             <button
               onClick={onOpenContact}
-              className="brand-button-gradient text-white text-base font-extrabold px-9 py-4 rounded-full flex items-center space-x-2.5 shadow-2xl hover:scale-105 transition-transform"
+              className="brand-button-gradient text-white text-sm sm:text-base font-bold px-7 py-3.5 rounded-full flex items-center space-x-2.5 shadow-xl hover:scale-105 transition-transform"
             >
               <span>Schedule Executive Briefing</span>
               <ArrowRight className="w-5 h-5" />
@@ -86,25 +86,25 @@ export const ServiceDetailPage = ({ serviceId, pageData, onBack, onOpenContact, 
       </section>
 
       {/* 3. EXECUTIVE PROBLEM SOLVING & CHALLENGES — VISUAL FRICTION VS SOLUTION SUITE */}
-      <section className="py-24 bg-gradient-to-b from-[#f8fafc] via-white to-[#f0f5fa] border-t border-slate-200/80 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-b from-[#f8fafc] via-white to-[#f0f5fa] border-t border-slate-200/80 relative overflow-hidden">
         
         {/* Ambient Subtle Background Glow */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-rose-500/5 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#2bb673]/5 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div className="max-w-3xl space-y-3">
-              <div className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-rose-600 bg-rose-50 border border-rose-200 px-4 py-1.5 rounded-full">
+            <div className="max-w-3xl space-y-2.5">
+              <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-rose-600 bg-rose-50 border border-rose-200 px-3.5 py-1 rounded-full">
                 <Target className="w-3.5 h-3.5 text-rose-600" />
                 <span>Diagnostic Friction & Resolution</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#061a2e] tracking-tight">
                 The Strategic Challenges We Address
               </h2>
-              <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
                 Leadership teams encounter key financial gaps that limit strategic clarity, close speed, and capital allocation. Here is how we diagnose the friction and engineer permanent capability.
               </p>
             </div>

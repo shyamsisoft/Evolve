@@ -21,29 +21,29 @@ export const Hero = ({ data, onOpenContact }) => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-3xl text-white space-y-7">
           {/* Subhead Tag / Badge */}
-          <div className="inline-flex items-center space-x-2.5 bg-white/10 backdrop-blur-md border border-white/25 px-4 py-2 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-widest text-emerald-300 shadow-lg">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#2bb673] animate-pulse"></span>
+          <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-emerald-300 shadow-md">
+            <span className="w-2 h-2 rounded-full bg-[#2bb673] animate-pulse"></span>
             <span>{data.badge}</span>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.12] text-white">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.12] text-white">
             {data.title}
           </h1>
 
           {/* Subtext */}
-          <p className="text-xl sm:text-2xl text-gray-100 font-medium leading-relaxed max-w-2xl">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-200 font-normal leading-relaxed max-w-2xl">
             {data.subtitle}
           </p>
 
           {/* CTA Action Button */}
-          <div className="pt-4 flex items-center space-x-4">
+          <div className="pt-2 flex items-center space-x-4">
             <button
               onClick={onOpenContact}
-              className="brand-button-gradient text-white text-lg font-extrabold px-9 py-4.5 rounded-full flex items-center space-x-3 shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 group"
+              className="brand-button-gradient text-white text-sm sm:text-base font-bold px-7 py-3.5 rounded-full flex items-center space-x-2.5 shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 group"
             >
               <span>{data.ctaText}</span>
-              <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </button>
           </div>
         </div>

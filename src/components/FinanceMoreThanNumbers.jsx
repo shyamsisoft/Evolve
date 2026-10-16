@@ -9,12 +9,12 @@ export const FinanceMoreThanNumbers = ({ data, onSelectWhatWeDoOverview }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
           
           {/* Left Column: Text & Narrative */}
-          <div className="lg:col-span-6 space-y-7">
-            <h2 className="text-3xl sm:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
+          <div className="lg:col-span-6 space-y-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#061a2e] tracking-tight leading-tight">
               {data.heading}
             </h2>
 
-            <div className="space-y-5 text-lg sm:text-xl text-slate-700 leading-relaxed font-medium">
+            <div className="space-y-4 text-base sm:text-[17px] text-slate-600 leading-relaxed font-normal">
               <p>{data.paragraph1}</p>
               <p>{data.paragraph2}</p>
             </div>
@@ -30,10 +30,10 @@ export const FinanceMoreThanNumbers = ({ data, onSelectWhatWeDoOverview }) => {
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="inline-flex items-center space-x-2.5 border-2 border-[#007791] text-[#007791] hover:bg-[#007791] hover:text-white text-base font-extrabold px-7 py-3.5 rounded-full transition-all duration-300 group shadow-sm cursor-pointer"
+                className="inline-flex items-center space-x-2 border-2 border-[#007791] text-[#007791] hover:bg-[#007791] hover:text-white text-sm sm:text-base font-bold px-6 py-3 rounded-full transition-all duration-300 group shadow-sm cursor-pointer"
               >
                 <span>{data.ctaText}</span>
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
           </div>

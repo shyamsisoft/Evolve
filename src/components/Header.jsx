@@ -1,12 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { BrandLogo } from './BrandLogo';
-import { Menu, X, ChevronDown, Sparkles } from 'lucide-react';
+import { Menu, X, ChevronDown, Sparkles, Lock, UserCheck, Settings, LogOut } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
-export const Header = ({ data, onOpenContact, onToggleCMS, isCMSOpen, onNavigate, onGoHome }) => {
+export const Header = ({
+  data,
+  activePage,
+  adminUser,
+  onOpenLogin,
+  onLogout,
+  onOpenContact,
+  onToggleCMS,
+  isCMSOpen,
+  onNavigate,
+  onGoHome
+}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [whatWeDoOpen, setWhatWeDoOpen] = useState(false);
   const [whoWeHelpOpen, setWhoWeHelpOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,35 +38,43 @@ export const Header = ({ data, onOpenContact, onToggleCMS, isCMSOpen, onNavigate
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-3">
           {/* Brand Logo */}
-          <button onClick={onGoHome} className="flex items-center text-left">
-            <BrandLogo variant="full" />
+          <button onClick={onGoHome} className="flex items-center text-left flex-shrink-0">
+            {activePage === 'protect' ? (
+              <img
+                src={imgUrl('/images/evolve_taxation_logo.png')}
+                alt="EVOLVE Taxation & Advisory"
+                className="h-9 sm:h-10 w-auto object-contain"
+              />
+            ) : (
+              <BrandLogo variant="full" />
+            )}
           </button>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-7">
+          {/* Desktop Navigation - Strictly One Line */}
+          <nav className="hidden md:flex items-center space-x-3 lg:space-x-4 xl:space-x-6 flex-shrink-0">
             
             {/* HOME */}
             <button
               onClick={onGoHome}
-              className="text-[13px] sm:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5"
+              className="text-xs lg:text-[13px] xl:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5 whitespace-nowrap cursor-pointer"
             >
               Home
             </button>
 
             {/* WHO WE HELP DROPDOWN */}
             <div
-              className="relative group"
+              className="relative group flex-shrink-0"
               onMouseEnter={() => setWhoWeHelpOpen(true)}
               onMouseLeave={() => setWhoWeHelpOpen(false)}
             >
               <button
                 onClick={() => onNavigate('who-we-help')}
-                className="flex items-center text-[13px] sm:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5"
+                className="flex items-center text-xs lg:text-[13px] xl:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5 whitespace-nowrap cursor-pointer"
               >
                 <span>Who We Help</span>
-                <ChevronDown className={`w-3.5 h-3.5 ml-1 transition-transform duration-200 ${whoWeHelpOpen ? 'rotate-180 text-[#007791]' : 'text-gray-400'}`} />
+                <ChevronDown className={`w-3.5 h-3.5 ml-1 transition-transform duration-200 flex-shrink-0 ${whoWeHelpOpen ? 'rotate-180 text-[#007791]' : 'text-gray-400'}`} />
               </button>
 
               {whoWeHelpOpen && (
@@ -80,16 +101,16 @@ export const Header = ({ data, onOpenContact, onToggleCMS, isCMSOpen, onNavigate
 
             {/* WHAT WE DO DROPDOWN */}
             <div
-              className="relative group"
+              className="relative group flex-shrink-0"
               onMouseEnter={() => setWhatWeDoOpen(true)}
               onMouseLeave={() => setWhatWeDoOpen(false)}
             >
               <button
                 onClick={() => onNavigate('what-we-do')}
-                className="flex items-center text-[13px] sm:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5"
+                className="flex items-center text-xs lg:text-[13px] xl:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5 whitespace-nowrap cursor-pointer"
               >
                 <span>What We Do</span>
-                <ChevronDown className={`w-3.5 h-3.5 ml-1 transition-transform duration-200 ${whatWeDoOpen ? 'rotate-180 text-[#007791]' : 'text-gray-400'}`} />
+                <ChevronDown className={`w-3.5 h-3.5 ml-1 transition-transform duration-200 flex-shrink-0 ${whatWeDoOpen ? 'rotate-180 text-[#007791]' : 'text-gray-400'}`} />
               </button>
 
               {whatWeDoOpen && (
@@ -117,7 +138,7 @@ export const Header = ({ data, onOpenContact, onToggleCMS, isCMSOpen, onNavigate
             {/* INSIGHTS */}
             <button
               onClick={() => onNavigate('insights')}
-              className="text-[13px] sm:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5"
+              className="text-xs lg:text-[13px] xl:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5 whitespace-nowrap cursor-pointer"
             >
               Insights
             </button>
@@ -125,7 +146,7 @@ export const Header = ({ data, onOpenContact, onToggleCMS, isCMSOpen, onNavigate
             {/* ABOUT */}
             <button
               onClick={() => onNavigate('about')}
-              className="text-[13px] sm:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5"
+              className="text-xs lg:text-[13px] xl:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5 whitespace-nowrap cursor-pointer"
             >
               About
             </button>
@@ -133,27 +154,17 @@ export const Header = ({ data, onOpenContact, onToggleCMS, isCMSOpen, onNavigate
             {/* CONTACT */}
             <button
               onClick={() => onNavigate('contact')}
-              className="text-[13px] sm:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5"
+              className="text-xs lg:text-[13px] xl:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5 whitespace-nowrap cursor-pointer"
             >
               Contact
             </button>
           </nav>
 
-          {/* Right Action Controls */}
-          <div className="hidden lg:flex items-center space-x-3">
-            <button
-              onClick={onToggleCMS}
-              className={`flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold rounded-full transition-all border ${
-                isCMSOpen ? 'bg-emerald-500 text-white border-emerald-600 shadow-md' : 'bg-slate-100 text-[#061a2e] border-slate-200 hover:bg-slate-200'
-              }`}
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>{isCMSOpen ? 'Close CMS Editor' : '⚡ Edit Site CMS'}</span>
-            </button>
-
+          {/* Right Action Controls: Contact CTA */}
+          <div className="hidden md:flex items-center flex-shrink-0">
             <button
               onClick={onOpenContact}
-              className="brand-button-gradient text-white text-xs sm:text-sm font-bold px-5 py-2 rounded-full flex items-center space-x-1.5 shadow-md hover:shadow-lg"
+              className="brand-button-gradient text-white text-xs sm:text-sm font-bold px-4 sm:px-5 py-2 rounded-full flex items-center space-x-1.5 shadow-md hover:shadow-lg whitespace-nowrap flex-shrink-0 cursor-pointer"
             >
               <span>{data.ctaText}</span>
             </button>
@@ -161,9 +172,6 @@ export const Header = ({ data, onOpenContact, onToggleCMS, isCMSOpen, onNavigate
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center space-x-2">
-            <button onClick={onToggleCMS} className="p-1.5 bg-emerald-100 text-emerald-800 rounded-lg text-xs font-bold flex items-center">
-              <Sparkles className="w-4 h-4" />
-            </button>
             <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-1.5 rounded-lg text-[#061a2e] hover:bg-gray-100">
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>

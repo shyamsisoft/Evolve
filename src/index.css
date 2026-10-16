@@ -2,16 +2,33 @@
 
 @layer base {
   html {
-    font-size: 18px; /* Scales all rem font sizes across the entire site */
+    font-size: 16px; /* Standard web root for financial & corporate advisory websites */
+    -webkit-text-size-adjust: 100%;
   }
   body {
-    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     color: #061a2e;
     background-color: #f7f9fc;
     overflow-x: hidden;
-    font-size: 1.125rem; /* ~20px body font size */
-    line-height: 1.7;
-    font-weight: 450;
+    font-size: 0.9375rem; /* 15px crisp corporate base */
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Financial Advisory Standard Typography Hierarchy */
+  h1 {
+    letter-spacing: -0.025em;
+    font-weight: 800;
+  }
+  h2 {
+    letter-spacing: -0.02em;
+    font-weight: 800;
+  }
+  h3 {
+    letter-spacing: -0.015em;
+    font-weight: 700;
   }
 }
 
