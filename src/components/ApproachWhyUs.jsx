@@ -20,18 +20,18 @@ export const ApproachWhyUs = ({ data }) => {
   };
 
   const defaultApproachImages = [
-    imgUrl("/images/approach_understand.jpg"),
-    imgUrl("/images/approach_diagnose.jpg"),
-    imgUrl("/images/approach_design.jpg"),
-    imgUrl("/images/approach_deliver.jpg")
+    "/images/approach_understand.jpg",
+    "/images/approach_diagnose.jpg",
+    "/images/approach_design.jpg",
+    "/images/approach_deliver.jpg"
   ];
 
   const defaultWhyUsImages = [
-    imgUrl("/images/why_experience.jpg"),
-    imgUrl("/images/why_transformation.jpg"),
-    imgUrl("/images/why_practical.jpg"),
-    imgUrl("/images/why_flexible.jpg"),
-    imgUrl("/images/why_independent.jpg")
+    "/images/why_experience.jpg",
+    "/images/why_transformation.jpg",
+    "/images/why_practical.jpg",
+    "/images/why_flexible.jpg",
+    "/images/why_independent.jpg"
   ];
 
   return (
@@ -78,6 +78,12 @@ export const ApproachWhyUs = ({ data }) => {
                       src={imgUrl(step.image || defaultApproachImages[idx % defaultApproachImages.length])}
                       alt={step.title}
                       className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                      onError={(e) => {
+                        const fallback = imgUrl(defaultApproachImages[idx % defaultApproachImages.length]);
+                        if (e.currentTarget.src !== fallback) {
+                          e.currentTarget.src = fallback;
+                        }
+                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent"></div>
                     
@@ -163,6 +169,12 @@ export const ApproachWhyUs = ({ data }) => {
                       src={imgUrl(item.image || defaultWhyUsImages[idx % defaultWhyUsImages.length])}
                       alt={item.title}
                       className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                      onError={(e) => {
+                        const fallback = imgUrl(defaultWhyUsImages[idx % defaultWhyUsImages.length]);
+                        if (e.currentTarget.src !== fallback) {
+                          e.currentTarget.src = fallback;
+                        }
+                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/50 to-transparent"></div>
                     

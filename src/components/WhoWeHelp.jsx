@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Building2, TrendingUp, Users2, Landmark } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 export const WhoWeHelp = ({ data, onSelectAudience }) => {
   const getAudienceIcon = (index) => {
@@ -50,7 +51,7 @@ export const WhoWeHelp = ({ data, onSelectAudience }) => {
             >
               {/* Background Photo */}
               <img
-                src={item.image}
+                src={imgUrl(item.image)}
                 alt={item.title}
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
               />

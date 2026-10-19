@@ -25,7 +25,7 @@ export const InsightDetailPage = ({ articleId, articles = [], onBack, onOpenCont
       {/* 1. HERO BANNER HEADER */}
       <section className="relative bg-[#061a2e] text-white pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
-          <img src={article.image} alt={article.title} className="w-full h-full object-cover" />
+          <img src={imgUrl(article.image)} alt={article.title} className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/95 to-[#007791]/60"></div>
 
@@ -222,7 +222,7 @@ export const InsightDetailPage = ({ articleId, articles = [], onBack, onOpenCont
                         {/* Thumbnail Image */}
                         <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 border border-slate-200 shadow-xs relative">
                           <img
-                            src={rel.image}
+                            src={imgUrl(rel.image)}
                             alt={rel.title}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                           />

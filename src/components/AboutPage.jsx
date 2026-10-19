@@ -284,7 +284,7 @@ export const AboutPage = ({ data, onBack, onOpenContact }) => {
             {leadership.map((lead, idx) => (
               <div key={idx} className="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-4 shadow-sm hover:border-teal-300 transition-colors">
                 <div className="h-44 rounded-2xl overflow-hidden border border-slate-200 relative">
-                  <img src={lead.image} alt={lead.name} className="w-full h-full object-cover" />
+                  <img src={imgUrl(lead.image)} alt={lead.name} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e]/70 via-transparent to-transparent"></div>
                   <span className="absolute bottom-3 left-3 text-[10px] font-black uppercase text-[#2bb673] bg-[#061a2e]/90 px-2.5 py-1 rounded-md">
                     {lead.role}
@@ -345,7 +345,7 @@ export const AboutPage = ({ data, onBack, onOpenContact }) => {
 
                 <div className="pt-3 border-t border-white/10">
                   <div className="h-20 rounded-xl overflow-hidden border border-white/10 relative">
-                    <img src={pil.image} alt={pil.title} className="w-full h-full object-cover opacity-80" />
+                    <img src={imgUrl(pil.image)} alt={pil.title} className="w-full h-full object-cover opacity-80" />
                   </div>
                 </div>
 

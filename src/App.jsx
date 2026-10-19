@@ -24,7 +24,7 @@ import { Sparkles } from 'lucide-react';
 import { imgUrl } from './utils/imgUrl';
 
 // Pre-process all image paths in a data object so they work on GitHub Pages
-const IMAGE_KEYS = new Set(['image','bgImage','heroBg','src']);
+const IMAGE_KEYS = new Set(['image','bgImage','heroBg','src','whyUsBgImage','approachBgImage','characterImage']);
 function fixImagePaths(obj) {
   if (typeof obj === 'string') return obj;
   if (Array.isArray(obj)) return obj.map(fixImagePaths);
@@ -47,14 +47,20 @@ export function App() {
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        const isOldOrExternal = (url) => !url || url.includes('unsplash.com') || url.includes('hero_leadership') || url.includes('boardroom');
+        const sanitizeUrl = (url, fallback) => {
+          if (!url || typeof url !== 'string') return fallback;
+          if (url.includes('unsplash.com') || url.includes('hero_leadership') || url.includes('boardroom')) {
+            return fallback;
+          }
+          return url.replace(/^(\/)?(Evolve\/)+/i, '/');
+        };
 
         const mergedApproach = initialSiteData.approachAndWhyUs.approachSteps.map((step, idx) => {
           const pStep = parsed.approachAndWhyUs?.approachSteps?.[idx] || {};
           return {
             ...step,
             ...pStep,
-            image: isOldOrExternal(pStep.image) ? step.image : pStep.image
+            image: sanitizeUrl(pStep.image, step.image)
           };
         });
 
@@ -63,7 +69,7 @@ export function App() {
           return {
             ...item,
             ...pItem,
-            image: isOldOrExternal(pItem.image) ? item.image : pItem.image
+            image: sanitizeUrl(pItem.image, item.image)
           };
         });
 
@@ -72,7 +78,7 @@ export function App() {
           return {
             ...item,
             ...pItem,
-            image: isOldOrExternal(pItem.image) ? item.image : pItem.image
+            image: sanitizeUrl(pItem.image, item.image)
           };
         });
 
@@ -81,7 +87,7 @@ export function App() {
           return {
             ...item,
             ...pItem,
-            image: isOldOrExternal(pItem.image) ? item.image : pItem.image
+            image: sanitizeUrl(pItem.image, item.image)
           };
         });
 
@@ -91,25 +97,25 @@ export function App() {
           hero: {
             ...initialSiteData.hero,
             ...(parsed.hero || {}),
-            bgImage: isOldOrExternal(parsed.hero?.bgImage) ? initialSiteData.hero.bgImage : parsed.hero.bgImage,
+            bgImage: sanitizeUrl(parsed.hero?.bgImage, initialSiteData.hero.bgImage),
             slides: initialSiteData.hero.slides.map((slide, idx) => {
               const pSlide = parsed.hero?.slides?.[idx] || {};
               return {
                 ...slide,
                 ...pSlide,
-                bgImage: isOldOrExternal(pSlide.bgImage) ? slide.bgImage : pSlide.bgImage
+                bgImage: sanitizeUrl(pSlide.bgImage, slide.bgImage)
               };
             })
           },
           section2: {
             ...initialSiteData.section2,
             ...(parsed.section2 || {}),
-            image: isOldOrExternal(parsed.section2?.image) ? initialSiteData.section2.image : parsed.section2.image
+            image: sanitizeUrl(parsed.section2?.image, initialSiteData.section2.image)
           },
           ctaBanner: {
             ...initialSiteData.ctaBanner,
             ...(parsed.ctaBanner || {}),
-            bgImage: isOldOrExternal(parsed.ctaBanner?.bgImage) ? initialSiteData.ctaBanner.bgImage : parsed.ctaBanner.bgImage
+            bgImage: sanitizeUrl(parsed.ctaBanner?.bgImage, initialSiteData.ctaBanner.bgImage)
           },
           whatWeDo: {
             ...initialSiteData.whatWeDo,
@@ -124,12 +130,8 @@ export function App() {
           approachAndWhyUs: {
             ...initialSiteData.approachAndWhyUs,
             ...(parsed.approachAndWhyUs || {}),
-            approachBgImage: isOldOrExternal(parsed.approachAndWhyUs?.approachBgImage)
-              ? initialSiteData.approachAndWhyUs.approachBgImage
-              : (parsed.approachAndWhyUs?.approachBgImage || initialSiteData.approachAndWhyUs.approachBgImage),
-            whyUsBgImage: isOldOrExternal(parsed.approachAndWhyUs?.whyUsBgImage)
-              ? initialSiteData.approachAndWhyUs.whyUsBgImage
-              : (parsed.approachAndWhyUs?.whyUsBgImage || initialSiteData.approachAndWhyUs.whyUsBgImage),
+            approachBgImage: sanitizeUrl(parsed.approachAndWhyUs?.approachBgImage, initialSiteData.approachAndWhyUs.approachBgImage),
+            whyUsBgImage: sanitizeUrl(parsed.approachAndWhyUs?.whyUsBgImage, initialSiteData.approachAndWhyUs.whyUsBgImage),
             approachSteps: mergedApproach,
             whyUsItems: mergedWhyUs
           },
@@ -137,9 +139,7 @@ export function App() {
             ...initialSiteData.processFlow,
             ...(parsed.processFlow || {}),
             characterImage: initialSiteData.processFlow.characterImage,
-            bgImage: isOldOrExternal(parsed.processFlow?.bgImage)
-              ? initialSiteData.processFlow.bgImage
-              : (parsed.processFlow?.bgImage || initialSiteData.processFlow.bgImage),
+            bgImage: sanitizeUrl(parsed.processFlow?.bgImage, initialSiteData.processFlow.bgImage),
             steps: initialSiteData.processFlow.steps.map((step, idx) => ({
               ...step,
               ...(parsed.processFlow?.steps?.[idx] || {})

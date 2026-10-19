@@ -1,6 +1,7 @@
 import React from 'react';
 import { PillarIcon } from './BrandLogo';
 import { ArrowRight } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 export const WhatWeDo = ({ data, onSelectService }) => {
   return (
@@ -32,7 +33,7 @@ export const WhatWeDo = ({ data, onSelectService }) => {
                 {/* Header Photo with Overlay */}
                 <div className="relative h-48 overflow-hidden">
                   <img
-                    src={item.image}
+                    src={imgUrl(item.image)}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                   />

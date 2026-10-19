@@ -108,7 +108,7 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
               >
                 <div>
                   <div className="relative h-56 overflow-hidden">
-                    <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700" />
+                    <img src={imgUrl(item.image)} alt={item.title} className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/60 to-transparent"></div>
                     
                     <div className="absolute top-4 left-4 p-3 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">

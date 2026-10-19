@@ -46,7 +46,7 @@ export const WhoWeHelpDetailPage = ({ audienceId, data, onBack, onOpenContact, o
       {/* VISUAL HERO BANNER */}
       <section className="relative bg-[#061a2e] text-white py-16 overflow-hidden">
         <div className="absolute inset-0 opacity-35">
-          <img src={audience.bgImage} alt={audience.title} className="w-full h-full object-cover" />
+          <img src={imgUrl(audience.bgImage)} alt={audience.title} className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/90 to-[#007791]/40"></div>
 
@@ -129,7 +129,7 @@ export const WhoWeHelpDetailPage = ({ audienceId, data, onBack, onOpenContact, o
             <div className="lg:col-span-4 rounded-3xl overflow-hidden shadow-2xl relative border border-slate-200 min-h-[460px] flex flex-col justify-between p-8 text-white group bg-[#061a2e]">
               {/* Background Photography with Zoom Effect */}
               <img
-                src={audience.bgImage}
+                src={imgUrl(audience.bgImage)}
                 alt={audience.title}
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 opacity-60 group-hover:opacity-75"
               />
@@ -294,7 +294,7 @@ export const WhoWeHelpDetailPage = ({ audienceId, data, onBack, onOpenContact, o
                 >
                   {/* Background Photo Header with Smooth Zoom */}
                   <img
-                    src={sec.image}
+                    src={imgUrl(sec.image)}
                     alt={sec.title}
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-40 group-hover:opacity-60"
                   />

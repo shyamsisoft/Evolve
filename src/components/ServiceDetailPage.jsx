@@ -24,7 +24,7 @@ export const ServiceDetailPage = ({ serviceId, pageData, onBack, onOpenContact, 
       <section className="relative min-h-[60vh] flex items-center bg-[#061a2e] text-white overflow-hidden py-20 border-b border-slate-800">
         <div className="absolute inset-0 z-0">
           <img
-            src={service.bgImage}
+            src={imgUrl(service.bgImage)}
             alt={service.title}
             className="w-full h-full object-cover object-center opacity-30 transform scale-105"
           />

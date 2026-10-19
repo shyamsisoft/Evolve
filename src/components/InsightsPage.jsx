@@ -93,7 +93,7 @@ export const InsightsPage = ({ data, onBack, onOpenContact, onSelectArticle }) =
               >
                 <div>
                   <div className="relative h-52 overflow-hidden">
-                    <img src={art.image} alt={art.title} className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700" />
+                    <img src={imgUrl(art.image)} alt={art.title} className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700" />
                     <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-xs font-black text-[#007791]">
                       {art.category}
                     </div>
