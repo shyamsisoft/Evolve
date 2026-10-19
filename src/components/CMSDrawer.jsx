@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { X, Save, RotateCcw, Image, Download, Upload, Sparkles, Check, ChevronRight, Eye, EyeOff, LayoutGrid, Search, Copy, CheckCheck, Maximize2, ArrowRight } from 'lucide-react';
+import { X, Save, RotateCcw, Image, Download, Upload, Sparkles, Check, ChevronRight, Eye, EyeOff, LayoutGrid, Search, Copy, CheckCheck, Maximize2, ArrowRight, BarChart3, Settings, Target, Users, Shield } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
-import { ImageFieldWithPreview, ALL_IMAGE_PRESETS } from './CMSImageTools';
+import { ImageFieldWithPreview, ImageGalleryModal, ALL_IMAGE_PRESETS } from './CMSImageTools';
 
 export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onUpdateData, onResetData }) => {
   const [activeTab, setActiveTab] = useState('hero');
@@ -11,12 +11,31 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
   const [gallerySearch, setGallerySearch] = useState('');
   const [copiedId, setCopiedId] = useState(null);
   const [zoomImage, setZoomImage] = useState(null);
+  const [activeHeroSlideIdx, setActiveHeroSlideIdx] = useState(0);
+  const [approachPreviewSubTab, setApproachPreviewSubTab] = useState('whyUs');
+  const [modalGalleryTarget, setModalGalleryTarget] = useState(null);
 
   if (!isOpen) return null;
 
   const showToast = (msg) => {
     setToastMessage(msg);
     setTimeout(() => setToastMessage(''), 2500);
+  };
+
+  const renderPreviewIcon = (iconName) => {
+    switch (iconName) {
+      case 'BarChart3':
+        return <BarChart3 className="w-3.5 h-3.5 text-[#2bb673]" />;
+      case 'Settings':
+        return <Settings className="w-3.5 h-3.5 text-[#2bb673]" />;
+      case 'Target':
+        return <Target className="w-3.5 h-3.5 text-[#2bb673]" />;
+      case 'Users':
+        return <Users className="w-3.5 h-3.5 text-[#2bb673]" />;
+      case 'Shield':
+      default:
+        return <Shield className="w-3.5 h-3.5 text-[#2bb673]" />;
+    }
   };
 
   const handleApplyPreset = (targetKey, url) => {
@@ -41,6 +60,63 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
         items[idx].image = url;
         onUpdateData({ ...data, whoWeHelp: { ...data.whoWeHelp, items } });
         showToast(`Applied to ${items[idx].title}!`);
+      }
+    } else if (targetKey === 'why-bg') {
+      onUpdateData({
+        ...data,
+        approachAndWhyUs: { ...data.approachAndWhyUs, whyUsBgImage: url }
+      });
+      showToast('Applied to Why Us Section Background!');
+    } else if (targetKey.startsWith('why-')) {
+      const idx = parseInt(targetKey.replace('why-', ''), 10);
+      const items = [...data.approachAndWhyUs.whyUsItems];
+      if (items[idx]) {
+        items[idx].image = url;
+        onUpdateData({
+          ...data,
+          approachAndWhyUs: { ...data.approachAndWhyUs, whyUsItems: items }
+        });
+        showToast(`Applied to ${items[idx].title}!`);
+      }
+    } else if (targetKey === 'approach-bg') {
+      onUpdateData({
+        ...data,
+        approachAndWhyUs: { ...data.approachAndWhyUs, approachBgImage: url }
+      });
+      showToast('Applied to Our Approach Section Background!');
+    } else if (targetKey.startsWith('approach-')) {
+      const idx = parseInt(targetKey.replace('approach-', ''), 10);
+      const steps = [...data.approachAndWhyUs.approachSteps];
+      if (steps[idx]) {
+        steps[idx].image = url;
+        onUpdateData({
+          ...data,
+          approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: steps }
+        });
+        showToast(`Applied to Step ${steps[idx].num}: ${steps[idx].title}!`);
+      }
+    } else if (targetKey === 'process-bg') {
+      onUpdateData({
+        ...data,
+        processFlow: { ...(data.processFlow || {}), bgImage: url }
+      });
+      showToast('Applied to Process Flow Section Background!');
+    } else if (targetKey === 'process-char') {
+      onUpdateData({
+        ...data,
+        processFlow: { ...(data.processFlow || {}), characterImage: url }
+      });
+      showToast('Applied to Process Flow Character!');
+    } else if (targetKey.startsWith('process-step-')) {
+      const idx = parseInt(targetKey.replace('process-step-', ''), 10);
+      const steps = [...(data.processFlow?.steps || [])];
+      if (steps[idx]) {
+        steps[idx].image = url;
+        onUpdateData({
+          ...data,
+          processFlow: { ...data.processFlow, steps }
+        });
+        showToast(`Applied to Process Step ${steps[idx].num}: ${steps[idx].title}!`);
       }
     } else if (targetKey === 'cta') {
       onUpdateData({ ...data, ctaBanner: { ...data.ctaBanner, bgImage: url } });
@@ -136,6 +212,7 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
         {[
           { id: 'hero', label: 'Hero' },
           { id: 'section2', label: 'More Than Numbers' },
+          { id: 'processFlow', label: 'Numbers to Decisions' },
           { id: 'whatWeDo', label: 'What We Do' },
           { id: 'whoWeHelp', label: 'Who We Help' },
           { id: 'approach', label: 'Approach & Why Us' },
@@ -182,99 +259,158 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
       <div className="flex-1 overflow-y-auto p-6 space-y-6">
         
         {/* TAB 1: HERO */}
-        {activeTab === 'hero' && (
-          <div className="space-y-4">
-            <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider">Hero Section Settings</h4>
-            
-            {/* Live Component Preview */}
-            {showLivePreview && (
-              <div className="rounded-2xl overflow-hidden border border-slate-700 shadow-lg relative bg-[#061a2e] text-white p-5 space-y-3">
-                <div className="absolute inset-0 opacity-35 pointer-events-none">
-                  <img
-                    src={imgUrl(data.hero.bgImage || '/images/hero_summit.jpg')}
-                    alt="Preview"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/80 to-transparent"></div>
-                </div>
-                <div className="relative z-10 space-y-2">
-                  <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-emerald-300 bg-white/10 px-2.5 py-0.5 rounded-full border border-white/20">
-                    {data.hero.badge || 'Executive Strategy'}
-                  </span>
-                  <h3 className="text-sm font-extrabold text-white leading-snug line-clamp-2">
-                    {data.hero.title || 'Finance that moves organisations forward.'}
-                  </h3>
-                  <p className="text-[11px] text-gray-200 line-clamp-2 leading-relaxed">
-                    {data.hero.subtitle || 'Clarity for today. Capability for tomorrow.'}
-                  </p>
-                  <div className="pt-1">
-                    <span className="brand-button-gradient text-white text-[10px] font-bold px-3 py-1 rounded-full inline-block shadow-sm">
-                      {data.hero.ctaText || 'Start a Conversation →'}
-                    </span>
+        {activeTab === 'hero' && (() => {
+          const heroSlides = (data.hero.slides && data.hero.slides.length > 0) ? data.hero.slides : [
+            {
+              id: 'slide-1',
+              tabLabel: 'Strategic Vision',
+              badge: data.hero.badge || 'EVOLVE Corporate & Business Solutions',
+              title: data.hero.title || 'Finance that moves organisations forward.',
+              subtitle: data.hero.subtitle || 'Clarity for today. Capability for tomorrow. Transformation when you need it.',
+              ctaText: data.hero.ctaText || 'Start a Conversation →',
+              bgImage: data.hero.bgImage || '/images/hero_summit.jpg'
+            }
+          ];
+
+          const currentSlideObj = heroSlides[activeHeroSlideIdx] || heroSlides[0];
+
+          const updateCurrentSlide = (updatedFields) => {
+            const updatedSlides = [...heroSlides];
+            updatedSlides[activeHeroSlideIdx] = {
+              ...currentSlideObj,
+              ...updatedFields
+            };
+
+            const newHero = {
+              ...data.hero,
+              slides: updatedSlides,
+              ...(activeHeroSlideIdx === 0 ? updatedFields : {})
+            };
+
+            onUpdateData({
+              ...data,
+              hero: newHero
+            });
+          };
+
+          return (
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider">Hero Carousel Slides</h4>
+                <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                  {heroSlides.length} Carousel Slides
+                </span>
+              </div>
+
+              {/* Slide Selector Pills */}
+              <div className="flex items-center space-x-1.5 overflow-x-auto pb-1">
+                {heroSlides.map((slide, sIdx) => (
+                  <button
+                    key={slide.id || sIdx}
+                    type="button"
+                    onClick={() => setActiveHeroSlideIdx(sIdx)}
+                    className={`px-3 py-1.5 text-[11px] font-bold rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
+                      activeHeroSlideIdx === sIdx
+                        ? 'bg-[#007791] text-white shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200 border border-slate-200'
+                    }`}
+                  >
+                    0{sIdx + 1} {slide.tabLabel || `Slide ${sIdx + 1}`}
+                  </button>
+                ))}
+              </div>
+
+              {/* Live Component Preview for the Selected Slide */}
+              {showLivePreview && (
+                <div className="rounded-2xl overflow-hidden border border-slate-700 shadow-lg relative bg-[#061a2e] text-white p-5 space-y-3">
+                  <div className="absolute inset-0 opacity-40 pointer-events-none">
+                    <img
+                      src={imgUrl(currentSlideObj.bgImage || '/images/hero_summit.jpg')}
+                      alt="Preview"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/80 to-transparent"></div>
+                  </div>
+                  <div className="relative z-10 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-emerald-300 bg-white/10 px-2.5 py-0.5 rounded-full border border-white/20">
+                        {currentSlideObj.badge}
+                      </span>
+                      <span className="text-[10px] font-mono text-gray-400 bg-black/40 px-2 py-0.5 rounded">
+                        Slide 0{activeHeroSlideIdx + 1}
+                      </span>
+                    </div>
+                    <h3 className="text-sm font-extrabold text-white leading-snug line-clamp-2">
+                      {currentSlideObj.title}
+                    </h3>
+                    <p className="text-[11px] text-gray-200 line-clamp-2 leading-relaxed">
+                      {currentSlideObj.subtitle}
+                    </p>
                   </div>
                 </div>
+              )}
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Slide Tab Label (Navigation Indicator)</label>
+                <input
+                  type="text"
+                  value={currentSlideObj.tabLabel || ''}
+                  onChange={(e) => updateCurrentSlide({ tabLabel: e.target.value })}
+                  placeholder="e.g. Strategic Vision"
+                  className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:border-[#007791]"
+                />
               </div>
-            )}
 
-            <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Badge Subhead</label>
-              <input
-                type="text"
-                value={data.hero.badge}
-                onChange={(e) =>
-                  onUpdateData({
-                    ...data,
-                    hero: { ...data.hero, badge: e.target.value }
-                  })
-                }
-                className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:border-[#007791] focus:ring-1 focus:ring-[#007791]"
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Badge Subhead</label>
+                <input
+                  type="text"
+                  value={currentSlideObj.badge || ''}
+                  onChange={(e) => updateCurrentSlide({ badge: e.target.value })}
+                  className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:border-[#007791]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Main Title</label>
+                <textarea
+                  rows={2}
+                  value={currentSlideObj.title || ''}
+                  onChange={(e) => updateCurrentSlide({ title: e.target.value })}
+                  className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:border-[#007791]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Subtitle</label>
+                <textarea
+                  rows={2}
+                  value={currentSlideObj.subtitle || ''}
+                  onChange={(e) => updateCurrentSlide({ subtitle: e.target.value })}
+                  className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:border-[#007791]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">CTA Button Text</label>
+                <input
+                  type="text"
+                  value={currentSlideObj.ctaText || ''}
+                  onChange={(e) => updateCurrentSlide({ ctaText: e.target.value })}
+                  className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:border-[#007791]"
+                />
+              </div>
+
+              {/* Hero Image with Full Live Preview Tools */}
+              <ImageFieldWithPreview
+                label={`Slide 0${activeHeroSlideIdx + 1} Background Image`}
+                value={currentSlideObj.bgImage || '/images/hero_summit.jpg'}
+                onChange={(url) => updateCurrentSlide({ bgImage: url })}
+                onUpload={handleFileUpload}
               />
             </div>
-
-            <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Main Title</label>
-              <textarea
-                rows={2}
-                value={data.hero.title}
-                onChange={(e) =>
-                  onUpdateData({
-                    ...data,
-                    hero: { ...data.hero, title: e.target.value }
-                  })
-                }
-                className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:border-[#007791] focus:ring-1 focus:ring-[#007791]"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Subtitle</label>
-              <textarea
-                rows={2}
-                value={data.hero.subtitle}
-                onChange={(e) =>
-                  onUpdateData({
-                    ...data,
-                    hero: { ...data.hero, subtitle: e.target.value }
-                  })
-                }
-                className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:border-[#007791] focus:ring-1 focus:ring-[#007791]"
-              />
-            </div>
-
-            {/* Hero Image with Full Live Preview Tools */}
-            <ImageFieldWithPreview
-              label="Hero Background Image"
-              value={data.hero.bgImage || '/images/hero_summit.jpg'}
-              onChange={(url) =>
-                onUpdateData({
-                  ...data,
-                  hero: { ...data.hero, bgImage: url }
-                })
-              }
-              onUpload={handleFileUpload}
-            />
-          </div>
-        )}
+          );
+        })()}
 
         {/* TAB 2: SECTION 2 */}
         {activeTab === 'section2' && (
@@ -385,104 +521,748 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
           </div>
         )}
 
+        {/* TAB 2.2: PROCESS FLOW (NUMBERS TO BETTER DECISIONS) */}
+        {activeTab === 'processFlow' && (() => {
+          const processData = data.processFlow || {
+            badge: "DRIVE GROWTH WITH CLARITY & STRATEGY",
+            heading: "From numbers to better decisions",
+            exploreText: "Explore Insights",
+            characterImage: "/images/character_advisor.png",
+            bgImage: "/images/finance_transform.jpg",
+            steps: [
+              {
+                id: "step1",
+                num: "01",
+                badgeColor: "amber",
+                title: "NUMBERS",
+                desc: "Tell you what happened.",
+                subDesc: "Historical accounting & data telemetry",
+                image: "/images/step_numbers.jpg"
+              },
+              {
+                id: "step2",
+                num: "02",
+                badgeColor: "teal",
+                title: "INSIGHT",
+                desc: "Tells you why.",
+                subDesc: "Predictive modeling & root cause analysis",
+                image: "/images/step_insight.jpg"
+              },
+              {
+                id: "step3",
+                num: "03",
+                badgeColor: "amber",
+                title: "LEADERSHIP",
+                desc: "Determines what happens next.",
+                subDesc: "Strategic execution & capital allocation",
+                image: "/images/step_leadership.jpg"
+              }
+            ]
+          };
+
+          const updateProcessFlow = (fields) => {
+            onUpdateData({
+              ...data,
+              processFlow: {
+                ...processData,
+                ...fields
+              }
+            });
+          };
+
+          const updateStep = (idx, stepFields) => {
+            const steps = [...(processData.steps || [])];
+            steps[idx] = {
+              ...steps[idx],
+              ...stepFields
+            };
+            updateProcessFlow({ steps });
+          };
+
+          return (
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider">
+                  Process Flow: From Numbers to Better Decisions
+                </h4>
+                <span className="text-[10px] font-bold text-teal-600 bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-200">
+                  Interactive 3D Stage
+                </span>
+              </div>
+
+              {/* Live Section Preview Tool */}
+              {showLivePreview && (
+                <div className="rounded-2xl overflow-hidden border border-slate-700 shadow-md bg-[#061a2e] text-white p-4 relative">
+                  {/* Miniature Background Image Graphic */}
+                  <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                    <img
+                      src={imgUrl(processData.bgImage || '/images/finance_transform.jpg')}
+                      alt="Section Preview BG"
+                      className="w-full h-full object-cover opacity-45 filter brightness-95"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#061a2e]/90 via-[#061a2e]/60 to-[#061a2e]/95" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e]/85 via-transparent to-[#061a2e]/80" />
+                  </div>
+
+                  <div className="relative z-10 space-y-3">
+                    <div className="flex items-start justify-between gap-3">
+                      {/* Character Thumbnail */}
+                      <div className="w-16 h-20 rounded-xl overflow-hidden bg-slate-800/80 border border-slate-600 shadow-xs shrink-0 flex items-end justify-center">
+                        <img
+                          src={imgUrl(processData.characterImage || '/images/character_advisor.png')}
+                          alt="Character"
+                          className="max-h-full object-contain"
+                        />
+                      </div>
+
+                      {/* Header details */}
+                      <div className="flex-1 space-y-1">
+                        <span className="text-[9px] font-bold text-[#00c0e8] uppercase tracking-wider block">
+                          {processData.badge || 'DRIVE GROWTH WITH CLARITY & STRATEGY'}
+                        </span>
+                        <h4 className="text-sm font-black text-white leading-tight">
+                          {processData.heading || 'From numbers to better decisions'}
+                        </h4>
+                        <div className="inline-flex items-center space-x-1 px-2 py-0.5 bg-[#007791] text-white text-[9px] font-bold rounded-full">
+                          <span>{processData.exploreText || 'Explore Insights'}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* 3 Step Cards Preview */}
+                    <div className="grid grid-cols-3 gap-2 pt-1 border-t border-slate-700/80">
+                      {(processData.steps || []).map((st, i) => (
+                        <div key={st.id || i} className="bg-white rounded-lg p-1.5 border border-slate-200 shadow-xs flex flex-col justify-between">
+                          <div className="h-10 rounded overflow-hidden mb-1 relative bg-slate-900">
+                            <img
+                              src={imgUrl(st.image || (i === 0 ? '/images/step_numbers.jpg' : i === 1 ? '/images/step_insight.jpg' : '/images/step_leadership.jpg'))}
+                              alt={st.title}
+                              className="w-full h-full object-cover"
+                            />
+                            <span className="absolute top-0.5 left-0.5 text-[8px] font-black text-white bg-black/60 px-1 rounded">
+                              {st.num}
+                            </span>
+                          </div>
+                          <span className="text-[10px] font-black text-[#061a2e] uppercase block truncate">{st.title}</span>
+                          <span className="text-[8px] text-slate-500 block truncate">{st.desc}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Section Background Image Editor */}
+              <div className="p-4 bg-teal-50/50 rounded-2xl border border-teal-200 space-y-3">
+                <div className="flex items-center space-x-1.5 text-teal-800">
+                  <Sparkles className="w-4 h-4 text-[#007791]" />
+                  <span className="text-xs font-black uppercase tracking-wider">Process Flow Background Image</span>
+                </div>
+                <ImageFieldWithPreview
+                  label="Section Background Graphic (Corporate Data & Telemetry)"
+                  value={processData.bgImage || '/images/finance_transform.jpg'}
+                  onChange={(url) => updateProcessFlow({ bgImage: url })}
+                  onUpload={handleFileUpload}
+                />
+              </div>
+
+              {/* Character Advisor Image Editor */}
+              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
+                <span className="text-xs font-black uppercase tracking-wider text-slate-700 block">Executive Character Portrait</span>
+                <ImageFieldWithPreview
+                  label="Presenter Character (Transparent PNG / Executive Portrait)"
+                  value={processData.characterImage || '/images/character_advisor.png'}
+                  onChange={(url) => updateProcessFlow({ characterImage: url })}
+                  onUpload={handleFileUpload}
+                />
+              </div>
+
+              {/* Typography / Headings */}
+              <div className="space-y-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Badge Text</label>
+                  <input
+                    type="text"
+                    value={processData.badge || ''}
+                    onChange={(e) => updateProcessFlow({ badge: e.target.value })}
+                    className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Main Heading</label>
+                  <input
+                    type="text"
+                    value={processData.heading || ''}
+                    onChange={(e) => updateProcessFlow({ heading: e.target.value })}
+                    className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Explore Button / Disc Text</label>
+                  <input
+                    type="text"
+                    value={processData.exploreText || ''}
+                    onChange={(e) => updateProcessFlow({ exploreText: e.target.value })}
+                    className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs"
+                  />
+                </div>
+              </div>
+
+              {/* 3 Step Cards Accordion / List */}
+              <div className="space-y-4 pt-2">
+                <h5 className="text-xs font-black text-[#061a2e] uppercase tracking-wider">
+                  Transformation Steps (3 Cards)
+                </h5>
+
+                {(processData.steps || []).map((step, idx) => (
+                  <div key={step.id || idx} className="p-4 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-3">
+                    <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+                      <span className="text-xs font-black text-[#007791]">
+                        Stage {step.num}: {step.title}
+                      </span>
+                      <span className="text-[10px] font-bold text-slate-400">Card {idx + 1} of 3</span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <div>
+                        <label className="block text-[11px] font-bold text-slate-700 mb-1">Title</label>
+                        <input
+                          type="text"
+                          value={step.title || ''}
+                          onChange={(e) => updateStep(idx, { title: e.target.value })}
+                          className="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs font-bold"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[11px] font-bold text-slate-700 mb-1">Main Desc</label>
+                        <input
+                          type="text"
+                          value={step.desc || ''}
+                          onChange={(e) => updateStep(idx, { desc: e.target.value })}
+                          className="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] font-bold text-slate-700 mb-1">Sub-Description</label>
+                      <input
+                        type="text"
+                        value={step.subDesc || ''}
+                        onChange={(e) => updateStep(idx, { subDesc: e.target.value })}
+                        className="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs"
+                      />
+                    </div>
+
+                    {/* Step Card Visual Image */}
+                    <ImageFieldWithPreview
+                      label={`Step ${step.num} Card Graphic`}
+                      value={step.image || (idx === 0 ? '/images/step_numbers.jpg' : idx === 1 ? '/images/step_insight.jpg' : '/images/step_leadership.jpg')}
+                      onChange={(url) => updateStep(idx, { image: url })}
+                      onUpload={handleFileUpload}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
+
         {/* TAB 2.5: APPROACH & WHY US */}
         {activeTab === 'approach' && (
           <div className="space-y-6">
-            <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider">Our Approach (4 Steps)</h4>
-            {data.approachAndWhyUs.approachSteps.map((step, idx) => (
-              <div key={idx} className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
-                <span className="text-[10px] font-extrabold text-[#007791] uppercase">Step {step.num}: {step.title}</span>
-                <input
-                  type="text"
-                  value={step.title}
-                  onChange={(e) => {
-                    const updated = [...data.approachAndWhyUs.approachSteps];
-                    updated[idx].title = e.target.value;
-                    onUpdateData({
-                      ...data,
-                      approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
-                    });
-                  }}
-                  className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs font-bold"
-                  placeholder="Step Title"
-                />
-                <textarea
-                  rows={2}
-                  value={step.desc}
-                  onChange={(e) => {
-                    const updated = [...data.approachAndWhyUs.approachSteps];
-                    updated[idx].desc = e.target.value;
-                    onUpdateData({
-                      ...data,
-                      approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
-                    });
-                  }}
-                  className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs"
-                  placeholder="Step Description"
-                />
-                <ImageFieldWithPreview
-                  label={`Step ${step.num} Illustration`}
-                  value={step.image || ''}
-                  onChange={(url) => {
-                    const updated = [...data.approachAndWhyUs.approachSteps];
-                    updated[idx].image = url;
-                    onUpdateData({
-                      ...data,
-                      approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
-                    });
-                  }}
-                  onUpload={handleFileUpload}
-                />
-              </div>
-            ))}
 
-            <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider pt-4 border-t border-slate-200">Why Us? (5 Benefit Cards)</h4>
-            {data.approachAndWhyUs.whyUsItems.map((item, idx) => (
-              <div key={item.id || idx} className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
-                <span className="text-[10px] font-extrabold text-[#2bb673] uppercase">Benefit Card {idx + 1}</span>
-                <input
-                  type="text"
-                  value={item.title}
-                  onChange={(e) => {
-                    const updated = [...data.approachAndWhyUs.whyUsItems];
-                    updated[idx].title = e.target.value;
-                    onUpdateData({
-                      ...data,
-                      approachAndWhyUs: { ...data.approachAndWhyUs, whyUsItems: updated }
-                    });
-                  }}
-                  className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs font-bold"
-                  placeholder="Benefit Title"
-                />
-                <textarea
-                  rows={2}
-                  value={item.desc}
-                  onChange={(e) => {
-                    const updated = [...data.approachAndWhyUs.whyUsItems];
-                    updated[idx].desc = e.target.value;
-                    onUpdateData({
-                      ...data,
-                      approachAndWhyUs: { ...data.approachAndWhyUs, whyUsItems: updated }
-                    });
-                  }}
-                  className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs"
-                  placeholder="Benefit Description"
-                />
+            {/* Live Component Preview Tool */}
+            {showLivePreview && (
+              <div className="space-y-3 p-3.5 bg-slate-900 rounded-2xl border border-slate-800 text-white shadow-xl">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                    <span className="text-xs font-black text-white uppercase tracking-wider">
+                      Live Section Preview
+                    </span>
+                  </div>
+
+                  {/* Sub-view toggle */}
+                  <div className="flex items-center space-x-1 bg-slate-800/80 p-0.5 rounded-lg border border-slate-700 text-[10px]">
+                    <button
+                      type="button"
+                      onClick={() => setApproachPreviewSubTab('whyUs')}
+                      className={`px-2 py-0.5 rounded font-bold transition-all cursor-pointer ${
+                        approachPreviewSubTab === 'whyUs'
+                          ? 'bg-[#2bb673] text-white shadow-xs'
+                          : 'text-slate-300 hover:text-white'
+                      }`}
+                    >
+                      Why Us ({data.approachAndWhyUs?.whyUsItems?.length || 5})
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setApproachPreviewSubTab('approach')}
+                      className={`px-2 py-0.5 rounded font-bold transition-all cursor-pointer ${
+                        approachPreviewSubTab === 'approach'
+                          ? 'bg-[#007791] text-white shadow-xs'
+                          : 'text-slate-300 hover:text-white'
+                      }`}
+                    >
+                      Approach ({data.approachAndWhyUs?.approachSteps?.length || 4})
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setApproachPreviewSubTab('all')}
+                      className={`px-2 py-0.5 rounded font-bold transition-all cursor-pointer ${
+                        approachPreviewSubTab === 'all'
+                          ? 'bg-slate-600 text-white shadow-xs'
+                          : 'text-slate-300 hover:text-white'
+                      }`}
+                    >
+                      Both
+                    </button>
+                  </div>
+                </div>
+
+                {/* Sub-view: Why Us Live Cards */}
+                {(approachPreviewSubTab === 'whyUs' || approachPreviewSubTab === 'all') && (
+                  <div className="relative rounded-2xl overflow-hidden p-3 border border-slate-700/80 bg-[#061a2e]">
+                    <img
+                      src={imgUrl(data.approachAndWhyUs?.whyUsBgImage || '/images/established_corporate.jpg')}
+                      alt="Why Us Bg Preview"
+                      className="absolute inset-0 w-full h-full object-cover opacity-25 pointer-events-none"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#061a2e]/90 via-[#061a2e]/80 to-[#061a2e]/95 pointer-events-none" />
+
+                    <div className="relative z-10 space-y-2">
+                      <div className="flex items-center justify-between border-b border-slate-700/60 pb-1.5">
+                        <div>
+                          <span className="text-[11px] font-extrabold text-emerald-400">
+                            {data.approachAndWhyUs?.whyUsTitle || 'Why us?'}
+                          </span>
+                          <p className="text-[9px] text-slate-300 line-clamp-1">
+                            {data.approachAndWhyUs?.whyUsSubtitle || 'Proven expertise, practical delivery, and strategic clarity.'}
+                          </p>
+                        </div>
+                        <span className="text-[9px] font-bold text-slate-400 uppercase bg-black/40 px-2 py-0.5 rounded">
+                          Executive Backdrop
+                        </span>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2">
+                        {(data.approachAndWhyUs?.whyUsItems || []).map((item, idx) => (
+                          <div
+                            key={item.id || idx}
+                            className="bg-slate-800/90 rounded-xl overflow-hidden border border-slate-700/80 p-2 space-y-1.5 group hover:border-emerald-500/50 transition-all shadow-xs"
+                          >
+                            <div className="h-20 rounded-lg overflow-hidden relative bg-slate-950">
+                              <img
+                                src={imgUrl(item.image)}
+                                alt={item.title}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/40 to-transparent"></div>
+                              
+                              {/* Floating Icon */}
+                              <div className="absolute top-1.5 left-1.5 p-1 bg-white/95 rounded-md shadow-sm">
+                                {renderPreviewIcon(item.icon)}
+                              </div>
+
+                              {/* Card Quick Actions */}
+                              <div className="absolute top-1.5 right-1.5 flex items-center space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <button
+                                  type="button"
+                                  onClick={() => setModalGalleryTarget({ type: 'why', index: idx })}
+                                  className="px-1.5 py-0.5 bg-[#007791] hover:bg-[#006075] text-white rounded text-[8px] font-bold shadow-md cursor-pointer"
+                                  title="Swap image from gallery"
+                                >
+                                  Swap
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => setZoomImage({ url: item.image, label: item.title, description: item.desc, category: 'Why Choose Us' })}
+                                  className="p-1 bg-black/70 hover:bg-black text-white rounded text-[8px] cursor-pointer"
+                                  title="Inspect Image"
+                                >
+                                  <Maximize2 className="w-2.5 h-2.5" />
+                                </button>
+                              </div>
+
+                              {/* Title overlay */}
+                              <div className="absolute bottom-1 left-2 right-2">
+                                <h5 className="text-[10px] font-extrabold text-white leading-tight line-clamp-1">
+                                  {item.title}
+                                </h5>
+                              </div>
+                            </div>
+
+                            <p className="text-[9px] text-slate-300 line-clamp-2 leading-relaxed">
+                              {item.desc}
+                            </p>
+
+                            <div className="pt-0.5 flex items-center justify-between text-[8px] font-bold text-emerald-400">
+                              <span>Why Choose Evolve</span>
+                              <span className="text-slate-500">Card #{idx + 1}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Sub-view: Our Approach Live Cards */}
+                {(approachPreviewSubTab === 'approach' || approachPreviewSubTab === 'all') && (
+                  <div className="relative rounded-2xl overflow-hidden p-3 border border-slate-700/80 bg-[#061a2e] mt-2">
+                    <img
+                      src={imgUrl(data.approachAndWhyUs?.approachBgImage || '/images/hero_summit.jpg')}
+                      alt="Our Approach Bg Preview"
+                      className="absolute inset-0 w-full h-full object-cover opacity-25 pointer-events-none"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#061a2e]/90 via-[#002238]/80 to-[#061a2e]/95 pointer-events-none" />
+
+                    <div className="relative z-10 space-y-2">
+                      <div className="flex items-center justify-between border-b border-slate-700/60 pb-1.5">
+                        <div>
+                          <span className="text-[11px] font-extrabold text-[#00c0e8]">
+                            {data.approachAndWhyUs?.approachTitle || 'Our approach'}
+                          </span>
+                          <p className="text-[9px] text-slate-300 line-clamp-1">
+                            {data.approachAndWhyUs?.approachSubtitle || 'How we work'}
+                          </p>
+                        </div>
+                        <span className="text-[9px] font-bold text-slate-400 uppercase bg-black/40 px-2 py-0.5 rounded">
+                          Approach Backdrop
+                        </span>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2">
+                        {(data.approachAndWhyUs?.approachSteps || []).map((step, idx) => (
+                          <div
+                            key={idx}
+                            className="bg-slate-800/90 rounded-xl overflow-hidden border border-slate-700/80 p-2 space-y-1.5 group hover:border-[#007791]/60 transition-all shadow-xs"
+                          >
+                            <div className="h-20 rounded-lg overflow-hidden relative bg-slate-950">
+                              <img
+                                src={imgUrl(step.image)}
+                                alt={step.title}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                              
+                              {/* Step Badge */}
+                              <div className="absolute top-1.5 left-1.5 px-1.5 py-0.5 bg-white/95 rounded-md shadow-sm">
+                                <span className="text-[8px] font-black text-[#007791]">
+                                  {step.num}
+                                </span>
+                              </div>
+
+                              {/* Card Quick Actions */}
+                              <div className="absolute top-1.5 right-1.5 flex items-center space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <button
+                                  type="button"
+                                  onClick={() => setModalGalleryTarget({ type: 'approach', index: idx })}
+                                  className="px-1.5 py-0.5 bg-[#007791] hover:bg-[#006075] text-white rounded text-[8px] font-bold shadow-md cursor-pointer"
+                                  title="Swap image from gallery"
+                                >
+                                  Swap
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => setZoomImage({ url: step.image, label: step.title, description: step.desc, category: 'Our Approach' })}
+                                  className="p-1 bg-black/70 hover:bg-black text-white rounded text-[8px] cursor-pointer"
+                                  title="Inspect Image"
+                                >
+                                  <Maximize2 className="w-2.5 h-2.5" />
+                                </button>
+                              </div>
+
+                              {/* Title overlay */}
+                              <div className="absolute bottom-1 left-2 right-2">
+                                <h5 className="text-[10px] font-extrabold text-white leading-tight line-clamp-1">
+                                  {step.title}
+                                </h5>
+                              </div>
+                            </div>
+
+                            <p className="text-[9px] text-slate-300 line-clamp-2 leading-relaxed">
+                              {step.desc}
+                            </p>
+
+                            <div className="pt-0.5 flex items-center justify-between text-[8px] font-bold text-[#007791]">
+                              <span>Step {step.num}</span>
+                              <ArrowRight className="w-2.5 h-2.5" />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Approach Headings & Subtitles */}
+            <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+              <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider">Our Approach Headings</h4>
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <label className="block text-[10px] font-bold text-slate-700 mb-1">Heading</label>
+                  <input
+                    type="text"
+                    value={data.approachAndWhyUs?.approachTitle || ''}
+                    onChange={(e) => {
+                      onUpdateData({
+                        ...data,
+                        approachAndWhyUs: { ...data.approachAndWhyUs, approachTitle: e.target.value }
+                      });
+                    }}
+                    className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs font-bold"
+                    placeholder="Our approach"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-bold text-slate-700 mb-1">Subtitle</label>
+                  <input
+                    type="text"
+                    value={data.approachAndWhyUs?.approachSubtitle || ''}
+                    onChange={(e) => {
+                      onUpdateData({
+                        ...data,
+                        approachAndWhyUs: { ...data.approachAndWhyUs, approachSubtitle: e.target.value }
+                      });
+                    }}
+                    className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs font-bold"
+                    placeholder="How we work"
+                  />
+                </div>
                 <ImageFieldWithPreview
-                  label={`Benefit ${idx + 1} Illustration`}
-                  value={item.image || ''}
+                  label="Our Approach Section Background Image"
+                  value={data.approachAndWhyUs?.approachBgImage || '/images/hero_summit.jpg'}
                   onChange={(url) => {
-                    const updated = [...data.approachAndWhyUs.whyUsItems];
-                    updated[idx].image = url;
                     onUpdateData({
                       ...data,
-                      approachAndWhyUs: { ...data.approachAndWhyUs, whyUsItems: updated }
+                      approachAndWhyUs: { ...data.approachAndWhyUs, approachBgImage: url }
                     });
                   }}
                   onUpload={handleFileUpload}
                 />
               </div>
-            ))}
+            </div>
+
+            {/* Our Approach (4 Steps Form) */}
+            <div className="space-y-3">
+              <h4 className="text-xs font-bold text-[#007791] uppercase tracking-wider">Our Approach (4 Steps Framework)</h4>
+              {(data.approachAndWhyUs?.approachSteps || []).map((step, idx) => (
+                <div key={idx} className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-extrabold text-[#007791] uppercase">Step {step.num}: {step.title}</span>
+                    <span className="text-[9px] font-bold text-slate-400 bg-white px-1.5 py-0.5 rounded border border-slate-200">
+                      Step #{idx + 1}
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-4 gap-2">
+                    <div className="col-span-1">
+                      <input
+                        type="text"
+                        value={step.num}
+                        onChange={(e) => {
+                          const updated = [...data.approachAndWhyUs.approachSteps];
+                          updated[idx].num = e.target.value;
+                          onUpdateData({
+                            ...data,
+                            approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
+                          });
+                        }}
+                        className="w-full px-2 py-1.5 bg-white rounded border border-slate-300 text-xs font-bold text-center"
+                        placeholder="01"
+                      />
+                    </div>
+                    <div className="col-span-3">
+                      <input
+                        type="text"
+                        value={step.title}
+                        onChange={(e) => {
+                          const updated = [...data.approachAndWhyUs.approachSteps];
+                          updated[idx].title = e.target.value;
+                          onUpdateData({
+                            ...data,
+                            approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
+                          });
+                        }}
+                        className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs font-bold"
+                        placeholder="Step Title"
+                      />
+                    </div>
+                  </div>
+                  <textarea
+                    rows={2}
+                    value={step.desc}
+                    onChange={(e) => {
+                      const updated = [...data.approachAndWhyUs.approachSteps];
+                      updated[idx].desc = e.target.value;
+                      onUpdateData({
+                        ...data,
+                        approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
+                      });
+                    }}
+                    className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs"
+                    placeholder="Step Description"
+                  />
+                  <ImageFieldWithPreview
+                    label={`Step ${step.num} Artwork`}
+                    value={step.image || ''}
+                    onChange={(url) => {
+                      const updated = [...data.approachAndWhyUs.approachSteps];
+                      updated[idx].image = url;
+                      onUpdateData({
+                        ...data,
+                        approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
+                      });
+                    }}
+                    onUpload={handleFileUpload}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Why Us Headings */}
+            <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-3 pt-4 border-t border-slate-200">
+              <h4 className="text-xs font-bold text-[#2bb673] uppercase tracking-wider">Why Us? Section Headings</h4>
+              <div className="space-y-2">
+                <div>
+                  <label className="block text-[10px] font-bold text-slate-700 mb-1">Title</label>
+                  <input
+                    type="text"
+                    value={data.approachAndWhyUs?.whyUsTitle || ''}
+                    onChange={(e) => {
+                      onUpdateData({
+                        ...data,
+                        approachAndWhyUs: { ...data.approachAndWhyUs, whyUsTitle: e.target.value }
+                      });
+                    }}
+                    className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs font-bold"
+                    placeholder="Why us?"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-bold text-slate-700 mb-1">Subtitle</label>
+                  <input
+                    type="text"
+                    value={data.approachAndWhyUs?.whyUsSubtitle || ''}
+                    onChange={(e) => {
+                      onUpdateData({
+                        ...data,
+                        approachAndWhyUs: { ...data.approachAndWhyUs, whyUsSubtitle: e.target.value }
+                      });
+                    }}
+                    className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs font-semibold"
+                    placeholder="Proven expertise, practical delivery, and strategic clarity for your organisation."
+                  />
+                </div>
+                <ImageFieldWithPreview
+                  label="Why Us Section Background Image"
+                  value={data.approachAndWhyUs?.whyUsBgImage || '/images/established_corporate.jpg'}
+                  onChange={(url) => {
+                    onUpdateData({
+                      ...data,
+                      approachAndWhyUs: { ...data.approachAndWhyUs, whyUsBgImage: url }
+                    });
+                  }}
+                  onUpload={handleFileUpload}
+                />
+              </div>
+            </div>
+
+            {/* Why Us (5 Benefit Cards Form) */}
+            <div className="space-y-3">
+              <h4 className="text-xs font-bold text-[#2bb673] uppercase tracking-wider">Why Us? (5 Benefit Cards)</h4>
+              {(data.approachAndWhyUs?.whyUsItems || []).map((item, idx) => (
+                <div key={item.id || idx} className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-extrabold text-[#2bb673] uppercase">
+                      Benefit Card {idx + 1}: {item.title}
+                    </span>
+                    <span className="text-[9px] font-bold text-slate-400 bg-white px-1.5 py-0.5 rounded border border-slate-200">
+                      Card #{idx + 1}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2">
+                    <div className="col-span-1">
+                      <label className="block text-[9px] font-bold text-slate-500 mb-0.5">Icon</label>
+                      <select
+                        value={item.icon || 'Shield'}
+                        onChange={(e) => {
+                          const updated = [...data.approachAndWhyUs.whyUsItems];
+                          updated[idx].icon = e.target.value;
+                          onUpdateData({
+                            ...data,
+                            approachAndWhyUs: { ...data.approachAndWhyUs, whyUsItems: updated }
+                          });
+                        }}
+                        className="w-full px-2 py-1.5 bg-white rounded border border-slate-300 text-xs font-bold cursor-pointer"
+                      >
+                        <option value="BarChart3">BarChart (Finance)</option>
+                        <option value="Settings">Settings (Transform)</option>
+                        <option value="Target">Target (Delivery)</option>
+                        <option value="Users">Users (Engagement)</option>
+                        <option value="Shield">Shield (Independent)</option>
+                      </select>
+                    </div>
+
+                    <div className="col-span-2">
+                      <label className="block text-[9px] font-bold text-slate-500 mb-0.5">Benefit Title</label>
+                      <input
+                        type="text"
+                        value={item.title}
+                        onChange={(e) => {
+                          const updated = [...data.approachAndWhyUs.whyUsItems];
+                          updated[idx].title = e.target.value;
+                          onUpdateData({
+                            ...data,
+                            approachAndWhyUs: { ...data.approachAndWhyUs, whyUsItems: updated }
+                          });
+                        }}
+                        className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs font-bold"
+                        placeholder="Benefit Title"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-[9px] font-bold text-slate-500 mb-0.5">Description</label>
+                    <textarea
+                      rows={2}
+                      value={item.desc}
+                      onChange={(e) => {
+                        const updated = [...data.approachAndWhyUs.whyUsItems];
+                        updated[idx].desc = e.target.value;
+                        onUpdateData({
+                          ...data,
+                          approachAndWhyUs: { ...data.approachAndWhyUs, whyUsItems: updated }
+                        });
+                      }}
+                      className="w-full px-2.5 py-1.5 bg-white rounded border border-slate-300 text-xs"
+                      placeholder="Benefit Description"
+                    />
+                  </div>
+
+                  <ImageFieldWithPreview
+                    label={`Benefit Card ${idx + 1} Artwork`}
+                    value={item.image || ''}
+                    onChange={(url) => {
+                      const updated = [...data.approachAndWhyUs.whyUsItems];
+                      updated[idx].image = url;
+                      onUpdateData({
+                        ...data,
+                        approachAndWhyUs: { ...data.approachAndWhyUs, whyUsItems: updated }
+                      });
+                    }}
+                    onUpload={handleFileUpload}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
@@ -955,17 +1735,45 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                           className="text-[10px] font-bold bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-lg px-2 py-1 outline-none cursor-pointer"
                         >
                           <option value="" disabled>Apply to Section ▾</option>
-                          <option value="hero">Hero Background</option>
-                          <option value="section2">Finance More Than Numbers</option>
-                          <option value="pillar-0">Pillar 1: LEAD (CFO & FP&A)</option>
-                          <option value="pillar-1">Pillar 2: BUILD (Operating Models)</option>
-                          <option value="pillar-2">Pillar 3: TRANSFORM (Data & Tech)</option>
-                          <option value="pillar-3">Pillar 4: PROTECT (Tax & Compliance)</option>
-                          <option value="sector-0">Sector 1: Growing Businesses</option>
-                          <option value="sector-1">Sector 2: Established & Corporate</option>
-                          <option value="sector-2">Sector 3: Not-for-Profit</option>
-                          <option value="sector-3">Sector 4: Local Government</option>
-                          <option value="cta">CTA Pre-Footer Banner</option>
+                          <optgroup label="Main Page Sections">
+                            <option value="hero">Hero Background</option>
+                            <option value="section2">Finance More Than Numbers</option>
+                            <option value="cta">CTA Pre-Footer Banner</option>
+                          </optgroup>
+                          <optgroup label="Service Pillars">
+                            <option value="pillar-0">Pillar 1: LEAD (CFO & FP&A)</option>
+                            <option value="pillar-1">Pillar 2: BUILD (Operating Models)</option>
+                            <option value="pillar-2">Pillar 3: TRANSFORM (Data & Tech)</option>
+                            <option value="pillar-3">Pillar 4: PROTECT (Tax & Compliance)</option>
+                          </optgroup>
+                          <optgroup label="Sectors (Who We Help)">
+                            <option value="sector-0">Sector 1: Growing Businesses</option>
+                            <option value="sector-1">Sector 2: Established & Corporate</option>
+                            <option value="sector-2">Sector 3: Not-for-Profit</option>
+                            <option value="sector-3">Sector 4: Local Government</option>
+                          </optgroup>
+                          <optgroup label="Process Flow (Numbers to Decisions)">
+                            <option value="process-bg">★ Process Flow Section Background Image</option>
+                            <option value="process-char">Process Flow Character Graphic</option>
+                            <option value="process-step-0">Step 01: NUMBERS Card</option>
+                            <option value="process-step-1">Step 02: INSIGHT Card</option>
+                            <option value="process-step-2">Step 03: LEADERSHIP Card</option>
+                          </optgroup>
+                          <optgroup label="Why Choose Us (5 Benefit Cards)">
+                            <option value="why-bg">★ Why Us Section Background Image</option>
+                            <option value="why-0">Why Us 1: Finance Experience</option>
+                            <option value="why-1">Why Us 2: Transformation Capability</option>
+                            <option value="why-2">Why Us 3: Practical Delivery</option>
+                            <option value="why-3">Why Us 4: Flexible Engagement</option>
+                            <option value="why-4">Why Us 5: Independent Perspective</option>
+                          </optgroup>
+                          <optgroup label="Our Approach (4 Steps)">
+                            <option value="approach-bg">★ Our Approach Section Background Image</option>
+                            <option value="approach-0">Step 1: Understand</option>
+                            <option value="approach-1">Step 2: Diagnose</option>
+                            <option value="approach-2">Step 3: Design</option>
+                            <option value="approach-3">Step 4: Deliver</option>
+                          </optgroup>
                         </select>
 
                         {/* Copy Path Button */}
@@ -1136,6 +1944,43 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
             </div>
           </div>
         </div>
+      )}
+
+      {/* Quick Swap Image Gallery Modal */}
+      {modalGalleryTarget && (
+        <ImageGalleryModal
+          isOpen={true}
+          onClose={() => setModalGalleryTarget(null)}
+          onSelect={(url) => {
+            if (modalGalleryTarget.type === 'why') {
+              const updated = [...(data.approachAndWhyUs?.whyUsItems || [])];
+              if (updated[modalGalleryTarget.index]) {
+                updated[modalGalleryTarget.index].image = url;
+                onUpdateData({
+                  ...data,
+                  approachAndWhyUs: { ...data.approachAndWhyUs, whyUsItems: updated }
+                });
+                showToast(`Updated image for ${updated[modalGalleryTarget.index].title}!`);
+              }
+            } else if (modalGalleryTarget.type === 'approach') {
+              const updated = [...(data.approachAndWhyUs?.approachSteps || [])];
+              if (updated[modalGalleryTarget.index]) {
+                updated[modalGalleryTarget.index].image = url;
+                onUpdateData({
+                  ...data,
+                  approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
+                });
+                showToast(`Updated image for Step ${updated[modalGalleryTarget.index].num}!`);
+              }
+            }
+            setModalGalleryTarget(null);
+          }}
+          currentUrl={
+            modalGalleryTarget.type === 'why'
+              ? data.approachAndWhyUs?.whyUsItems?.[modalGalleryTarget.index]?.image
+              : data.approachAndWhyUs?.approachSteps?.[modalGalleryTarget.index]?.image
+          }
+        />
       )}
     </div>
   );

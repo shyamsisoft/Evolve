@@ -181,15 +181,64 @@ export const Header = ({
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-gray-200 px-4 pt-3 pb-6 space-y-3">
+        <div className="md:hidden bg-white border-b border-gray-200 px-4 pt-3 pb-6 space-y-3 shadow-xl">
           <nav className="flex flex-col space-y-2">
-            <button onClick={() => { setMobileMenuOpen(false); onGoHome(); }} className="text-left font-semibold text-[#061a2e] py-1.5">Home</button>
-            <button onClick={() => { setMobileMenuOpen(false); onNavigate('who-we-help'); }} className="text-left font-semibold text-[#061a2e] py-1.5">Who We Help</button>
-            <button onClick={() => { setMobileMenuOpen(false); onNavigate('what-we-do'); }} className="text-left font-semibold text-[#061a2e] py-1.5">What We Do</button>
-            <button onClick={() => { setMobileMenuOpen(false); onNavigate('insights'); }} className="text-left font-semibold text-[#061a2e] py-1.5">Insights</button>
-            <button onClick={() => { setMobileMenuOpen(false); onNavigate('about'); }} className="text-left font-semibold text-[#061a2e] py-1.5">About</button>
-            <button onClick={() => { setMobileMenuOpen(false); onNavigate('contact'); }} className="text-left font-semibold text-[#061a2e] py-1.5">Contact</button>
+            <button onClick={() => { setMobileMenuOpen(false); onGoHome(); }} className="text-left font-semibold text-[#061a2e] py-1.5 text-sm hover:text-[#007791]">Home</button>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigate('who-we-help'); }} className="text-left font-semibold text-[#061a2e] py-1.5 text-sm hover:text-[#007791]">Who We Help</button>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigate('what-we-do'); }} className="text-left font-semibold text-[#061a2e] py-1.5 text-sm hover:text-[#007791]">What We Do</button>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigate('insights'); }} className="text-left font-semibold text-[#061a2e] py-1.5 text-sm hover:text-[#007791]">Insights</button>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigate('about'); }} className="text-left font-semibold text-[#061a2e] py-1.5 text-sm hover:text-[#007791]">About</button>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigate('contact'); }} className="text-left font-semibold text-[#061a2e] py-1.5 text-sm hover:text-[#007791]">Contact</button>
           </nav>
+
+          <div className="pt-2 border-t border-gray-100">
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenContact();
+              }}
+              className="w-full brand-button-gradient text-white text-xs sm:text-sm font-bold py-2.5 rounded-full flex items-center justify-center space-x-1.5 shadow-md active:scale-95 transition-transform"
+            >
+              <span>{data.ctaText || "Start a Conversation"}</span>
+            </button>
+          </div>
+
+          {adminUser ? (
+            <div className="pt-2 border-t border-gray-100 flex items-center justify-between">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onToggleCMS();
+                }}
+                className="text-xs font-bold text-emerald-600 flex items-center space-x-1.5 py-1"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
+                <span>Edit Site CMS</span>
+              </button>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onLogout();
+                }}
+                className="text-xs font-semibold text-rose-500 py-1"
+              >
+                Logout ({adminUser.name})
+              </button>
+            </div>
+          ) : (
+            <div className="pt-1 border-t border-gray-100">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenLogin();
+                }}
+                className="text-xs font-semibold text-gray-500 hover:text-gray-700 flex items-center space-x-1.5 py-1"
+              >
+                <Lock className="w-3.5 h-3.5" />
+                <span>Admin Login</span>
+              </button>
+            </div>
+          )}
         </div>
       )}
     </header>

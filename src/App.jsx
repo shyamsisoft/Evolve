@@ -19,6 +19,7 @@ import { InsightDetailPage } from './components/InsightDetailPage';
 import { AboutPage } from './components/AboutPage';
 import { ContactPage } from './components/ContactPage';
 import { AdminLoginModal } from './components/AdminLoginModal';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { Sparkles } from 'lucide-react';
 import { imgUrl } from './utils/imgUrl';
 
@@ -48,15 +49,23 @@ export function App() {
         const parsed = JSON.parse(saved);
         const isOldOrExternal = (url) => !url || url.includes('unsplash.com') || url.includes('hero_leadership') || url.includes('boardroom');
 
-        const mergedApproach = initialSiteData.approachAndWhyUs.approachSteps.map((step, idx) => ({
-          ...step,
-          ...(parsed.approachAndWhyUs?.approachSteps?.[idx] || {})
-        }));
+        const mergedApproach = initialSiteData.approachAndWhyUs.approachSteps.map((step, idx) => {
+          const pStep = parsed.approachAndWhyUs?.approachSteps?.[idx] || {};
+          return {
+            ...step,
+            ...pStep,
+            image: isOldOrExternal(pStep.image) ? step.image : pStep.image
+          };
+        });
 
-        const mergedWhyUs = initialSiteData.approachAndWhyUs.whyUsItems.map((item, idx) => ({
-          ...item,
-          ...(parsed.approachAndWhyUs?.whyUsItems?.[idx] || {})
-        }));
+        const mergedWhyUs = initialSiteData.approachAndWhyUs.whyUsItems.map((item, idx) => {
+          const pItem = parsed.approachAndWhyUs?.whyUsItems?.[idx] || {};
+          return {
+            ...item,
+            ...pItem,
+            image: isOldOrExternal(pItem.image) ? item.image : pItem.image
+          };
+        });
 
         const mergedWhatWeDo = initialSiteData.whatWeDo.items.map((item, idx) => {
           const pItem = parsed.whatWeDo?.items?.[idx] || {};
@@ -82,7 +91,15 @@ export function App() {
           hero: {
             ...initialSiteData.hero,
             ...(parsed.hero || {}),
-            bgImage: isOldOrExternal(parsed.hero?.bgImage) ? initialSiteData.hero.bgImage : parsed.hero.bgImage
+            bgImage: isOldOrExternal(parsed.hero?.bgImage) ? initialSiteData.hero.bgImage : parsed.hero.bgImage,
+            slides: initialSiteData.hero.slides.map((slide, idx) => {
+              const pSlide = parsed.hero?.slides?.[idx] || {};
+              return {
+                ...slide,
+                ...pSlide,
+                bgImage: isOldOrExternal(pSlide.bgImage) ? slide.bgImage : pSlide.bgImage
+              };
+            })
           },
           section2: {
             ...initialSiteData.section2,
@@ -106,8 +123,27 @@ export function App() {
           },
           approachAndWhyUs: {
             ...initialSiteData.approachAndWhyUs,
+            ...(parsed.approachAndWhyUs || {}),
+            approachBgImage: isOldOrExternal(parsed.approachAndWhyUs?.approachBgImage)
+              ? initialSiteData.approachAndWhyUs.approachBgImage
+              : (parsed.approachAndWhyUs?.approachBgImage || initialSiteData.approachAndWhyUs.approachBgImage),
+            whyUsBgImage: isOldOrExternal(parsed.approachAndWhyUs?.whyUsBgImage)
+              ? initialSiteData.approachAndWhyUs.whyUsBgImage
+              : (parsed.approachAndWhyUs?.whyUsBgImage || initialSiteData.approachAndWhyUs.whyUsBgImage),
             approachSteps: mergedApproach,
             whyUsItems: mergedWhyUs
+          },
+          processFlow: {
+            ...initialSiteData.processFlow,
+            ...(parsed.processFlow || {}),
+            characterImage: initialSiteData.processFlow.characterImage,
+            bgImage: isOldOrExternal(parsed.processFlow?.bgImage)
+              ? initialSiteData.processFlow.bgImage
+              : (parsed.processFlow?.bgImage || initialSiteData.processFlow.bgImage),
+            steps: initialSiteData.processFlow.steps.map((step, idx) => ({
+              ...step,
+              ...(parsed.processFlow?.steps?.[idx] || {})
+            }))
           }
         };
       } catch (e) {
@@ -137,13 +173,22 @@ export function App() {
   const handleLoginSuccess = (user) => {
     setAdminUser(user);
     localStorage.setItem('evolve_admin_user', JSON.stringify(user));
+    if (user?.sessionToken) {
+      localStorage.setItem('evolve_session_token', user.sessionToken);
+    }
     setIsCMSOpen(true);
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' }).catch(() => {});
+    } catch (e) {
+      // ignore
+    }
     setAdminUser(null);
     setIsCMSOpen(false);
     localStorage.removeItem('evolve_admin_user');
+    localStorage.removeItem('evolve_session_token');
   };
 
   // Sync to LocalStorage
@@ -176,6 +221,11 @@ export function App() {
       <Header
         data={fixedData.header}
         activePage={activePage}
+        adminUser={adminUser}
+        onOpenLogin={() => setIsLoginOpen(true)}
+        onLogout={handleLogout}
+        onToggleCMS={() => setIsCMSOpen(!isCMSOpen)}
+        isCMSOpen={isCMSOpen}
         onOpenContact={() => setIsContactOpen(true)}
         onNavigate={(pageId) => setActivePage(pageId)}
         onGoHome={() => setActivePage(null)}
@@ -249,6 +299,7 @@ export function App() {
             <Hero
               data={fixedData.hero}
               onOpenContact={() => setIsContactOpen(true)}
+              onNavigate={(pageId) => setActivePage(pageId)}
             />
 
             {/* Section 2: Finance is More Than Numbers */}
@@ -260,6 +311,7 @@ export function App() {
             {/* Section 3: Process Flow (From numbers to better decisions) */}
             <ProcessFlow
               data={fixedData.processFlow}
+              onNavigate={(pageId) => setActivePage(pageId)}
             />
 
             {/* Section 4: Our Approach & Why Us */}
@@ -297,29 +349,32 @@ export function App() {
 
       {/* Floating Privileged User Quick Bar */}
       {adminUser && (
-        <div className="fixed bottom-6 right-6 z-40 bg-[#061a2e]/95 hover:bg-[#061a2e] text-white backdrop-blur-md pl-4 pr-3 py-2 rounded-full shadow-2xl border border-slate-700/80 flex items-center space-x-3 transition-all duration-300 animate-in fade-in slide-in-from-bottom-2">
-          <div className="flex items-center space-x-2">
+        <div className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-40 bg-[#061a2e]/95 hover:bg-[#061a2e] text-white backdrop-blur-md px-3 py-1.5 sm:pl-4 sm:pr-3 sm:py-2 rounded-full shadow-2xl border border-slate-700/80 flex items-center space-x-2 sm:space-x-3 transition-all duration-300 animate-in fade-in slide-in-from-bottom-2">
+          <div className="flex items-center space-x-1.5 sm:space-x-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span className="text-xs font-bold text-slate-200">{adminUser.name}</span>
-            <span className="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20 font-semibold">
-              Privileged
+            <span className="hidden sm:inline text-xs font-bold text-slate-200">{adminUser.name}</span>
+            <span className="text-[10px] text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 sm:px-2 rounded-full border border-emerald-500/20 font-semibold">
+              <span className="hidden sm:inline">Privileged</span>
+              <span className="sm:hidden">Admin</span>
             </span>
           </div>
           <span className="text-slate-700">|</span>
           <button
             onClick={() => setIsCMSOpen(!isCMSOpen)}
-            className="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center space-x-1.5 cursor-pointer bg-emerald-500/15 hover:bg-emerald-500/25 px-2.5 py-1 rounded-full border border-emerald-500/30 transition-all"
+            className="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center space-x-1 sm:space-x-1.5 cursor-pointer bg-emerald-500/15 hover:bg-emerald-500/25 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border border-emerald-500/30 transition-all"
             title="Open Site CMS Content Editor"
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span>{isCMSOpen ? 'Close CMS' : 'Edit Site CMS'}</span>
+            <span className="hidden sm:inline">{isCMSOpen ? 'Close CMS' : 'Edit Site CMS'}</span>
+            <span className="sm:hidden">{isCMSOpen ? 'Close' : 'CMS'}</span>
           </button>
           <button
             onClick={handleLogout}
-            className="text-xs font-semibold text-slate-400 hover:text-rose-400 px-1.5 py-0.5 transition-colors cursor-pointer"
+            className="text-xs font-semibold text-slate-400 hover:text-rose-400 px-1 py-0.5 transition-colors cursor-pointer"
             title="Sign out of Admin Portal"
           >
-            Logout
+            <span className="hidden sm:inline">Logout</span>
+            <span className="sm:hidden">Exit</span>
           </button>
         </div>
       )}
@@ -331,11 +386,13 @@ export function App() {
       />
 
       {/* Admin Portal Login Modal */}
-      <AdminLoginModal
-        isOpen={isLoginOpen}
-        onClose={() => setIsLoginOpen(false)}
-        onLoginSuccess={handleLoginSuccess}
-      />
+      <ErrorBoundary onReset={() => setIsLoginOpen(false)}>
+        <AdminLoginModal
+          isOpen={isLoginOpen}
+          onClose={() => setIsLoginOpen(false)}
+          onLoginSuccess={handleLoginSuccess}
+        />
+      </ErrorBoundary>
 
       {/* Dynamic Live CMS & Content Manager Drawer */}
       <CMSDrawer

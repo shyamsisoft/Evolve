@@ -17,7 +17,7 @@ export const WhoWeHelp = ({ data, onSelectAudience }) => {
   };
 
   return (
-    <section id="who-we-help" className="py-20 bg-[#f7f9fc]">
+    <section id="who-we-help" className="py-14 sm:py-20 bg-[#f7f9fc]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Row */}

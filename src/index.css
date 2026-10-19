@@ -111,3 +111,13 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #2bb673;
 }
+
+@keyframes progressAnim {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+

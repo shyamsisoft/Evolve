@@ -7,7 +7,7 @@ export const FooterCTA = ({ ctaData, footerData, adminUser, onOpenLogin, onToggl
   return (
     <>
       {/* Pre-footer CTA Banner */}
-      <section className="relative py-20 bg-[#061a2e] text-white overflow-hidden border-b border-slate-800">
+      <section className="relative py-14 sm:py-20 bg-[#061a2e] text-white overflow-hidden border-b border-slate-800">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 opacity-25 pointer-events-none">
           <img

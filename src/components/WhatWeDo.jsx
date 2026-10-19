@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 
 export const WhatWeDo = ({ data, onSelectService }) => {
   return (
-    <section id="what-we-do" className="py-20 bg-[#061a2e] text-white relative overflow-hidden">
+    <section id="what-we-do" className="py-14 sm:py-20 bg-[#061a2e] text-white relative overflow-hidden">
       {/* Background Decorative Lighting */}
       <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#007791]/20 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-[#2bb673]/15 rounded-full blur-3xl pointer-events-none"></div>

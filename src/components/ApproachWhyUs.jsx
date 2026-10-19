@@ -35,17 +35,31 @@ export const ApproachWhyUs = ({ data }) => {
   ];
 
   return (
-    <section className="py-20 bg-[#f7f9fc]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        
-        {/* SECTION 1: OUR APPROACH (DESIGN MATCHED TO WHAT WE DO) */}
-        <div>
+    <>
+      {/* SECTION 1: OUR APPROACH (4 STEP FRAMEWORK) WITH BACKGROUND IMAGE */}
+      <section id="our-approach" className="relative py-24 bg-[#061a2e] text-white overflow-hidden">
+        {/* Background Graphic with Atmospheric Teal & Deep Ocean Overlays */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <img
+            src={imgUrl(data.approachBgImage || '/images/hero_summit.jpg')}
+            alt="Our Approach Background"
+            className="w-full h-full object-cover object-center opacity-25 filter brightness-85 contrast-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#061a2e]/95 via-[#002238]/85 to-[#061a2e]/95" />
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#007791]/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="mb-10 text-center sm:text-left">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#061a2e] tracking-tight">
+          <div className="mb-12 text-center sm:text-left">
+            <span className="inline-block text-xs font-bold text-[#00c0e8] uppercase tracking-widest bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20 mb-3">
+              METHODOLOGY & EXECUTION
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
               {data.approachTitle}
             </h2>
-            <p className="text-sm font-bold text-[#007791] uppercase tracking-wider mt-1.5">
+            <p className="text-base sm:text-lg text-slate-300 font-normal mt-2 max-w-2xl leading-relaxed">
               {data.approachSubtitle}
             </p>
           </div>
@@ -55,13 +69,13 @@ export const ApproachWhyUs = ({ data }) => {
             {data.approachSteps.map((step, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl overflow-hidden border border-slate-200/80 hover:border-[#007791]/50 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group"
+                className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-2xl hover:shadow-cyan-500/15 hover:border-[#007791]/60 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group text-slate-800"
               >
                 <div>
                   {/* Photo Header with Step Badge */}
                   <div className="relative h-48 overflow-hidden">
                     <img
-                      src={step.image || defaultApproachImages[idx % defaultApproachImages.length]}
+                      src={imgUrl(step.image || defaultApproachImages[idx % defaultApproachImages.length])}
                       alt={step.title}
                       className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                     />
@@ -103,16 +117,33 @@ export const ApproachWhyUs = ({ data }) => {
             ))}
           </div>
         </div>
+      </section>
 
-        {/* SECTION 2: WHY US? (DESIGN MATCHED TO WHAT WE DO) */}
-        <div>
+      {/* SECTION 2: WHY US? WITH EXECUTIVE BACKGROUND IMAGE */}
+      <section id="why-us" className="relative py-24 bg-[#061a2e] text-white overflow-hidden">
+        {/* Background Image Graphic with Atmospheric Dark Gradient Overlays */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <img
+            src={imgUrl(data.whyUsBgImage || '/images/established_corporate.jpg')}
+            alt="Why Choose Evolve Background"
+            className="w-full h-full object-cover object-center opacity-30 filter brightness-90 contrast-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#061a2e]/95 via-[#061a2e]/80 to-[#061a2e]/95" />
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#007791]/15 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#2bb673]/10 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="mb-10 text-center sm:text-left">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#061a2e] tracking-tight">
+          <div className="mb-12 text-center sm:text-left">
+            <span className="inline-block text-xs font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 mb-3">
+              WHY CHOOSE EVOLVE
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
               {data.whyUsTitle}
             </h2>
-            <p className="text-base font-normal text-slate-600 mt-1.5">
-              Proven expertise, practical delivery, and strategic clarity for your organisation.
+            <p className="text-base sm:text-lg text-slate-300 font-normal mt-2 max-w-2xl leading-relaxed">
+              {data.whyUsSubtitle || "Proven expertise, practical delivery, and strategic clarity for your organisation."}
             </p>
           </div>
 
@@ -121,7 +152,7 @@ export const ApproachWhyUs = ({ data }) => {
             {data.whyUsItems.map((item, idx) => (
               <div
                 key={item.id || idx}
-                className={`bg-white rounded-2xl overflow-hidden border border-slate-200/80 hover:border-[#2bb673]/60 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group ${
+                className={`bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-2xl hover:shadow-2xl hover:shadow-emerald-500/15 hover:border-[#2bb673]/60 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group ${
                   idx === data.whyUsItems.length - 1 ? 'sm:col-span-2 lg:col-span-1' : ''
                 }`}
               >
@@ -129,7 +160,7 @@ export const ApproachWhyUs = ({ data }) => {
                   {/* Photo Header */}
                   <div className="relative h-48 overflow-hidden">
                     <img
-                      src={item.image || defaultWhyUsImages[idx % defaultWhyUsImages.length]}
+                      src={imgUrl(item.image || defaultWhyUsImages[idx % defaultWhyUsImages.length])}
                       alt={item.title}
                       className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                     />
@@ -166,8 +197,7 @@ export const ApproachWhyUs = ({ data }) => {
             ))}
           </div>
         </div>
-
-      </div>
-    </section>
+      </section>
+    </>
   );
 };

@@ -104,6 +104,13 @@ export const ALL_IMAGE_PRESETS = [
 
   // Corporate & Facilities
   {
+    id: 'character_advisor',
+    category: 'Corporate & Team',
+    label: 'Executive Advisor & Leadership Character',
+    description: 'Corporate financial advisor presenting workflow telemetry with tablet',
+    url: '/images/character_advisor.png'
+  },
+  {
     id: 'about_team',
     category: 'Corporate & Team',
     label: 'Corporate Leadership Team',
@@ -116,6 +123,73 @@ export const ALL_IMAGE_PRESETS = [
     label: 'Advisory Firm Headquarters',
     description: 'Modern corporate advisory office and executive suites',
     url: '/images/contact_office.jpg'
+  },
+
+  // Why Choose Us (5 Benefit Pillars)
+  {
+    id: 'why_experience',
+    category: 'Why Choose Us',
+    label: 'Finance Experience',
+    description: 'Practical finance experience across complex enterprise transformations',
+    url: '/images/why_experience.jpg'
+  },
+  {
+    id: 'why_transformation',
+    category: 'Why Choose Us',
+    label: 'Transformation Capability',
+    description: 'Finance, technology, data, and automated process improvement',
+    url: '/images/why_transformation.jpg'
+  },
+  {
+    id: 'why_practical',
+    category: 'Why Choose Us',
+    label: 'Practical Delivery',
+    description: 'Solutions that can be implemented and used — not reports on a shelf',
+    url: '/images/why_practical.jpg'
+  },
+  {
+    id: 'why_flexible',
+    category: 'Why Choose Us',
+    label: 'Flexible Engagement',
+    description: 'Tailored project advisory, ongoing support, and scalable capability',
+    url: '/images/why_flexible.jpg'
+  },
+  {
+    id: 'why_independent',
+    category: 'Why Choose Us',
+    label: 'Independent Perspective',
+    description: 'Objective strategic clarity and external identification of hidden opportunities',
+    url: '/images/why_independent.jpg'
+  },
+
+  // Our Approach (4 Step Framework)
+  {
+    id: 'approach_understand',
+    category: 'Our Approach',
+    label: 'Step 1: Understand',
+    description: 'Deep-dive executive discovery, strategic listening and context alignment',
+    url: '/images/approach_understand.jpg'
+  },
+  {
+    id: 'approach_diagnose',
+    category: 'Our Approach',
+    label: 'Step 2: Diagnose',
+    description: 'Forensic financial diagnostics, margin root cause and variance modeling',
+    url: '/images/approach_diagnose.jpg'
+  },
+  {
+    id: 'approach_design',
+    category: 'Our Approach',
+    label: 'Step 3: Design',
+    description: 'Future-state operating model architecture, technology & governance design',
+    url: '/images/approach_design.jpg'
+  },
+  {
+    id: 'approach_deliver',
+    category: 'Our Approach',
+    label: 'Step 4: Deliver',
+    description: 'Hands-on execution rollout, operational handover, and executive signoff',
+    url: '/images/approach_deliver.jpg'
   }
 ];
 
@@ -126,7 +200,7 @@ export const ImageGalleryModal = ({ isOpen, onClose, onSelect, currentUrl }) => 
 
   if (!isOpen) return null;
 
-  const categories = ['All', 'Service Pillars', 'Sectors (Who We Help)', 'Brand Story & Hero', 'Process Transformation', 'Corporate & Team'];
+  const categories = ['All', 'Why Choose Us', 'Our Approach', 'Service Pillars', 'Sectors (Who We Help)', 'Brand Story & Hero', 'Process Transformation', 'Corporate & Team'];
 
   const filteredPresets = ALL_IMAGE_PRESETS.filter((p) => {
     const matchesCat = activeCategory === 'All' || p.category === activeCategory;

@@ -20,7 +20,48 @@ export const initialSiteData = {
     title: "Finance that moves organisations forward.",
     subtitle: "Clarity for today. Capability for tomorrow. Transformation when you need it.",
     ctaText: "Start a Conversation →",
-    bgImage: "/images/hero_summit.jpg"
+    bgImage: "/images/hero_summit.jpg",
+    slides: [
+      {
+        id: "slide-1",
+        tabLabel: "Strategic Vision",
+        badge: "EVOLVE Corporate & Business Solutions",
+        title: "Finance that moves organisations forward.",
+        subtitle: "Clarity for today. Capability for tomorrow. Transformation when you need it.",
+        ctaText: "Start a Conversation →",
+        bgImage: "/images/hero_summit.jpg"
+      },
+      {
+        id: "slide-2",
+        tabLabel: "CFO Advisory",
+        badge: "LEAD — CFO & FP&A Advisory",
+        title: "Strategic financial leadership for complex decisions.",
+        subtitle: "Driver-based forecasting, capital optimization, and investor-ready reporting for boards and executive committees.",
+        ctaText: "Explore CFO Advisory →",
+        bgImage: "/images/cfo_advisory.jpg",
+        targetPage: "lead"
+      },
+      {
+        id: "slide-3",
+        tabLabel: "Transformation & Data",
+        badge: "TRANSFORM — Data, Systems & Technology",
+        title: "Modern operating models, automated data & cloud ERP.",
+        subtitle: "Connecting people, process, data, and technology to accelerate month-end closes and unlock real-time financial telemetry.",
+        ctaText: "Explore Transformation →",
+        bgImage: "/images/finance_transform.jpg",
+        targetPage: "transform"
+      },
+      {
+        id: "slide-4",
+        tabLabel: "Executive Partnership",
+        badge: "BUILD — Operating Models & Governance",
+        title: "Finance is more than numbers. It is your competitive advantage.",
+        subtitle: "Hands-on executive partnership across fast-scaling enterprises, corporate governance, not-for-profits, and the public sector.",
+        ctaText: "Meet Our Advisory Team →",
+        bgImage: "/images/finance_meeting.jpg",
+        targetPage: "about"
+      }
+    ]
   },
   section2: {
     heading: "Finance is more than numbers.",
@@ -31,31 +72,48 @@ export const initialSiteData = {
     calloutText: "Better information. Deeper insight. Stronger decisions."
   },
   processFlow: {
+    badge: "DRIVE GROWTH WITH CLARITY & STRATEGY",
     heading: "From numbers to better decisions",
+    exploreText: "Explore Insights",
+    characterImage: "/images/character_advisor.png?v=2",
+    bgImage: "/images/finance_transform.jpg",
     steps: [
       {
         id: "step1",
+        num: "01",
+        badgeColor: "amber",
         title: "NUMBERS",
         desc: "Tell you what happened.",
-        icon: "BarChart3"
+        subDesc: "Historical accounting & data telemetry",
+        icon: "BarChart3",
+        image: "/images/step_numbers.jpg"
       },
       {
         id: "step2",
+        num: "02",
+        badgeColor: "teal",
         title: "INSIGHT",
         desc: "Tells you why.",
-        icon: "Lightbulb"
+        subDesc: "Predictive modeling & root cause analysis",
+        icon: "Lightbulb",
+        image: "/images/step_insight.jpg"
       },
       {
         id: "step3",
+        num: "03",
+        badgeColor: "amber",
         title: "LEADERSHIP",
         desc: "Determines what happens next.",
-        icon: "Users"
+        subDesc: "Strategic execution & capital allocation",
+        icon: "Users",
+        image: "/images/step_leadership.jpg"
       }
     ]
   },
   approachAndWhyUs: {
     approachTitle: "Our approach",
     approachSubtitle: "How we work",
+    approachBgImage: "/images/hero_summit.jpg",
     approachSteps: [
       {
         num: "01",
@@ -83,6 +141,8 @@ export const initialSiteData = {
       }
     ],
     whyUsTitle: "Why us?",
+    whyUsSubtitle: "Proven expertise, practical delivery, and strategic clarity for your organisation.",
+    whyUsBgImage: "/images/established_corporate.jpg",
     whyUsItems: [
       {
         id: "w1",
