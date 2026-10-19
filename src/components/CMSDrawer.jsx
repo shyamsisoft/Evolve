@@ -176,6 +176,7 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
     }
   };
 
+
   return (
     <div className="fixed inset-y-0 right-0 z-50 w-full max-w-xl bg-white shadow-2xl border-l border-slate-200 flex flex-col animate-in slide-in-from-right duration-300">
       
