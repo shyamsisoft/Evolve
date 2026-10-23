@@ -60,6 +60,7 @@ export function App() {
           return {
             ...step,
             ...pStep,
+            points: pStep.points && pStep.points.length > 0 ? pStep.points : step.points,
             image: sanitizeUrl(pStep.image, step.image)
           };
         });
@@ -317,6 +318,7 @@ export function App() {
             {/* Section 4: Our Approach & Why Us */}
             <ApproachWhyUs
               data={fixedData.approachAndWhyUs}
+              onOpenContact={() => setIsContactOpen(true)}
             />
 
             {/* Section 5: What We Do (Service Pillars) */}

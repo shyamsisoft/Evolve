@@ -121,3 +121,37 @@
   }
 }
 
+
+/* Smooth fade & slide entrance animation */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-slide-up {
+  animation: fadeSlideUp 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Linear progress timer animation across active card */
+@keyframes progressTimer {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.step-timer-active {
+  animation: progressTimer 4.5s linear forwards;
+}
+
+.step-timer-paused {
+  animation-play-state: paused !important;
+}
