@@ -1122,6 +1122,88 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                     }}
                     onUpload={handleFileUpload}
                   />
+
+                  {/* Step Key Points / Highlights */}
+                  <div className="pt-2 border-t border-slate-200/80 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-bold text-slate-600 uppercase tracking-wider">
+                        Key Points ({(step.points || []).length})
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const updated = [...data.approachAndWhyUs.approachSteps];
+                          const curPoints = updated[idx].points || [];
+                          updated[idx] = {
+                            ...updated[idx],
+                            points: [...curPoints, { title: "New Focus Point", desc: "Description of this focus point or activity." }]
+                          };
+                          onUpdateData({
+                            ...data,
+                            approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
+                          });
+                        }}
+                        className="text-[10px] text-teal-700 hover:text-teal-900 font-bold flex items-center gap-0.5 bg-teal-50 px-2 py-0.5 rounded border border-teal-200 hover:bg-teal-100 transition-colors"
+                      >
+                        + Add Point
+                      </button>
+                    </div>
+
+                    {(step.points || []).map((point, pIdx) => (
+                      <div key={pIdx} className="p-2 bg-white rounded-lg border border-slate-200 space-y-1.5 shadow-2xs">
+                        <div className="flex items-center justify-between gap-1.5">
+                          <input
+                            type="text"
+                            value={point.title || ''}
+                            onChange={(e) => {
+                              const updated = [...data.approachAndWhyUs.approachSteps];
+                              const newPoints = [...(updated[idx].points || [])];
+                              newPoints[pIdx] = { ...newPoints[pIdx], title: e.target.value };
+                              updated[idx] = { ...updated[idx], points: newPoints };
+                              onUpdateData({
+                                ...data,
+                                approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
+                              });
+                            }}
+                            className="w-full px-2 py-1 bg-slate-50 rounded border border-slate-300 text-xs font-semibold text-slate-800"
+                            placeholder="Point Title"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const updated = [...data.approachAndWhyUs.approachSteps];
+                              const newPoints = (updated[idx].points || []).filter((_, i) => i !== pIdx);
+                              updated[idx] = { ...updated[idx], points: newPoints };
+                              onUpdateData({
+                                ...data,
+                                approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
+                              });
+                            }}
+                            className="text-red-400 hover:text-red-600 text-xs px-1.5 py-0.5 font-bold hover:bg-red-50 rounded"
+                            title="Remove point"
+                          >
+                            ✕
+                          </button>
+                        </div>
+                        <textarea
+                          rows={2}
+                          value={point.desc || ''}
+                          onChange={(e) => {
+                            const updated = [...data.approachAndWhyUs.approachSteps];
+                            const newPoints = [...(updated[idx].points || [])];
+                            newPoints[pIdx] = { ...newPoints[pIdx], desc: e.target.value };
+                            updated[idx] = { ...updated[idx], points: newPoints };
+                            onUpdateData({
+                              ...data,
+                              approachAndWhyUs: { ...data.approachAndWhyUs, approachSteps: updated }
+                            });
+                          }}
+                          className="w-full px-2 py-1 bg-slate-50 rounded border border-slate-300 text-xs text-slate-600"
+                          placeholder="Point Description"
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>

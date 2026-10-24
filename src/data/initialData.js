@@ -75,7 +75,7 @@ export const initialSiteData = {
     badge: "DRIVE GROWTH WITH CLARITY & STRATEGY",
     heading: "From numbers to better decisions",
     exploreText: "Explore Insights",
-    characterImage: "/images/character_advisor.png?v=2",
+    characterImage: "/images/character_advisor.png?v=4",
     bgImage: "/images/finance_transform.jpg",
     steps: [
       {
@@ -113,36 +113,56 @@ export const initialSiteData = {
   approachAndWhyUs: {
     approachTitle: "Our approach",
     approachSubtitle: "How we work",
-    approachBgImage: "/images/hero_summit.jpg",
+    approachBgImage: "",
     approachSteps: [
       {
         num: "01",
         title: "Understand",
         desc: "We start with the organisation, not the solution. We understand your objectives, challenges, operating environment and current capability.",
-        image: "/images/approach_understand.jpg"
+        image: "/images/approach_understand.jpg",
+        points: [
+          { title: "Strategic Discovery", desc: "Understanding core objectives, operating conditions, and business model constraints." },
+          { title: "Stakeholder Alignment", desc: "Engaging board and leadership teams to ensure consensus on strategic priorities." },
+          { title: "Capability Baseline", desc: "Assessing current people, systems, data quality, and financial capabilities." }
+        ]
       },
       {
         num: "02",
         title: "Diagnose",
         desc: "We identify what is working, what is not and where the greatest opportunities exist.",
-        image: "/images/approach_diagnose.jpg"
+        image: "/images/approach_diagnose.jpg",
+        points: [
+          { title: "Financial Forensics", desc: "Granular analysis into margin drivers, cost structures, and cash flow dynamics." },
+          { title: "Operational Diagnostics", desc: "Pinpointing bottlenecks, reporting gaps, and workflow redundancies." },
+          { title: "Opportunity Mapping", desc: "Quantifying high-value intervention points and prioritizing fast-payback wins." }
+        ]
       },
       {
         num: "03",
         title: "Design",
         desc: "We develop a practical solution that aligns people, processes, systems, data and financial objectives.",
-        image: "/images/approach_design.jpg"
+        image: "/images/approach_design.jpg",
+        points: [
+          { title: "Target Operating Model", desc: "Architecting future-state finance structures, governance, and responsibilities." },
+          { title: "Systems & Data Flow", desc: "Designing integrated technology architecture and real-time BI telemetry." },
+          { title: "Execution Roadmap", desc: "Establishing stage-gate delivery milestones, resource plans, and risk controls." }
+        ]
       },
       {
         num: "04",
         title: "Deliver",
         desc: "We don't stop at recommendations. Where required, we work alongside your team to implement the solution and build sustainable capability.",
-        image: "/images/approach_deliver.jpg"
+        image: "/images/approach_deliver.jpg",
+        points: [
+          { title: "Hands-on Implementation", desc: "Embedding alongside your team to lead program delivery and technical rollout." },
+          { title: "Change Adoption", desc: "Standardizing workflows with playbooks, SOPs, and cross-functional training." },
+          { title: "Capability Transfer", desc: "Upskilling internal personnel to ensure sustained operational success without dependency." }
+        ]
       }
     ],
     whyUsTitle: "Why us?",
     whyUsSubtitle: "Proven expertise, practical delivery, and strategic clarity for your organisation.",
-    whyUsBgImage: "/images/established_corporate.jpg",
+    whyUsBgImage: "",
     whyUsItems: [
       {
         id: "w1",
@@ -623,7 +643,12 @@ export const initialSiteData = {
         title: "Execution-Driven Model",
         subtitle: "Implementation Focus",
         desc: "We deploy standardized close checklists and automated workflow models that build long-term internal strength.",
-        image: "/images/approach_deliver.jpg"
+        image: "/images/approach_deliver.jpg",
+        points: [
+          { title: "Hands-on Implementation", desc: "Embedding alongside your team to lead program delivery and technical rollout." },
+          { title: "Change Adoption", desc: "Standardizing workflows with playbooks, SOPs, and cross-functional training." },
+          { title: "Capability Transfer", desc: "Upskilling internal personnel to ensure sustained operational success without dependency." }
+        ]
       },
       {
         title: "Practical & High Impact",

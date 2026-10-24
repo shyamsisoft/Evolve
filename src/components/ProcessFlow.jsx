@@ -84,17 +84,17 @@ export const ProcessFlow = ({ data, onNavigate }) => {
             <div className="relative inline-block mx-auto lg:mx-0">
               
               {/* Executive Character Spotlight & Rim Lighting Aura */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-gradient-to-tr from-cyan-500/25 via-[#007791]/30 to-emerald-400/20 rounded-full blur-2xl pointer-events-none" />
-              <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-80 bg-white/14 rounded-full blur-xl pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[105%] h-[105%] bg-gradient-to-tr from-cyan-500/15 via-[#007791]/20 to-teal-400/15 rounded-full blur-2xl pointer-events-none" />
+              {/* Removed white glow div */}
 
               {/* Grounding Stage Light at Base */}
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-6 bg-gradient-to-t from-cyan-400/25 to-transparent blur-md pointer-events-none" />
 
               {/* Executive Advisor Image - Balanced, Sharp Executive Scale */}
               <img
-                src={imgUrl(data?.characterImage || '/images/character_advisor.png?v=2')}
+                src={imgUrl((data?.characterImage ? data.characterImage.replace(/\?v=\d+/, '') : '/images/character_advisor.png') + '?v=4')}
                 alt="Corporate Financial Advisor"
-                className="w-full max-w-[280px] sm:max-w-[350px] lg:max-w-[390px] xl:max-w-[420px] h-auto object-contain relative z-10 transition-transform duration-300 hover:scale-[1.02] filter brightness-105 contrast-105 drop-shadow-[0_15px_30px_rgba(0,192,232,0.25)] drop-shadow-[0_25px_50px_rgba(0,0,0,0.7)]"
+                className="w-full max-w-[280px] sm:max-w-[350px] lg:max-w-[390px] xl:max-w-[420px] h-auto object-contain relative z-10 transition-transform duration-300 hover:scale-[1.02] drop-shadow-[0_20px_45px_rgba(0,0,0,0.65)]"
               />
 
               {/* Floating Interactive "Explore Insights" Disc Overlay */}
