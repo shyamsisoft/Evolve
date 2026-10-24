@@ -155,3 +155,121 @@
 .step-timer-paused {
   animation-play-state: paused !important;
 }
+
+@keyframes scanLine {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-scan-line {
+  animation: scanLine 6s ease-in-out infinite alternate;
+}
+
+/* Cartoon Character Keyframes & Animations */
+@keyframes characterFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(0.4deg);
+  }
+}
+
+.animate-character-float {
+  animation: characterFloat 4.2s ease-in-out infinite;
+}
+
+@keyframes characterBreathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.012) translateY(-2px);
+  }
+}
+
+.animate-character-breathe {
+  animation: characterBreathe 3.6s ease-in-out infinite;
+}
+
+@keyframes badgeFloatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.animate-badge-float-1 {
+  animation: badgeFloatSlow 3.2s ease-in-out infinite;
+}
+
+.animate-badge-float-2 {
+  animation: badgeFloatSlow 4.0s ease-in-out infinite 0.8s;
+}
+
+.animate-badge-float-3 {
+  animation: badgeFloatSlow 3.6s ease-in-out infinite 1.6s;
+}
+
+@keyframes bubblePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-bubble-pop {
+  animation: bubblePop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes haloSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-halo-spin {
+  animation: haloSpin 22s linear infinite;
+}
+
+@keyframes eyeBlink {
+  0%, 92%, 100% {
+    transform: scaleY(1);
+  }
+  96% {
+    transform: scaleY(0.1);
+  }
+}
+
+.animate-eye-blink {
+  transform-origin: center;
+  animation: eyeBlink 4s ease-in-out infinite;
+}
+
+@keyframes handWave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-8deg);
+  }
+}
+
+.animate-hand-wave {
+  transform-origin: 80% 80%;
+  animation: handWave 2.8s ease-in-out infinite;
+}
+

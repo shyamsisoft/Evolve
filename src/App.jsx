@@ -11,6 +11,7 @@ import { FooterCTA } from './components/FooterCTA';
 import { ContactModal } from './components/ContactModal';
 import { CMSDrawer } from './components/CMSDrawer';
 import { ServiceDetailPage } from './components/ServiceDetailPage';
+import { CFOAdvisoryPage } from './components/CFOAdvisoryPage';
 import { WhatWeDoOverviewPage } from './components/WhatWeDoOverviewPage';
 import { WhoWeHelpOverviewPage } from './components/WhoWeHelpOverviewPage';
 import { WhoWeHelpDetailPage } from './components/WhoWeHelpDetailPage';
@@ -240,7 +241,13 @@ export function App() {
             onBack={() => setActivePage(null)}
             onOpenContact={() => setIsContactOpen(true)}
           />
-        ) : ['lead', 'build', 'transform', 'protect'].includes(activePage) ? (
+        ) : activePage === 'lead' || activePage === 'cfo-advisory' || activePage === 'cfo-fpa-advisory' ? (
+          <CFOAdvisoryPage
+            onBack={() => setActivePage('what-we-do')}
+            onOpenContact={() => setIsContactOpen(true)}
+            onSelectService={(id) => setActivePage(id)}
+          />
+        ) : ['build', 'transform', 'protect'].includes(activePage) ? (
           <ServiceDetailPage
             serviceId={activePage}
             pageData={fixedData.serviceDetailPages || initialSiteData.serviceDetailPages}

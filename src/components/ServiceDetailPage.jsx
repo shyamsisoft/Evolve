@@ -2,8 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { PillarIcon } from './BrandLogo';
 import { ArrowRight, ArrowLeft, CheckCircle2, ShieldCheck, Sparkles, TrendingUp, Layers, Cpu, FileText, BarChart2, Check, Zap, Target, DollarSign, PieChart, Activity, Search, AlertTriangle } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
+import { CFOAdvisoryPage } from './CFOAdvisoryPage';
 
 export const ServiceDetailPage = ({ serviceId, pageData, onBack, onOpenContact, onSelectService }) => {
+  if (serviceId === 'lead') {
+    return (
+      <CFOAdvisoryPage
+        onBack={onBack}
+        onOpenContact={onOpenContact}
+        onSelectService={onSelectService}
+      />
+    );
+  }
+
   const service = pageData[serviceId] || pageData.lead;
 
   const moduleImages = [
