@@ -53,6 +53,8 @@ export const WhoWeHelp = ({ data, onSelectAudience }) => {
               <img
                 src={imgUrl(item.image)}
                 alt={item.title}
+              loading="lazy"
+              decoding="async"
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
               />
               {/* Dark Overlay Gradient */}

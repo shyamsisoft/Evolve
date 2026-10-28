@@ -35,6 +35,8 @@ export const WhatWeDo = ({ data, onSelectService }) => {
                   <img
                     src={imgUrl(item.image)}
                     alt={item.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0b2542] via-[#0b2542]/60 to-transparent"></div>

@@ -13,6 +13,8 @@ export const FooterCTA = ({ ctaData, footerData, adminUser, onOpenLogin, onToggl
           <img
             src={ctaData.bgImage || imgUrl("/images/hero_summit.jpg")}
             alt="Let's move forward"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
           />
         </div>

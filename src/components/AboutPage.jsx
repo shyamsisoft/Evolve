@@ -203,6 +203,8 @@ export const AboutPage = ({ onBack, onOpenContact }) => {
                 <img
                   src={imgUrl('/images/about_team.jpg')}
                   alt="About EVOLVE"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-[440px] sm:h-[500px] object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e]/60 via-transparent to-transparent" />

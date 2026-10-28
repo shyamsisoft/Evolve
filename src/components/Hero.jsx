@@ -97,6 +97,9 @@ export const Hero = ({ data, onOpenContact, onNavigate }) => {
             <img
               src={imgUrl(slide.bgImage || data?.bgImage || "/images/hero_summit.jpg")}
               alt={slide.title}
+              fetchPriority={idx === 0 ? "high" : "low"}
+              loading={idx === 0 ? "eager" : "lazy"}
+              decoding="async"
               className={`w-full h-full object-cover object-center transform transition-transform duration-7000 ease-out ${
                 isActive ? 'scale-108' : 'scale-100'
               }`}

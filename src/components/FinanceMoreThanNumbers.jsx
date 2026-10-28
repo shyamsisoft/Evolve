@@ -44,6 +44,8 @@ export const FinanceMoreThanNumbers = ({ data, onSelectWhatWeDoOverview }) => {
               <img
                 src={data.image || imgUrl("/images/finance_meeting.jpg")}
                 alt="Executive finance strategy"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-[320px] sm:h-[420px] lg:h-[480px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e]/40 via-transparent to-transparent"></div>

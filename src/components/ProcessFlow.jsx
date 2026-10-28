@@ -40,6 +40,8 @@ export const ProcessFlow = ({ data, onNavigate }) => {
         <img
           src={imgUrl(data?.bgImage || '/images/finance_transform.jpg')}
           alt="Process Flow Section Background"
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover object-center opacity-45 filter brightness-95 contrast-110"
         />
         {/* Dark Vignette & Edge Fades ensuring seamless integration */}
@@ -94,6 +96,8 @@ export const ProcessFlow = ({ data, onNavigate }) => {
               <img
                 src={imgUrl((data?.characterImage ? data.characterImage.replace(/\?v=\d+/, '') : '/images/character_advisor.png') + '?v=4')}
                 alt="Corporate Financial Advisor"
+                loading="lazy"
+                decoding="async"
                 className="w-full max-w-[280px] sm:max-w-[350px] lg:max-w-[390px] xl:max-w-[420px] h-auto object-contain relative z-10 transition-transform duration-300 hover:scale-[1.02] drop-shadow-[0_20px_45px_rgba(0,0,0,0.65)]"
               />
 
