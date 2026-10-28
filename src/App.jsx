@@ -12,6 +12,13 @@ import { ContactModal } from './components/ContactModal';
 import { CMSDrawer } from './components/CMSDrawer';
 import { ServiceDetailPage } from './components/ServiceDetailPage';
 import { CFOAdvisoryPage } from './components/CFOAdvisoryPage';
+import { BuildPage } from './components/BuildPage';
+import { TransformPage } from './components/TransformPage';
+import { ProtectPage } from './components/ProtectPage';
+import { GrowingBusinessesPage } from './components/GrowingBusinessesPage';
+import { NotForProfitPage } from './components/NotForProfitPage';
+import { EstablishedCorporatePage } from './components/EstablishedCorporatePage';
+import { LocalGovernmentPage } from './components/LocalGovernmentPage';
 import { WhatWeDoOverviewPage } from './components/WhatWeDoOverviewPage';
 import { WhoWeHelpOverviewPage } from './components/WhoWeHelpOverviewPage';
 import { WhoWeHelpDetailPage } from './components/WhoWeHelpDetailPage';
@@ -159,7 +166,26 @@ export function App() {
     return localStorage.getItem('evolve_site_font') || 'font-jakarta';
   });
 
-  const [activePage, setActivePage] = useState(null);
+  const [activePage, setActivePage] = useState(() => {
+    const hash = window.location.hash.replace(/^#\/?/, '');
+    if (['build', 'lead', 'transform', 'protect', 'tax-compliance', 'tax', 'growing-businesses', 'non-profit-community', 'not-for-profit', 'nfp', 'established-corporate', 'corporate', 'local-government', 'councils', 'what-we-do', 'who-we-help', 'about', 'contact', 'insights'].includes(hash)) {
+      return hash;
+    }
+    return null;
+  });
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace(/^#\/?/, '');
+      if (['build', 'lead', 'transform', 'protect', 'tax-compliance', 'tax', 'growing-businesses', 'non-profit-community', 'not-for-profit', 'nfp', 'established-corporate', 'corporate', 'local-government', 'councils', 'what-we-do', 'who-we-help', 'about', 'contact', 'insights'].includes(hash)) {
+        setActivePage(hash);
+      } else if (!hash) {
+        setActivePage(null);
+      }
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isCMSOpen, setIsCMSOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -247,10 +273,20 @@ export function App() {
             onOpenContact={() => setIsContactOpen(true)}
             onSelectService={(id) => setActivePage(id)}
           />
-        ) : ['build', 'transform', 'protect'].includes(activePage) ? (
-          <ServiceDetailPage
-            serviceId={activePage}
-            pageData={fixedData.serviceDetailPages || initialSiteData.serviceDetailPages}
+        ) : activePage === 'build' || activePage === 'finance-functions' || activePage === 'operating-models' ? (
+          <BuildPage
+            onBack={() => setActivePage('what-we-do')}
+            onOpenContact={() => setIsContactOpen(true)}
+            onSelectService={(id) => setActivePage(id)}
+          />
+        ) : activePage === 'transform' || activePage === 'finance-transformation' || activePage === 'data-technology' ? (
+          <TransformPage
+            onBack={() => setActivePage('what-we-do')}
+            onOpenContact={() => setIsContactOpen(true)}
+            onSelectService={(id) => setActivePage(id)}
+          />
+        ) : activePage === 'protect' || activePage === 'tax-compliance' || activePage === 'tax' ? (
+          <ProtectPage
             onBack={() => setActivePage('what-we-do')}
             onOpenContact={() => setIsContactOpen(true)}
             onSelectService={(id) => setActivePage(id)}
@@ -261,10 +297,26 @@ export function App() {
             onBack={() => setActivePage(null)}
             onOpenContact={() => setIsContactOpen(true)}
           />
-        ) : ['growing-businesses', 'established-corporate', 'non-profit-community', 'local-government'].includes(activePage) ? (
-          <WhoWeHelpDetailPage
-            audienceId={activePage}
-            data={fixedData.whoWeHelpDetailPages || initialSiteData.whoWeHelpDetailPages}
+        ) : activePage === 'growing-businesses' ? (
+          <GrowingBusinessesPage
+            onBack={() => setActivePage('who-we-help')}
+            onOpenContact={() => setIsContactOpen(true)}
+            onSelectAudience={(id) => setActivePage(id)}
+          />
+        ) : activePage === 'non-profit-community' || activePage === 'not-for-profit' || activePage === 'nfp' ? (
+          <NotForProfitPage
+            onBack={() => setActivePage('who-we-help')}
+            onOpenContact={() => setIsContactOpen(true)}
+            onSelectAudience={(id) => setActivePage(id)}
+          />
+        ) : activePage === 'established-corporate' || activePage === 'corporate' ? (
+          <EstablishedCorporatePage
+            onBack={() => setActivePage('who-we-help')}
+            onOpenContact={() => setIsContactOpen(true)}
+            onSelectAudience={(id) => setActivePage(id)}
+          />
+        ) : activePage === 'local-government' || activePage === 'councils' ? (
+          <LocalGovernmentPage
             onBack={() => setActivePage('who-we-help')}
             onOpenContact={() => setIsContactOpen(true)}
             onSelectAudience={(id) => setActivePage(id)}

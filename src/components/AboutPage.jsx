@@ -1,301 +1,329 @@
 import React, { useEffect } from 'react';
-import { ArrowLeft, CheckCircle2, Shield, Target, Users, Award, Sparkles, Building2, TrendingUp, Cpu, Compass, ArrowRight, PhoneCall } from 'lucide-react';
+import { 
+  ArrowLeft, 
+  ArrowRight, 
+  Sparkles, 
+  CheckCircle2, 
+  Layers, 
+  Workflow, 
+  Users, 
+  Cpu, 
+  Database, 
+  ShieldCheck, 
+  Target, 
+  TrendingUp, 
+  Activity, 
+  Check,
+  Compass,
+  Lightbulb
+} from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 
-export const AboutPage = ({ data, onBack, onOpenContact }) => {
+export const AboutPage = ({ onBack, onOpenContact }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const stats = data.stats || [
-    { label: "Combined CFO Leadership", val: "20+ Yrs" },
-    { label: "Capital & Advisory Scope", val: "$2.5B+" },
-    { label: "Month-End Close Target", val: "3-5 Days" },
-    { label: "Client Board Satisfaction", val: "99.8%" }
+  // 7 Dimensions for "Experience Across Complex Organisations"
+  const crossFunctionalAreas = [
+    { title: "strategy", icon: <Target className="w-5 h-5 text-emerald-600" /> },
+    { title: "operations", icon: <Activity className="w-5 h-5 text-[#007791]" /> },
+    { title: "governance", icon: <ShieldCheck className="w-5 h-5 text-cyan-600" /> },
+    { title: "technology", icon: <Cpu className="w-5 h-5 text-indigo-600" /> },
+    { title: "data", icon: <Database className="w-5 h-5 text-teal-600" /> },
+    { title: "people", icon: <Users className="w-5 h-5 text-emerald-600" /> },
+    { title: "performance", icon: <TrendingUp className="w-5 h-5 text-sky-600" /> }
   ];
 
-  const values = data.values || [
+  // 4 "How We Work" principles
+  const howWeWorkPillars = [
     {
+      num: "01",
+      title: "Collaborative but accountable.",
+      points: [
+        "We work with leadership teams rather than operating at a distance.",
+        '"We ask difficult questions when required, bring an independent perspective and take responsibility for helping turn recommendations into practical outcomes."'
+      ],
+      icon: <Users className="w-5 h-5 text-emerald-600" />
+    },
+    {
+      num: "02",
+      title: "Practical over theoretical.",
+      points: [
+        "Good advice needs to work in the real world.",
+        '"We focus on solutions that can be implemented, embedded and maintained by the organisation."'
+      ],
+      icon: <Workflow className="w-5 h-5 text-[#007791]" />
+    },
+    {
+      num: "03",
+      title: "Connected thinking.",
+      points: [
+        "Finance doesn't operate in isolation.",
+        '"People, process, technology and data all influence financial performance."',
+        "We bring these perspectives together."
+      ],
+      icon: <Layers className="w-5 h-5 text-cyan-600" />
+    },
+    {
+      num: "04",
+      title: "Capability, not dependency.",
+      points: [
+        '"Where we work alongside internal teams, our objective is to strengthen capability — not create permanent dependency on external support."'
+      ],
+      icon: <ShieldCheck className="w-5 h-5 text-indigo-600" />
+    }
+  ];
+
+  // 3 Philosophy pillars
+  const philosophyItems = [
+    {
+      num: "01",
       title: "Clarity",
-      tag: "Executive Visibility",
-      desc: "Translating complex multi-entity financial data into plain, actionable board stories and real-time PowerBI dashboards.",
-      image: imgUrl("/images/cfo_advisory.jpg")
+      desc: "Better information and better insight.",
+      icon: <Lightbulb className="w-5 h-5 text-emerald-600" />
     },
     {
+      num: "02",
       title: "Capability",
-      tag: "Hands-On Build",
-      desc: "We don't just advise; we embed alongside your internal teams to design scalable SOPs and build enduring in-house financial strength.",
-      image: imgUrl("/images/finance_build.jpg")
+      desc: "Stronger people, processes and finance functions.",
+      icon: <Compass className="w-5 h-5 text-[#007791]" />
     },
     {
-      title: "Independence",
-      tag: "Unbiased Guidance",
-      desc: "Unbiased, objective guidance focused purely on your organization's fiscal health, capital allocation, and long-term valuation.",
-      image: imgUrl("/images/why_independent.jpg")
-    }
-  ];
-
-  const leadership = data.leadership || [
-    {
-      name: "Senior Partner Advisory Board",
-      role: "Strategic Executive CFOs",
-      bio: "Former Enterprise CFOs and transformation specialists delivering hands-on governance, capital allocation, and FP&A oversight.",
-      image: imgUrl("/images/about_team.jpg")
-    },
-    {
-      name: "Finance Transformation Practice",
-      role: "Data & Systems Capability",
-      bio: "Pioneering cloud ERP architecture, automated PowerBI pipelines, and digital process automation frameworks.",
-      image: imgUrl("/images/finance_transform.jpg")
-    },
-    {
-      name: "Governance & Compliance Desk",
-      role: "Tax & Risk Management",
-      bio: "Ensuring 100% statutory compliance, NFP grant acquittal transparency, and local government long-term financial modeling.",
-      image: imgUrl("/images/tax_compliance.jpg")
-    }
-  ];
-
-  const whyUsPillars = data.whyUsPillars || [
-    {
-      title: "Senior Executive Experience",
-      subtitle: "Direct CFO Partnership",
-      desc: "Work directly with seasoned executives who have led complex corporate, public sector, and mid-market finances.",
-      image: imgUrl("/images/why_experience.jpg")
-    },
-    {
-      title: "Execution-Driven Model",
-      subtitle: "Implementation Focus",
-      desc: "We deploy standardized close checklists and automated workflow models that build long-term internal strength.",
-      image: imgUrl("/images/approach_deliver.jpg")
-    },
-    {
-      title: "Practical & High Impact",
-      subtitle: "Rapid Time-to-Value",
-      desc: "Identify immediate high-impact quick wins within the first 30 days while constructing target operating models.",
-      image: imgUrl("/images/why_practical.jpg")
-    },
-    {
-      title: "Flexible Engagement Scope",
-      subtitle: "Scalable Advisory",
-      desc: "Scale capability dynamically as your organisation expands, acquires, restructures, or modernizes systems.",
-      image: imgUrl("/images/why_flexible.jpg")
+      num: "03",
+      title: "Change",
+      desc: "Practical transformation that improves how organisations operate.",
+      icon: <TrendingUp className="w-5 h-5 text-cyan-600" />
     }
   ];
 
   return (
-    <div className="pt-24 pb-20 bg-[#f8fafc] animate-in fade-in duration-300">
+    <div className="min-h-screen bg-white text-slate-800 font-['Plus_Jakarta_Sans',sans-serif] selection:bg-[#2bb673] selection:text-white">
       
-      {/* 1. EXECUTIVE HERO BANNER */}
-      <section className="relative bg-[#061a2e] text-white pt-32 pb-24 overflow-hidden">
-        <div className="absolute inset-0 opacity-20 pointer-events-none">
-          <img src={data.heroBg || imgUrl("/images/established_corporate.jpg")} alt="About EVOLVE" className="w-full h-full object-cover" />
+      {/* ======================================================== */}
+      {/* 1. HERO SECTION: ABOUT EVOLVE                            */}
+      {/* ======================================================== */}
+      <section className="relative pt-32 pb-20 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28 bg-[#061a2e] text-white overflow-hidden">
+        
+        {/* Background Photo with Dark Tech Gradient Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={imgUrl("/images/hero_summit.jpg")}
+            alt="About EVOLVE"
+            className="w-full h-full object-cover object-center scale-105 filter brightness-40 contrast-125"
+            onError={(e) => {
+              const fallback = imgUrl("/images/established_corporate.jpg");
+              if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback;
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/90 to-[#061a2e]/65" />
+          <div className="absolute inset-0 bg-[radial-gradient(#2bb673_1px,transparent_1px)] [background-size:24px_24px] opacity-25" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/95 to-[#007791]/50"></div>
+
+        {/* Ambient Glowing Orbs */}
+        <div className="absolute top-1/4 right-10 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          <div className="flex items-center space-x-3 text-xs sm:text-sm font-bold text-gray-300">
-            <button onClick={onBack} className="inline-flex items-center space-x-1.5 text-emerald-400 hover:text-white transition-colors">
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back to Home</span>
+          
+          {/* Breadcrumb Navigation */}
+          <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs font-bold text-slate-300">
+            <button
+              type="button"
+              onClick={onBack}
+              className="inline-flex items-center gap-1.5 hover:text-emerald-400 transition-colors cursor-pointer group"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+              <span>Home</span>
             </button>
             <span className="text-slate-600">/</span>
-            <span className="text-white">About EVOLVE</span>
-          </div>
+            <span className="text-[#2bb673] font-extrabold uppercase tracking-wider">About EVOLVE</span>
+          </nav>
 
-          <div className="inline-flex items-center space-x-2 px-4 py-1.5 bg-[#2bb673] text-white rounded-full text-xs font-black uppercase tracking-widest shadow-md">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Corporate Advisory & Capability</span>
-          </div>
+          <div className="max-w-4xl space-y-6">
+            
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
+              ABOUT EVOLVE
+            </h1>
 
-          <h1 className="text-4xl sm:text-6xl font-black text-white max-w-4xl leading-tight">
-            {data.title}
-          </h1>
+            {/* Lead Tagline */}
+            <p className="text-xl sm:text-2xl font-bold text-emerald-300 tracking-tight leading-snug">
+              Built at the intersection of finance, transformation and technology.
+            </p>
 
-          <p className="text-lg sm:text-xl text-gray-200 font-medium max-w-3xl leading-relaxed">
-            {data.subtitle}
-          </p>
-
-          {/* Key Executive Stats Strip */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-white/10">
-            {stats.map((st, idx) => (
-              <div key={idx} className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1 backdrop-blur-xs">
-                <span className="text-2xl sm:text-3xl font-black text-[#2bb673] block">{st.val}</span>
-                <span className="text-xs font-bold text-gray-300 block">{st.label}</span>
+            {/* Overview Narrative */}
+            <div className="pt-1 space-y-4 max-w-3xl text-slate-200 font-['Inter',sans-serif]">
+              <p className="text-base sm:text-lg font-medium leading-relaxed text-slate-100">
+                Evolve was established to bridge a gap we repeatedly saw in organisations.
+              </p>
+              
+              <div className="p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs">
+                <p className="text-base sm:text-lg font-semibold text-slate-100 leading-relaxed">
+                  Businesses often have access to accountants, technology specialists and consultants — but the problems they face sit across all three.
+                </p>
               </div>
-            ))}
+
+              {/* Connected Chain */}
+              <div className="space-y-2 pt-2 border-l-2 border-emerald-400/60 pl-4 text-sm sm:text-base text-slate-300 font-medium">
+                <p>Financial decisions depend on good data.</p>
+                <p>Good data depends on effective systems and processes.</p>
+                <p>And transformation only creates value when people actually use the solution and the organisation realises the benefit.</p>
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              <button
+                type="button"
+                onClick={onOpenContact}
+                className="brand-button-gradient text-white text-sm sm:text-base font-extrabold px-8 py-4 rounded-xl shadow-xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer group"
+              >
+                <span>Start a Conversation</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+
           </div>
+
         </div>
       </section>
 
-      {/* 2. OUR MISSION & PHILOSOPHY SECTION */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+      {/* ======================================================== */}
+      {/* 2. CONNECTED DISCIPLINES SECTION                         */}
+      {/*    (Left side: Image | Right side: Content)              */}
+      {/* ======================================================== */}
+      <section className="py-20 sm:py-24 bg-white border-b border-slate-200/80 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
-            {/* Leadership Photo Banner Card */}
+            {/* Left Column: Image */}
             <div className="lg:col-span-6 relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 group">
                 <img
                   src={imgUrl('/images/about_team.jpg')}
-                  alt="EVOLVE Executive Leadership Team"
-                  className="w-full h-[460px] object-cover group-hover:scale-105 transition-transform duration-700"
+                  alt="About EVOLVE"
+                  className="w-full h-[440px] sm:h-[500px] object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/30 to-transparent"></div>
-                
-                {/* Embedded Floating Badge */}
-                <div className="absolute top-6 left-6 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl border border-slate-200 shadow-lg text-[#061a2e]">
-                  <span className="text-xs font-black uppercase text-[#007791] tracking-wider block">Senior Advisory Desk</span>
-                  <span className="text-xs font-extrabold text-slate-700">Hands-on CFO Capability</span>
-                </div>
-
-                <div className="absolute bottom-8 left-8 right-8 text-white space-y-2">
-                  <div className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-[#2bb673]">
-                    <Award className="w-4 h-4" />
-                    <span>Executive Leadership</span>
-                  </div>
-                  <h3 className="text-2xl font-black text-white">Senior Partner Advisory Board</h3>
-                  <p className="text-xs text-gray-300 font-medium">
-                    Leading CFO transformation, financial operating models, and public sector governance across corporate Australia.
-                  </p>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e]/60 via-transparent to-transparent" />
               </div>
             </div>
 
-            {/* Mission Statement & Story */}
-            <div className="lg:col-span-6 space-y-8">
+            {/* Right Column: Content */}
+            <div className="lg:col-span-6 space-y-6">
               
-              <div className="space-y-4">
-                <div className="inline-flex items-center space-x-2 px-3.5 py-1 bg-teal-50 rounded-full text-xs font-black uppercase tracking-widest text-[#007791]">
-                  <Compass className="w-3.5 h-3.5 text-[#2bb673]" />
-                  <span>Our Core Mission</span>
-                </div>
-                <h2 className="text-3xl sm:text-4xl font-black text-[#061a2e] leading-snug">
-                  "{data.mission}"
-                </h2>
-              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
+                Evolve brings these disciplines together.
+              </h2>
 
-              {/* Story Paragraphs */}
-              <div className="space-y-4 text-slate-700 text-base font-medium leading-relaxed border-l-4 border-l-[#2bb673] pl-6">
-                {(data.storyParagraphs || [
-                  "EVOLVE Corporate & Business Solutions was founded to provide mid-market enterprises, growing companies, not-for-profits, and public sector organizations with senior CFO capability without permanent overhead.",
-                  "Rather than delivering static advisory decks, EVOLVE partners directly inside executive leadership teams to modernize financial reporting pipelines, design high-velocity operating models, and enforce governance frameworks."
-                ]).map((para, pIdx) => (
-                  <p key={pIdx}>{para}</p>
-                ))}
+              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/90">
+                <p className="text-base sm:text-lg lg:text-xl font-bold text-slate-800 leading-relaxed">
+                  We work with organisations to understand the problem, create practical solutions and turn those solutions into measurable outcomes.
+                </p>
               </div>
 
               <div className="pt-2">
-                <button
-                  onClick={onOpenContact}
-                  className="brand-button-gradient text-white text-xs font-extrabold px-6 py-3.5 rounded-2xl shadow-lg hover:scale-105 transition-transform flex items-center space-x-2"
-                >
-                  <PhoneCall className="w-4 h-4" />
-                  <span>Connect With Our Partners</span>
-                </button>
+                <div className="inline-block p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-[#061a2e] to-[#0a2f52] text-white shadow-lg border border-slate-700">
+                  <p className="text-base sm:text-lg font-black tracking-wide text-emerald-300">
+                    Finance. Transformation. Technology. One connected approach.
+                  </p>
+                </div>
               </div>
 
             </div>
 
           </div>
+        </div>
+      </section>
+
+
+      {/* ======================================================== */}
+      {/* 3. EXPERIENCE ACROSS COMPLEX ORGANISATIONS                */}
+      {/* ======================================================== */}
+      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200/80 relative overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+          
+          <div className="max-w-4xl space-y-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
+              EXPERIENCE ACROSS COMPLEX ORGANISATIONS
+            </h2>
+            
+            <p className="text-lg sm:text-xl font-bold text-slate-800 leading-relaxed italic">
+              "Our experience spans public sector, regulatory environments, professional services, not-for-profit organisations and complex finance transformation programs."
+            </p>
+
+            <p className="text-base sm:text-lg text-slate-600 font-semibold pt-2">
+              This gives Evolve a practical understanding of the challenges that arise when finance needs to work across:
+            </p>
+          </div>
+
+          {/* 7 Dimensions Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4">
+            {crossFunctionalAreas.map((item, idx) => (
+              <div 
+                key={idx}
+                className="p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-[#2bb673] shadow-xs hover:shadow-md transition-all duration-300 text-center space-y-3 group"
+              >
+                <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center mx-auto group-hover:bg-[#061a2e] group-hover:scale-110 transition-all shadow-2xs">
+                  {item.icon}
+                </div>
+                <div className="text-sm font-black text-[#061a2e] uppercase tracking-wider group-hover:text-[#2bb673] transition-colors">
+                  {item.title}
+                </div>
+              </div>
+            ))}
+          </div>
 
         </div>
       </section>
 
-      {/* 3. CORE ORGANIZATIONAL VALUES (PHOTO CARDS) */}
-      <section className="py-20 bg-[#f8fafc] border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+      {/* ======================================================== */}
+      {/* 4. HOW WE WORK                                           */}
+      {/* ======================================================== */}
+      <section className="py-20 sm:py-24 bg-white border-b border-slate-200/80 relative overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
-          <div className="text-center max-w-3xl mx-auto space-y-3">
-            <span className="text-xs font-black uppercase tracking-widest text-[#007791] bg-teal-50 px-3.5 py-1 rounded-full border border-teal-100">
-              Our Foundational Principles
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-[#061a2e]">
-              Built Around 3 Corporate Values
+          <div className="max-w-3xl space-y-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
+              HOW WE WORK
             </h2>
-            <p className="text-sm text-slate-600 font-medium">
-              How we work alongside executive teams to deliver long-term capability and confidence.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {values.map((v, idx) => (
-              <div key={idx} className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xl hover:shadow-2xl transition-all duration-300 group flex flex-col">
-                
-                {/* Photo Header */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={v.image || imgUrl("/images/cfo_advisory.jpg")}
-                    alt={v.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-transparent to-transparent opacity-80"></div>
-                  
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-[#2bb673] text-white text-[10px] font-black uppercase tracking-wider rounded-full shadow-md">
-                      {v.tag || `0${idx + 1}. Value`}
+          {/* 4 Working Pillars Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {howWeWorkPillars.map((pillar, idx) => (
+              <div 
+                key={idx}
+                className="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200/90 hover:border-[#2bb673] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+              >
+                <div className="space-y-5">
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-5">
+                    <div className="flex items-center gap-3.5">
+                      <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 text-[#2bb673] flex items-center justify-center group-hover:bg-[#061a2e] group-hover:text-emerald-400 group-hover:scale-105 transition-all shadow-2xs">
+                        {pillar.icon}
+                      </div>
+                      <h3 className="text-2xl font-black text-[#061a2e] tracking-tight">
+                        {pillar.title}
+                      </h3>
+                    </div>
+                    <span className="font-mono text-xs font-bold text-slate-400">
+                      {pillar.num}
                     </span>
                   </div>
 
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-2xl font-black text-white">{v.title}</h3>
+                  <div className="space-y-3 font-['Inter',sans-serif]">
+                    {pillar.points.map((pt, pIdx) => (
+                      <p 
+                        key={pIdx}
+                        className={`text-sm sm:text-base leading-relaxed ${
+                          pt.startsWith('"') ? 'text-slate-800 font-bold italic' : 'text-slate-600 font-medium'
+                        }`}
+                      >
+                        {pt}
+                      </p>
+                    ))}
                   </div>
-                </div>
-
-                {/* Body Content */}
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                  <p className="text-sm text-slate-700 leading-relaxed font-medium">
-                    {v.desc}
-                  </p>
-
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-extrabold text-[#007791]">
-                    <span>EVOLVE Promise</span>
-                    <CheckCircle2 className="w-4 h-4 text-[#2bb673]" />
-                  </div>
-                </div>
-
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* 4. PRACTICE DESKS & LEADERSHIP GALLERY */}
-      <section className="py-20 bg-white border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div className="space-y-3">
-              <span className="text-xs font-black uppercase tracking-widest text-[#2bb673] bg-emerald-50 px-3.5 py-1 rounded-full border border-emerald-100">
-                Advisory Capability
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-[#061a2e]">
-                Senior Practice Desks
-              </h2>
-            </div>
-            <p className="text-sm text-slate-600 font-medium max-w-md">
-              Specialized execution capabilities spanning CFO advisory, digital transformation, and statutory risk defense.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {leadership.map((lead, idx) => (
-              <div key={idx} className="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-4 shadow-sm hover:border-teal-300 transition-colors">
-                <div className="h-44 rounded-2xl overflow-hidden border border-slate-200 relative">
-                  <img src={imgUrl(lead.image)} alt={lead.name} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e]/70 via-transparent to-transparent"></div>
-                  <span className="absolute bottom-3 left-3 text-[10px] font-black uppercase text-[#2bb673] bg-[#061a2e]/90 px-2.5 py-1 rounded-md">
-                    {lead.role}
-                  </span>
-                </div>
-
-                <div className="space-y-2">
-                  <h3 className="text-lg font-black text-[#061a2e]">{lead.name}</h3>
-                  <p className="text-xs text-slate-600 font-medium leading-relaxed">
-                    {lead.bio}
-                  </p>
                 </div>
               </div>
             ))}
@@ -304,82 +332,73 @@ export const AboutPage = ({ data, onBack, onOpenContact }) => {
         </div>
       </section>
 
-      {/* 5. THE EVOLVE ADVANTAGE MATRIX (WHY US) */}
-      <section className="py-20 bg-[#061a2e] text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <img src={imgUrl('/images/hero_summit.jpg')} alt="Background" className="w-full h-full object-cover" />
-        </div>
 
+      {/* ======================================================== */}
+      {/* 5. OUR PHILOSOPHY                                        */}
+      {/* ======================================================== */}
+      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200/80 relative overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
-          <div className="text-center max-w-3xl mx-auto space-y-3">
-            <span className="text-xs font-black uppercase tracking-widest text-[#2bb673] bg-white/10 px-4 py-1.5 rounded-full border border-white/20">
-              The EVOLVE Advantage
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-black text-white">
-              Why Executive Leaders Choose EVOLVE
+          <div className="max-w-3xl space-y-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
+              OUR PHILOSOPHY
             </h2>
-            <p className="text-sm text-gray-300 font-medium">
-              We bridge the gap between strategic CFO leadership and operational execution.
+            
+            <p className="text-lg sm:text-xl font-black text-[#2bb673] tracking-wide uppercase">
+              Clarity | Capability | Change
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {whyUsPillars.map((pil, idx) => (
-              <div key={idx} className="bg-white/5 border border-white/10 p-6 rounded-3xl space-y-4 hover:bg-white/10 transition-colors backdrop-blur-xs flex flex-col justify-between">
-                
-                <div className="space-y-3">
-                  <div className="w-12 h-12 rounded-2xl bg-[#007791] text-white flex items-center justify-center font-black text-lg shadow-md">
-                    0{idx + 1}
+          {/* 3 Philosophy Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {philosophyItems.map((item, idx) => (
+              <div 
+                key={idx}
+                className="p-8 rounded-3xl bg-white border border-slate-200/90 hover:border-[#2bb673] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-200 text-[#2bb673] flex items-center justify-center group-hover:bg-[#061a2e] group-hover:text-emerald-400 group-hover:scale-110 transition-all shadow-2xs">
+                      {item.icon}
+                    </div>
+                    <span className="font-mono text-xs font-bold text-slate-400">
+                      {item.num}
+                    </span>
                   </div>
-                  <span className="text-[10px] font-black uppercase text-[#2bb673] tracking-wider block">
-                    {pil.subtitle}
-                  </span>
-                  <h3 className="text-lg font-black text-white leading-snug">
-                    {pil.title}
+
+                  <h3 className="text-2xl font-black text-[#061a2e] group-hover:text-[#2bb673] transition-colors">
+                    {item.title}
                   </h3>
-                  <p className="text-xs text-gray-300 font-medium leading-relaxed">
-                    {pil.desc}
+
+                  <p className="text-base font-semibold text-slate-700 leading-relaxed font-['Inter',sans-serif]">
+                    {item.desc}
                   </p>
                 </div>
-
-                <div className="pt-3 border-t border-white/10">
-                  <div className="h-20 rounded-xl overflow-hidden border border-white/10 relative">
-                    <img src={imgUrl(pil.image)} alt={pil.title} className="w-full h-full object-cover opacity-80" />
-                  </div>
-                </div>
-
               </div>
             ))}
           </div>
 
-        </div>
-      </section>
-
-      {/* 6. BOTTOM CTA BANNER */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-[#061a2e] to-[#007791] p-10 sm:p-12 rounded-3xl text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
-            <div className="space-y-2 max-w-2xl">
-              <span className="text-xs font-black uppercase tracking-widest text-[#2bb673]">
-                Ready to transform your finance function?
-              </span>
+          {/* Philosophy Closing Callout & Action */}
+          <div className="bg-gradient-to-br from-[#061a2e] to-[#041220] rounded-3xl p-8 sm:p-12 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-8 border border-slate-800">
+            <div className="space-y-2 text-center sm:text-left">
               <h3 className="text-2xl sm:text-3xl font-black text-white">
-                Schedule a Strategic Executive Consultation
+                Finance that moves organisations forward.
               </h3>
-              <p className="text-xs sm:text-sm text-gray-200 font-medium">
-                Talk directly with our Senior Partners about fractional CFO leadership, FP&A modeling, or finance function transformation.
+              <p className="text-base sm:text-lg text-emerald-300 font-bold">
+                That's what Evolve is here to do.
               </p>
             </div>
 
             <button
+              type="button"
               onClick={onOpenContact}
-              className="brand-button-gradient text-white text-xs font-extrabold py-4 px-8 rounded-2xl shadow-xl hover:scale-105 transition-transform flex-shrink-0 flex items-center space-x-2"
+              className="brand-button-gradient text-white text-base font-extrabold px-8 py-4 rounded-full flex items-center space-x-2.5 shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer group shrink-0"
             >
-              <span>Start Conversation</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>Start a Conversation</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
+
         </div>
       </section>
 
