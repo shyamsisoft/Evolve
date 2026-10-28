@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EVOLVE | Corporate & Business Solutions — Finance, Transformation & Insight</title>
     <meta name="description" content="Finance that moves organisations forward. CFO & FP&A Advisory, Finance Functions, Transformation, Data & Technology, Tax & Compliance." />
+    <!-- SPA redirect decoder: restores clean URL without hash -->
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search && l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&');
+          }).join('?');
+          var cleanPath = l.pathname.replace(/\/$/, '') + decoded + l.hash;
+          window.history.replaceState(null, null, cleanPath);
+        }
+      }(window.location));
+    </script>
     <!-- Top Corporate Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

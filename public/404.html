@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>EVOLVE | Corporate & Business Solutions</title>
+    <script type="text/javascript">
+      // GitHub Pages / Static Hosting SPA Redirect Script
+      // Converts 404 path to a clean redirect so index.html can restore the clean route with NO hash `#`
+      (function() {
+        var path = window.location.pathname;
+        var isSubpath = /^\/evolve(\/|$)/i.test(path);
+        var segmentCount = isSubpath ? 1 : 0;
+
+        var origin = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+        var pathParts = path.split('/').filter(Boolean);
+        var basePath = segmentCount > 0 ? '/' + pathParts.slice(0, segmentCount).join('/') : '';
+        var routeParts = pathParts.slice(segmentCount).join('/');
+
+        var redirectUrl = origin + basePath + '/?' +
+          (routeParts ? '/' + routeParts : '') +
+          (window.location.search ? '&' + window.location.search.slice(1).replace(/&/g, '~and~') : '') +
+          window.location.hash;
+
+        window.location.replace(redirectUrl);
+      })();
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

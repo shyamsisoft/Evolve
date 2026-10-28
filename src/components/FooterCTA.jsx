@@ -3,7 +3,7 @@ import { BrandLogo } from './BrandLogo';
 import { ArrowRight, Globe, Share2, Sparkles, Lock, LogOut, Settings } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 
-export const FooterCTA = ({ ctaData, footerData, adminUser, onOpenLogin, onToggleCMS, onLogout, onOpenContact }) => {
+export const FooterCTA = ({ ctaData, footerData, adminUser, onOpenLogin, onToggleCMS, onLogout, onOpenContact, onGoHome, onNavigate }) => {
   return (
     <>
       {/* Pre-footer CTA Banner */}
@@ -57,18 +57,18 @@ export const FooterCTA = ({ ctaData, footerData, adminUser, onOpenLogin, onToggl
           
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-12 border-b border-slate-800">
             {/* Logo */}
-            <a href="#home">
+            <button onClick={onGoHome} className="cursor-pointer text-left">
               <BrandLogo variant="dark" />
-            </a>
+            </button>
 
             {/* Quick Links */}
             <nav className="flex flex-wrap gap-x-10 gap-y-4">
-              <a href="#home" className="text-base font-bold text-gray-300 hover:text-white transition-colors">Home</a>
-              <a href="#who-we-help" className="text-base font-bold text-gray-300 hover:text-white transition-colors">Who We Help</a>
-              <a href="#what-we-do" className="text-base font-bold text-gray-300 hover:text-white transition-colors">What We Do</a>
-              <a href="#insights" className="text-base font-bold text-gray-300 hover:text-white transition-colors">Insights</a>
-              <a href="#about" className="text-base font-bold text-gray-300 hover:text-white transition-colors">About</a>
-              <a href="#contact" className="text-base font-bold text-gray-300 hover:text-white transition-colors">Contact</a>
+              <button onClick={onGoHome} className="text-base font-bold text-gray-300 hover:text-white transition-colors cursor-pointer">Home</button>
+              <button onClick={() => onNavigate?.('who-we-help')} className="text-base font-bold text-gray-300 hover:text-white transition-colors cursor-pointer">Who We Help</button>
+              <button onClick={() => onNavigate?.('what-we-do')} className="text-base font-bold text-gray-300 hover:text-white transition-colors cursor-pointer">What We Do</button>
+              <button onClick={() => onNavigate?.('insights')} className="text-base font-bold text-gray-300 hover:text-white transition-colors cursor-pointer">Insights</button>
+              <button onClick={() => onNavigate?.('about')} className="text-base font-bold text-gray-300 hover:text-white transition-colors cursor-pointer">About</button>
+              <button onClick={() => onNavigate?.('contact')} className="text-base font-bold text-gray-300 hover:text-white transition-colors cursor-pointer">Contact</button>
             </nav>
 
             {/* Social Icons */}
@@ -102,9 +102,9 @@ export const FooterCTA = ({ ctaData, footerData, adminUser, onOpenLogin, onToggl
           <div className="flex flex-col sm:flex-row items-center justify-between pt-8 text-sm text-gray-400 space-y-4 sm:space-y-0 font-medium">
             <p>{footerData.copyright}</p>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400">
-              <a href="#privacy" className="hover:text-gray-200 transition-colors">Privacy Policy</a>
+              <button onClick={() => onNavigate?.('contact')} className="hover:text-gray-200 transition-colors cursor-pointer">Privacy Policy</button>
               <span>|</span>
-              <a href="#terms" className="hover:text-gray-200 transition-colors">Terms</a>
+              <button onClick={() => onNavigate?.('contact')} className="hover:text-gray-200 transition-colors cursor-pointer">Terms</button>
               <span>|</span>
               {adminUser ? (
                 <div className="inline-flex items-center space-x-2.5">
