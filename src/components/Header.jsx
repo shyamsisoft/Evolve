@@ -70,18 +70,18 @@ export const Header = ({
               </button>
 
               {whoWeHelpOpen && (
-                <div className="absolute top-full left-0 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-1.5 px-1.5 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                  <button onClick={() => { setWhoWeHelpOpen(false); onNavigate('growing-businesses'); }} className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#f0f5fa] transition-colors group">
-                    <span className="text-xs font-bold text-[#061a2e] group-hover:text-[#007791] transition-colors">Growing Businesses</span>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2.5 px-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                  <button onClick={() => { setWhoWeHelpOpen(false); onNavigate('growing-businesses'); }} className="w-full p-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center justify-center">
+                    <div className="text-xs font-bold text-[#061a2e]">Growing Businesses</div>
                   </button>
-                  <button onClick={() => { setWhoWeHelpOpen(false); onNavigate('established-corporate'); }} className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#f0f5fa] transition-colors group">
-                    <span className="text-xs font-bold text-[#061a2e] group-hover:text-[#007791] transition-colors">Established & Corporate</span>
+                  <button onClick={() => { setWhoWeHelpOpen(false); onNavigate('established-corporate'); }} className="w-full p-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center justify-center">
+                    <div className="text-xs font-bold text-[#061a2e]">Established & Corporate</div>
                   </button>
-                  <button onClick={() => { setWhoWeHelpOpen(false); onNavigate('non-profit-community'); }} className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#f0f5fa] transition-colors group">
-                    <span className="text-xs font-bold text-[#061a2e] group-hover:text-[#007791] transition-colors">Not-for-Profit & Community</span>
+                  <button onClick={() => { setWhoWeHelpOpen(false); onNavigate('non-profit-community'); }} className="w-full p-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center justify-center">
+                    <div className="text-xs font-bold text-[#061a2e]">Not-for-Profit & Community</div>
                   </button>
-                  <button onClick={() => { setWhoWeHelpOpen(false); onNavigate('local-government'); }} className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#f0f5fa] transition-colors group">
-                    <span className="text-xs font-bold text-[#061a2e] group-hover:text-[#007791] transition-colors">Local Government</span>
+                  <button onClick={() => { setWhoWeHelpOpen(false); onNavigate('local-government'); }} className="w-full p-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center justify-center">
+                    <div className="text-xs font-bold text-[#061a2e]">Local Government</div>
                   </button>
                 </div>
               )}
@@ -102,22 +102,22 @@ export const Header = ({
               </button>
 
               {whatWeDoOpen && (
-                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-1.5 px-1.5 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('lead'); }} className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center gap-2.5 group">
-                    <PillarIcon type="lead" className="w-4 h-4 shrink-0" />
-                    <span className="text-xs font-bold text-[#061a2e] group-hover:text-[#007791] transition-colors">LEAD — CFO & FP&A Advisory</span>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 w-72 bg-white rounded-xl shadow-xl border border-gray-100 py-2.5 px-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('lead'); }} className="w-full p-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center justify-center gap-3">
+                    <PillarIcon type="lead" className="w-5 h-5 shrink-0" />
+                    <div className="text-xs font-bold text-[#061a2e]">LEAD — CFO & FP&A Advisory</div>
                   </button>
-                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('build'); }} className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center gap-2.5 group">
-                    <PillarIcon type="build" className="w-4 h-4 shrink-0" />
-                    <span className="text-xs font-bold text-[#061a2e] group-hover:text-[#007791] transition-colors">BUILD — Finance Functions</span>
+                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('build'); }} className="w-full p-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center justify-center gap-3">
+                    <PillarIcon type="build" className="w-5 h-5 shrink-0" />
+                    <div className="text-xs font-bold text-[#061a2e]">BUILD — Finance Functions</div>
                   </button>
-                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('transform'); }} className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center gap-2.5 group">
-                    <PillarIcon type="transform" className="w-4 h-4 shrink-0" />
-                    <span className="text-xs font-bold text-[#061a2e] group-hover:text-[#007791] transition-colors">TRANSFORM — Data & Tech</span>
+                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('transform'); }} className="w-full p-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center justify-center gap-3">
+                    <PillarIcon type="transform" className="w-5 h-5 shrink-0" />
+                    <div className="text-xs font-bold text-[#061a2e]">TRANSFORM — Data & Tech</div>
                   </button>
-                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('protect'); }} className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center gap-2.5 group">
-                    <PillarIcon type="protect" className="w-4 h-4 shrink-0" />
-                    <span className="text-xs font-bold text-[#061a2e] group-hover:text-[#007791] transition-colors">PROTECT — Tax & Compliance</span>
+                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('protect'); }} className="w-full p-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center justify-center gap-3">
+                    <PillarIcon type="protect" className="w-5 h-5 shrink-0" />
+                    <div className="text-xs font-bold text-[#061a2e]">PROTECT — Tax & Compliance</div>
                   </button>
                 </div>
               )}
