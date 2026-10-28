@@ -286,17 +286,8 @@ export const CFOAdvisoryPage = ({ onBack, onOpenContact, onSelectService }) => {
 
           {/* Brand Pillar Tag: LEAD */}
           <div className="flex items-center space-x-3.5 pt-1">
-            <div className="p-2.5 bg-emerald-500/15 backdrop-blur-md rounded-2xl border border-emerald-400/30 shadow-xl flex items-center justify-center">
-              <svg className="w-8 h-8" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 8 L10 32 L26 20 Z" fill="url(#heroLeadGrad)" />
-                <path d="M16 12 L28 20 L16 28" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <defs>
-                  <linearGradient id="heroLeadGrad" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#007791" />
-                    <stop offset="100%" stopColor="#2bb673" />
-                  </linearGradient>
-                </defs>
-              </svg>
+            <div className="p-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl flex items-center justify-center">
+              <PillarIcon type="lead" className="w-9 h-9" />
             </div>
             <div>
               <span className="inline-block text-[11px] sm:text-xs font-black tracking-widest text-[#2bb673] uppercase bg-emerald-500/15 border border-emerald-500/30 px-3.5 py-1 rounded-full">

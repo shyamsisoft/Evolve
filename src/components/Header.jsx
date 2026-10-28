@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrandLogo } from './BrandLogo';
+import { BrandLogo, PillarIcon } from './BrandLogo';
 import { Menu, X, ChevronDown, Sparkles, Lock, UserCheck, Settings, LogOut } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 
@@ -40,16 +40,8 @@ export const Header = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-3">
           {/* Brand Logo */}
-          <button onClick={onGoHome} className="flex items-center text-left flex-shrink-0">
-            {activePage === 'protect' ? (
-              <img
-                src={imgUrl('/images/evolve_taxation_logo.png')}
-                alt="EVOLVE Taxation & Advisory"
-                className="h-9 sm:h-10 w-auto object-contain"
-              />
-            ) : (
-              <BrandLogo variant="full" />
-            )}
+          <button onClick={onGoHome} className="flex items-center text-left flex-shrink-0 cursor-pointer">
+            <BrandLogo variant={activePage === 'protect' ? 'taxation' : 'full'} />
           </button>
 
           {/* Desktop Navigation - Strictly One Line */}
@@ -115,21 +107,33 @@ export const Header = ({
 
               {whatWeDoOpen && (
                 <div className="absolute top-full left-0 w-72 bg-white rounded-xl shadow-xl border border-gray-100 py-2.5 px-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('lead'); }} className="w-full text-left p-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors">
-                    <div className="text-xs font-bold text-[#061a2e]">LEAD — CFO & FP&A Advisory</div>
-                    <div className="text-[11px] text-gray-500 font-medium">Strategic financial leadership</div>
+                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('lead'); }} className="w-full text-left p-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center gap-3">
+                    <PillarIcon type="lead" className="w-5 h-5 shrink-0" />
+                    <div>
+                      <div className="text-xs font-bold text-[#061a2e]">LEAD — CFO & FP&A Advisory</div>
+                      <div className="text-[11px] text-gray-500 font-medium">Strategic financial leadership</div>
+                    </div>
                   </button>
-                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('build'); }} className="w-full text-left p-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors">
-                    <div className="text-xs font-bold text-[#061a2e]">BUILD — Finance Functions</div>
-                    <div className="text-[11px] text-gray-500 font-medium">Operating models & governance</div>
+                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('build'); }} className="w-full text-left p-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center gap-3">
+                    <PillarIcon type="build" className="w-5 h-5 shrink-0" />
+                    <div>
+                      <div className="text-xs font-bold text-[#061a2e]">BUILD — Finance Functions</div>
+                      <div className="text-[11px] text-gray-500 font-medium">Operating models & governance</div>
+                    </div>
                   </button>
-                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('transform'); }} className="w-full text-left p-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors">
-                    <div className="text-xs font-bold text-[#061a2e]">TRANSFORM — Data & Tech</div>
-                    <div className="text-[11px] text-gray-500 font-medium">Technology & BI analytics</div>
+                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('transform'); }} className="w-full text-left p-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center gap-3">
+                    <PillarIcon type="transform" className="w-5 h-5 shrink-0" />
+                    <div>
+                      <div className="text-xs font-bold text-[#061a2e]">TRANSFORM — Data & Tech</div>
+                      <div className="text-[11px] text-gray-500 font-medium">Technology & BI analytics</div>
+                    </div>
                   </button>
-                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('protect'); }} className="w-full text-left p-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors">
-                    <div className="text-xs font-bold text-[#061a2e]">PROTECT — Tax & Compliance</div>
-                    <div className="text-[11px] text-gray-500 font-medium">Confidence & regulatory defense</div>
+                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('protect'); }} className="w-full text-left p-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center gap-3">
+                    <PillarIcon type="protect" className="w-5 h-5 shrink-0" />
+                    <div>
+                      <div className="text-xs font-bold text-[#061a2e]">PROTECT — Tax & Compliance</div>
+                      <div className="text-[11px] text-gray-500 font-medium">Confidence & regulatory defense</div>
+                    </div>
                   </button>
                 </div>
               )}

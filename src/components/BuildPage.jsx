@@ -322,12 +322,8 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
 
           {/* Brand Pillar Tag: BUILD */}
           <div className="flex items-center space-x-3.5 pt-1">
-            <div className="p-2.5 bg-emerald-500/15 backdrop-blur-md rounded-2xl border border-emerald-400/30 shadow-xl flex items-center justify-center">
-              <svg className="w-8 h-8" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 8 H20 C26 8 26 18 20 18 H10 Z" fill="#007791" />
-                <path d="M10 18 H22 C28 18 28 32 20 32 H10 Z" fill="#2bb673" />
-                <path d="M18 12 L24 18 L18 24" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+            <div className="p-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl flex items-center justify-center">
+              <PillarIcon type="build" className="w-9 h-9" />
             </div>
             <div>
               <span className="inline-block text-[11px] sm:text-xs font-black tracking-widest text-[#2bb673] uppercase bg-emerald-500/15 border border-emerald-500/30 px-3.5 py-1 rounded-full">

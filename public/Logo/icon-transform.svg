@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 116 112">
+  <title>Transform</title>
+  <defs>
+  <linearGradient id="gLeadNavy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B2A47"/><stop offset="1" stop-color="#174E73"/></linearGradient>
+  <linearGradient id="gLeadTeal" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#155C80"/><stop offset="1" stop-color="#1FB0A3"/></linearGradient>
+  <linearGradient id="gBuildLight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#86C98A"/><stop offset="1" stop-color="#5CB073"/></linearGradient>
+  <linearGradient id="gBuildTeal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16A6A0"/><stop offset="1" stop-color="#1F8C7A"/></linearGradient>
+  <linearGradient id="gBuildDark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2D9A76"/><stop offset="1" stop-color="#1E7564"/></linearGradient>
+  <linearGradient id="gTransBlue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14688F"/><stop offset="1" stop-color="#1A9BC9"/></linearGradient>
+  <linearGradient id="gTransGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#178F7C"/><stop offset="1" stop-color="#3AAA74"/></linearGradient>
+  <linearGradient id="gShield" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#72BC6C"/><stop offset="1" stop-color="#3D8F50"/></linearGradient>
+  <mask id="mSwoosh" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="110">
+    <rect width="100" height="110" fill="#fff"/>
+    <path d="M9 83C22 47 50 25 96 18" fill="none" stroke="#000" stroke-width="8"/>
+  </mask>
+  </defs>
+    <path fill="url(#gTransBlue)" d="M0 3c0-2 1-3 3-3h52c3 0 5 1 7 3l45 41-43 41V56l15-13-17-15c-2-2-4-3-6-3H22c-3 0-5-1-7-3L1 6Z"/>
+    <path fill="url(#gTransGreen)" d="M26 33h20c1 0 2 1 2 2v42c0 3-1 5-4 6l-18 8Z"/>
+</svg>
