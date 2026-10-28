@@ -102,90 +102,97 @@ export const LocalGovernmentPage = ({ onBack, onOpenContact, onSelectAudience })
   ];
 
   return (
-    <div className="min-h-screen bg-white text-slate-800 font-['Plus_Jakarta_Sans',sans-serif] selection:bg-[#2bb673] selection:text-white">
+    <div className="pt-20 sm:pt-24 pb-20 bg-[#f8fafc] text-slate-800 font-['Plus_Jakarta_Sans',sans-serif] selection:bg-[#2bb673] selection:text-white animate-in fade-in duration-300">
 
       {/* ======================================================== */}
-      {/* 1. HERO / HEADER SECTION (Strictly source document only) */}
+      {/* 1. HERO SECTION (EXACT DESIGN MATCH)                     */}
       {/* ======================================================== */}
-      <section className="relative pt-32 pb-20 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28 bg-[#061a2e] text-white overflow-hidden">
+      <section className="relative min-h-[64vh] flex items-center bg-[#061a2e] text-white overflow-hidden py-16 sm:py-20 lg:py-24 border-b border-slate-800 font-['Plus_Jakarta_Sans',sans-serif]">
         
-        {/* Background Photo with Dark Tech Gradient Overlay */}
+        {/* Background Artwork with Brand Gradient Overlay */}
         <div className="absolute inset-0 z-0">
           <img
             src={imgUrl("/images/local_government.jpg")}
             alt="Local Government / Councils"
-            className="w-full h-full object-cover object-center scale-105 filter brightness-40 contrast-125"
+            className="w-full h-full object-cover object-center opacity-30 transform scale-105"
             onError={(e) => {
               const fallback = imgUrl("/images/hero_summit.jpg");
               if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback;
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/90 to-[#061a2e]/65" />
-          <div className="absolute inset-0 bg-[radial-gradient(#2bb673_1px,transparent_1px)] [background-size:24px_24px] opacity-25" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/95 to-[#007791]/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-transparent to-[#061a2e]/70"></div>
         </div>
 
-        {/* Ambient Glowing Orbs */}
-        <div className="absolute top-1/4 right-10 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 left-10 w-96 h-96 bg-teal-500/15 rounded-full blur-3xl pointer-events-none" />
+        {/* Ambient Radial Lights */}
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#007791]/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#2bb673]/15 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-6 sm:space-y-7">
           
           {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs font-bold text-slate-300">
-            <button
+          <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs sm:text-sm font-semibold text-slate-300">
+            <button 
               type="button"
-              onClick={onBack}
-              className="inline-flex items-center gap-1.5 hover:text-emerald-400 transition-colors cursor-pointer group"
+              onClick={onBack} 
+              className="inline-flex items-center space-x-1.5 text-emerald-400 hover:text-white transition-colors cursor-pointer"
             >
-              <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+              <ArrowLeft className="w-3.5 h-3.5" />
               <span>Who We Help</span>
             </button>
-            <span className="text-slate-600">/</span>
-            <span className="text-[#2bb673] font-extrabold uppercase tracking-wider">Local Government</span>
+            <span className="text-slate-500">/</span>
+            <span className="text-cyan-300 font-bold">SECTOR</span>
+            <span className="text-slate-500">/</span>
+            <span className="text-white font-bold truncate">Local Government</span>
           </nav>
 
-          <div className="max-w-4xl space-y-6">
-            
-            {/* Audience Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 text-xs font-extrabold tracking-widest uppercase backdrop-blur-md shadow-lg">
-              <Landmark className="w-3.5 h-3.5 text-[#2bb673]" />
-              <span>Audience: Local Government / Councils</span>
+          {/* Sector Badge Tag: LOCAL GOVERNMENT */}
+          <div className="flex items-center space-x-3.5 pt-1">
+            <div className="p-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl flex items-center justify-center">
+              <Landmark className="w-9 h-9 text-emerald-400" />
             </div>
+            <div>
+              <span className="inline-block text-[11px] sm:text-xs font-black tracking-widest text-[#2bb673] uppercase bg-emerald-500/15 border border-emerald-500/30 px-3.5 py-1 rounded-full">
+                SECTOR FOCUS: LOCAL GOVERNMENT
+              </span>
+            </div>
+          </div>
 
-            {/* Main Title */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
+          {/* Main Headline & Value Proposition Narrative */}
+          <div className="space-y-4 max-w-4xl">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.12]">
               Local Government Solutions
             </h1>
-
-            {/* Tagline */}
-            <p className="text-xl sm:text-2xl font-bold text-emerald-300 tracking-tight leading-snug">
+            <p className="text-xl sm:text-2xl text-emerald-400 font-bold tracking-tight">
               Better financial insight for better public outcomes.
             </p>
 
-            {/* Overview Narrative (Directly in Hero) */}
             <div className="pt-1 space-y-3 max-w-3xl text-slate-200 font-['Inter',sans-serif]">
               <p className="text-base sm:text-lg lg:text-xl font-medium leading-relaxed text-slate-100">
                 Councils operate in complex environments where financial sustainability, planning, governance, and service delivery are closely connected. We combine finance, transformation, systems, data, and reporting capability to support councils in achieving better public outcomes.
               </p>
             </div>
+          </div>
 
-            {/* Hero CTA Button */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              <button
-                type="button"
-                onClick={onOpenContact}
-                className="brand-button-gradient text-white text-sm sm:text-base font-extrabold px-8 py-4 rounded-xl shadow-xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer group"
-              >
-                <span>Discuss Your Council's Finance Challenge</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
+          {/* Immediate Call to Action Button */}
+          <div className="pt-2 flex flex-wrap items-center gap-4">
+            <button
+              type="button"
+              onClick={onOpenContact}
+              className="brand-button-gradient text-white text-sm sm:text-base font-extrabold px-8 py-4 rounded-full flex items-center space-x-3 shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer group"
+            >
+              <span>Discuss Your Council's Finance Challenge</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
 
+            <span className="text-xs sm:text-sm text-slate-300 font-medium flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              LTFP, Systems Modernisation &amp; Council Finance Architecture
+            </span>
           </div>
 
         </div>
       </section>
-
 
       {/* ======================================================== */}
       {/* 2. KEY SOLUTIONS (Exact 7 Items from Document)            */}

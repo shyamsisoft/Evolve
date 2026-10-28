@@ -133,40 +133,91 @@ export const WhatWeDoOverviewPage = ({ onSelectService, onBack, onOpenContact })
   ];
 
   return (
-    <div className="pt-24 pb-20 bg-[#f7f9fc] animate-in fade-in duration-300">
+    <div className="pt-20 sm:pt-24 pb-20 bg-[#f8fafc] text-slate-800 animate-in fade-in duration-300 font-['Plus_Jakarta_Sans',sans-serif]">
       
-      {/* 1. HERO BANNER */}
-      <section className="relative bg-[#061a2e] text-white py-20 overflow-hidden border-b border-slate-800">
-        <div className="absolute inset-0 opacity-25">
-          <img src={imgUrl('/images/hero_summit.jpg')} alt="What We Do Overview" className="w-full h-full object-cover" />
+      {/* ======================================================== */}
+      {/* 1. HERO SECTION (EXACT DESIGN MATCH WITH ALL PILLARS)    */}
+      {/* ======================================================== */}
+      <section className="relative min-h-[64vh] flex items-center bg-[#061a2e] text-white overflow-hidden py-16 sm:py-20 lg:py-24 border-b border-slate-800">
+        
+        {/* Background Artwork with Brand Gradient Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={imgUrl("/images/hero_summit.jpg")}
+            alt="What We Do Overview"
+            className="w-full h-full object-cover object-center opacity-30 transform scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/95 to-[#007791]/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-transparent to-[#061a2e]/70"></div>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/92 to-[#007791]/50"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <div className="flex items-center space-x-3 text-xs sm:text-sm font-bold text-gray-300">
-            <button
-              onClick={onBack}
-              className="inline-flex items-center space-x-1.5 text-emerald-400 hover:text-white transition-colors"
+        {/* Ambient Radial Lights */}
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#007791]/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#2bb673]/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-6 sm:space-y-7">
+          
+          {/* Breadcrumb Navigation */}
+          <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs sm:text-sm font-semibold text-slate-300">
+            <button 
+              type="button"
+              onClick={onBack} 
+              className="inline-flex items-center space-x-1.5 text-emerald-400 hover:text-white transition-colors cursor-pointer"
             >
-              <ArrowLeft className="w-4 h-4" />
+              <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Home</span>
             </button>
-            <span className="text-slate-600">/</span>
-            <span className="text-white">What We Do Overview</span>
+            <span className="text-slate-500">/</span>
+            <span className="text-cyan-300 font-bold">SERVICES</span>
+            <span className="text-slate-500">/</span>
+            <span className="text-white font-bold truncate">What We Do Overview</span>
+          </nav>
+
+          {/* Brand Pillar Tag: OVERVIEW */}
+          <div className="flex items-center space-x-3.5 pt-1">
+            <div className="p-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl flex items-center justify-center">
+              <Layers className="w-9 h-9 text-emerald-400" />
+            </div>
+            <div>
+              <span className="inline-block text-[11px] sm:text-xs font-black tracking-widest text-[#2bb673] uppercase bg-emerald-500/15 border border-emerald-500/30 px-3.5 py-1 rounded-full">
+                FOUR INTEGRATED SERVICE PILLARS
+              </span>
+            </div>
           </div>
 
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1 bg-white/10 backdrop-blur-md rounded-full text-xs font-black uppercase tracking-widest text-[#2bb673]">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Four Integrated Pillars</span>
+          {/* Main Headline & Value Proposition Narrative */}
+          <div className="space-y-4 max-w-4xl">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.12]">
+              What We Do
+            </h1>
+            <p className="text-xl sm:text-2xl text-emerald-400 font-bold tracking-tight">
+              One focus — your success.
+            </p>
+
+            <div className="pt-1 space-y-3 max-w-3xl text-slate-200 font-['Inter',sans-serif]">
+              <p className="text-base sm:text-lg lg:text-xl font-medium leading-relaxed text-slate-100">
+                We bring together CFO advisory, finance function capability, technology transformation, and compliance protection to help organisations navigate growth.
+              </p>
+            </div>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white max-w-4xl leading-tight">
-            What We Do — Four Integrated Service Pillars
-          </h1>
+          {/* Immediate Call to Action Button */}
+          <div className="pt-2 flex flex-wrap items-center gap-4">
+            <button
+              type="button"
+              onClick={onOpenContact}
+              className="brand-button-gradient text-white text-sm sm:text-base font-extrabold px-8 py-4 rounded-full flex items-center space-x-3 shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer group"
+            >
+              <span>Start a Conversation</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
 
-          <p className="text-lg sm:text-xl text-gray-200 font-medium max-w-3xl leading-relaxed">
-            One focus — your success. We bring together CFO advisory, finance function capability, technology transformation, and compliance protection to help organisations navigate growth.
-          </p>
+            <span className="text-xs sm:text-sm text-slate-300 font-medium flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              Four Connected Disciplines for Sustainable Growth
+            </span>
+          </div>
+
         </div>
       </section>
 

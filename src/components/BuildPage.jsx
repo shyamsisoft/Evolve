@@ -361,6 +361,11 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
               <span>Request a Finance Health Check</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
+
+            <span className="text-xs sm:text-sm text-slate-300 font-medium flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              Target Operating Model &amp; Capability Engagements
+            </span>
           </div>
 
         </div>
