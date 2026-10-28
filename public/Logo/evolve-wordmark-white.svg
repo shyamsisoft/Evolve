@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="218 168 1101 210">
+  <title>Evolve</title>
+  <defs>
+  <linearGradient id="gBlue" x1="390" y1="215" x2="500" y2="365" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#0A7FA8"/><stop offset="0.55" stop-color="#0B6A92"/><stop offset="1" stop-color="#123E68"/>
+  </linearGradient>
+  <linearGradient id="gGreen" x1="500" y1="345" x2="608" y2="180" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#0A6B63"/><stop offset="0.45" stop-color="#2E9871"/><stop offset="1" stop-color="#6DBB6E"/>
+  </linearGradient>
+  <linearGradient id="gFold" x1="490" y1="330" x2="525" y2="350" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#0C5C5E"/><stop offset="1" stop-color="#18B0A6"/>
+  </linearGradient>
+  </defs>
+  <g fill="#ffffff">
+    <rect x="228" y="213" width="131" height="22"/><rect x="228" y="274" width="131" height="23"/><rect x="228" y="339" width="131" height="22"/>
+    <path fill-rule="evenodd" d="M706.5 205a92.5 81.5 0 1 0 0.01 0Zm0 23.5a60.5 58.5 0 1 1-0.01 0Z"/>
+    <path d="M838 213h26v126h103v22H838Z"/>
+    <path d="M959 213h31l64 118 64-118h31l-82 150h-26Z"/>
+    <rect x="1179" y="213" width="130" height="22"/><rect x="1179" y="274" width="130" height="23"/><rect x="1179" y="339" width="130" height="22"/>
+  </g>
+  <path fill="url(#gBlue)" d="M387 213h22c15 0 26 7 33 19L500 333l27 10c-8 14-20 21-34 21s-25-6-31-14Z"/>
+  <path fill="url(#gGreen)" d="M486 330L560.7 213h-16L608 178v65l-11-11L523 345c-13 7-29 1-37-15Z"/>
+  <path fill="url(#gFold)" d="M489 336c9 13 23 17 34 9l4-2c-10 13-26 15-38-7Z"/>
+</svg>
