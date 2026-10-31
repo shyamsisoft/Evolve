@@ -35,6 +35,8 @@ import {
   TrendingDown
 } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
+import { CapabilityNavigatorSection } from './CapabilityNavigatorSection';
+import { LeadHero } from './LeadHero';
 
 export const CFOAdvisoryPage = ({ onBack, onOpenContact, onSelectService }) => {
   const [activeTelemetryTab, setActiveTelemetryTab] = useState(0);
@@ -248,92 +250,8 @@ export const CFOAdvisoryPage = ({ onBack, onOpenContact, onSelectService }) => {
   return (
     <div className="pt-20 sm:pt-24 pb-20 bg-[#f8fafc] text-slate-800 animate-in fade-in duration-300">
       
-      {/* 1. HERO SECTION */}
-      <section className="relative min-h-[64vh] flex items-center bg-[#061a2e] text-white overflow-hidden py-16 sm:py-20 lg:py-24 border-b border-slate-800">
-        
-        {/* Background Artwork with Brand Gradient Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src={imgUrl("/images/cfo_advisory.jpg")}
-            alt="CFO & FP&A Advisory"
-            className="w-full h-full object-cover object-center opacity-30 transform scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/95 to-[#007791]/40"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-transparent to-[#061a2e]/70"></div>
-        </div>
-
-        {/* Ambient Radial Lights */}
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#007791]/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#2bb673]/15 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-6 sm:space-y-7">
-          
-          {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs sm:text-sm font-semibold text-slate-300">
-            <button 
-              type="button"
-              onClick={onBack} 
-              className="inline-flex items-center space-x-1.5 text-emerald-400 hover:text-white transition-colors cursor-pointer"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>What We Do</span>
-            </button>
-            <span className="text-slate-500">/</span>
-            <span className="text-cyan-300">LEAD</span>
-            <span className="text-slate-500">/</span>
-            <span className="text-white font-bold truncate">CFO &amp; FP&amp;A Advisory</span>
-          </nav>
-
-          {/* Brand Pillar Tag: LEAD */}
-          <div className="flex items-center space-x-3.5 pt-1">
-            <div className="p-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl flex items-center justify-center">
-              <PillarIcon type="lead" className="w-9 h-9" />
-            </div>
-            <div>
-              <span className="inline-block text-[11px] sm:text-xs font-black tracking-widest text-[#2bb673] uppercase bg-emerald-500/15 border border-emerald-500/30 px-3.5 py-1 rounded-full">
-                BRAND PILLAR: LEAD
-              </span>
-            </div>
-          </div>
-
-          {/* Main Headline & Value Proposition Narrative */}
-          <div className="space-y-4 max-w-4xl">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.12]">
-              CFO &amp; FP&amp;A Advisory
-            </h1>
-            <p className="text-xl sm:text-2xl text-emerald-400 font-bold tracking-tight">
-              Financial leadership when you need it.
-            </p>
-
-            <div className="pt-1 space-y-3 max-w-3xl text-slate-200">
-              <p className="text-base sm:text-lg lg:text-xl font-medium leading-relaxed text-slate-100">
-                Organisations don't always need another accountant. Sometimes they need someone who can step back from the numbers, understand the bigger picture and help leadership make better decisions.
-              </p>
-              <p className="text-sm sm:text-base font-normal leading-relaxed text-slate-300">
-                We provide CFO and FP&amp;A capability for organisations that need greater financial clarity, stronger planning or additional senior finance expertise.
-              </p>
-            </div>
-          </div>
-
-          {/* Immediate Call to Action Button */}
-          <div className="pt-2 flex flex-wrap items-center gap-4">
-            <button
-              type="button"
-              onClick={onOpenContact}
-              className="brand-button-gradient text-white text-sm sm:text-base font-extrabold px-8 py-4 rounded-full flex items-center space-x-3 shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer group"
-            >
-              <span>Start a CFO Conversation</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-
-            <span className="text-xs sm:text-sm text-slate-300 font-medium flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              Tailored Executive &amp; Fractional Leadership Engagements
-            </span>
-          </div>
-
-        </div>
-      </section>
+      {/* 1. HERO SECTION (EXECUTIVE B2B HERO) */}
+      <LeadHero onBack={onBack} onOpenContact={onOpenContact} />
 
 
       {/* 2. "BEYOND REPORTING THE NUMBERS" SECTION (Left: Content & Questions, Right: Executive Images) */}
@@ -1007,133 +925,13 @@ export const CFOAdvisoryPage = ({ onBack, onOpenContact, onSelectService }) => {
       </section>
 
 
-      {/* 7. HIGH-CONTRAST FOOTER CALL TO ACTION BANNER */}
-      <section className="py-20 bg-gradient-to-br from-[#061a2e] via-[#092644] to-[#041220] text-white relative overflow-hidden border-t border-slate-800">
-        
-        {/* Glow Spheres */}
-        <div className="absolute top-0 right-10 w-96 h-96 bg-[#007791]/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-0 left-10 w-96 h-96 bg-[#2bb673]/15 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-7">
-          
-          <div className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-[#2bb673] bg-emerald-500/10 border border-emerald-500/30 px-4 py-1.5 rounded-full">
-            <Sparkles className="w-3.5 h-3.5 text-[#2bb673]" />
-            <span>EXECUTIVE ADVISORY APPOINTMENTS</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
-            Start a CFO Conversation
-          </h2>
-
-          <p className="text-base sm:text-lg text-slate-300 font-normal max-w-2xl mx-auto leading-relaxed">
-            Whether you need strategic financial leadership, fractional CFO support, or enhanced FP&amp;A capabilities, let's discuss how we can partner with your leadership team.
-          </p>
-
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              type="button"
-              onClick={onOpenContact}
-              className="w-full sm:w-auto brand-button-gradient text-white text-base font-extrabold px-9 py-4 rounded-full flex items-center justify-center space-x-2.5 shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer group"
-            >
-              <span>Start a Conversation</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-
-            <button
-              type="button"
-              onClick={onBack}
-              className="w-full sm:w-auto text-xs sm:text-sm font-bold text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-slate-700 px-6 py-4 rounded-full transition-all cursor-pointer"
-            >
-              Explore All Service Pillars
-            </button>
-          </div>
-
-          <div className="pt-4 flex items-center justify-center gap-6 text-xs text-slate-400 font-medium">
-            <span className="flex items-center gap-1.5">
-              <Check className="w-4 h-4 text-emerald-400" />
-              Confidential Discussion
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Check className="w-4 h-4 text-emerald-400" />
-              Direct Senior Advisor Access
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Check className="w-4 h-4 text-emerald-400" />
-              No Obligation
-            </span>
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* 7. PILLAR SWITCHER BAR (Capability Navigator) */}
-      <section className="py-16 bg-[#041220] text-white border-t border-slate-800/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          
-          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between border-b border-slate-800 pb-5 gap-4">
-            <div>
-              <div className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-[#2bb673] mb-1">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Capability Navigator</span>
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-black text-white">Explore Other Capability Pillars</h3>
-            </div>
-            
-            <button
-              type="button"
-              onClick={onBack}
-              className="inline-flex items-center space-x-2 text-xs font-extrabold text-[#2bb673] hover:text-white bg-white/5 hover:bg-white/10 border border-slate-700 px-4 py-2.5 rounded-full transition-all cursor-pointer"
-            >
-              <span>View What We Do Overview</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              { id: 'lead', title: 'LEAD', desc: 'CFO & FP&A Advisory', tag: 'Strategic Leadership' },
-              { id: 'build', title: 'BUILD', desc: 'Operating Models', tag: 'Scalable Systems' },
-              { id: 'transform', title: 'TRANSFORM', desc: 'Data & Tech', tag: 'BI & Automation' },
-              { id: 'protect', title: 'PROTECT', desc: 'Tax & Compliance', tag: 'Governance Defense' }
-            ].map((p) => {
-              const isActive = p.id === 'lead';
-              return (
-                <button
-                  key={p.id}
-                  type="button"
-                  onClick={() => onSelectService(p.id)}
-                  className={`p-6 rounded-2xl border text-left transition-all duration-300 relative group overflow-hidden cursor-pointer ${
-                    isActive
-                      ? 'border-[#2bb673] bg-[#0a2644] shadow-xl shadow-emerald-500/10 scale-[1.02]'
-                      : 'border-slate-800 bg-[#081d33] hover:bg-[#0c2e52] hover:border-[#2bb673]/60 hover:-translate-y-1'
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="p-2.5 bg-white/10 rounded-xl backdrop-blur-md">
-                      <PillarIcon type={p.id} className="w-6 h-6 text-[#2bb673]" />
-                    </div>
-                    {isActive ? (
-                      <span className="px-2.5 py-1 bg-[#2bb673] text-white text-[10px] font-black uppercase tracking-wider rounded-full flex items-center space-x-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
-                        <span>Current</span>
-                      </span>
-                    ) : (
-                      <span className="text-[10px] font-bold text-slate-400 group-hover:text-emerald-400 transition-colors">
-                        Explore →
-                      </span>
-                    )}
-                  </div>
-                  <span className="text-xs font-black text-[#2bb673] uppercase tracking-wider block mb-1">{p.tag}</span>
-                  <h4 className="text-lg font-black text-white block mb-1 group-hover:text-emerald-300 transition-colors">{p.title}</h4>
-                  <p className="text-xs text-slate-300 font-medium">{p.desc}</p>
-                </button>
-              );
-            })}
-          </div>
-
-        </div>
-      </section>
+      {/* 7. PRE-FOOTER CALL TO ACTION & CAPABILITY NAVIGATOR */}
+      <CapabilityNavigatorSection
+        currentPillar="lead"
+        onOpenContact={onOpenContact}
+        onSelectService={onSelectService}
+        onBack={onBack}
+      />
 
     </div>
   );

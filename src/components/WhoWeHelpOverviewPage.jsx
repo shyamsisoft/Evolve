@@ -102,7 +102,7 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
               <span>Back to Home</span>
             </button>
             <span className="text-slate-500">/</span>
-            <span className="text-cyan-300 font-bold">SECTORS</span>
+            <span className="text-cyan-300 font-bold">WHO WE HELP</span>
             <span className="text-slate-500">/</span>
             <span className="text-white font-bold truncate">Who We Help Overview</span>
           </nav>

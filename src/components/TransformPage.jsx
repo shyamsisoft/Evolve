@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ArrowRight, 
   ArrowLeft, 
@@ -20,420 +20,235 @@ import {
   Shuffle,
   ShieldAlert,
   Network,
-  PieChart
+  PieChart,
+  CheckCircle2,
+  SlidersHorizontal,
+  Layers3
 } from 'lucide-react';
 import { PillarIcon } from './BrandLogo';
 import { imgUrl } from '../utils/imgUrl';
+import { CapabilityNavigatorSection } from './CapabilityNavigatorSection';
+import { TransformHero } from './TransformHero';
+import FinanceTransformationServicesGrid from './FinanceTransformationServicesGrid';
 
 export const TransformPage = ({ onBack, onOpenContact, onSelectService }) => {
+  const [selectedTriggers, setSelectedTriggers] = useState(new Set([0, 1]));
+  const [activePipelineStage, setActivePipelineStage] = useState(0);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // 1. Finance Transformation Services (9 Exact items from Source of Truth)
-  const transformationServices = [
-    {
-      num: "01",
-      title: "Transformation strategy",
-      icon: <Target className="w-5 h-5" />
-    },
-    {
-      num: "02",
-      title: "Current-state assessment",
-      icon: <Activity className="w-5 h-5" />
-    },
-    {
-      num: "03",
-      title: "Future-state design",
-      icon: <Sparkles className="w-5 h-5" />
-    },
-    {
-      num: "04",
-      title: "Process redesign",
-      icon: <Workflow className="w-5 h-5" />
-    },
-    {
-      num: "05",
-      title: "ERP implementation and optimisation",
-      icon: <Server className="w-5 h-5" />
-    },
-    {
-      num: "06",
-      title: "Automation",
-      icon: <Zap className="w-5 h-5" />
-    },
-    {
-      num: "07",
-      title: "Reporting transformation",
-      icon: <BarChart3 className="w-5 h-5" />
-    },
-    {
-      num: "08",
-      title: "Finance capability uplift",
-      icon: <TrendingUp className="w-5 h-5" />
-    },
-    {
-      num: "09",
-      title: "Transformation program support",
-      icon: <Layers className="w-5 h-5" />
-    }
-  ];
+  const toggleTrigger = (index) => {
+    setSelectedTriggers(prev => {
+      const next = new Set(prev);
+      if (next.has(index)) {
+        next.delete(index);
+      } else {
+        next.add(index);
+      }
+      return next;
+    });
+  };
 
-  // 2. Data Integration items (Exact words from source of truth)
+  // 2. Data Integration Items (8 Exact words from Source of Truth)
   const dataIntegrationItems = [
-    "Data mapping",
-    "migration",
-    "data structures",
-    "data models",
-    "Chart of Accounts",
-    "system integration",
-    "data quality",
-    "reporting datasets"
+    { title: "Data mapping", icon: <Network className="w-4 h-4 text-cyan-600" /> },
+    { title: "Migration", icon: <Zap className="w-4 h-4 text-teal-600" /> },
+    { title: "Data structures", icon: <Layers3 className="w-4 h-4 text-cyan-600" /> },
+    { title: "Data models", icon: <Database className="w-4 h-4 text-teal-600" /> },
+    { title: "Chart of Accounts", icon: <SlidersHorizontal className="w-4 h-4 text-cyan-600" /> },
+    { title: "System integration", icon: <Server className="w-4 h-4 text-teal-600" /> },
+    { title: "Data quality", icon: <CheckCircle2 className="w-4 h-4 text-cyan-600" /> },
+    { title: "Reporting datasets", icon: <BarChart3 className="w-4 h-4 text-teal-600" /> }
   ];
 
-  // 3. Reporting Architecture Pipeline (5 Stages from Source of Truth)
+  // 3. Reporting Architecture Flow (5 Exact Stages from Source of Truth)
   const reportingArchitectureFlow = [
-    {
-      num: "01",
-      name: "Source systems",
-      icon: <Server className="w-5 h-5" />
-    },
-    {
-      num: "02",
-      name: "Data",
-      icon: <Database className="w-5 h-5" />
-    },
-    {
-      num: "03",
-      name: "Reporting models",
-      icon: <Workflow className="w-5 h-5" />
-    },
-    {
-      num: "04",
-      name: "Dashboards",
-      icon: <BarChart3 className="w-5 h-5" />
-    },
-    {
-      num: "05",
-      name: "Management insight",
-      icon: <TrendingUp className="w-5 h-5" />
-    }
+    { num: "01", name: "Source systems", icon: <Server className="w-6 h-6 stroke-[2.2]" /> },
+    { num: "02", name: "Data", icon: <Database className="w-6 h-6 stroke-[2.2]" /> },
+    { num: "03", name: "Reporting models", icon: <Workflow className="w-6 h-6 stroke-[2.2]" /> },
+    { num: "04", name: "Dashboards", icon: <BarChart3 className="w-6 h-6 stroke-[2.2]" /> },
+    { num: "05", name: "Management insight", icon: <TrendingUp className="w-6 h-6 stroke-[2.2]" /> }
   ];
 
-  // 4. TechnologyOne items (Exact words from source of truth)
+  // 4. TechnologyOne items (6 Exact items from Source of Truth)
   const technologyOneItems = [
     "System optimisation",
-    "process redesign",
-    "configuration review",
-    "reporting",
-    "data integration",
-    "transformation support"
+    "Process redesign",
+    "Configuration review",
+    "Reporting",
+    "Data integration",
+    "Transformation support"
   ];
 
   // 5. When Transformation Makes Sense (9 Exact triggers from source of truth)
   const transformationTriggers = [
-    {
-      num: "01",
-      text: "Finance relies heavily on spreadsheets.",
-      icon: <FileSpreadsheet className="w-5 h-5 text-amber-500" />
-    },
-    {
-      num: "02",
-      text: "Reporting is highly manual.",
-      icon: <Clock className="w-5 h-5 text-amber-600" />
-    },
-    {
-      num: "03",
-      text: "Your ERP is not delivering expected benefits.",
-      icon: <AlertCircle className="w-5 h-5 text-rose-500" />
-    },
-    {
-      num: "04",
-      text: "Different systems produce inconsistent information.",
-      icon: <Shuffle className="w-5 h-5 text-indigo-500" />
-    },
-    {
-      num: "05",
-      text: "Data is difficult to reconcile.",
-      icon: <ShieldAlert className="w-5 h-5 text-teal-600" />
-    },
-    {
-      num: "06",
-      text: "Management lacks timely insight.",
-      icon: <TrendingUp className="w-5 h-5 text-sky-500" />
-    },
-    {
-      num: "07",
-      text: "Processes haven't kept pace with organizational growth.",
-      icon: <Network className="w-5 h-5 text-purple-500" />
-    },
-    {
-      num: "08",
-      text: "You are implementing a new ERP.",
-      icon: <Server className="w-5 h-5 text-cyan-600" />
-    },
-    {
-      num: "09",
-      text: "Your finance team spends too much time processing and too little time analysing.",
-      icon: <PieChart className="w-5 h-5 text-emerald-600" />
-    }
+    { num: "01", text: "Finance relies heavily on spreadsheets.", icon: <FileSpreadsheet className="w-5 h-5 text-amber-500 stroke-[2.2]" /> },
+    { num: "02", text: "Reporting is highly manual.", icon: <Clock className="w-5 h-5 text-amber-600 stroke-[2.2]" /> },
+    { num: "03", text: "Your ERP is not delivering expected benefits.", icon: <AlertCircle className="w-5 h-5 text-rose-500 stroke-[2.2]" /> },
+    { num: "04", text: "Different systems produce inconsistent information.", icon: <Shuffle className="w-5 h-5 text-indigo-500 stroke-[2.2]" /> },
+    { num: "05", text: "Data is difficult to reconcile.", icon: <ShieldAlert className="w-5 h-5 text-teal-600 stroke-[2.2]" /> },
+    { num: "06", text: "Management lacks timely insight.", icon: <TrendingUp className="w-5 h-5 text-sky-500 stroke-[2.2]" /> },
+    { num: "07", text: "Processes haven't kept pace with organizational growth.", icon: <Network className="w-5 h-5 text-purple-500 stroke-[2.2]" /> },
+    { num: "08", text: "You are implementing a new ERP.", icon: <Server className="w-5 h-5 text-cyan-600 stroke-[2.2]" /> },
+    { num: "09", text: "Your finance team spends too much time processing and too little time analysing.", icon: <PieChart className="w-5 h-5 text-emerald-600 stroke-[2.2]" /> }
+  ];
+
+  const capabilityPillars = [
+    { id: 'lead', name: 'LEAD', title: 'CFO & FP&A Advisory', desc: 'Financial leadership and performance insight.', icon: 'lead' },
+    { id: 'build', name: 'BUILD', title: 'Finance Functions & Operating Models', desc: 'Process blueprints, internal controls and capability.', icon: 'build' },
+    { id: 'protect', name: 'PROTECT', title: 'Tax & Compliance', desc: 'Statutory compliance and risk defense.', icon: 'protect' }
   ];
 
   return (
     <div className="pt-20 sm:pt-24 pb-20 bg-[#f8fafc] text-slate-800 font-['Plus_Jakarta_Sans',sans-serif] selection:bg-[#007791] selection:text-white animate-in fade-in duration-300">
 
-      {/* ======================================================== */}
-      {/* 1. HERO SECTION (EXACT DESIGN MATCH WITH LEAD & BUILD)   */}
-      {/* ======================================================== */}
-      <section className="relative min-h-[64vh] flex items-center bg-[#061a2e] text-white overflow-hidden py-16 sm:py-20 lg:py-24 border-b border-slate-800 font-['Plus_Jakarta_Sans',sans-serif]">
-        
-        {/* Background Artwork with Brand Gradient Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src={imgUrl("/images/finance_transform.jpg")}
-            alt="Finance Transformation, Data & Technology"
-            className="w-full h-full object-cover object-center opacity-30 transform scale-105"
-            onError={(e) => {
-              const fallback = imgUrl("/images/hero_summit.jpg");
-              if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback;
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/95 to-[#007791]/40"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-transparent to-[#061a2e]/70"></div>
-        </div>
+      {/* 1. HERO SECTION (HIGH-IMPACT B2B SAAS / CONSULTING HERO) */}
+      <TransformHero onBack={onBack} onOpenContact={onOpenContact} />
 
-        {/* Ambient Radial Lights */}
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#007791]/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#2bb673]/15 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-6 sm:space-y-7">
-          
-          {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs sm:text-sm font-semibold text-slate-300">
-            <button 
-              type="button"
-              onClick={onBack} 
-              className="inline-flex items-center space-x-1.5 text-emerald-400 hover:text-white transition-colors cursor-pointer"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>What We Do</span>
-            </button>
-            <span className="text-slate-500">/</span>
-            <span className="text-cyan-300 font-bold">TRANSFORM</span>
-            <span className="text-slate-500">/</span>
-            <span className="text-white font-bold truncate">Finance Transformation, Data &amp; Technology</span>
-          </nav>
-
-          {/* Brand Pillar Tag: TRANSFORM */}
-          <div className="flex items-center space-x-3.5 pt-1">
-            <div className="p-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl flex items-center justify-center">
-              <PillarIcon type="transform" className="w-9 h-9" />
-            </div>
-            <div>
-              <span className="inline-block text-[11px] sm:text-xs font-black tracking-widest text-[#2bb673] uppercase bg-emerald-500/15 border border-emerald-500/30 px-3.5 py-1 rounded-full">
-                BRAND PILLAR: TRANSFORM
-              </span>
-            </div>
-          </div>
-
-          {/* Main Headline & Value Proposition Narrative */}
-          <div className="space-y-4 max-w-4xl">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.12]">
-              Finance Transformation, Data &amp; Technology
-            </h1>
-            <p className="text-xl sm:text-2xl text-emerald-400 font-bold tracking-tight">
-              Connect people, process, technology and data.
-            </p>
-
-            <div className="pt-1 space-y-3 max-w-3xl text-slate-200 font-['Inter',sans-serif]">
-              <p className="text-base sm:text-lg lg:text-xl font-medium leading-relaxed text-slate-100">
-                Technology alone does not transform finance. Transformation succeeds when systems, processes, data and people work together to create measurable improvement.
-              </p>
-              <p className="text-sm sm:text-base font-normal leading-relaxed text-slate-300">
-                Technology should make finance better — simpler, faster, more reliable, and more insightful.
-              </p>
-            </div>
-          </div>
-
-          {/* Immediate Call to Action Button */}
-          <div className="pt-2 flex flex-wrap items-center gap-4">
-            <button
-              type="button"
-              onClick={onOpenContact}
-              className="brand-button-gradient text-white text-sm sm:text-base font-extrabold px-8 py-4 rounded-full flex items-center space-x-3 shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer group"
-            >
-              <span>Discuss a Transformation Requirement</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-
-            <span className="text-xs sm:text-sm text-slate-300 font-medium flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              ERP, Analytics &amp; Modern Finance Architecture
-            </span>
-          </div>
-
-        </div>
-      </section>
 
       {/* ======================================================== */}
-      {/* 2. FINANCE TRANSFORMATION SERVICES                       */}
+      {/* 2. FINANCE TRANSFORMATION SERVICES (3x3 SERVICES GRID)     */}
       {/* ======================================================== */}
-      <section className="py-20 sm:py-24 bg-white border-b border-slate-200/80 relative overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          
-          <div className="max-w-3xl space-y-3">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
-              Finance Transformation Services
-            </h2>
-            
-            <p className="text-base sm:text-lg text-slate-600 font-semibold leading-relaxed">
-              We support organisations with:
-            </p>
-          </div>
-
-          {/* 3x3 Service Cards Grid (Exact 9 Services from Document) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {transformationServices.map((service, idx) => (
-              <div 
-                key={idx}
-                className="p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-[#007791] shadow-sm hover:shadow-xl transition-all duration-300 flex items-start gap-4 group"
-              >
-                <div className="w-11 h-11 rounded-xl bg-teal-50 border border-teal-200 text-[#007791] flex items-center justify-center group-hover:bg-[#061a2e] group-hover:text-cyan-400 group-hover:scale-110 transition-all duration-300 shrink-0 shadow-2xs">
-                  {service.icon}
-                </div>
-
-                <div className="space-y-1">
-                  <span className="font-mono text-xs font-bold text-slate-400">
-                    {service.num}
-                  </span>
-                  <h3 className="text-base sm:text-lg font-black text-[#061a2e] group-hover:text-[#007791] transition-colors leading-snug">
-                    {service.title}
-                  </h3>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
+      <FinanceTransformationServicesGrid />
 
       {/* ======================================================== */}
       {/* 3. FINANCE DATA INTEGRATION & ARCHITECTURE               */}
       {/* ======================================================== */}
-      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200/80 relative overflow-hidden">
+      <section className="py-20 sm:py-24 bg-gradient-to-b from-[#f8fafc] via-[#f1f5f9] to-[#f8fafc] border-b border-slate-200/80 relative overflow-hidden">
+        {/* Soft Ambient Radial Lights */}
+        <div className="absolute top-10 left-10 w-96 h-96 bg-[#007791]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#2bb673]/5 rounded-full blur-3xl pointer-events-none" />
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
+          {/* Section Header */}
           <div className="max-w-3xl space-y-3">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
               Finance Data Integration &amp; Architecture
             </h2>
-            
             <p className="text-base sm:text-lg text-slate-600 font-semibold leading-relaxed">
               Reliable reporting starts with reliable data.
             </p>
           </div>
 
-          <div className="space-y-8">
+          {/* Part A: Reporting Architecture Flow */}
+          <div className="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-slate-200/90 shadow-sm space-y-8">
             
-            {/* Data Integration */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-slate-200/90 shadow-sm space-y-6">
+            <div className="border-b border-slate-100 pb-5 space-y-1">
               <h3 className="text-2xl font-black text-[#061a2e] tracking-tight">
-                Data Integration
+                Reporting Architecture
               </h3>
+              <p className="text-sm sm:text-base font-semibold text-slate-600">
+                Design reporting environments connecting:
+              </p>
+            </div>
 
-              {/* Exact Data Integration Items */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {dataIntegrationItems.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-indigo-400 hover:bg-indigo-50/30 transition-all flex items-center gap-2.5 group"
-                  >
-                    <span className="w-2 h-2 rounded-full bg-[#007791] group-hover:scale-125 transition-transform shrink-0" />
-                    <span className="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-[#061a2e] transition-colors">
-                      {item}
-                    </span>
+            {/* 5-Stage Connected Pipeline (Exact 5 Stages from Source of Truth) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 relative">
+              {reportingArchitectureFlow.map((stage, idx) => {
+                const isActive = activePipelineStage === idx;
+                const isLast = idx === reportingArchitectureFlow.length - 1;
+                return (
+                  <div key={idx} className="relative flex flex-col justify-between">
+                    <button
+                      type="button"
+                      onClick={() => setActivePipelineStage(idx)}
+                      className={`w-full p-5 sm:p-6 rounded-2xl border text-center transition-all duration-300 cursor-pointer flex flex-col justify-between items-center h-full group ${
+                        isActive
+                          ? 'bg-[#061a2e] text-white border-[#061a2e] shadow-xl scale-[1.03]'
+                          : 'bg-slate-50/90 text-slate-800 border-slate-200/90 hover:border-[#007791] hover:bg-white hover:shadow-md'
+                      }`}
+                    >
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 shadow-2xs ${
+                        isActive 
+                          ? 'bg-cyan-500 text-white scale-110 shadow-lg shadow-cyan-500/30' 
+                          : 'bg-white border border-slate-200 text-[#007791] group-hover:bg-[#061a2e] group-hover:text-cyan-300'
+                      }`}>
+                        {stage.icon}
+                      </div>
+
+                      <div className="space-y-1.5 pt-3">
+                        <span className={`font-mono text-xs font-bold block ${
+                          isActive ? 'text-cyan-300' : 'text-slate-400'
+                        }`}>
+                          {stage.num}
+                        </span>
+                        <h4 className={`text-base font-black leading-snug ${
+                          isActive ? 'text-white' : 'text-[#061a2e] group-hover:text-[#007791]'
+                        }`}>
+                          {stage.name}
+                        </h4>
+                      </div>
+                    </button>
+
+                    {/* Connecting Chevron (Desktop only) */}
+                    {!isLast && (
+                      <div className="hidden lg:flex absolute top-1/2 -right-3 -translate-y-1/2 z-20 pointer-events-none">
+                        <div className="w-6 h-6 rounded-full bg-white border border-slate-300 shadow-sm flex items-center justify-center text-[#007791]">
+                          <ChevronRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                        </div>
+                      </div>
+                    )}
                   </div>
-                ))}
+                );
+              })}
+            </div>
+
+          </div>
+
+          {/* Part B: Data Integration Split with Image */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            
+            {/* Left: High-Tech Analytics Visual Card */}
+            <div className="lg:col-span-5 relative rounded-3xl overflow-hidden border border-slate-200/90 shadow-xl flex flex-col justify-end min-h-[380px] group">
+              <div className="absolute inset-0 z-0">
+                <img
+                  src={imgUrl("/images/step_insight.jpg")}
+                  alt="Data Integration"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/65 to-transparent"></div>
+              </div>
+
+              <div className="relative z-10 p-6 sm:p-8">
+                <div className="p-6 rounded-2xl bg-[#061a2e]/90 backdrop-blur-md border border-white/15 text-white space-y-2 shadow-2xl">
+                  <h3 className="text-xl sm:text-2xl font-black text-white leading-snug">
+                    Data Integration
+                  </h3>
+                  <p className="text-sm text-slate-300 font-semibold">
+                    Reliable reporting starts with reliable data.
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Reporting Architecture */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-slate-200/90 shadow-sm space-y-6">
+            {/* Right: 8 Data Integration Dimensions */}
+            <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-slate-200/90 shadow-sm flex flex-col justify-between">
               
-              <div className="space-y-1">
-                <h3 className="text-2xl font-black text-[#061a2e] tracking-tight">
-                  Reporting Architecture
-                </h3>
-                <p className="text-sm sm:text-base font-semibold text-slate-600">
-                  Design reporting environments connecting:
-                </p>
-              </div>
+              <div className="space-y-5">
+                <div className="border-b border-slate-100 pb-4">
+                  <h3 className="text-2xl font-black text-[#061a2e] tracking-tight">
+                    Data Integration
+                  </h3>
+                </div>
 
-              {/* Connected Pipeline Flow */}
-              <div className="relative pt-2">
-                
-                {/* Desktop 5-Stage Connected Pipeline */}
-                <div className="hidden lg:grid grid-cols-5 gap-4 relative">
-                  {reportingArchitectureFlow.map((stage, idx) => {
-                    const isLast = idx === reportingArchitectureFlow.length - 1;
-                    return (
-                      <div key={idx} className="relative flex flex-col justify-between">
-                        <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/90 hover:border-[#007791] hover:bg-teal-50/20 hover:shadow-lg transition-all space-y-3 group text-center">
-                          
-                          <div className="w-12 h-12 mx-auto rounded-xl bg-white border border-slate-200 flex items-center justify-center text-[#007791] group-hover:bg-[#061a2e] group-hover:text-cyan-400 transition-colors shadow-2xs">
-                            {stage.icon}
-                          </div>
-
-                          <span className="font-mono text-xs font-bold text-slate-400 block">
-                            {stage.num}
-                          </span>
-
-                          <h4 className="text-base font-black text-[#061a2e] group-hover:text-[#007791] transition-colors leading-snug">
-                            {stage.name}
-                          </h4>
-                        </div>
-
-                        {/* Directional Connecting Arrow (except last) */}
-                        {!isLast && (
-                          <div className="absolute top-1/2 -right-3 -translate-y-1/2 z-20 pointer-events-none">
-                            <div className="w-6 h-6 rounded-full bg-white border border-slate-300 shadow-sm flex items-center justify-center text-[#007791]">
-                              <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
-                            </div>
-                          </div>
-                        )}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+                  {dataIntegrationItems.map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="p-4 rounded-xl bg-slate-50/90 border border-slate-200/80 hover:border-[#007791] hover:bg-teal-50/20 transition-all flex items-center gap-3.5 group"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[#007791] group-hover:scale-110 transition-transform shadow-2xs shrink-0">
+                        {item.icon}
                       </div>
-                    );
-                  })}
+                      <span className="text-sm font-bold text-slate-800 group-hover:text-[#061a2e] transition-colors">
+                        {item.title}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-
-                {/* Mobile / Tablet Vertical Flow */}
-                <div className="flex lg:hidden flex-col gap-3">
-                  {reportingArchitectureFlow.map((stage, idx) => {
-                    const isLast = idx === reportingArchitectureFlow.length - 1;
-                    return (
-                      <React.Fragment key={idx}>
-                        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/90 flex items-center justify-between">
-                          <div className="flex items-center gap-3">
-                            <div className="w-9 h-9 rounded-lg bg-teal-50 border border-teal-200 text-[#007791] flex items-center justify-center shrink-0">
-                              {stage.icon}
-                            </div>
-                            <div className="text-sm font-black text-[#061a2e]">{stage.name}</div>
-                          </div>
-                          <span className="font-mono text-xs font-bold text-slate-400">
-                            {stage.num}
-                          </span>
-                        </div>
-                        {!isLast && (
-                          <div className="flex justify-center -my-1 text-[#007791]">
-                            <ArrowRight className="w-4 h-4 rotate-90" />
-                          </div>
-                        )}
-                      </React.Fragment>
-                    );
-                  })}
-                </div>
-
               </div>
 
             </div>
@@ -445,19 +260,25 @@ export const TransformPage = ({ onBack, onOpenContact, onSelectService }) => {
 
 
       {/* ======================================================== */}
-      {/* 4. TECHNOLOGYONE & POWER BI ANALYTICS                     */}
+      {/* 4. TECHNOLOGYONE & POWER BI ANALYTICS (FLAGSHIP SHOWCASE) */}
       {/* ======================================================== */}
       <section className="py-20 sm:py-24 bg-white border-b border-slate-200/80 relative overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        {/* Soft Ambient Radial Lights */}
+        <div className="absolute top-10 right-10 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
-            TechnologyOne &amp; Power BI Analytics
-          </h2>
+          <div className="max-w-3xl space-y-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
+              TechnologyOne &amp; Power BI Analytics
+            </h2>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
             
             {/* CARD 1: TechnologyOne (Exact Copy) */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border-2 border-slate-200/90 hover:border-[#007791] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white border-2 border-slate-200/90 hover:border-[#007791] shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group">
               <div className="space-y-6">
                 
                 <div className="flex items-center gap-3.5 border-b border-slate-100 pb-5">
@@ -469,16 +290,17 @@ export const TransformPage = ({ onBack, onOpenContact, onSelectService }) => {
                   </h3>
                 </div>
 
-                <div className="space-y-2.5">
+                {/* 6 Exact Items */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {technologyOneItems.map((item, idx) => (
                     <div 
                       key={idx}
-                      className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 hover:border-teal-400 hover:bg-teal-50/30 transition-all flex items-center gap-3 group/item"
+                      className="p-3.5 rounded-xl bg-slate-50/90 border border-slate-200/80 hover:border-teal-400 hover:bg-teal-50/30 transition-all flex items-center gap-3 group/item"
                     >
                       <span className="w-5 h-5 rounded-full bg-teal-100 border border-teal-300 flex items-center justify-center text-[#007791] text-[11px] font-black group-hover/item:bg-[#007791] group-hover/item:text-white transition-colors shrink-0">
                         <Check className="w-3.5 h-3.5 stroke-[3]" />
                       </span>
-                      <span className="text-sm font-bold text-slate-800 group-hover/item:text-teal-900 transition-colors">
+                      <span className="text-xs sm:text-sm font-bold text-slate-800 group-hover/item:text-teal-900 transition-colors">
                         {item}
                       </span>
                     </div>
@@ -491,16 +313,16 @@ export const TransformPage = ({ onBack, onOpenContact, onSelectService }) => {
                 <button
                   type="button"
                   onClick={onOpenContact}
-                  className="w-full brand-button-gradient text-white text-sm font-extrabold px-5 py-3.5 rounded-xl shadow-md flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer"
+                  className="w-full brand-button-gradient text-white text-sm font-extrabold px-6 py-4 rounded-full shadow-lg flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer group/btn"
                 >
                   <span>Discuss a Transformation Requirement</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
 
-            {/* CARD 2: Power BI & Financial Analytics (Exact Copy) */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border-2 border-slate-200/90 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            {/* CARD 2: Power BI & Financial Analytics (Exact Copy with Visual Analytics Photo) */}
+            <div className="p-8 sm:p-10 rounded-3xl bg-white border-2 border-slate-200/90 hover:border-emerald-500 shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group">
               <div className="space-y-6">
                 
                 <div className="flex items-center gap-3.5 border-b border-slate-100 pb-5">
@@ -512,11 +334,24 @@ export const TransformPage = ({ onBack, onOpenContact, onSelectService }) => {
                   </h3>
                 </div>
 
-                {/* Exact Copy Paragraph */}
+                {/* Exact Copy Value Statement */}
                 <div className="p-6 rounded-2xl bg-emerald-50/50 border border-emerald-200/80">
                   <p className="text-base sm:text-lg font-bold text-slate-800 leading-relaxed">
                     Turn financial and operational data into clear, actionable information for leaders.
                   </p>
+                </div>
+
+                {/* Photo Feature of Modern Financial Analytics */}
+                <div className="relative rounded-2xl overflow-hidden h-44 border border-slate-200">
+                  <img
+                    src={imgUrl("/images/finance_transform.jpg")}
+                    alt="Power BI & Financial Analytics"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e]/80 via-transparent to-transparent"></div>
+                  <div className="absolute bottom-3 left-4 text-white text-xs font-black">
+                    Power BI &amp; Financial Analytics
+                  </div>
                 </div>
 
               </div>
@@ -525,10 +360,10 @@ export const TransformPage = ({ onBack, onOpenContact, onSelectService }) => {
                 <button
                   type="button"
                   onClick={onOpenContact}
-                  className="w-full brand-button-gradient text-white text-sm font-extrabold px-5 py-3.5 rounded-xl shadow-md flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer"
+                  className="w-full brand-button-gradient text-white text-sm font-extrabold px-6 py-4 rounded-full shadow-lg flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer group/btn"
                 >
                   <span>Discuss a Transformation Requirement</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
@@ -540,145 +375,85 @@ export const TransformPage = ({ onBack, onOpenContact, onSelectService }) => {
 
 
       {/* ======================================================== */}
-      {/* 5. WHEN TRANSFORMATION MAKES SENSE (9 EXACT TRIGGERS)    */}
+      {/* 5. WHEN TRANSFORMATION MAKES SENSE (DIAGNOSTIC MATRIX)   */}
       {/* ======================================================== */}
-      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200/80 relative overflow-hidden">
+      <section className="py-20 sm:py-24 bg-gradient-to-b from-[#f8fafc] via-[#f1f5f9] to-[#f8fafc] border-b border-slate-200/80 relative overflow-hidden">
+        {/* Soft Ambient Radial Lights */}
+        <div className="absolute top-1/4 right-10 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 left-10 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl pointer-events-none" />
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           
           <div className="max-w-3xl space-y-3">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
               When Transformation Makes Sense
             </h2>
-            
             <p className="text-base sm:text-lg text-slate-600 font-semibold leading-relaxed">
               Consider transformation when:
             </p>
           </div>
 
-          {/* 3x3 Diagnostic Grid (Exact 9 Triggers from Document) */}
+          {/* 3x3 Interactive Diagnostic Grid (Exact 9 Triggers from Document) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {transformationTriggers.map((trigger, idx) => (
-              <div 
-                key={idx}
-                className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-amber-400 shadow-sm hover:shadow-xl transition-all duration-300 flex items-start gap-4 group"
-              >
-                <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center group-hover:scale-110 transition-transform shadow-2xs shrink-0">
-                  {trigger.icon}
-                </div>
-
-                <div className="space-y-1">
-                  <span className="font-mono text-xs font-bold text-slate-400 block">
-                    {trigger.num}
-                  </span>
-                  <p className="text-sm sm:text-base font-bold text-[#061a2e] group-hover:text-amber-950 transition-colors leading-snug">
-                    {trigger.text}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* ======================================================== */}
-      {/* 6. CALL TO ACTION (CTA)                                  */}
-      {/* ======================================================== */}
-      <section className="py-20 sm:py-24 bg-gradient-to-br from-[#061a2e] via-[#092644] to-[#041220] text-white relative overflow-hidden border-t border-slate-800 font-['Plus_Jakarta_Sans',sans-serif]">
-        
-        {/* Glow Spheres */}
-        <div className="absolute top-0 right-10 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-10 w-96 h-96 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
-            Discuss a Transformation Requirement
-          </h2>
-
-          <p className="text-base sm:text-lg text-slate-300 font-normal max-w-2xl mx-auto leading-relaxed font-['Inter',sans-serif]">
-            Connect people, process, technology and data.
-          </p>
-
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              type="button"
-              onClick={onOpenContact}
-              className="w-full sm:w-auto brand-button-gradient text-white text-base font-extrabold px-9 py-4 rounded-full flex items-center justify-center space-x-2.5 shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer group"
-            >
-              <span>Discuss a Transformation Requirement</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* ======================================================== */}
-      {/* 7. PILLAR SWITCHER BAR (Capability Navigator)            */}
-      {/* ======================================================== */}
-      <section className="py-16 bg-[#041220] text-white border-t border-slate-800/80 font-['Plus_Jakarta_Sans',sans-serif]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          
-          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between border-b border-slate-800 pb-5 gap-4">
-            <div>
-              <div className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-[#2bb673] mb-1">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Capability Navigator</span>
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-black text-white">Explore Other Capability Pillars</h3>
-            </div>
-            
-            <button
-              type="button"
-              onClick={onBack}
-              className="inline-flex items-center space-x-2 text-xs font-extrabold text-[#2bb673] hover:text-white bg-white/5 hover:bg-white/10 border border-slate-700 px-4 py-2.5 rounded-full transition-all cursor-pointer"
-            >
-              <span>View What We Do Overview</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              { id: 'lead', title: 'LEAD', desc: 'CFO & FP&A Advisory', tag: 'Strategic Leadership' },
-              { id: 'build', title: 'BUILD', desc: 'Operating Models', tag: 'Scalable Systems' },
-              { id: 'transform', title: 'TRANSFORM', desc: 'Data & Tech', tag: 'BI & Automation' },
-              { id: 'protect', title: 'PROTECT', desc: 'Tax & Compliance', tag: 'Governance Defense' }
-            ].map((p) => {
-              const isActive = p.id === 'transform';
+            {transformationTriggers.map((trigger, idx) => {
+              const isSelected = selectedTriggers.has(idx);
               return (
                 <button
-                  key={p.id}
+                  key={idx}
                   type="button"
-                  onClick={() => onSelectService && onSelectService(p.id)}
-                  className={`text-left p-6 rounded-2xl border transition-all cursor-pointer group ${
-                    isActive 
-                      ? 'bg-gradient-to-br from-[#007791]/30 to-[#061a2e] border-cyan-400 ring-2 ring-cyan-400/30' 
-                      : 'bg-slate-900/40 border-slate-800 hover:border-slate-600 hover:bg-slate-800/40'
+                  onClick={() => toggleTrigger(idx)}
+                  className={`p-6 rounded-2xl border transition-all duration-300 flex items-start gap-4 text-left cursor-pointer group ${
+                    isSelected
+                      ? 'bg-white border-[#007791] shadow-lg ring-2 ring-[#007791]/15 -translate-y-1'
+                      : 'bg-white/80 border-slate-200/90 hover:border-slate-300 hover:bg-white hover:shadow-md'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-black uppercase tracking-wider text-slate-400 font-mono">
-                      {p.tag}
+                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 shrink-0 shadow-2xs ${
+                    isSelected
+                      ? 'bg-[#007791] text-white scale-105'
+                      : 'bg-slate-50 border border-slate-200 text-slate-500 group-hover:scale-105'
+                  }`}>
+                    {trigger.icon}
+                  </div>
+
+                  <div className="space-y-1 flex-1">
+                    <span className="font-mono text-xs font-bold text-slate-400 block">
+                      {trigger.num}
                     </span>
-                    <PillarIcon type={p.id} className="w-4 h-4" />
-                  </div>
-                  <div className="text-lg font-black text-white group-hover:text-cyan-300 transition-colors">
-                    {p.title}
-                  </div>
-                  <div className="text-xs text-slate-400 mt-1">
-                    {p.desc}
+                    <p className={`text-sm sm:text-base font-bold leading-snug transition-colors ${
+                      isSelected ? 'text-[#061a2e]' : 'text-slate-700 group-hover:text-[#061a2e]'
+                    }`}>
+                      {trigger.text}
+                    </p>
                   </div>
                 </button>
               );
             })}
           </div>
 
+          {/* Canonical CTA Button */}
+          <div className="pt-4 flex justify-center">
+            <button
+              type="button"
+              onClick={onOpenContact}
+              className="brand-button-gradient text-white text-sm sm:text-base font-extrabold px-9 py-4 rounded-full flex items-center space-x-2.5 shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer"
+            >
+              <span>Discuss a Transformation Requirement</span>
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+
         </div>
       </section>
+
+
+      {/* 6. PRE-FOOTER CALL TO ACTION & CAPABILITY NAVIGATOR */}
+      <CapabilityNavigatorSection
+        currentPillar="transform"
+        onOpenContact={onOpenContact}
+        onSelectService={onSelectService}
+        onBack={onBack}
+      />
 
     </div>
   );

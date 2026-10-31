@@ -238,18 +238,18 @@ export const ApproachWhyUs = ({ data, onOpenContact }) => {
           </div>
 
           {/* Selected Step Image and Description Showcase Panel */}
-          <div className="mt-2 rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-8 lg:p-10 shadow-[0_20px_50px_-15px_rgba(15,23,42,0.08)] relative overflow-hidden transition-all duration-300">
+          <div className="mt-2 rounded-2xl border border-slate-200/90 bg-white p-5 sm:p-6 lg:p-7 shadow-[0_20px_50px_-15px_rgba(15,23,42,0.08)] relative overflow-hidden transition-all duration-300">
             
             {/* Soft Ambient Radial Blur Accent inside Showcase */}
             <div className="pointer-events-none absolute -right-20 -top-20 w-80 h-80 bg-cyan-100/60 rounded-full blur-3xl" />
 
             {/* Smooth Animated Content Transition for the Active Phase */}
             <div key={activePhase} className="animate-fade-slide-up relative z-10">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
                 
                 {/* Selected Step Image Showcase (lg:col-span-5) */}
                 <div className="lg:col-span-5 w-full">
-                  <div className="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 aspect-[4/3] group bg-slate-900">
+                  <div className="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 aspect-video group bg-slate-900">
                     <img
                       src={imgUrl(selectedStep.image || defaultApproachImages[(activePhase - 1) % defaultApproachImages.length])}
                       alt={selectedStep.title}
@@ -288,17 +288,17 @@ export const ApproachWhyUs = ({ data, onOpenContact }) => {
                     Step {selectedStep.num || `0${activePhase}`} • Methodology in Focus
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-[#061a2e] tracking-tight mb-3">
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-[#061a2e] tracking-tight mb-2">
                     {selectedStep.title}
                   </h3>
 
                   {/* Selected Step Description */}
-                  <p className="text-base sm:text-lg text-slate-700 font-medium leading-relaxed mb-6">
+                  <p className="text-sm sm:text-base text-slate-700 font-medium leading-relaxed mb-4">
                     {selectedStep.desc}
                   </p>
 
                   {/* Highlights / Key Activities for this step */}
-                  <div className="space-y-3 mb-8">
+                  <div className="space-y-2 mb-5">
                     {((selectedStep.points && selectedStep.points.length > 0 ? selectedStep.points : stepHighlights[activePhase]) || []).map((highlight, hIdx) => (
                       <div key={hIdx} className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100 hover:border-slate-200 transition-colors">
                         <span className="w-5 h-5 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center text-teal-700 shrink-0 mt-0.5 text-xs font-bold">

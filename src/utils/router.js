@@ -85,9 +85,21 @@ export function parseCurrentRoute() {
 
   const primary = segments[0].toLowerCase();
 
+  const secondary = segments[1]?.toLowerCase() || null;
+
   // Nested route: /insights/:articleId
-  if (primary === 'insights' && segments[1]) {
-    return { page: 'insight-detail', articleId: segments[1], shouldReplaceUrl: hasHash };
+  if (primary === 'insights' && secondary) {
+    return { page: 'insight-detail', articleId: secondary, shouldReplaceUrl: hasHash };
+  }
+
+  // Nested route: /who-we-help/:sector (e.g. /who-we-help/growing-businesses)
+  if (primary === 'who-we-help' && secondary && ROUTE_ALIASES[secondary]) {
+    return { page: ROUTE_ALIASES[secondary], articleId: null, shouldReplaceUrl: hasHash };
+  }
+
+  // Nested route: /what-we-do/:pillar (e.g. /what-we-do/lead)
+  if (primary === 'what-we-do' && secondary && ROUTE_ALIASES[secondary]) {
+    return { page: ROUTE_ALIASES[secondary], articleId: null, shouldReplaceUrl: hasHash };
   }
 
   if (ROUTE_ALIASES[primary]) {

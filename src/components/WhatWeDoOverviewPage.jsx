@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PillarIcon } from './BrandLogo';
 import { ArrowRight, ArrowLeft, CheckCircle2, Sparkles, Layers, ShieldCheck, Cpu, Target, BarChart2, Activity, PieChart, Table, LayoutGrid, Zap } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
+import { CapabilityNavigatorSection } from './CapabilityNavigatorSection';
 
 export const WhatWeDoOverviewPage = ({ onSelectService, onBack, onOpenContact }) => {
   const [matrixViewMode, setMatrixViewMode] = useState('matrix');
@@ -516,6 +517,14 @@ export const WhatWeDoOverviewPage = ({ onSelectService, onBack, onOpenContact })
 
         </div>
       </section>
+
+      {/* PRE-FOOTER CALL TO ACTION & CAPABILITY NAVIGATOR */}
+      <CapabilityNavigatorSection
+        currentPillar="overview"
+        onOpenContact={onOpenContact}
+        onSelectService={onSelectService}
+        onBack={onBack}
+      />
 
     </div>
   );
