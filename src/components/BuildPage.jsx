@@ -304,7 +304,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                 <span>DIAGNOSTIC FRAMEWORK</span>
               </div>
               
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-[1.15] font-['Plus_Jakarta_Sans',sans-serif]">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-[1.15] font-['Plus_Jakarta_Sans',sans-serif]">
                 Finance Health Check
               </h2>
               
@@ -758,7 +758,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
               <span>TARGET OPERATING MODEL (TOM)</span>
             </div>
             
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-[1.15] font-['Plus_Jakarta_Sans',sans-serif]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-[1.15] font-['Plus_Jakarta_Sans',sans-serif]">
               Finance Operating Models &amp; Target Operating Models (TOM)
             </h2>
           </div>
@@ -807,7 +807,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
 
                 <div className="p-6 sm:p-7 pt-9 space-y-5">
                   <div className="space-y-2">
-                    <h3 className="text-xl sm:text-2xl font-black text-[#061a2e] group-hover:text-[#007791] transition-colors tracking-tight leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#061a2e] group-hover:text-[#007791] transition-colors tracking-tight leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
                       Finance Operating Models &amp; Target Operating Models (TOM)
                     </h3>
                     <p className="text-sm font-semibold text-slate-500 leading-relaxed">
@@ -923,7 +923,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                 </div>
 
                 <div className="p-6 sm:p-7 pt-9 space-y-5">
-                  <h3 className="text-xl sm:text-2xl font-black text-[#061a2e] group-hover:text-teal-700 transition-colors tracking-tight leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
+                  <h3 className="text-lg sm:text-xl font-bold text-[#061a2e] group-hover:text-teal-700 transition-colors tracking-tight leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
                     Target Operating Model Support
                   </h3>
 
@@ -975,7 +975,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
           
           {/* Section Header */}
           <div className="max-w-3xl space-y-3">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-[1.15] font-['Plus_Jakarta_Sans',sans-serif]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-[1.15] font-['Plus_Jakarta_Sans',sans-serif]">
               Finance Capability Uplift
             </h2>
             
@@ -1196,7 +1196,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
           
           {/* Section Header (Exactly Same as other sections) */}
           <div className="max-w-3xl space-y-3">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-[1.15] font-['Plus_Jakarta_Sans',sans-serif]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-[1.15] font-['Plus_Jakarta_Sans',sans-serif]">
               Outsourced and Augmented Finance Support
             </h2>
             
@@ -1210,7 +1210,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
             
             {/* Lead-in Title */}
             <div className="text-center max-w-2xl mx-auto">
-              <h3 className="text-xl sm:text-2xl font-black text-[#061a2e] tracking-tight font-['Plus_Jakarta_Sans',sans-serif]">
+              <h3 className="text-lg sm:text-xl font-bold text-[#061a2e] tracking-tight font-['Plus_Jakarta_Sans',sans-serif]">
                 The objective is to create a finance function that provides:
               </h3>
               <div className="w-16 h-1 bg-gradient-to-r from-[#007791] to-[#2bb673] mx-auto mt-3 rounded-full" />

@@ -107,7 +107,7 @@ export const ProtectPage = ({ onBack, onOpenContact, onSelectService }) => {
           
           {/* Section Header */}
           <div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-snug">
               Core Services
             </h2>
           </div>
@@ -139,7 +139,7 @@ export const ProtectPage = ({ onBack, onOpenContact, onSelectService }) => {
                     <div className="w-11 h-11 rounded-2xl bg-emerald-50 border border-emerald-200/80 text-[#2bb673] flex items-center justify-center shrink-0 group-hover:bg-[#061a2e] group-hover:text-emerald-400 transition-colors">
                       {service.icon}
                     </div>
-                    <h3 className="text-xl sm:text-2xl font-black text-[#061a2e] tracking-tight">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#061a2e] tracking-tight">
                       {service.title}
                     </h3>
                   </div>
@@ -175,7 +175,7 @@ export const ProtectPage = ({ onBack, onOpenContact, onSelectService }) => {
           
           {/* Section Header */}
           <div className="space-y-2">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-snug">
               Compliance Health Check
             </h2>
             <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed">

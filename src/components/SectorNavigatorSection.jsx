@@ -146,7 +146,7 @@ export const SectorNavigatorSection = ({
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400 block mb-1">
                 SECTOR NAVIGATOR
               </span>
-              <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+              <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
                 Who We Help Across Industries
               </h3>
             </div>

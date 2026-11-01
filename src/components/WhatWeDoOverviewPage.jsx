@@ -188,7 +188,7 @@ export const WhatWeDoOverviewPage = ({ onSelectService, onBack, onOpenContact })
 
           {/* Main Headline & Value Proposition Narrative */}
           <div className="space-y-4 max-w-4xl">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.12]">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight">
               What We Do
             </h1>
             <p className="text-xl sm:text-2xl text-emerald-400 font-bold tracking-tight">
@@ -315,7 +315,7 @@ export const WhatWeDoOverviewPage = ({ onSelectService, onBack, onOpenContact })
                 <Sparkles className="w-3.5 h-3.5 text-[#2bb673]" />
                 <span>Capability Alignment Suite</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight">
                 Executive Service Pillar Matrix
               </h2>
               <p className="text-base sm:text-lg text-slate-600 font-medium">

@@ -389,7 +389,7 @@ export const CFOAdvisoryPage = ({ onBack, onOpenContact, onSelectService }) => {
                 <span>PRACTITIONER-LED EXECUTIVE ADVISORY</span>
               </div>
               
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight">
                 CFO Advisory Services
               </h2>
               
@@ -579,7 +579,7 @@ export const CFOAdvisoryPage = ({ onBack, onOpenContact, onSelectService }) => {
               <span>STRATEGIC EXECUTION &amp; SPECIALIST CAPABILITY</span>
             </div>
             
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight">
               FP&amp;A Capability &amp; Flexible Leadership
             </h2>
             
@@ -637,7 +637,7 @@ export const CFOAdvisoryPage = ({ onBack, onOpenContact, onSelectService }) => {
                   
                   {/* Title & Value Statement */}
                   <div className="space-y-2">
-                    <h3 className="text-2xl sm:text-3xl font-black text-[#061a2e] group-hover:text-[#007791] transition-colors tracking-tight leading-snug">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#061a2e] group-hover:text-[#007791] transition-colors tracking-tight leading-snug">
                       FP&amp;A Capabilities
                     </h3>
                     <p className="text-sm font-semibold text-slate-600 leading-relaxed">
@@ -742,7 +742,7 @@ export const CFOAdvisoryPage = ({ onBack, onOpenContact, onSelectService }) => {
                   
                   {/* Title & Value Statement */}
                   <div className="space-y-2">
-                    <h3 className="text-2xl sm:text-3xl font-black text-[#061a2e] group-hover:text-teal-700 transition-colors tracking-tight leading-snug">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#061a2e] group-hover:text-teal-700 transition-colors tracking-tight leading-snug">
                       Fractional CFO Support
                     </h3>
                     <p className="text-sm font-semibold text-slate-600 leading-relaxed">
@@ -822,7 +822,7 @@ export const CFOAdvisoryPage = ({ onBack, onOpenContact, onSelectService }) => {
                   <span>ORGANISATIONAL TRIGGERS</span>
                 </div>
                 
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-[1.15]">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-[1.15]">
                   When should you consider CFO advisory?
                 </h2>
                 

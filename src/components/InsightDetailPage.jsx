@@ -97,7 +97,7 @@ export const InsightDetailPage = ({ articleId, articles = [], onBack, onOpenCont
                   article.chapters.map((ch, idx) => (
                     <React.Fragment key={idx}>
                       <div className="space-y-4">
-                        <h2 className="text-2xl sm:text-3xl font-black text-[#061a2e] tracking-tight">
+                        <h2 className="text-lg sm:text-xl font-bold text-[#061a2e] tracking-tight">
                           {ch.title}
                         </h2>
                         <p className="text-base sm:text-lg leading-relaxed text-slate-700 whitespace-pre-line">
@@ -144,7 +144,7 @@ export const InsightDetailPage = ({ articleId, articles = [], onBack, onOpenCont
                 ) : (
                   /* Fallback default section if chapters not provided */
                   <div className="space-y-4">
-                    <h2 className="text-2xl sm:text-3xl font-black text-[#061a2e]">
+                    <h2 className="text-lg sm:text-xl font-bold text-[#061a2e]">
                       Executive Advisory Deep-Dive
                     </h2>
                     <p className="text-base sm:text-lg leading-relaxed text-slate-700">

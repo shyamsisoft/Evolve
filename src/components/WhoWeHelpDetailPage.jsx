@@ -100,7 +100,7 @@ export const WhoWeHelpDetailPage = ({ audienceId, data, onBack, onOpenContact, o
                 <Sparkles className="w-3.5 h-3.5 text-[#2bb673]" />
                 <span>Sector Capability & Diagnostic Blueprint</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight">
                 Addressing Friction in {audience.title}
               </h2>
               <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed">

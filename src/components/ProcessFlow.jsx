@@ -277,7 +277,7 @@ export const ProcessFlow = ({ data, onNavigate }) => {
 
                       {/* Card Title */}
                       <div className="relative z-10 mt-6">
-                        <h3 className="text-xl sm:text-2xl font-black text-white tracking-wider uppercase">
+                        <h3 className="text-lg sm:text-xl font-bold text-white tracking-wider uppercase">
                           {steps[0]?.title || "NUMBERS"}
                         </h3>
                       </div>
@@ -353,7 +353,7 @@ export const ProcessFlow = ({ data, onNavigate }) => {
 
                       {/* Card Title */}
                       <div className="relative z-10 mt-6">
-                        <h3 className="text-xl sm:text-2xl font-black text-white tracking-wider uppercase">
+                        <h3 className="text-lg sm:text-xl font-bold text-white tracking-wider uppercase">
                           {steps[1]?.title || "INSIGHT"}
                         </h3>
                       </div>
@@ -436,7 +436,7 @@ export const ProcessFlow = ({ data, onNavigate }) => {
 
                       {/* Card Title */}
                       <div className="relative z-10 mt-6">
-                        <h3 className="text-xl sm:text-2xl font-black text-white tracking-wider uppercase">
+                        <h3 className="text-lg sm:text-xl font-bold text-white tracking-wider uppercase">
                           {steps[2]?.title || "LEADERSHIP"}
                         </h3>
                       </div>

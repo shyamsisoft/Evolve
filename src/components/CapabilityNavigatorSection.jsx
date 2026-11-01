@@ -134,7 +134,7 @@ export const CapabilityNavigatorSection = ({
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Capability Navigator</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-black text-white">
+              <h3 className="text-lg sm:text-xl font-bold text-white">
                 {currentPillar === 'overview' ? 'Explore Our 4 Capability Pillars' : 'Explore Other Capability Pillars'}
               </h3>
             </div>

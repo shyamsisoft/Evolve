@@ -112,7 +112,7 @@ export const ContactPage = ({ onBack }) => {
                 <div className="w-16 h-16 rounded-full bg-emerald-100 text-[#2bb673] flex items-center justify-center mx-auto shadow-sm">
                   <CheckCircle className="w-10 h-10" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-black text-[#061a2e]">
+                <h3 className="text-lg sm:text-xl font-bold text-[#061a2e]">
                   Thank You
                 </h3>
                 <p className="text-base text-slate-600 max-w-md mx-auto">

@@ -9,8 +9,7 @@ import {
   BarChart3,
   TrendingUp,
   ShieldCheck,
-  CheckCircle2,
-  Workflow
+  ChevronRight
 } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 
@@ -91,29 +90,33 @@ export default function FinanceTransformationServicesGrid({
   return (
     <section 
       id="finance-transformation-services"
-      className="py-20 sm:py-28 bg-[#f8fafc] border-b border-slate-200/80 relative overflow-hidden scroll-mt-28"
+      className="py-20 sm:py-28 bg-[#f8fafc] border-b border-slate-200/80 relative overflow-hidden scroll-mt-28 font-['Plus_Jakarta_Sans',sans-serif]"
     >
-      {/* Soft Ambient Radial Glows */}
-      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-96 h-96 bg-[#007791]/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Refined Ambient Glows */}
+      <div className="absolute top-1/4 right-0 w-[550px] h-[550px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-[450px] h-[450px] bg-teal-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl space-y-3 mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200/80">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            Specialist Services
+          </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-snug">
             Finance Transformation Services
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 font-semibold leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed">
             We support organisations with:
           </p>
         </div>
 
-        {/* 2-Column Split: Services Listed Down (Left) & Media / Live Telemetry Container (Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        {/* 2-Column Split: Services List (Left) & Studio Showcase (Right) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          {/* Left Column: 9 Services Listed Down (Pure Informational List - Zero Hyperlink Behaviors) */}
-          <div className="lg:col-span-6 divide-y divide-slate-200/80 border-t border-b border-slate-200/80">
+          {/* Left Column: 9 Services Listed Down */}
+          <div className="lg:col-span-6 space-y-2">
             {transformationServices.map((service, idx) => {
               const Icon = service.icon;
               const isActive = activeIdx === idx;
@@ -122,45 +125,67 @@ export default function FinanceTransformationServicesGrid({
                 <div
                   key={service.num}
                   onMouseEnter={() => setActiveIdx(idx)}
-                  className={`py-5 px-4 transition-colors duration-200 flex items-center justify-between cursor-default ${
-                    isActive ? 'bg-slate-100/80' : 'hover:bg-slate-50/80'
+                  className={`w-full text-left rounded-2xl transition-all duration-200 px-5 py-4 flex items-center justify-between cursor-default border ${
+                    isActive 
+                      ? 'bg-white border-emerald-500/50 shadow-[0_8px_25px_-6px_rgba(6,26,46,0.08)] ring-1 ring-emerald-500/20 translate-x-1' 
+                      : 'bg-white/60 border-slate-200/70 hover:bg-white hover:border-slate-300 hover:shadow-xs'
                   }`}
                 >
-                  <div className="flex items-center space-x-4">
-                    {/* Numeric Index */}
-                    <span className={`font-mono text-sm font-semibold w-8 shrink-0 transition-colors ${
-                      isActive ? 'text-emerald-700 font-bold' : 'text-slate-400'
+                  <div className="flex items-center space-x-4 min-w-0">
+                    {/* Numeric Index Badge */}
+                    <span className={`font-mono text-xs font-bold w-7 shrink-0 transition-colors ${
+                      isActive ? 'text-emerald-600 font-extrabold' : 'text-slate-400'
                     }`}>
                       {service.num}
                     </span>
 
-                    {/* Lucide Icon */}
-                    <div className={`transition-colors duration-200 ${
-                      isActive ? 'text-emerald-600' : 'text-slate-500'
+                    {/* Service Icon */}
+                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all shrink-0 ${
+                      isActive 
+                        ? 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-500/30' 
+                        : 'bg-slate-100/80 text-slate-500'
                     }`}>
-                      <Icon className="w-5 h-5 stroke-[2] shrink-0" />
+                      <Icon className="w-4.5 h-4.5 stroke-[2.2]" />
                     </div>
 
-                    {/* Service Title in Bold */}
-                    <span className={`text-base sm:text-[17px] font-bold transition-colors ${
-                      isActive ? 'text-[#061a2e]' : 'text-slate-800'
+                    {/* Service Title */}
+                    <span className={`text-base sm:text-[17px] font-bold tracking-tight truncate transition-colors ${
+                      isActive ? 'text-[#061a2e]' : 'text-slate-700'
                     }`}>
                       {service.title}
                     </span>
                   </div>
 
-                  {isActive && (
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse hidden sm:block shrink-0" />
-                  )}
+                  {/* Active Indicator dot */}
+                  <div className="flex items-center space-x-2 shrink-0 ml-3">
+                    {isActive ? (
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+                    ) : (
+                      <ChevronRight className="w-4 h-4 text-slate-300" />
+                    )}
+                  </div>
                 </div>
               );
             })}
           </div>
 
           {/* Right Column: Visual Container (Sticky on Scroll) */}
-          <div className="lg:col-span-6 lg:sticky lg:top-28 lg:pl-8 lg:border-l lg:border-slate-200/80">
-            <div className="rounded-3xl bg-[#061a2e] border border-slate-800 shadow-2xl overflow-hidden relative">
+          <div className="lg:col-span-6 lg:sticky lg:top-28">
+            <div className="rounded-3xl bg-[#090D16] border border-slate-800 shadow-[0_25px_60px_-15px_rgba(6,26,46,0.25)] overflow-hidden relative">
               
+              {/* Studio Header Bar */}
+              <div className="px-5 py-3.5 bg-slate-900/90 border-b border-white/10 flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-[11px] font-mono font-bold tracking-wider uppercase text-slate-300">
+                    Capability Focus
+                  </span>
+                </div>
+                <span className="text-[11px] font-mono font-bold text-emerald-400 px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
+                  {activeService.num} / 09
+                </span>
+              </div>
+
               {/* Media Display Area */}
               <div className="relative aspect-video sm:aspect-[4/3] w-full overflow-hidden bg-slate-950 flex items-center justify-center">
                 
@@ -184,48 +209,37 @@ export default function FinanceTransformationServicesGrid({
                     <img
                       src={imgUrl(posterSrc)}
                       alt="Finance Transformation"
-                      className="w-full h-full object-cover opacity-90"
+                      className="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-105"
                     />
 
-                    {/* Subtle Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/20 to-transparent" />
+                    {/* Elegant Gradient Vignette */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#090D16] via-[#090D16]/40 to-transparent pointer-events-none" />
 
-                    {/* Live Dynamic Telemetry Overlay based on Active Service */}
-                    <div className="absolute inset-x-4 top-4 z-10 flex items-center justify-between">
-                      <span className="px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider uppercase bg-black/60 backdrop-blur-md text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                        CAPABILITY FOCUS
-                      </span>
-                      <span className="px-2.5 py-0.5 rounded-md text-[11px] font-mono font-bold text-slate-300 bg-white/10 backdrop-blur-md">
-                        {activeService.num} / 09
-                      </span>
-                    </div>
-
-                    {/* Active Service Detail Panel */}
-                    <div className="absolute inset-x-4 bottom-4 z-10 bg-[#061a2e]/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl border border-white/10 space-y-2">
+                    {/* Active Service Detail Panel (Frosted Glass Briefing Card) */}
+                    <div className="absolute inset-x-4 bottom-4 z-10 bg-[#090D16]/90 backdrop-blur-xl p-5 rounded-2xl border border-white/15 space-y-3 shadow-2xl">
                       <div className="flex items-center justify-between">
-                        <h4 className="text-base sm:text-lg font-bold text-white tracking-tight">
+                        <h4 className="text-lg sm:text-xl font-extrabold text-white tracking-tight">
                           {activeService.title}
                         </h4>
-                        <span className="text-emerald-400 font-mono text-xs font-semibold">
-                          VERIFIED
+                        <span className="text-emerald-400 font-mono text-[11px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30">
+                          Active Phase
                         </span>
                       </div>
                       
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 border-t border-white/10 text-xs">
-                        <div className="text-slate-300">
-                          <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400 block">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2.5 border-t border-white/10 text-xs">
+                        <div>
+                          <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400 block mb-1">
                             Operational Focus
                           </span>
-                          <span className="font-medium text-slate-200">
+                          <span className="font-semibold text-slate-200 leading-snug block">
                             {activeService.scope}
                           </span>
                         </div>
-                        <div className="text-slate-300">
-                          <span className="text-[10px] uppercase font-mono tracking-wider text-emerald-400 block">
+                        <div>
+                          <span className="text-[10px] uppercase font-mono tracking-wider text-emerald-400 block mb-1">
                             Key Output
                           </span>
-                          <span className="font-medium text-slate-200">
+                          <span className="font-semibold text-slate-200 leading-snug block">
                             {activeService.deliverable}
                           </span>
                         </div>

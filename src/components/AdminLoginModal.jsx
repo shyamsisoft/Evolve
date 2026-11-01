@@ -77,7 +77,7 @@ export const AdminLoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
             <span>Administrator Access</span>
           </div>
 
-          <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+          <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
             Administrator Sign In
           </h3>
           <p className="text-xs text-slate-300 mt-1">

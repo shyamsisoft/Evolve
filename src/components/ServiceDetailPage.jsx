@@ -304,7 +304,7 @@ export const ServiceDetailPage = ({ serviceId, pageData, onBack, onOpenContact, 
               <Sparkles className="w-3.5 h-3.5 text-[#2bb673]" />
               <span>Executive Execution Roadmap</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight">
               4-Phase Circular Delivery Process
             </h2>
             <p className="text-base sm:text-lg text-slate-600 font-medium">

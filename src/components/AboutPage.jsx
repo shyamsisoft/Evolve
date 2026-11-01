@@ -214,7 +214,7 @@ export const AboutPage = ({ onBack, onOpenContact }) => {
             {/* Right Column: Content */}
             <div className="lg:col-span-6 space-y-6">
               
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-snug">
                 Evolve brings these disciplines together.
               </h2>
 
@@ -246,7 +246,7 @@ export const AboutPage = ({ onBack, onOpenContact }) => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           
           <div className="max-w-4xl space-y-4">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-snug">
               EXPERIENCE ACROSS COMPLEX ORGANISATIONS
             </h2>
             
@@ -287,7 +287,7 @@ export const AboutPage = ({ onBack, onOpenContact }) => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="max-w-3xl space-y-3">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-snug">
               HOW WE WORK
             </h2>
           </div>
@@ -342,7 +342,7 @@ export const AboutPage = ({ onBack, onOpenContact }) => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="max-w-3xl space-y-3">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-snug">
               OUR PHILOSOPHY
             </h2>
             
@@ -383,7 +383,7 @@ export const AboutPage = ({ onBack, onOpenContact }) => {
           {/* Philosophy Closing Callout & Action */}
           <div className="bg-gradient-to-br from-[#061a2e] to-[#041220] rounded-3xl p-8 sm:p-12 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-8 border border-slate-800">
             <div className="space-y-2 text-center sm:text-left">
-              <h3 className="text-2xl sm:text-3xl font-black text-white">
+              <h3 className="text-lg sm:text-xl font-bold text-white">
                 Finance that moves organisations forward.
               </h3>
               <p className="text-base sm:text-lg text-emerald-300 font-bold">

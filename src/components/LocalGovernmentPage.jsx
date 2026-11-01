@@ -161,7 +161,7 @@ export const LocalGovernmentPage = ({ onBack, onOpenContact, onSelectAudience })
 
           {/* Main Headline & Value Proposition Narrative */}
           <div className="space-y-4 max-w-4xl">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.12]">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight">
               Local Government Solutions
             </h1>
             <p className="text-xl sm:text-2xl text-emerald-400 font-bold tracking-tight">
@@ -202,7 +202,7 @@ export const LocalGovernmentPage = ({ onBack, onOpenContact, onSelectAudience })
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="max-w-3xl space-y-3">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-snug">
               Key Solutions
             </h2>
           </div>
@@ -241,7 +241,7 @@ export const LocalGovernmentPage = ({ onBack, onOpenContact, onSelectAudience })
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="max-w-3xl space-y-3">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061a2e] tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-snug">
               Council Finance Health Check
             </h2>
             

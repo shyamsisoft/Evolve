@@ -121,7 +121,7 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
 
           {/* Main Headline & Value Proposition Narrative */}
           <div className="space-y-4 max-w-4xl">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.12]">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight">
               Who We Help
             </h1>
             <p className="text-xl sm:text-2xl text-emerald-400 font-bold tracking-tight">
