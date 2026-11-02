@@ -27,6 +27,7 @@ import { InsightDetailPage } from './components/InsightDetailPage';
 import { AboutPage } from './components/AboutPage';
 import { ContactPage } from './components/ContactPage';
 import { SectionDivider } from './components/SectionDivider';
+import { LoadingScreen } from './components/LoadingScreen';
 import { AdminLoginModal } from './components/AdminLoginModal';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { Sliders } from 'lucide-react';
@@ -287,6 +288,8 @@ export function App() {
   return (
     <div className={`min-h-screen bg-[#061a2e] flex flex-col ${activeFont} text-white selection:bg-[#18B0A6] selection:text-[#061a2e] transition-all duration-300`}>
       {/* Header Bar */}
+      <LoadingScreen />
+
       <Header
         data={fixedData.header}
         activePage={activePage}
