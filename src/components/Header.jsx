@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrandLogo, PillarIcon } from './BrandLogo';
-import { Menu, X, ChevronDown, Sparkles, Lock, UserCheck, Settings, LogOut } from 'lucide-react';
+import { Menu, X, ChevronDown, Sliders, Lock } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 
 export const Header = ({
@@ -19,7 +19,6 @@ export const Header = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [whatWeDoOpen, setWhatWeDoOpen] = useState(false);
   const [whoWeHelpOpen, setWhoWeHelpOpen] = useState(false);
-  const [settingsOpen, setSettingsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,15 +32,15 @@ export const Header = ({
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-md py-2.5'
-          : 'bg-white/85 backdrop-blur-sm py-3 border-b border-gray-100'
+          ? 'bg-[#061a2e]/95 backdrop-blur-md shadow-2xl py-2.5 border-b border-white/10'
+          : 'bg-[#061a2e]/85 backdrop-blur-sm py-3 border-b border-white/10'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-3">
           {/* Brand Logo */}
           <button onClick={onGoHome} className="flex items-center text-left flex-shrink-0 cursor-pointer">
-            <BrandLogo variant={activePage === 'protect' ? 'taxation' : 'full'} />
+            <BrandLogo variant={activePage === 'protect' ? 'taxation' : 'dark'} />
           </button>
 
           {/* Desktop Navigation - Strictly One Line */}
@@ -50,7 +49,7 @@ export const Header = ({
             {/* HOME */}
             <button
               onClick={onGoHome}
-              className="text-xs lg:text-[13px] xl:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5 whitespace-nowrap cursor-pointer"
+              className="text-xs lg:text-[13px] xl:text-sm font-semibold text-slate-300 hover:text-emerald-400 transition-colors py-1.5 whitespace-nowrap cursor-pointer"
             >
               Home
             </button>
@@ -63,25 +62,25 @@ export const Header = ({
             >
               <button
                 onClick={() => onNavigate('who-we-help')}
-                className="flex items-center text-xs lg:text-[13px] xl:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5 whitespace-nowrap cursor-pointer"
+                className="flex items-center text-xs lg:text-[13px] xl:text-sm font-semibold text-slate-300 hover:text-emerald-400 transition-colors py-1.5 whitespace-nowrap cursor-pointer"
               >
                 <span>Who We Help</span>
-                <ChevronDown className={`w-3.5 h-3.5 ml-1 transition-transform duration-200 flex-shrink-0 ${whoWeHelpOpen ? 'rotate-180 text-[#007791]' : 'text-gray-400'}`} />
+                <ChevronDown className={`w-3.5 h-3.5 ml-1 transition-transform duration-200 flex-shrink-0 ${whoWeHelpOpen ? 'rotate-180 text-emerald-400' : 'text-slate-400'}`} />
               </button>
 
               {whoWeHelpOpen && (
-                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2 px-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                  <button onClick={() => { setWhoWeHelpOpen(false); onNavigate('growing-businesses'); }} className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center">
-                    <span className="text-[13px] font-bold text-[#061a2e]">Growing Businesses</span>
+                <div className="absolute top-full left-0 w-64 bg-[#0B2440] rounded-2xl shadow-2xl border border-white/15 py-2 px-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200 backdrop-blur-xl">
+                  <button onClick={() => { setWhoWeHelpOpen(false); onNavigate('growing-businesses'); }} className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-white/[0.08] transition-colors flex items-center">
+                    <span className="text-[13px] font-bold text-slate-200 hover:text-white">Growing Businesses</span>
                   </button>
-                  <button onClick={() => { setWhoWeHelpOpen(false); onNavigate('established-corporate'); }} className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center">
-                    <span className="text-[13px] font-bold text-[#061a2e]">Established & Corporate</span>
+                  <button onClick={() => { setWhoWeHelpOpen(false); onNavigate('established-corporate'); }} className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-white/[0.08] transition-colors flex items-center">
+                    <span className="text-[13px] font-bold text-slate-200 hover:text-white">Established & Corporate</span>
                   </button>
-                  <button onClick={() => { setWhoWeHelpOpen(false); onNavigate('non-profit-community'); }} className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center">
-                    <span className="text-[13px] font-bold text-[#061a2e]">Not-for-Profit & Community</span>
+                  <button onClick={() => { setWhoWeHelpOpen(false); onNavigate('non-profit-community'); }} className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-white/[0.08] transition-colors flex items-center">
+                    <span className="text-[13px] font-bold text-slate-200 hover:text-white">Not-for-Profit & Community</span>
                   </button>
-                  <button onClick={() => { setWhoWeHelpOpen(false); onNavigate('local-government'); }} className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center">
-                    <span className="text-[13px] font-bold text-[#061a2e]">Local Government</span>
+                  <button onClick={() => { setWhoWeHelpOpen(false); onNavigate('local-government'); }} className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-white/[0.08] transition-colors flex items-center">
+                    <span className="text-[13px] font-bold text-slate-200 hover:text-white">Local Government</span>
                   </button>
                 </div>
               )}
@@ -95,29 +94,29 @@ export const Header = ({
             >
               <button
                 onClick={() => onNavigate('what-we-do')}
-                className="flex items-center text-xs lg:text-[13px] xl:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5 whitespace-nowrap cursor-pointer"
+                className="flex items-center text-xs lg:text-[13px] xl:text-sm font-semibold text-slate-300 hover:text-emerald-400 transition-colors py-1.5 whitespace-nowrap cursor-pointer"
               >
                 <span>What We Do</span>
-                <ChevronDown className={`w-3.5 h-3.5 ml-1 transition-transform duration-200 flex-shrink-0 ${whatWeDoOpen ? 'rotate-180 text-[#007791]' : 'text-gray-400'}`} />
+                <ChevronDown className={`w-3.5 h-3.5 ml-1 transition-transform duration-200 flex-shrink-0 ${whatWeDoOpen ? 'rotate-180 text-emerald-400' : 'text-slate-400'}`} />
               </button>
 
               {whatWeDoOpen && (
-                <div className="absolute top-full left-0 w-72 bg-white rounded-xl shadow-xl border border-gray-100 py-2 px-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('lead'); }} className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center gap-3">
+                <div className="absolute top-full left-0 w-72 bg-[#0B2440] rounded-2xl shadow-2xl border border-white/15 py-2 px-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200 backdrop-blur-xl">
+                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('lead'); }} className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-white/[0.08] transition-colors flex items-center gap-3 group/item">
                     <PillarIcon type="lead" className="w-5 h-5 shrink-0" />
-                    <span className="text-[13px] font-bold text-[#061a2e]">LEAD — CFO & FP&A Advisory</span>
+                    <span className="text-[13px] font-bold text-slate-200 group-hover/item:text-white">LEAD — CFO & FP&A Advisory</span>
                   </button>
-                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('build'); }} className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center gap-3">
+                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('build'); }} className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-white/[0.08] transition-colors flex items-center gap-3 group/item">
                     <PillarIcon type="build" className="w-5 h-5 shrink-0" />
-                    <span className="text-[13px] font-bold text-[#061a2e]">BUILD — Finance Functions</span>
+                    <span className="text-[13px] font-bold text-slate-200 group-hover/item:text-white">BUILD — Finance Functions</span>
                   </button>
-                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('transform'); }} className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center gap-3">
+                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('transform'); }} className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-white/[0.08] transition-colors flex items-center gap-3 group/item">
                     <PillarIcon type="transform" className="w-5 h-5 shrink-0" />
-                    <span className="text-[13px] font-bold text-[#061a2e]">TRANSFORM — Data & Tech</span>
+                    <span className="text-[13px] font-bold text-slate-200 group-hover/item:text-white">TRANSFORM — Data & Tech</span>
                   </button>
-                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('protect'); }} className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-[#f0f5fa] transition-colors flex items-center gap-3">
+                  <button onClick={() => { setWhatWeDoOpen(false); onNavigate('protect'); }} className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-white/[0.08] transition-colors flex items-center gap-3 group/item">
                     <PillarIcon type="protect" className="w-5 h-5 shrink-0" />
-                    <span className="text-[13px] font-bold text-[#061a2e]">PROTECT — Tax & Compliance</span>
+                    <span className="text-[13px] font-bold text-slate-200 group-hover/item:text-white">PROTECT — Tax & Compliance</span>
                   </button>
                 </div>
               )}
@@ -126,7 +125,7 @@ export const Header = ({
             {/* INSIGHTS */}
             <button
               onClick={() => onNavigate('insights')}
-              className="text-xs lg:text-[13px] xl:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5 whitespace-nowrap cursor-pointer"
+              className="text-xs lg:text-[13px] xl:text-sm font-semibold text-slate-300 hover:text-emerald-400 transition-colors py-1.5 whitespace-nowrap cursor-pointer"
             >
               Insights
             </button>
@@ -134,7 +133,7 @@ export const Header = ({
             {/* ABOUT */}
             <button
               onClick={() => onNavigate('about')}
-              className="text-xs lg:text-[13px] xl:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5 whitespace-nowrap cursor-pointer"
+              className="text-xs lg:text-[13px] xl:text-sm font-semibold text-slate-300 hover:text-emerald-400 transition-colors py-1.5 whitespace-nowrap cursor-pointer"
             >
               About
             </button>
@@ -142,7 +141,7 @@ export const Header = ({
             {/* CONTACT */}
             <button
               onClick={() => onNavigate('contact')}
-              className="text-xs lg:text-[13px] xl:text-sm font-semibold text-[#061a2e] hover:text-[#007791] transition-colors py-1.5 whitespace-nowrap cursor-pointer"
+              className="text-xs lg:text-[13px] xl:text-sm font-semibold text-slate-300 hover:text-emerald-400 transition-colors py-1.5 whitespace-nowrap cursor-pointer"
             >
               Contact
             </button>
@@ -154,13 +153,13 @@ export const Header = ({
               onClick={onOpenContact}
               className="brand-button-gradient text-white text-xs sm:text-sm font-bold px-4 sm:px-5 py-2 rounded-full flex items-center space-x-1.5 shadow-md hover:shadow-lg whitespace-nowrap flex-shrink-0 cursor-pointer"
             >
-              <span>{data.ctaText}</span>
+              <span>{data?.ctaText || "Start a Conversation"}</span>
             </button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center space-x-2">
-            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-1.5 rounded-lg text-[#061a2e] hover:bg-gray-100">
+            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-1.5 rounded-lg text-slate-200 hover:bg-white/10">
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
@@ -169,17 +168,17 @@ export const Header = ({
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-gray-200 px-4 pt-3 pb-6 space-y-3 shadow-xl">
+        <div className="md:hidden bg-[#061a2e] border-b border-white/10 px-4 pt-3 pb-6 space-y-3 shadow-2xl backdrop-blur-md">
           <nav className="flex flex-col space-y-2">
-            <button onClick={() => { setMobileMenuOpen(false); onGoHome(); }} className="text-left font-semibold text-[#061a2e] py-1.5 text-sm hover:text-[#007791]">Home</button>
-            <button onClick={() => { setMobileMenuOpen(false); onNavigate('who-we-help'); }} className="text-left font-semibold text-[#061a2e] py-1.5 text-sm hover:text-[#007791]">Who We Help</button>
-            <button onClick={() => { setMobileMenuOpen(false); onNavigate('what-we-do'); }} className="text-left font-semibold text-[#061a2e] py-1.5 text-sm hover:text-[#007791]">What We Do</button>
-            <button onClick={() => { setMobileMenuOpen(false); onNavigate('insights'); }} className="text-left font-semibold text-[#061a2e] py-1.5 text-sm hover:text-[#007791]">Insights</button>
-            <button onClick={() => { setMobileMenuOpen(false); onNavigate('about'); }} className="text-left font-semibold text-[#061a2e] py-1.5 text-sm hover:text-[#007791]">About</button>
-            <button onClick={() => { setMobileMenuOpen(false); onNavigate('contact'); }} className="text-left font-semibold text-[#061a2e] py-1.5 text-sm hover:text-[#007791]">Contact</button>
+            <button onClick={() => { setMobileMenuOpen(false); onGoHome(); }} className="text-left font-semibold text-slate-200 py-1.5 text-sm hover:text-emerald-400">Home</button>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigate('who-we-help'); }} className="text-left font-semibold text-slate-200 py-1.5 text-sm hover:text-emerald-400">Who We Help</button>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigate('what-we-do'); }} className="text-left font-semibold text-slate-200 py-1.5 text-sm hover:text-emerald-400">What We Do</button>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigate('insights'); }} className="text-left font-semibold text-slate-200 py-1.5 text-sm hover:text-emerald-400">Insights</button>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigate('about'); }} className="text-left font-semibold text-slate-200 py-1.5 text-sm hover:text-emerald-400">About</button>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigate('contact'); }} className="text-left font-semibold text-slate-200 py-1.5 text-sm hover:text-emerald-400">Contact</button>
           </nav>
 
-          <div className="pt-2 border-t border-gray-100">
+          <div className="pt-2 border-t border-white/10">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
@@ -187,20 +186,20 @@ export const Header = ({
               }}
               className="w-full brand-button-gradient text-white text-xs sm:text-sm font-bold py-2.5 rounded-full flex items-center justify-center space-x-1.5 shadow-md active:scale-95 transition-transform"
             >
-              <span>{data.ctaText || "Start a Conversation"}</span>
+              <span>{data?.ctaText || "Start a Conversation"}</span>
             </button>
           </div>
 
           {adminUser ? (
-            <div className="pt-2 border-t border-gray-100 flex items-center justify-between">
+            <div className="pt-2 border-t border-white/10 flex items-center justify-between">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onToggleCMS();
                 }}
-                className="text-xs font-bold text-emerald-600 flex items-center space-x-1.5 py-1"
+                className="text-xs font-bold text-emerald-400 flex items-center space-x-1.5 py-1"
               >
-                <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
+                <Sliders className="w-3.5 h-3.5 text-emerald-400" />
                 <span>Edit Site CMS</span>
               </button>
               <button
@@ -208,19 +207,19 @@ export const Header = ({
                   setMobileMenuOpen(false);
                   onLogout();
                 }}
-                className="text-xs font-semibold text-rose-500 py-1"
+                className="text-xs font-semibold text-rose-400 py-1"
               >
                 Logout ({adminUser.name})
               </button>
             </div>
           ) : (
-            <div className="pt-1 border-t border-gray-100">
+            <div className="pt-1 border-t border-white/10">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenLogin();
                 }}
-                className="text-xs font-semibold text-gray-500 hover:text-gray-700 flex items-center space-x-1.5 py-1"
+                className="text-xs font-semibold text-slate-400 hover:text-white flex items-center space-x-1.5 py-1"
               >
                 <Lock className="w-3.5 h-3.5" />
                 <span>Admin Login</span>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PillarIcon } from './BrandLogo';
-import { ArrowRight, ArrowLeft, CheckCircle2, ShieldCheck, Sparkles, TrendingUp, Layers, Cpu, FileText, BarChart2, Check, Zap, Target, DollarSign, PieChart, Activity, Search, AlertTriangle } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, ShieldCheck, Compass, TrendingUp, Layers, Cpu, FileText, BarChart2, Check, Zap, Target, DollarSign, PieChart, Activity, Search, AlertTriangle } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 import { CFOAdvisoryPage } from './CFOAdvisoryPage';
 
@@ -301,7 +301,7 @@ export const ServiceDetailPage = ({ serviceId, pageData, onBack, onOpenContact, 
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <div className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-[#007791] bg-teal-50 border border-teal-100 px-4 py-1.5 rounded-full">
-              <Sparkles className="w-3.5 h-3.5 text-[#2bb673]" />
+              <TrendingUp className="w-3.5 h-3.5 text-[#2bb673]" />
               <span>Executive Execution Roadmap</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight">
@@ -427,7 +427,7 @@ export const ServiceDetailPage = ({ serviceId, pageData, onBack, onOpenContact, 
           <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between border-b border-slate-800/80 pb-6 gap-4">
             <div>
               <div className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-[#2bb673] mb-1">
-                <Sparkles className="w-3.5 h-3.5" />
+                <Layers className="w-3.5 h-3.5" />
                 <span>Capability Navigator</span>
               </div>
               <h3 className="text-3xl font-black text-white">Explore Other Capability Pillars</h3>

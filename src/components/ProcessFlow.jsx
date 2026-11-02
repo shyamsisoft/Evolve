@@ -33,7 +33,7 @@ export const ProcessFlow = ({ data, onNavigate }) => {
   ];
 
   return (
-    <section className="relative py-12 sm:py-20 lg:py-24 bg-[#061a2e] text-white border-y border-slate-800/80 overflow-hidden select-none">
+    <section className="relative py-12 sm:py-20 lg:py-24 bg-[#061a2e] text-white border-b border-white/10 overflow-hidden select-none">
       
       {/* Background Corporate Image with Atmospheric Depth Overlays */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">

@@ -1,10 +1,11 @@
 import React from 'react';
-import { ArrowRight, ChevronRight, Sparkles } from 'lucide-react';
+import { ArrowRight, ChevronRight, Layers } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
+import { PrimaryButton } from './PrimaryButton';
 
 export const BuildHero = ({ onBack, onOpenContact }) => {
   return (
-    <section className="relative min-h-[75vh] flex items-center bg-[#070C18] text-white overflow-hidden py-16 sm:py-20 lg:py-24 border-b border-slate-800/80 font-['Plus_Jakarta_Sans',sans-serif]">
+    <section className="relative min-h-[75vh] flex items-center bg-[#061a2e] text-white overflow-hidden py-16 sm:py-20 lg:py-24 border-b border-white/10 font-['Plus_Jakarta_Sans',sans-serif]">
       
       {/* Background & Visuals: Asymmetric split-screen with seamless gradient mask */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -12,23 +13,23 @@ export const BuildHero = ({ onBack, onOpenContact }) => {
         <img
           src={imgUrl("/images/finance_build.jpg")}
           alt="Finance Functions & Operating Models"
-          className="absolute right-0 top-0 bottom-0 w-full lg:w-3/5 h-full object-cover object-center opacity-55"
+          className="absolute right-0 top-0 bottom-0 w-full lg:w-3/5 h-full object-cover object-center opacity-40"
           onError={(e) => {
             const fallback = imgUrl("/images/approach_design.jpg");
             if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback;
           }}
         />
 
-        {/* Custom linear-gradient blend: solid dark slate on left 42%, smoothly revealing executive imagery */}
+        {/* Custom linear-gradient blend: solid dark navy on left 42%, smoothly revealing executive imagery */}
         <div 
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to right, #070C18 42%, rgba(7,12,24,0.7) 70%, transparent 100%)'
+            background: 'linear-gradient(to right, #061a2e 42%, rgba(6,26,46,0.75) 70%, transparent 100%)'
           }}
         />
 
         {/* Vertical edge blends */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#070C18] via-transparent to-[#070C18]/80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-transparent to-[#061a2e]/80" />
       </div>
 
       {/* Ambient Radial Lights */}
@@ -55,7 +56,7 @@ export const BuildHero = ({ onBack, onOpenContact }) => {
         {/* 2. Eyebrow Badge */}
         <div className="flex items-center space-x-3.5 pt-0.5">
           <div className="inline-flex items-center space-x-2.5 text-xs font-black uppercase tracking-widest text-emerald-400 bg-white/[0.04] border border-emerald-500/30 px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.15)] backdrop-blur-md">
-            <Sparkles className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+            <Layers className="w-3.5 h-3.5 text-emerald-400" />
             <span>BRAND PILLAR: BUILD</span>
           </div>
         </div>
@@ -82,14 +83,7 @@ export const BuildHero = ({ onBack, onOpenContact }) => {
 
         {/* 4. CTA Button */}
         <div className="pt-2 flex flex-wrap items-center gap-4">
-          <button
-            type="button"
-            onClick={onOpenContact}
-            className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-sm sm:text-base font-extrabold px-8 py-4 rounded-full flex items-center space-x-3 shadow-[0_4px_25px_rgba(16,185,129,0.35)] hover:scale-105 active:scale-95 transition-all cursor-pointer group"
-          >
-            <span>Request a Finance Health Check</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
-          </button>
+          <PrimaryButton onClick={onOpenContact}>Request a Finance Health Check</PrimaryButton>
         </div>
 
         {/* 5. Trust / Metric Strip */}

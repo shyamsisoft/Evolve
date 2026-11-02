@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { 
-  ArrowRight, 
   ArrowLeft, 
   TrendingUp, 
   Briefcase, 
@@ -14,10 +13,12 @@ import {
   Building2,
   Users2,
   Landmark,
-  Sparkles
 } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 import { SectorNavigatorSection } from './SectorNavigatorSection';
+import { SectionDivider } from './SectionDivider';
+import { PrimaryButton } from './PrimaryButton';
+import { OwnerLedToManagementLedFlow } from './OwnerLedToManagementLedFlow';
 
 export const GrowingBusinessesPage = ({ onBack, onOpenContact, onSelectAudience }) => {
   useEffect(() => {
@@ -30,100 +31,74 @@ export const GrowingBusinessesPage = ({ onBack, onOpenContact, onSelectAudience 
       num: "01",
       title: "Fractional CFO",
       desc: "Senior financial leadership tailored to your growth phase.",
-      icon: <Briefcase className="w-5 h-5" />
+      icon: <Briefcase className="w-5 h-5" />,
+      image: "/images/solution_fractional_cfo.jpg"
     },
     {
       num: "02",
       title: "Budgeting & Forecasting",
       desc: "Build clear financial planning frameworks and predictive rolling models.",
-      icon: <LineChart className="w-5 h-5" />
+      icon: <LineChart className="w-5 h-5" />,
+      image: "/images/solution_budgeting_forecasting.jpg"
     },
     {
       num: "03",
       title: "Cash Flow Visibility",
       desc: "Gain full transparency over future cash requirements and working capital needs.",
-      icon: <Eye className="w-5 h-5" />
+      icon: <Eye className="w-5 h-5" />,
+      image: "/images/solution_cash_flow.jpg"
     },
     {
       num: "04",
       title: "Management Reporting",
       desc: "Transform raw operational and financial numbers into decision-ready insights.",
-      icon: <BarChart3 className="w-5 h-5" />
+      icon: <BarChart3 className="w-5 h-5" />,
+      image: "/images/solution_management_reporting.jpg"
     },
     {
       num: "05",
       title: "Financial Modelling",
       desc: "Model growth scenarios, staffing, pricing, and capital investment requirements.",
-      icon: <TrendingUp className="w-5 h-5" />
+      icon: <TrendingUp className="w-5 h-5" />,
+      image: "/images/solution_financial_modelling.jpg"
     },
     {
       num: "06",
       title: "KPIs & Performance Frameworks",
       desc: "Identify and track the key operational metrics that drive performance.",
-      icon: <Target className="w-5 h-5" />
+      icon: <Target className="w-5 h-5" />,
+      image: "/images/solution_kpi_performance.jpg"
     },
     {
       num: "07",
       title: "Finance Health Checks",
       desc: "Conduct structured reviews across people, processes, systems, and controls.",
-      icon: <ShieldCheck className="w-5 h-5" />
+      icon: <ShieldCheck className="w-5 h-5" />,
+      image: "/images/solution_finance_health_checks.jpg"
     },
     {
       num: "08",
       title: "Process Improvement & Systems",
       desc: "Optimize financial workflows and eliminate manual reporting overhead.",
-      icon: <Workflow className="w-5 h-5" />
+      icon: <Workflow className="w-5 h-5" />,
+      image: "/images/solution_process_systems.jpg"
     },
     {
       num: "09",
       title: "Tax & Compliance",
       desc: "Connect compliance obligations directly into broader finance function operations.",
-      icon: <FileCheck className="w-5 h-5" />
-    }
-  ];
-
-  // 2. Progression Flow (Exact 4 stages from Source of Truth)
-  const progressionStages = [
-    { num: "01", name: "Looking backwards" },
-    { num: "02", name: "Understanding performance" },
-    { num: "03", name: "Predicting the future" },
-    { num: "04", name: "Managing performance" }
-  ];
-
-  const sectors = [
-    {
-      id: 'growing-businesses',
-      title: 'Growing Businesses',
-      desc: 'Scale-Ups & Mid-Market',
-      icon: <TrendingUp className="w-5 h-5 text-[#2bb673]" />
-    },
-    {
-      id: 'established-corporate',
-      title: 'Established Corporate',
-      desc: 'Enterprise & M&A',
-      icon: <Building2 className="w-5 h-5 text-[#2bb673]" />
-    },
-    {
-      id: 'non-profit-community',
-      title: 'Not-for-Profit & Community',
-      desc: 'Purpose & Grants',
-      icon: <Users2 className="w-5 h-5 text-[#2bb673]" />
-    },
-    {
-      id: 'local-government',
-      title: 'Local Government',
-      desc: 'Public Sector LTFS',
-      icon: <Landmark className="w-5 h-5 text-[#2bb673]" />
+      icon: <FileCheck className="w-5 h-5" />,
+      image: "/images/solution_tax_compliance.jpg"
     }
   ];
 
   return (
-    <div className="pt-20 sm:pt-24 pb-20 bg-[#f8fafc] text-slate-800 font-['Plus_Jakarta_Sans',sans-serif] selection:bg-[#2bb673] selection:text-white animate-in fade-in duration-300">
+    <div className="pt-20 sm:pt-24 pb-20 bg-[#061a2e] text-white font-['Inter',sans-serif] selection:bg-[#18B0A6] selection:text-[#061a2e] animate-in fade-in duration-300">
 
       {/* ======================================================== */}
       {/* 1. HERO SECTION (EXACT DESIGN MATCH)                     */}
       {/* ======================================================== */}
-      <section className="relative min-h-[64vh] flex items-center bg-[#061a2e] text-white overflow-hidden py-16 sm:py-20 lg:py-24 border-b border-slate-800 font-['Plus_Jakarta_Sans',sans-serif]">
+      <section className="relative min-h-[64vh] flex items-center bg-[#061a2e] text-white overflow-hidden py-16 sm:py-20 lg:py-24 border-b border-white/10">
         
         {/* Background Artwork with Brand Gradient Overlay */}
         <div className="absolute inset-0 z-0">
@@ -136,13 +111,13 @@ export const GrowingBusinessesPage = ({ onBack, onOpenContact, onSelectAudience 
               if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback;
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/95 to-[#007791]/40"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-transparent to-[#061a2e]/70"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/95 to-[#007791]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-transparent to-[#061a2e]/70" />
         </div>
 
         {/* Ambient Radial Lights */}
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#007791]/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#2bb673]/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#007791]/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#2bb673]/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-6 sm:space-y-7">
           
@@ -157,7 +132,7 @@ export const GrowingBusinessesPage = ({ onBack, onOpenContact, onSelectAudience 
               <span>Who We Help</span>
             </button>
             <span className="text-slate-500">/</span>
-            <span className="text-cyan-300 font-bold">SECTOR</span>
+            <span className="text-teal-300 font-bold">SECTOR</span>
             <span className="text-slate-500">/</span>
             <span className="text-white font-bold truncate">Growing Businesses</span>
           </nav>
@@ -168,7 +143,7 @@ export const GrowingBusinessesPage = ({ onBack, onOpenContact, onSelectAudience 
               <TrendingUp className="w-9 h-9 text-emerald-400" />
             </div>
             <div>
-              <span className="inline-block text-[11px] sm:text-xs font-black tracking-widest text-[#2bb673] uppercase bg-emerald-500/15 border border-emerald-500/30 px-3.5 py-1 rounded-full">
+              <span className="inline-block text-[11px] sm:text-xs font-bold tracking-widest text-[#2bb673] uppercase bg-emerald-500/15 border border-emerald-500/30 px-3.5 py-1 rounded-full">
                 SECTOR FOCUS: GROWING BUSINESSES
               </span>
             </div>
@@ -176,14 +151,14 @@ export const GrowingBusinessesPage = ({ onBack, onOpenContact, onSelectAudience 
 
           {/* Main Headline & Value Proposition Narrative */}
           <div className="space-y-4 max-w-4xl">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
               Growing Business Solutions
             </h1>
             <p className="text-xl sm:text-2xl text-emerald-400 font-bold tracking-tight">
               Financial leadership for organisations ready for their next stage.
             </p>
 
-            <div className="pt-1 space-y-3 max-w-3xl text-slate-200 font-['Inter',sans-serif]">
+            <div className="pt-1 space-y-3 max-w-3xl text-slate-200">
               <p className="text-base sm:text-lg lg:text-xl font-medium leading-relaxed text-slate-100">
                 Growing businesses often reach a point where traditional accounting is no longer enough. Growth creates opportunity, but it also creates financial complexity. As organisations grow, informal processes, spreadsheets, and traditional accounting struggle to keep pace.
               </p>
@@ -195,14 +170,7 @@ export const GrowingBusinessesPage = ({ onBack, onOpenContact, onSelectAudience 
 
           {/* Immediate Call to Action Button */}
           <div className="pt-2 flex flex-wrap items-center gap-4">
-            <button
-              type="button"
-              onClick={onOpenContact}
-              className="brand-button-gradient text-white text-sm sm:text-base font-extrabold px-8 py-4 rounded-full flex items-center space-x-3 shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer group"
-            >
-              <span>Start a Conversation</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            <PrimaryButton onClick={onOpenContact}>Start a Conversation</PrimaryButton>
 
             <span className="text-xs sm:text-sm text-slate-300 font-medium flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -213,40 +181,71 @@ export const GrowingBusinessesPage = ({ onBack, onOpenContact, onSelectAudience 
         </div>
       </section>
 
+      {/* SECTION DIVIDER */}
+      <SectionDivider />
+
       {/* ======================================================== */}
       {/* 2. KEY SOLUTIONS (9 Exact Items)                          */}
       {/* ======================================================== */}
-      <section className="py-20 sm:py-24 bg-white border-b border-slate-200/80 relative overflow-hidden">
+      <section className="py-20 sm:py-24 bg-[#061a2e] text-white border-b border-white/10 relative overflow-hidden">
+        {/* Subtle Ambient Lighting */}
+        <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#007791]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#2bb673]/10 rounded-full blur-3xl pointer-events-none" />
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="max-w-3xl space-y-3">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-snug">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-snug">
               Key Solutions
             </h2>
           </div>
 
-          {/* 3x3 Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* 3x3 Grid with Bespoke Corporate Imagery */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 items-stretch">
             {keySolutions.map((solution, idx) => (
               <div 
                 key={idx}
-                className="p-6 sm:p-7 rounded-2xl bg-white border border-slate-200/90 hover:border-[#2bb673] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                className="rounded-3xl bg-white/[0.03] backdrop-blur-md border border-white/10 hover:border-emerald-500/50 hover:bg-white/[0.06] shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden group"
               >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-200 text-[#2bb673] flex items-center justify-center group-hover:bg-[#061a2e] group-hover:text-emerald-400 group-hover:scale-110 transition-all duration-300 shadow-2xs">
-                      {solution.icon}
+                <div>
+                  {/* Card Media Header with Ambient Scrim */}
+                  <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-950">
+                    <img 
+                      src={imgUrl(solution.image)}
+                      alt={solution.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 opacity-70 group-hover:opacity-85"
+                      onError={(e) => {
+                        const fallback = imgUrl('/images/growing_businesses.jpg');
+                        if (e.currentTarget.src !== fallback) {
+                          e.currentTarget.src = fallback;
+                        }
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/55 to-transparent" />
+
+                    {/* Floating Icon Emblem on Top-Left */}
+                    <div className="absolute top-3.5 left-3.5">
+                      <div className="w-10 h-10 rounded-xl bg-[#061a2e]/90 backdrop-blur-md border border-white/20 text-[#2bb673] flex items-center justify-center group-hover:text-emerald-400 group-hover:border-emerald-500/50 shadow-md transition-colors">
+                        {solution.icon}
+                      </div>
                     </div>
-                    <span className="font-mono text-xs font-bold text-slate-400">
-                      {solution.num}
-                    </span>
+
+                    {/* Number Index on Top-Right */}
+                    <div className="absolute top-3.5 right-3.5">
+                      <span className="px-3 py-1 rounded-full bg-[#061a2e]/90 backdrop-blur-md border border-white/20 font-mono text-xs font-bold text-slate-300">
+                        {solution.num}
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <h3 className="text-lg font-black text-[#061a2e] group-hover:text-[#2bb673] transition-colors leading-snug">
+                  {/* Card Content Body */}
+                  <div className="p-6 sm:p-7 space-y-2.5">
+                    <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-emerald-300 transition-colors leading-snug">
                       {solution.title}
                     </h3>
-                    <p className="text-sm font-medium text-slate-600 leading-relaxed font-['Inter',sans-serif]">
+                    <p className="text-sm font-normal text-slate-300 leading-relaxed">
                       {solution.desc}
                     </p>
                   </div>
@@ -258,87 +257,36 @@ export const GrowingBusinessesPage = ({ onBack, onOpenContact, onSelectAudience 
         </div>
       </section>
 
+      {/* SECTION DIVIDER */}
+      <SectionDivider />
 
       {/* ======================================================== */}
       {/* 3. FROM OWNER-LED FINANCE TO MANAGEMENT-LED FINANCE       */}
       {/* ======================================================== */}
-      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200/80 relative overflow-hidden">
+      <section className="py-20 sm:py-24 bg-[#061a2e] text-white border-b border-white/10 relative overflow-hidden">
+        {/* Subtle Ambient Lighting */}
+        <div className="absolute top-1/3 right-0 w-96 h-96 bg-[#007791]/15 rounded-full blur-3xl pointer-events-none" />
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="max-w-3xl space-y-3">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-snug">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-snug">
               From owner-led finance to management-led finance
             </h2>
             
-            <p className="text-base sm:text-lg text-slate-600 font-semibold leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed">
               The objective is to help your organisation move from:
             </p>
           </div>
 
-          {/* 4-Stage Connected Progression Flow */}
-          <div className="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-slate-200/90 shadow-sm">
-            
-            {/* Desktop Horizontal Connected Sequence */}
-            <div className="hidden lg:grid grid-cols-4 gap-6 relative items-center">
-              {progressionStages.map((stage, idx) => {
-                const isLast = idx === progressionStages.length - 1;
-                return (
-                  <div key={idx} className="relative flex flex-col justify-between">
-                    <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/90 hover:border-[#2bb673] hover:bg-emerald-50/20 hover:shadow-lg transition-all space-y-3 group text-center min-h-[140px] flex flex-col justify-between">
-                      <span className="font-mono text-xs font-bold text-slate-400 block">
-                        {stage.num}
-                      </span>
-                      <h3 className="text-base sm:text-lg font-black text-[#061a2e] group-hover:text-[#2bb673] transition-colors leading-snug">
-                        {stage.name}
-                      </h3>
-                      <div className="w-2 h-2 rounded-full bg-[#2bb673] mx-auto opacity-70 group-hover:scale-125 transition-transform" />
-                    </div>
-
-                    {!isLast && (
-                      <div className="absolute top-1/2 -right-4 -translate-y-1/2 z-20 pointer-events-none">
-                        <div className="w-8 h-8 rounded-full bg-white border border-slate-300 shadow-sm flex items-center justify-center text-[#2bb673]">
-                          <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Mobile / Tablet Vertical Flow */}
-            <div className="flex lg:hidden flex-col gap-3">
-              {progressionStages.map((stage, idx) => {
-                const isLast = idx === progressionStages.length - 1;
-                return (
-                  <React.Fragment key={idx}>
-                    <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/90 flex items-center justify-between">
-                      <div className="text-sm font-black text-[#061a2e]">
-                        {stage.name}
-                      </div>
-                      <span className="font-mono text-xs font-bold text-slate-400">
-                        {stage.num}
-                      </span>
-                    </div>
-                    {!isLast && (
-                      <div className="flex justify-center -my-1 text-[#2bb673]">
-                        <ArrowRight className="w-4 h-4 rotate-90" />
-                      </div>
-                    )}
-                  </React.Fragment>
-                );
-              })}
-            </div>
-
-          </div>
+          {/* 4-Stage Connected Progression Flow with Live Animations */}
+          <OwnerLedToManagementLedFlow />
 
         </div>
       </section>
 
-
-
       {/* ======================================================== */}
-      {/* 5. STANDARDIZED SECTOR NAVIGATOR                         */}
+      {/* 4. STANDARDIZED SECTOR NAVIGATOR                         */}
       {/* ======================================================== */}
       <SectorNavigatorSection
         currentSector="growing-businesses"

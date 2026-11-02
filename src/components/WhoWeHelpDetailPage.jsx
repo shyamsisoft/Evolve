@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ArrowRight, ArrowLeft, CheckCircle2, Sparkles, Building2, TrendingUp, Users2, Landmark, ShieldCheck, Target, BarChart2, AlertTriangle, Zap } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, Compass, Building2, TrendingUp, Users2, Landmark, ShieldCheck, Target, BarChart2, AlertTriangle, Zap } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 
 export const WhoWeHelpDetailPage = ({ audienceId, data, onBack, onOpenContact, onSelectAudience }) => {
@@ -63,7 +63,7 @@ export const WhoWeHelpDetailPage = ({ audienceId, data, onBack, onOpenContact, o
           </div>
 
           <div className="inline-flex items-center space-x-2 px-3.5 py-1 bg-white/10 backdrop-blur-md rounded-full text-xs font-black uppercase tracking-widest text-[#2bb673]">
-            <Sparkles className="w-3.5 h-3.5" />
+            <Compass className="w-3.5 h-3.5" />
             <span>Sector Growth Roadmap</span>
           </div>
 
@@ -97,7 +97,7 @@ export const WhoWeHelpDetailPage = ({ audienceId, data, onBack, onOpenContact, o
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="max-w-3xl space-y-3">
               <div className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-[#007791] bg-teal-50 border border-teal-100 px-4 py-1.5 rounded-full">
-                <Sparkles className="w-3.5 h-3.5 text-[#2bb673]" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#2bb673]" />
                 <span>Sector Capability & Diagnostic Blueprint</span>
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight">
@@ -234,7 +234,7 @@ export const WhoWeHelpDetailPage = ({ audienceId, data, onBack, onOpenContact, o
           <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-slate-800/80 pb-6 gap-4">
             <div>
               <div className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-[#2bb673] mb-1">
-                <Sparkles className="w-3.5 h-3.5" />
+                <TrendingUp className="w-3.5 h-3.5" />
                 <span>Sector Blueprint Navigator</span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-black text-white">Explore Other Target Sectors</h2>

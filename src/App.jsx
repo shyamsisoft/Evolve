@@ -10,7 +10,7 @@ import { WhoWeHelp } from './components/WhoWeHelp';
 import { FooterCTA } from './components/FooterCTA';
 import { ContactModal } from './components/ContactModal';
 import { CMSDrawer } from './components/CMSDrawer';
-import { ServiceDetailPage } from './components/ServiceDetailPage';
+
 import { CFOAdvisoryPage } from './components/CFOAdvisoryPage';
 import { BuildPage } from './components/BuildPage';
 import { TransformPage } from './components/TransformPage';
@@ -21,14 +21,15 @@ import { EstablishedCorporatePage } from './components/EstablishedCorporatePage'
 import { LocalGovernmentPage } from './components/LocalGovernmentPage';
 import { WhatWeDoOverviewPage } from './components/WhatWeDoOverviewPage';
 import { WhoWeHelpOverviewPage } from './components/WhoWeHelpOverviewPage';
-import { WhoWeHelpDetailPage } from './components/WhoWeHelpDetailPage';
+
 import { InsightsPage } from './components/InsightsPage';
 import { InsightDetailPage } from './components/InsightDetailPage';
 import { AboutPage } from './components/AboutPage';
 import { ContactPage } from './components/ContactPage';
+import { SectionDivider } from './components/SectionDivider';
 import { AdminLoginModal } from './components/AdminLoginModal';
 import { ErrorBoundary } from './components/ErrorBoundary';
-import { Sparkles } from 'lucide-react';
+import { Sliders } from 'lucide-react';
 import { imgUrl } from './utils/imgUrl';
 import { parseCurrentRoute, buildRouteUrl } from './utils/router';
 
@@ -284,7 +285,7 @@ export function App() {
   const fixedData = fixImagePaths(siteData);
 
   return (
-    <div className={`min-h-screen bg-[#f7f9fc] flex flex-col ${activeFont} text-[#061a2e] selection:bg-[#007791] selection:text-white transition-all duration-300`}>
+    <div className={`min-h-screen bg-[#061a2e] flex flex-col ${activeFont} text-white selection:bg-[#18B0A6] selection:text-[#061a2e] transition-all duration-300`}>
       {/* Header Bar */}
       <Header
         data={fixedData.header}
@@ -397,30 +398,35 @@ export function App() {
             />
 
             {/* Section 2: Finance is More Than Numbers */}
+            <SectionDivider />
             <FinanceMoreThanNumbers
               data={fixedData.section2}
               onSelectWhatWeDoOverview={() => navigateTo('what-we-do')}
             />
 
             {/* Section 3: Process Flow (From numbers to better decisions) */}
+            <SectionDivider />
             <ProcessFlow
               data={fixedData.processFlow}
               onNavigate={(pageId) => navigateTo(pageId)}
             />
 
             {/* Section 4: Our Approach & Why Us */}
+            <SectionDivider />
             <ApproachWhyUs
               data={fixedData.approachAndWhyUs}
               onOpenContact={() => setIsContactOpen(true)}
             />
 
             {/* Section 5: What We Do (Service Pillars) */}
+            <SectionDivider />
             <WhatWeDo
               data={fixedData.whatWeDo}
               onSelectService={(id) => navigateTo(id)}
             />
 
             {/* Section 6: Who We Help */}
+            <SectionDivider />
             <WhoWeHelp
               data={fixedData.whoWeHelp}
               onSelectAudience={(id) => navigateTo(id)}
@@ -429,6 +435,7 @@ export function App() {
         )}
 
         {/* Pre-footer CTA & Footer */}
+        <SectionDivider />
         <FooterCTA
           ctaData={fixedData.ctaBanner}
           footerData={fixedData.footer}
@@ -459,7 +466,7 @@ export function App() {
             className="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center space-x-1 sm:space-x-1.5 cursor-pointer bg-emerald-500/15 hover:bg-emerald-500/25 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border border-emerald-500/30 transition-all"
             title="Open Site CMS Content Editor"
           >
-            <Sparkles className="w-3.5 h-3.5" />
+            <Sliders className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">{isCMSOpen ? 'Close CMS' : 'Edit Site CMS'}</span>
             <span className="sm:hidden">{isCMSOpen ? 'Close' : 'CMS'}</span>
           </button>

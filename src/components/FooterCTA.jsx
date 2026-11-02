@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrandLogo } from './BrandLogo';
-import { ArrowRight, Globe, Share2, Sparkles, Lock, LogOut, Settings } from 'lucide-react';
+import { Lock, LogOut, Settings } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 
 export const FooterCTA = ({ ctaData, footerData, adminUser, onOpenLogin, onToggleCMS, onLogout, onOpenContact, onGoHome, onNavigate }) => {
@@ -36,15 +36,18 @@ export const FooterCTA = ({ ctaData, footerData, adminUser, onOpenLogin, onToggl
               </p>
             </div>
 
-            {/* CTA Button */}
-            <div className="lg:col-span-5 lg:flex lg:justify-end">
-              <button
-                onClick={onOpenContact}
-                className="brand-button-gradient text-white text-sm sm:text-base font-bold px-7 py-3.5 rounded-full flex items-center space-x-2.5 shadow-xl hover:scale-105 transition-transform"
-              >
-                <span>{ctaData.buttonText}</span>
-                <ArrowRight className="w-5 h-5" />
-              </button>
+            {/* Animated Finance Telemetry GIF (Replaced CTA Button) */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#061a2e]/80 backdrop-blur-md max-w-sm sm:max-w-md w-full group">
+                <img
+                  src={imgUrl('/images/finance_animated.gif')}
+                  alt="Finance Telemetry & Trajectory"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
+                />
+                <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl pointer-events-none" />
+              </div>
             </div>
 
           </div>
@@ -100,7 +103,7 @@ export const FooterCTA = ({ ctaData, footerData, adminUser, onOpenLogin, onToggl
 
           {/* Bottom Copyright & Terms */}
           <div className="flex flex-col sm:flex-row items-center justify-between pt-8 text-sm text-gray-400 space-y-4 sm:space-y-0 font-medium">
-            <p>{footerData.copyright}</p>
+            <p>{footerData?.copyright || `© 2025 Evolve Corporate & Business Solutions. All rights reserved.`}</p>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400">
               <button onClick={() => onNavigate?.('contact')} className="hover:text-gray-200 transition-colors cursor-pointer">Privacy Policy</button>
               <span>|</span>
@@ -112,7 +115,7 @@ export const FooterCTA = ({ ctaData, footerData, adminUser, onOpenLogin, onToggl
                     onClick={onToggleCMS}
                     className="text-emerald-400 hover:text-emerald-300 font-bold flex items-center space-x-1 transition-colors cursor-pointer"
                   >
-                    <Sparkles className="w-3.5 h-3.5" />
+                    <Settings className="w-3.5 h-3.5" />
                     <span>Settings: Edit Site CMS</span>
                   </button>
                   <span>&bull;</span>

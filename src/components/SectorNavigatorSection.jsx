@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, Sparkles, TrendingUp, Building2, Users2, Landmark, Check } from 'lucide-react';
+import { ArrowRight, ShieldCheck, TrendingUp, Building2, Users2, Landmark, Check } from 'lucide-react';
+import { imgUrl } from '../utils/imgUrl';
 
 const SECTORS = [
   { 
@@ -42,6 +43,7 @@ const SECTOR_CONFIGS = {
     headline: 'Ready to Scale Your Finance Function?',
     description: 'Get senior fractional CFO guidance, reliable forecasting, and scalable financial systems tailored to your growth phase.',
     buttonText: 'Discuss Growing Business Support',
+    character: '/images/scale_cfo_executive.png',
   },
   'established-corporate': {
     badge: 'ENTERPRISE FINANCE ADVISORY',
@@ -66,6 +68,7 @@ const SECTOR_CONFIGS = {
     headline: 'Start a Sector-Specific Conversation',
     description: 'Whether you are scaling a fast-growing business, navigating enterprise complexity, guiding an NFP, or serving a community council.',
     buttonText: 'Start a Conversation',
+    character: '/images/scale_cfo_executive.png',
   }
 };
 
@@ -75,6 +78,7 @@ export const SectorNavigatorSection = ({
   headline: customHeadline,
   description: customDescription,
   buttonText: customButtonText,
+  character: customCharacter,
   onOpenContact,
   onSelectAudience,
   onBack,
@@ -85,6 +89,7 @@ export const SectorNavigatorSection = ({
   const headline = customHeadline || config.headline;
   const description = customDescription || config.description;
   const buttonText = customButtonText || config.buttonText;
+  const characterImage = customCharacter || config.character || '/images/scale_cfo_executive.png';
 
   const handleNavigateOverview = () => {
     if (onSelectAudience) {
@@ -97,43 +102,59 @@ export const SectorNavigatorSection = ({
   return (
     <>
       {/* 1. HIGH-CONTRAST FOOTER CALL TO ACTION BANNER */}
-      <section className="py-20 sm:py-24 bg-gradient-to-br from-[#061a2e] via-[#092644] to-[#041220] text-white relative overflow-hidden border-t border-slate-800 font-['Plus_Jakarta_Sans',sans-serif]">
+      <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-[#061a2e] via-[#092644] to-[#041220] text-white relative overflow-hidden border-t border-slate-800 font-['Plus_Jakarta_Sans',sans-serif]">
         {/* Glow Spheres */}
         <div className="absolute top-0 right-10 w-96 h-96 bg-[#007791]/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-10 w-96 h-96 bg-[#2bb673]/15 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-7">
-          <div className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-[#2bb673] bg-emerald-500/10 border border-emerald-500/30 px-4 py-1.5 rounded-full shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#2bb673]" />
-            <span>{badge}</span>
+        {/* Content Container: Centered Text + Vertically Centered Character Close to Text */}
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-8 xl:gap-10">
+          
+          {/* Centered Text Block */}
+          <div className="max-w-xl lg:max-w-2xl text-center space-y-6 sm:space-y-7">
+            <div className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-[#2bb673] bg-emerald-500/10 border border-emerald-500/30 px-4 py-1.5 rounded-full shadow-2xs mx-auto">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#2bb673]" />
+              <span>{badge}</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-white leading-tight">
+              {headline}
+            </h2>
+
+            <p className="text-base sm:text-lg text-slate-300 font-normal max-w-2xl mx-auto leading-relaxed font-['Inter',sans-serif]">
+              {description}
+            </p>
+
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4 font-['Inter',sans-serif]">
+              <button
+                type="button"
+                onClick={onOpenContact}
+                className="w-full sm:w-auto brand-button-gradient text-white text-base font-extrabold px-8 py-4 rounded-full flex items-center justify-center space-x-2.5 shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer group"
+              >
+                <span>{buttonText}</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+
+              <button
+                type="button"
+                onClick={handleNavigateOverview}
+                className="w-full sm:w-auto text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-slate-700/80 text-sm font-bold px-7 py-4 rounded-full transition-all cursor-pointer text-center"
+              >
+                Explore All Sectors
+              </button>
+            </div>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
-            {headline}
-          </h2>
-
-          <p className="text-base sm:text-lg text-slate-300 font-normal max-w-2xl mx-auto leading-relaxed font-['Inter',sans-serif]">
-            {description}
-          </p>
-
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              type="button"
-              onClick={onOpenContact}
-              className="w-full sm:w-auto brand-button-gradient text-white text-base font-extrabold px-9 py-4 rounded-full flex items-center justify-center space-x-2.5 shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer group"
-            >
-              <span>{buttonText}</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-
-            <button
-              type="button"
-              onClick={handleNavigateOverview}
-              className="w-full sm:w-auto text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-slate-700/80 text-sm font-bold px-7 py-4 rounded-full transition-all cursor-pointer"
-            >
-              Explore All Sectors
-            </button>
+          {/* 3D Character: Vertically Centered and Closely Positioned beside Text */}
+          <div className="flex-shrink-0 flex items-center justify-center relative pt-4 lg:pt-0">
+            <div className="absolute -inset-4 bg-radial from-[#18B0A6]/20 via-[#2bb673]/10 to-transparent blur-3xl pointer-events-none" />
+            <img
+              src={imgUrl(`${characterImage}?v=clean10`)}
+              alt="Scale-Up Financial Advisory Partner"
+              className="relative z-10 max-h-[340px] sm:max-h-[380px] lg:max-h-[440px] xl:max-h-[480px] w-auto object-contain drop-shadow-[0_25px_40px_rgba(0,0,0,0.6)] select-none pointer-events-none"
+            />
           </div>
+
         </div>
       </section>
 

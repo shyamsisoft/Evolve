@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Image as ImageIcon, Search, Check, Upload, Eye, EyeOff, Sparkles, ZoomIn } from 'lucide-react';
+import { X, Image as ImageIcon, Search, Check, Upload, Eye, EyeOff, ZoomIn } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 
 export const ALL_IMAGE_PRESETS = [

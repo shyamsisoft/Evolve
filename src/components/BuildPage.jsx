@@ -7,7 +7,6 @@ import {
   ArrowDown,
   CheckCircle2, 
   ShieldCheck, 
-  Sparkles, 
   TrendingUp, 
   Layers, 
   Target, 
@@ -31,6 +30,7 @@ import { PillarIcon } from './BrandLogo';
 import { imgUrl } from '../utils/imgUrl';
 import { CapabilityNavigatorSection } from './CapabilityNavigatorSection';
 import { BuildHero } from './BuildHero';
+import { SectionDivider } from './SectionDivider';
 
 export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
   const [activeMaturityStage, setActiveMaturityStage] = useState(0);
@@ -278,7 +278,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
   ];
 
   return (
-    <div className="pt-20 sm:pt-24 pb-20 bg-[#f8fafc] text-slate-800 font-['Inter',sans-serif] animate-in fade-in duration-300">
+    <div className="pt-20 sm:pt-24 pb-0 bg-[#061a2e] text-white font-['Inter',sans-serif] animate-in fade-in duration-300">
       
       {/* ======================================================== */}
       {/* 1. HERO SECTION (EXECUTIVE B2B HERO)                      */}
@@ -286,10 +286,13 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
       <BuildHero onBack={onBack} onOpenContact={onOpenContact} />
 
 
+      {/* SECTION DIVIDER */}
+      <SectionDivider />
+
       {/* ======================================================== */}
       {/* 2. FINANCE HEALTH CHECK: INTERACTIVE DIAGNOSTIC CONSOLE    */}
       {/* ======================================================== */}
-      <section className="py-20 sm:py-24 bg-[#f8fafc] border-b border-slate-200/80 relative overflow-hidden font-['Inter',sans-serif]">
+      <section className="py-20 sm:py-24 bg-[#061a2e] border-b border-white/10 relative overflow-hidden font-['Inter',sans-serif]">
         {/* Soft Radial Ambient Lighting */}
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
@@ -299,32 +302,32 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
           {/* Section Header with View Mode Switcher */}
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-2">
             <div className="max-w-2xl space-y-3">
-              <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-800 uppercase tracking-widest bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200 shadow-2xs font-['Plus_Jakarta_Sans',sans-serif]">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+              <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-400 uppercase tracking-widest bg-white/[0.04] px-3.5 py-1.5 rounded-full border border-emerald-500/30 font-['Plus_Jakarta_Sans',sans-serif]">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
                 <span>DIAGNOSTIC FRAMEWORK</span>
               </div>
               
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-[1.15] font-['Plus_Jakarta_Sans',sans-serif]">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-[1.15] font-['Plus_Jakarta_Sans',sans-serif]">
                 Finance Health Check
               </h2>
               
-              <p className="text-base sm:text-lg text-slate-600 font-semibold leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-300 font-semibold leading-relaxed">
                 We assess across five key dimensions:
               </p>
             </div>
 
             {/* View Mode Switcher Pills */}
-            <div className="inline-flex items-center p-1.5 bg-white rounded-2xl border border-slate-200 shadow-xs self-start md:self-auto">
+            <div className="inline-flex items-center p-1.5 bg-white/[0.04] rounded-2xl border border-white/10 self-start md:self-auto backdrop-blur-md">
               <button
                 type="button"
                 onClick={() => setHealthCheckView('radial')}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer ${
                   healthCheckView === 'radial'
-                    ? 'bg-[#061a2e] text-white shadow-md'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                    ? 'bg-white/[0.1] text-white border border-white/20 shadow-md'
+                    : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
                 }`}
               >
-                <PieChart className="w-4 h-4" />
+                <PieChart className="w-4 h-4 text-emerald-400" />
                 <span>Interactive Console</span>
               </button>
               <button
@@ -332,11 +335,11 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                 onClick={() => setHealthCheckView('grid')}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer ${
                   healthCheckView === 'grid'
-                    ? 'bg-[#061a2e] text-white shadow-md'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                    ? 'bg-white/[0.1] text-white border border-white/20 shadow-md'
+                    : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
                 }`}
               >
-                <LayoutGrid className="w-4 h-4" />
+                <LayoutGrid className="w-4 h-4 text-emerald-400" />
                 <span>All Dimensions at a Glance</span>
               </button>
             </div>
@@ -349,11 +352,11 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch animate-in fade-in duration-300">
               
               {/* LEFT PANE: The Radial Diagnostic Gauge (col-span-5) */}
-              <div className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xl flex flex-col justify-between items-center relative overflow-hidden">
+              <div className="lg:col-span-5 bg-white/[0.03] rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl flex flex-col justify-between items-center relative overflow-hidden backdrop-blur-md">
                 
                 {/* Console Gauge Header */}
                 <div className="w-full flex justify-between items-center pb-2">
-                  <span className="text-[11px] font-black uppercase tracking-widest text-slate-600 font-['Plus_Jakarta_Sans',sans-serif]">
+                  <span className="text-[11px] font-black uppercase tracking-widest text-slate-400 font-['Plus_Jakarta_Sans',sans-serif]">
                     HEALTH CHECK GAUGE
                   </span>
                   <span
@@ -369,7 +372,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                   <svg viewBox="0 0 500 370" className="w-full h-auto" style={{ overflow: 'visible' }}>
                     <defs>
                       <filter id="dial-shadow" x="-20%" y="-20%" width="140%" height="140%">
-                        <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#061a2e" floodOpacity="0.14" />
+                        <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#000000" floodOpacity="0.4" />
                       </filter>
                       <filter id="dial-active-glow" x="-30%" y="-30%" width="160%" height="160%">
                         <feDropShadow dx="0" dy="0" stdDeviation="8" floodOpacity="0.35" />
@@ -396,7 +399,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                     <path
                       d="M 68 288 A 185 185 0 0 1 432 288"
                       fill="none"
-                      stroke="#f1f5f9"
+                      stroke="rgba(255,255,255,0.1)"
                       strokeWidth="2"
                       strokeDasharray="4 4"
                     />
@@ -417,7 +420,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                           <path
                             d={isSelected ? slice.activePath : slice.normalPath}
                             fill={dim.color}
-                            fillOpacity={isSelected ? 0.32 : 0.12}
+                            fillOpacity={isSelected ? 0.35 : 0.08}
                             stroke={dim.color}
                             strokeWidth={isSelected ? 3.5 : 2}
                             filter={isSelected ? "url(#dial-active-glow)" : "none"}
@@ -429,7 +432,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                             d={isSelected ? slice.activePath : slice.normalPath}
                             fill={`url(#gauge-hatch-${slice.index})`}
                             className="transition-opacity duration-300 pointer-events-none"
-                            opacity={isSelected ? 0.9 : 0.6}
+                            opacity={isSelected ? 0.9 : 0.5}
                           />
 
                           {/* Circular Badge at mid-arc */}
@@ -437,7 +440,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                             cx={slice.nodePos.x}
                             cy={slice.nodePos.y}
                             r={isSelected ? 20 : 17}
-                            fill={isSelected ? dim.color : '#ffffff'}
+                            fill={isSelected ? dim.color : '#061a2e'}
                             stroke={dim.color}
                             strokeWidth={isSelected ? 3.5 : 2.5}
                             filter="url(#dial-shadow)"
@@ -463,7 +466,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                             textAnchor="middle"
                             fontSize={isSelected ? "13" : "11.5"}
                             fontWeight={isSelected ? "900" : "800"}
-                            fill={isSelected ? dim.color : '#64748b'}
+                            fill={isSelected ? dim.color : '#94a3b8'}
                             fontFamily="'Plus Jakarta Sans', sans-serif"
                             className="transition-all duration-300 select-none"
                           >
@@ -481,18 +484,18 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                         width="60"
                         height="74"
                         rx="12"
-                        fill="#ffffff"
-                        stroke="#061a2e"
+                        fill="#0B2440"
+                        stroke="rgba(255,255,255,0.2)"
                         strokeWidth="2.5"
                       />
                       {/* Top Metallic Clip */}
                       <path
                         d="M 16 0 L 16 -6 C 16 -9 20 -11 30 -11 C 40 -11 44 -9 44 -6 L 44 0 Z"
-                        fill="#e2e8f0"
-                        stroke="#061a2e"
+                        fill="#1e3a5f"
+                        stroke="rgba(255,255,255,0.3)"
                         strokeWidth="2"
                       />
-                      <circle cx="30" cy="-6" r="2.5" fill="#061a2e" />
+                      <circle cx="30" cy="-6" r="2.5" fill="#2bb673" />
 
                       {/* Dollar Symbol & Checkmarks */}
                       <text
@@ -500,16 +503,16 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                         y="42"
                         fontSize="24"
                         fontWeight="900"
-                        fill="#007791"
+                        fill="#18B0A6"
                         textAnchor="middle"
                         fontFamily="'Plus Jakarta Sans', sans-serif"
                       >
                         $
                       </text>
-                      <rect x="31" y="19" width="14" height="14" rx="3.5" fill="none" stroke="#10b981" strokeWidth="2.2" />
-                      <path d="M 34 26 L 37 29 L 43 22" fill="none" stroke="#10b981" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                      <rect x="31" y="41" width="14" height="14" rx="3.5" fill="none" stroke="#10b981" strokeWidth="2.2" />
-                      <path d="M 34 48 L 37 51 L 43 44" fill="none" stroke="#10b981" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                      <rect x="31" y="19" width="14" height="14" rx="3.5" fill="none" stroke="#2bb673" strokeWidth="2.2" />
+                      <path d="M 34 26 L 37 29 L 43 22" fill="none" stroke="#2bb673" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                      <rect x="31" y="41" width="14" height="14" rx="3.5" fill="none" stroke="#2bb673" strokeWidth="2.2" />
+                      <path d="M 34 48 L 37 51 L 43 44" fill="none" stroke="#2bb673" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                     </g>
 
                     {/* Indicator Laser Ray pointing to active dimension */}
@@ -538,7 +541,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                       textAnchor="middle"
                       fontSize="10"
                       fontWeight="800"
-                      fill="#64748b"
+                      fill="#94a3b8"
                       letterSpacing="1.5"
                       fontFamily="'Plus Jakarta Sans', sans-serif"
                     >
@@ -550,7 +553,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                       textAnchor="middle"
                       fontSize="15"
                       fontWeight="900"
-                      fill="#061a2e"
+                      fill="#ffffff"
                       fontFamily="'Plus Jakarta Sans', sans-serif"
                     >
                       {healthCheckDimensions[selectedHealthDim].name} Active
@@ -559,7 +562,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                 </div>
 
                 {/* Dial Quick Switcher Buttons */}
-                <div className="flex flex-wrap items-center justify-center gap-1.5 w-full pt-2 border-t border-slate-100">
+                <div className="flex flex-wrap items-center justify-center gap-1.5 w-full pt-2 border-t border-white/10">
                   {healthCheckDimensions.map((dim, idx) => (
                     <button
                       key={dim.id}
@@ -568,7 +571,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                       className={`px-2.5 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                         selectedHealthDim === idx
                           ? 'text-white shadow-xs'
-                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                          : 'bg-white/[0.04] text-slate-300 hover:bg-white/[0.08] hover:text-white border border-white/10'
                       }`}
                       style={selectedHealthDim === idx ? { backgroundColor: dim.color } : {}}
                     >
@@ -580,11 +583,11 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
               </div>
 
               {/* RIGHT PANE: Expansive Executive Inspection Panel (col-span-7) */}
-              <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-xl flex flex-col justify-between space-y-6">
+              <div className="lg:col-span-7 bg-white/[0.03] rounded-3xl p-6 sm:p-10 border border-white/10 shadow-2xl flex flex-col justify-between space-y-6 backdrop-blur-md">
                 
                 <div className="space-y-6">
                   {/* Header Row */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-white/10">
                     <div className="flex items-center gap-4">
                       <div
                         className="w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-md transition-all duration-300"
@@ -600,24 +603,24 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                           >
                             DIMENSION {healthCheckDimensions[selectedHealthDim].num}
                           </span>
-                          <span className="text-xs font-bold text-slate-600 uppercase tracking-widest">
+                          <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
                             Key Evaluation Dimension
                           </span>
                         </div>
-                        <h3 className="text-2xl sm:text-4xl font-black text-[#061a2e] font-['Plus_Jakarta_Sans',sans-serif] tracking-tight">
+                        <h3 className="text-2xl sm:text-4xl font-black text-white font-['Plus_Jakarta_Sans',sans-serif] tracking-tight">
                           {healthCheckDimensions[selectedHealthDim].name}
                         </h3>
                       </div>
                     </div>
 
-                    <div className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-800 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200 self-start sm:self-auto">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    <div className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3.5 py-1.5 rounded-full border border-emerald-500/30 self-start sm:self-auto">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
                       <span>{healthCheckDimensions[selectedHealthDim].items.length} Evaluated Areas</span>
                     </div>
                   </div>
 
                   {/* Context Lead from Source of Truth */}
-                  <p className="text-sm sm:text-base font-semibold text-slate-600">
+                  <p className="text-sm sm:text-base font-semibold text-slate-300">
                     We assess across five key dimensions:
                   </p>
 
@@ -626,12 +629,12 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                     {healthCheckDimensions[selectedHealthDim].items.map((item, idx) => (
                       <div
                         key={idx}
-                        className="p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/90 hover:border-slate-300 hover:bg-white hover:shadow-md transition-all flex items-start gap-3 group"
+                        className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-emerald-500/40 hover:bg-white/[0.05] transition-all flex items-start gap-3 group"
                       >
-                        <div className="w-5 h-5 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                        <div className="w-5 h-5 rounded-lg bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform border border-emerald-500/30">
                           <Check className="w-3.5 h-3.5 stroke-[3]" />
                         </div>
-                        <span className="text-sm font-bold text-slate-800 leading-snug">
+                        <span className="text-sm font-semibold text-slate-200 leading-snug">
                           {item}
                         </span>
                       </div>
@@ -640,12 +643,12 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                 </div>
 
                 {/* Footer Navigation Bar */}
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-100">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-white/10">
                   <div className="flex items-center gap-2 w-full sm:w-auto">
                     <button
                       type="button"
                       onClick={() => setSelectedHealthDim((prev) => (prev > 0 ? prev - 1 : healthCheckDimensions.length - 1))}
-                      className="px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                      className="px-4 py-2.5 rounded-xl border border-white/10 bg-white/[0.04] text-slate-200 hover:bg-white/[0.08] text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 cursor-pointer"
                     >
                       <ArrowLeft className="w-4 h-4" />
                       <span>Previous</span>
@@ -653,23 +656,9 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                     <button
                       type="button"
                       onClick={() => setSelectedHealthDim((prev) => (prev < healthCheckDimensions.length - 1 ? prev + 1 : 0))}
-                      className="px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                      className="px-4 py-2.5 rounded-xl border border-white/10 bg-white/[0.04] text-slate-200 hover:bg-white/[0.08] text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 cursor-pointer"
                     >
                       <span>Next</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-
-                  <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
-                    <span className="text-xs font-bold text-slate-600 hidden sm:inline">
-                      Ready to evaluate your finance function?
-                    </span>
-                    <button
-                      type="button"
-                      onClick={onOpenContact}
-                      className="brand-button-gradient text-white text-xs sm:text-sm font-black px-5 py-2.5 rounded-xl shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center gap-2"
-                    >
-                      <span>Request Health Check</span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
                   </div>
@@ -686,7 +675,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
               {healthCheckDimensions.map((dim) => (
                 <div
                   key={dim.num}
-                  className="group bg-white rounded-3xl p-6 border border-slate-200/90 hover:border-[#007791] shadow-xs hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between relative overflow-hidden"
+                  className="group bg-white/[0.03] rounded-2xl p-6 border border-white/10 hover:border-emerald-500/40 hover:bg-white/[0.06] shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between relative overflow-hidden backdrop-blur-md"
                 >
                   {/* Subtle Top Accent Highlight */}
                   <div
@@ -698,28 +687,28 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                     {/* Top Row: Icon & Number Badge */}
                     <div className="flex items-center justify-between">
                       <div
-                        className="w-11 h-11 rounded-2xl flex items-center justify-center text-white transition-all duration-300 shadow-2xs"
+                        className="w-11 h-11 rounded-xl flex items-center justify-center text-white transition-all duration-300 shadow-md"
                         style={{ backgroundColor: dim.color }}
                       >
                         {dim.icon}
                       </div>
-                      <span className="font-mono text-xs font-black px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200 shadow-2xs">
+                      <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-full bg-white/[0.06] text-slate-300 border border-white/10">
                         {dim.num}
                       </span>
                     </div>
 
                     <div>
-                      <h3 className="text-lg sm:text-xl font-black text-[#061a2e] group-hover:text-[#007791] transition-colors leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
+                      <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-emerald-400 transition-colors leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
                         {dim.name}
                       </h3>
                     </div>
 
                     {/* Bullet Items (Exact words from source of truth) */}
-                    <div className="pt-3 border-t border-slate-100 space-y-2">
+                    <div className="pt-3 border-t border-white/10 space-y-2">
                       {dim.items.map((item, idx) => (
                         <div key={idx} className="flex items-start gap-2">
-                          <Check className="w-3.5 h-3.5 text-emerald-600 stroke-[3] shrink-0 mt-0.5" />
-                          <span className="text-xs font-semibold text-slate-700 leading-snug">
+                          <Check className="w-3.5 h-3.5 text-emerald-400 stroke-[3] shrink-0 mt-0.5" />
+                          <span className="text-xs font-medium text-slate-300 leading-snug">
                             {item}
                           </span>
                         </div>
@@ -727,7 +716,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                     </div>
                   </div>
 
-                  <div className="pt-4 mt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-slate-600 group-hover:text-[#007791] transition-colors">
+                  <div className="pt-4 mt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-bold text-slate-400 group-hover:text-emerald-400 transition-colors">
                     <span>Dimension {dim.num}</span>
                     <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -741,24 +730,27 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
       </section>
 
 
+      {/* SECTION DIVIDER */}
+      <SectionDivider />
+
       {/* ======================================================== */}
       {/* 3. OPERATING MODELS (TOM) & TOM SUPPORT (TWO SIDE-BY-SIDE CONTAINERS) */}
       {/* ======================================================== */}
-      <section id="tom-section" className="py-20 sm:py-24 bg-white border-b border-slate-200/80 relative overflow-hidden">
+      <section id="tom-section" className="py-20 sm:py-24 bg-[#061a2e] border-b border-white/10 relative overflow-hidden">
         {/* Soft Radial Ambient Lighting */}
-        <div className="absolute top-10 left-10 w-96 h-96 bg-[#007791]/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#2bb673]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-10 left-10 w-96 h-96 bg-[#007791]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#2bb673]/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           {/* Main Section Header */}
           <div className="max-w-3xl space-y-3">
-            <div className="inline-flex items-center gap-2 text-xs font-bold text-teal-800 uppercase tracking-widest bg-teal-50 px-3.5 py-1.5 rounded-full border border-teal-200 shadow-2xs font-['Plus_Jakarta_Sans',sans-serif]">
-              <Workflow className="w-3.5 h-3.5 text-teal-600" />
+            <div className="inline-flex items-center gap-2 text-xs font-bold text-teal-300 uppercase tracking-widest bg-white/[0.04] px-3.5 py-1.5 rounded-full border border-teal-500/30 font-['Plus_Jakarta_Sans',sans-serif]">
+              <Workflow className="w-3.5 h-3.5 text-teal-300" />
               <span>TARGET OPERATING MODEL (TOM)</span>
             </div>
             
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-[1.15] font-['Plus_Jakarta_Sans',sans-serif]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-[1.15] font-['Plus_Jakarta_Sans',sans-serif]">
               Finance Operating Models &amp; Target Operating Models (TOM)
             </h2>
           </div>
@@ -772,24 +764,24 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
             {/* ======================================================== */}
             {/* LEFT CARD: Finance Operating Models & TOM                */}
             {/* ======================================================== */}
-            <div className="group bg-white rounded-3xl lg:rounded-r-none overflow-hidden border border-slate-200/90 border-r-0 lg:border-r-0 hover:border-[#007791] shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col justify-between">
+            <div className="group bg-white/[0.03] rounded-3xl lg:rounded-r-none overflow-hidden border border-white/10 border-r-0 lg:border-r-0 hover:border-teal-400/50 shadow-2xl transition-all duration-500 flex flex-col justify-between backdrop-blur-md">
               
               <div>
                 {/* Photo Media Header */}
                 <div className="relative">
-                  <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-900 rounded-t-3xl lg:rounded-tr-none">
+                  <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-950 rounded-t-3xl lg:rounded-tr-none">
                     <img
                       src={imgUrl("/images/why_transformation.jpg")}
                       alt="Finance Operating Models"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-95"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
                       onError={(e) => {
                         const fallback = imgUrl("/images/approach_design.jpg");
                         if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback;
                       }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/30 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/60 to-transparent" />
                     <div className="absolute top-3.5 left-3.5">
-                      <span className="px-3 py-1 rounded-full bg-[#061a2e]/85 backdrop-blur-md border border-white/20 text-cyan-300 font-bold text-[10px] uppercase tracking-wider flex items-center gap-1.5 font-['Plus_Jakarta_Sans',sans-serif]">
+                      <span className="px-3 py-1 rounded-full bg-[#061a2e]/90 backdrop-blur-md border border-white/20 text-cyan-300 font-bold text-[10px] uppercase tracking-wider flex items-center gap-1.5 font-['Plus_Jakarta_Sans',sans-serif]">
                         <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
                         Operating Model Design
                       </span>
@@ -800,17 +792,17 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                       </span>
                     </div>
                   </div>
-                  <div className="absolute -bottom-5 left-6 w-11 h-11 rounded-2xl bg-white shadow-xl border border-slate-100 flex items-center justify-center text-[#007791] group-hover:scale-110 group-hover:bg-[#061a2e] group-hover:text-cyan-400 transition-all duration-300 z-20">
+                  <div className="absolute -bottom-5 left-6 w-11 h-11 rounded-2xl bg-[#0B2440] shadow-xl border border-white/15 flex items-center justify-center text-teal-300 group-hover:scale-110 group-hover:bg-white/[0.1] transition-all duration-300 z-20">
                     <Workflow className="w-5 h-5 stroke-[2.3]" />
                   </div>
                 </div>
 
                 <div className="p-6 sm:p-7 pt-9 space-y-5">
                   <div className="space-y-2">
-                    <h3 className="text-lg sm:text-xl font-bold text-[#061a2e] group-hover:text-[#007791] transition-colors tracking-tight leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
+                    <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-teal-300 transition-colors tracking-tight leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
                       Finance Operating Models &amp; Target Operating Models (TOM)
                     </h3>
-                    <p className="text-sm font-semibold text-slate-500 leading-relaxed">
+                    <p className="text-sm font-semibold text-slate-400 leading-relaxed">
                       We help organisations understand and design how finance should operate across:
                     </p>
                   </div>
@@ -818,13 +810,13 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                     {operatingModelDimensions.map((dim, idx) => (
                       <div
                         key={idx}
-                        className="flex items-center justify-between p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 hover:border-[#007791]/40 hover:bg-teal-50/20 transition-all group/item"
+                        className="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] border border-white/10 hover:border-teal-400/40 hover:bg-white/[0.05] transition-all group/item"
                       >
                         <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-lg bg-teal-50 border border-teal-200/90 flex items-center justify-center text-[#007791] shrink-0 group-hover/item:bg-[#007791] group-hover/item:text-white transition-colors">
+                          <div className="w-8 h-8 rounded-lg bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-300 shrink-0 group-hover/item:bg-teal-500 group-hover/item:text-slate-950 transition-colors">
                             {dim.icon}
                           </div>
-                          <span className="text-xs sm:text-sm font-bold text-[#061a2e] group-hover/item:text-[#007791] transition-colors font-['Plus_Jakarta_Sans',sans-serif]">
+                          <span className="text-xs sm:text-sm font-bold text-slate-200 group-hover/item:text-white transition-colors font-['Plus_Jakarta_Sans',sans-serif]">
                             {dim.name}
                           </span>
                         </div>
@@ -835,16 +827,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                 </div>
               </div>
 
-              <div className="p-6 sm:p-7 pt-4 border-t border-slate-100">
-                <button
-                  type="button"
-                  onClick={onOpenContact}
-                  className="w-full brand-button-gradient text-white text-xs sm:text-sm font-extrabold px-5 py-3.5 rounded-xl shadow-md flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer font-['Plus_Jakarta_Sans',sans-serif]"
-                >
-                  <span>Request a Finance Health Check</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
+
             </div>
 
             {/* ======================================================== */}
@@ -852,23 +835,23 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
             {/* ======================================================== */}
             <div className="hidden lg:flex flex-col items-center justify-center relative" aria-hidden="true">
               {/* Vertical gradient track — full height */}
-              <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-[#007791]/20 via-[#007791]/50 to-[#2bb673]/20" />
+              <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-[#007791]/30 via-emerald-500/50 to-teal-500/30" />
 
               {/* Top anchor: left card outflow */}
-              <div className="absolute top-[180px] left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-[#007791] border-2 border-white shadow-md ring-4 ring-[#007791]/15" />
+              <div className="absolute top-[180px] left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-[#007791] border-2 border-white/40 shadow-md ring-4 ring-[#007791]/30" />
 
               {/* Main central arrow badge */}
               <div className="relative z-10 flex flex-col items-center gap-2">
                 {/* "DEFINES" label */}
-                <span className="text-[9px] font-black uppercase tracking-widest text-[#007791] font-['Plus_Jakarta_Sans',sans-serif] rotate-[-90deg] whitespace-nowrap mb-1 opacity-70">Framework</span>
+                <span className="text-[9px] font-black uppercase tracking-widest text-teal-300 font-['Plus_Jakarta_Sans',sans-serif] rotate-[-90deg] whitespace-nowrap mb-1 opacity-80">Framework</span>
 
                 {/* Arrow orb */}
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#007791] to-[#2bb673] shadow-xl flex items-center justify-center">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#007791] to-[#2bb673] shadow-xl flex items-center justify-center border border-white/20">
                   <ArrowRight className="w-6 h-6 text-white stroke-[3]" />
                 </div>
 
                 {/* "DELIVERS" label */}
-                <span className="text-[9px] font-black uppercase tracking-widest text-[#2bb673] font-['Plus_Jakarta_Sans',sans-serif] rotate-[-90deg] whitespace-nowrap mt-1 opacity-70">Delivers</span>
+                <span className="text-[9px] font-black uppercase tracking-widest text-emerald-300 font-['Plus_Jakarta_Sans',sans-serif] rotate-[-90deg] whitespace-nowrap mt-1 opacity-80">Delivers</span>
               </div>
 
               {/* Bottom anchor: right card inflow */}
@@ -880,7 +863,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
             {/* Mobile downward connector */}
             <div className="flex lg:hidden flex-col items-center py-3 gap-0" aria-hidden="true">
               <div className="w-px h-6 bg-gradient-to-b from-[#007791] to-teal-400" />
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#007791] to-[#2bb673] shadow-lg flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#007791] to-[#2bb673] shadow-lg flex items-center justify-center border border-white/20">
                 <ArrowDown className="w-5 h-5 text-white stroke-[3]" />
               </div>
               <div className="w-px h-6 bg-gradient-to-b from-teal-400 to-[#2bb673]" />
@@ -889,24 +872,24 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
             {/* ======================================================== */}
             {/* RIGHT CARD: Target Operating Model Support               */}
             {/* ======================================================== */}
-            <div className="group bg-white rounded-3xl lg:rounded-l-none overflow-hidden border border-slate-200/90 border-l-0 lg:border-l-0 hover:border-[#2bb673] shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col justify-between">
+            <div className="group bg-white/[0.03] rounded-3xl lg:rounded-l-none overflow-hidden border border-white/10 border-l-0 lg:border-l-0 hover:border-emerald-400/50 shadow-2xl transition-all duration-500 flex flex-col justify-between backdrop-blur-md">
               
               <div>
                 {/* Photo Media Header */}
                 <div className="relative">
-                  <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-900 rounded-t-3xl lg:rounded-tl-none">
+                  <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-950 rounded-t-3xl lg:rounded-tl-none">
                     <img
                       src={imgUrl("/images/why_practical.jpg")}
                       alt="Target Operating Model Support"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-95"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
                       onError={(e) => {
                         const fallback = imgUrl("/images/finance_build.jpg");
                         if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback;
                       }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/30 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/60 to-transparent" />
                     <div className="absolute top-3.5 left-3.5">
-                      <span className="px-3 py-1 rounded-full bg-[#061a2e]/85 backdrop-blur-md border border-white/20 text-emerald-400 font-bold text-[10px] uppercase tracking-wider flex items-center gap-1.5 font-['Plus_Jakarta_Sans',sans-serif]">
+                      <span className="px-3 py-1 rounded-full bg-[#061a2e]/90 backdrop-blur-md border border-white/20 text-emerald-400 font-bold text-[10px] uppercase tracking-wider flex items-center gap-1.5 font-['Plus_Jakarta_Sans',sans-serif]">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                         Execution &amp; Delivery
                       </span>
@@ -917,13 +900,13 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                       </span>
                     </div>
                   </div>
-                  <div className="absolute -bottom-5 left-6 w-11 h-11 rounded-2xl bg-white shadow-xl border border-slate-100 flex items-center justify-center text-teal-700 group-hover:scale-110 group-hover:bg-[#061a2e] group-hover:text-emerald-400 transition-all duration-300 z-20">
+                  <div className="absolute -bottom-5 left-6 w-11 h-11 rounded-2xl bg-[#0B2440] shadow-xl border border-white/15 flex items-center justify-center text-emerald-300 group-hover:scale-110 group-hover:bg-white/[0.1] transition-all duration-300 z-20">
                     <Target className="w-5 h-5 stroke-[2.3]" />
                   </div>
                 </div>
 
                 <div className="p-6 sm:p-7 pt-9 space-y-5">
-                  <h3 className="text-lg sm:text-xl font-bold text-[#061a2e] group-hover:text-teal-700 transition-colors tracking-tight leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
+                  <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-emerald-300 transition-colors tracking-tight leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
                     Target Operating Model Support
                   </h3>
 
@@ -931,12 +914,12 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                     {tomSupportItems.map((item, idx) => (
                       <div
                         key={idx}
-                        className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50/80 border border-slate-200/80 hover:border-teal-400 hover:bg-teal-50/30 transition-all group/item"
+                        className="flex items-start gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/10 hover:border-emerald-400/40 hover:bg-white/[0.05] transition-all group/item"
                       >
-                        <span className="w-5 h-5 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-700 shrink-0 group-hover/item:bg-emerald-600 group-hover/item:text-white transition-colors mt-0.5">
+                        <span className="w-5 h-5 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 group-hover/item:bg-emerald-500 group-hover/item:text-slate-950 transition-colors mt-0.5">
                           <Check className="w-3.5 h-3.5 stroke-[3]" />
                         </span>
-                        <span className="text-xs font-bold text-slate-800 leading-snug group-hover/item:text-teal-900 transition-colors font-['Plus_Jakarta_Sans',sans-serif]">
+                        <span className="text-xs font-bold text-slate-200 leading-snug group-hover/item:text-white transition-colors font-['Plus_Jakarta_Sans',sans-serif]">
                           {item}
                         </span>
                       </div>
@@ -945,16 +928,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                 </div>
               </div>
 
-              <div className="p-6 sm:p-7 pt-4 border-t border-slate-100">
-                <button
-                  type="button"
-                  onClick={onOpenContact}
-                  className="w-full brand-button-gradient text-white text-xs sm:text-sm font-extrabold px-5 py-3.5 rounded-xl shadow-md flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer font-['Plus_Jakarta_Sans',sans-serif]"
-                >
-                  <span>Request a Finance Health Check</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
+
             </div>
 
           </div>{/* end 3-col grid */}
@@ -963,23 +937,26 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
       </section>
 
 
+      {/* SECTION DIVIDER */}
+      <SectionDivider />
+
       {/* ======================================================== */}
       {/* 4. FINANCE CAPABILITY UPLIFT (IMAGE PARITY & CURVE FLOW)  */}
       {/* ======================================================== */}
-      <section className="py-20 sm:py-24 bg-[#f8fafc] border-b border-slate-200/80 relative overflow-hidden font-['Inter',sans-serif]">
+      <section className="py-20 sm:py-24 bg-[#061a2e] border-b border-white/10 relative overflow-hidden font-['Inter',sans-serif]">
         {/* Soft Radial Ambient Lighting */}
-        <div className="absolute top-1/4 right-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 left-10 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/4 right-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 left-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           {/* Section Header */}
           <div className="max-w-3xl space-y-3">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-[1.15] font-['Plus_Jakarta_Sans',sans-serif]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-[1.15] font-['Plus_Jakarta_Sans',sans-serif]">
               Finance Capability Uplift
             </h2>
             
-            <p className="text-base sm:text-lg text-slate-600 font-semibold leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-300 font-semibold leading-relaxed">
               We help finance teams move along the capability curve:
             </p>
           </div>
@@ -987,7 +964,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
           {/* ======================================================== */}
           {/* THE 5-STAGE CAPABILITY CURVE DIAGRAM FLOW                */}
           {/* ======================================================== */}
-          <div className="bg-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-slate-200/90 shadow-xl relative overflow-hidden space-y-12">
+          <div className="bg-white/[0.03] rounded-3xl p-8 sm:p-12 lg:p-16 border border-white/10 shadow-2xl relative overflow-hidden space-y-12 backdrop-blur-md">
             
             {/* Desktop / Large Screens: 5-Node Continuous Flow with Directional Arrows */}
             <div className="hidden lg:flex items-start justify-between gap-2 max-w-5xl mx-auto pt-4 pb-2 relative">
@@ -1008,15 +985,15 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                       <div 
                         className={`w-24 h-24 sm:w-28 sm:h-28 rounded-full border-4 flex items-center justify-center transition-all duration-300 mb-4 relative ${
                           isActive 
-                            ? 'shadow-2xl ring-4 ring-offset-2 ring-emerald-400/40 scale-105' 
+                            ? 'shadow-[0_0_25px_rgba(43,182,115,0.4)] ring-4 ring-offset-2 ring-emerald-400/40 ring-offset-[#061a2e] scale-105' 
                             : 'shadow-md group-hover:shadow-xl group-hover:scale-105'
                         }`}
                         style={{
                           borderColor: stage.color,
-                          backgroundColor: '#ffffff'
+                          backgroundColor: '#061a2e'
                         }}
                       >
-                        <div className={`w-full h-full rounded-full flex items-center justify-center ${stage.accentBg}`}>
+                        <div className="w-full h-full rounded-full flex items-center justify-center bg-white/[0.04]">
                           {stage.icon}
                         </div>
 
@@ -1032,7 +1009,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                       {/* Stage Name */}
                       <h4 
                         className={`text-base sm:text-lg font-black tracking-tight leading-snug font-['Plus_Jakarta_Sans',sans-serif] transition-colors ${
-                          isActive ? 'text-[#061a2e]' : 'text-slate-800 group-hover:text-[#007791]'
+                          isActive ? 'text-white' : 'text-slate-300 group-hover:text-emerald-300'
                         }`}
                       >
                         {stage.name}
@@ -1077,14 +1054,14 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                     key={stage.num}
                     onClick={() => setActiveMaturityStage(idx)}
                     className={`flex flex-col items-center text-center cursor-pointer p-3 rounded-2xl transition-all ${
-                      isActive ? 'bg-slate-50 shadow-md ring-2 ring-emerald-400' : 'hover:bg-slate-50/50'
+                      isActive ? 'bg-white/[0.08] shadow-md ring-2 ring-emerald-400' : 'hover:bg-white/[0.04]'
                     }`}
                   >
                     <div 
                       className="w-18 h-18 rounded-full border-3 flex items-center justify-center mb-3 shadow-sm relative"
-                      style={{ borderColor: stage.color }}
+                      style={{ borderColor: stage.color, backgroundColor: '#061a2e' }}
                     >
-                      <div className={`w-full h-full rounded-full flex items-center justify-center ${stage.accentBg}`}>
+                      <div className="w-full h-full rounded-full flex items-center justify-center bg-white/[0.04]">
                         {stage.icon}
                       </div>
                       <span 
@@ -1095,7 +1072,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                       </span>
                     </div>
 
-                    <h4 className="text-sm font-black text-[#061a2e] leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
+                    <h4 className="text-sm font-black text-white leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
                       {stage.name}
                     </h4>
                   </div>
@@ -1115,16 +1092,16 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                       onClick={() => setActiveMaturityStage(idx)}
                       className={`p-4 rounded-2xl border transition-all duration-300 cursor-pointer flex items-center gap-4 ${
                         isActive 
-                          ? 'bg-white border-emerald-500 shadow-lg ring-2 ring-emerald-400/20' 
-                          : 'bg-[#f8fafc] border-slate-200/90 hover:bg-white'
+                          ? 'bg-white/[0.08] border-emerald-500 shadow-lg ring-2 ring-emerald-400/20' 
+                          : 'bg-white/[0.03] border-white/10 hover:bg-white/[0.06]'
                       }`}
                     >
                       {/* Circular Badge */}
                       <div 
                         className="w-14 h-14 rounded-full border-3 shrink-0 flex items-center justify-center shadow-sm relative"
-                        style={{ borderColor: stage.color }}
+                        style={{ borderColor: stage.color, backgroundColor: '#061a2e' }}
                       >
-                        <div className={`w-full h-full rounded-full flex items-center justify-center ${stage.accentBg}`}>
+                        <div className="w-full h-full rounded-full flex items-center justify-center bg-white/[0.04]">
                           {stage.icon}
                         </div>
                         <span 
@@ -1143,7 +1120,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                         >
                           {stage.num}
                         </span>
-                        <h4 className="text-base font-black text-[#061a2e] font-['Plus_Jakarta_Sans',sans-serif]">
+                        <h4 className="text-base font-black text-white font-['Plus_Jakarta_Sans',sans-serif]">
                           {stage.name}
                         </h4>
                       </div>
@@ -1164,18 +1141,10 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
             </div>
 
             {/* Stepper Summary Bar */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-teal-50/70 border border-teal-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <span className="text-sm sm:text-base font-bold text-[#061a2e] font-['Plus_Jakarta_Sans',sans-serif]">
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center">
+              <span className="text-sm sm:text-base font-bold text-emerald-300 font-['Plus_Jakarta_Sans',sans-serif]">
                 Processing → Reporting → Analysis → Insight → Strategic partnership
               </span>
-              <button
-                type="button"
-                onClick={onOpenContact}
-                className="brand-button-gradient text-white text-xs font-extrabold px-5 py-3 rounded-xl shadow-md flex items-center justify-center gap-2 shrink-0 hover:scale-105 active:scale-95 transition-all cursor-pointer font-['Plus_Jakarta_Sans',sans-serif]"
-              >
-                <span>Request a Finance Health Check</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
             </div>
 
           </div>
@@ -1184,33 +1153,36 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
       </section>
 
 
+      {/* SECTION DIVIDER */}
+      <SectionDivider />
+
       {/* ======================================================== */}
       {/* 5. OUTSOURCED AND AUGMENTED FINANCE SUPPORT (EXACT COPY) */}
       {/* ======================================================== */}
-      <section id="outsourced-augmented-support" className="py-20 sm:py-24 bg-white border-b border-slate-200/80 relative overflow-hidden">
+      <section id="outsourced-augmented-support" className="py-20 sm:py-24 bg-[#061a2e] border-b border-white/10 relative overflow-hidden">
         {/* Soft Radial Ambient Lighting */}
-        <div className="absolute top-10 right-10 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 left-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-10 right-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
-          {/* Section Header (Exactly Same as other sections) */}
+          {/* Section Header */}
           <div className="max-w-3xl space-y-3">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#061a2e] tracking-tight leading-[1.15] font-['Plus_Jakarta_Sans',sans-serif]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-[1.15] font-['Plus_Jakarta_Sans',sans-serif]">
               Outsourced and Augmented Finance Support
             </h2>
             
-            <p className="text-base sm:text-lg text-slate-600 font-semibold leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-300 font-semibold leading-relaxed">
               Where organisations need additional capability, we provide flexible support across finance operations, analysis, reporting, and advisory.
             </p>
           </div>
 
           {/* Main Visual Container */}
-          <div className="bg-[#f8fafc] rounded-3xl p-6 sm:p-10 lg:p-12 border border-slate-200/90 shadow-sm space-y-10">
+          <div className="bg-white/[0.03] rounded-3xl p-6 sm:p-10 lg:p-12 border border-white/10 shadow-2xl space-y-10 backdrop-blur-md">
             
             {/* Lead-in Title */}
             <div className="text-center max-w-2xl mx-auto">
-              <h3 className="text-lg sm:text-xl font-bold text-[#061a2e] tracking-tight font-['Plus_Jakarta_Sans',sans-serif]">
+              <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight font-['Plus_Jakarta_Sans',sans-serif]">
                 The objective is to create a finance function that provides:
               </h3>
               <div className="w-16 h-1 bg-gradient-to-r from-[#007791] to-[#2bb673] mx-auto mt-3 rounded-full" />
@@ -1224,9 +1196,9 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                 
                 {/* Concentric Guide Tracks */}
                 <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 500 500">
-                  <circle cx="250" cy="250" r="210" fill="none" stroke="#f1f5f9" strokeWidth="2" />
-                  <circle cx="250" cy="250" r="155" fill="none" stroke="#cbd5e1" strokeWidth="2.5" strokeDasharray="6 6" />
-                  <circle cx="250" cy="250" r="105" fill="none" stroke="#f8fafc" strokeWidth="2" />
+                  <circle cx="250" cy="250" r="210" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="2" />
+                  <circle cx="250" cy="250" r="155" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="2.5" strokeDasharray="6 6" />
+                  <circle cx="250" cy="250" r="105" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="2" />
                 </svg>
 
                 {/* Central Hub */}
@@ -1242,14 +1214,14 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
 
                 {/* Node 1: Top (12 o'clock) — Label pill positioned cleanly above node */}
                 <div className="absolute top-[30px] left-1/2 -translate-x-1/2 flex flex-col items-center text-center z-20 group cursor-pointer hover:scale-105 transition-transform duration-300">
-                  <span className="text-xs font-black text-[#061a2e] group-hover:text-[#007791] mb-2 px-4 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-sm whitespace-nowrap font-['Plus_Jakarta_Sans',sans-serif] transition-colors">
+                  <span className="text-xs font-black text-white group-hover:text-cyan-300 mb-2 px-4 py-1.5 rounded-full bg-[#0B2440] border border-white/15 shadow-xl whitespace-nowrap font-['Plus_Jakarta_Sans',sans-serif] transition-colors">
                     {objectiveFlow[0].label}
                   </span>
                   <div 
-                    className="w-[72px] h-[72px] rounded-full border-4 bg-white flex items-center justify-center shadow-lg relative"
-                    style={{ borderColor: objectiveFlow[0].color }}
+                    className="w-[72px] h-[72px] rounded-full border-4 flex items-center justify-center shadow-lg relative"
+                    style={{ borderColor: objectiveFlow[0].color, backgroundColor: '#061a2e' }}
                   >
-                    <div className={`w-full h-full rounded-full flex items-center justify-center ${objectiveFlow[0].accentBg}`}>
+                    <div className="w-full h-full rounded-full flex items-center justify-center bg-white/[0.04]">
                       {objectiveFlow[0].icon}
                     </div>
                     <span 
@@ -1264,10 +1236,10 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                 {/* Node 2: Right (3 o'clock) — Label pill positioned cleanly below node */}
                 <div className="absolute top-1/2 right-[20px] -translate-y-1/2 flex flex-col items-center text-center z-20 group cursor-pointer hover:scale-105 transition-transform duration-300">
                   <div 
-                    className="w-[72px] h-[72px] rounded-full border-4 bg-white flex items-center justify-center shadow-lg relative"
-                    style={{ borderColor: objectiveFlow[1].color }}
+                    className="w-[72px] h-[72px] rounded-full border-4 flex items-center justify-center shadow-lg relative"
+                    style={{ borderColor: objectiveFlow[1].color, backgroundColor: '#061a2e' }}
                   >
-                    <div className={`w-full h-full rounded-full flex items-center justify-center ${objectiveFlow[1].accentBg}`}>
+                    <div className="w-full h-full rounded-full flex items-center justify-center bg-white/[0.04]">
                       {objectiveFlow[1].icon}
                     </div>
                     <span 
@@ -1277,7 +1249,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                       02
                     </span>
                   </div>
-                  <span className="text-xs font-black text-[#061a2e] group-hover:text-[#0ea5e9] mt-2 px-4 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-sm whitespace-nowrap font-['Plus_Jakarta_Sans',sans-serif] transition-colors">
+                  <span className="text-xs font-black text-white group-hover:text-sky-300 mt-2 px-4 py-1.5 rounded-full bg-[#0B2440] border border-white/15 shadow-xl whitespace-nowrap font-['Plus_Jakarta_Sans',sans-serif] transition-colors">
                     {objectiveFlow[1].label}
                   </span>
                 </div>
@@ -1285,10 +1257,10 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                 {/* Node 3: Bottom (6 o'clock) — Label pill positioned cleanly below node */}
                 <div className="absolute bottom-[30px] left-1/2 -translate-x-1/2 flex flex-col items-center text-center z-20 group cursor-pointer hover:scale-105 transition-transform duration-300">
                   <div 
-                    className="w-[72px] h-[72px] rounded-full border-4 bg-white flex items-center justify-center shadow-lg relative"
-                    style={{ borderColor: objectiveFlow[2].color }}
+                    className="w-[72px] h-[72px] rounded-full border-4 flex items-center justify-center shadow-lg relative"
+                    style={{ borderColor: objectiveFlow[2].color, backgroundColor: '#061a2e' }}
                   >
-                    <div className={`w-full h-full rounded-full flex items-center justify-center ${objectiveFlow[2].accentBg}`}>
+                    <div className="w-full h-full rounded-full flex items-center justify-center bg-white/[0.04]">
                       {objectiveFlow[2].icon}
                     </div>
                     <span 
@@ -1298,7 +1270,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                       03
                     </span>
                   </div>
-                  <span className="text-xs font-black text-[#061a2e] group-hover:text-[#10b981] mt-2 px-4 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-sm whitespace-nowrap font-['Plus_Jakarta_Sans',sans-serif] transition-colors">
+                  <span className="text-xs font-black text-white group-hover:text-emerald-300 mt-2 px-4 py-1.5 rounded-full bg-[#0B2440] border border-white/15 shadow-xl whitespace-nowrap font-['Plus_Jakarta_Sans',sans-serif] transition-colors">
                     {objectiveFlow[2].label}
                   </span>
                 </div>
@@ -1306,10 +1278,10 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                 {/* Node 4: Left (9 o'clock) — Label pill positioned cleanly below node */}
                 <div className="absolute top-1/2 left-[20px] -translate-y-1/2 flex flex-col items-center text-center z-20 group cursor-pointer hover:scale-105 transition-transform duration-300">
                   <div 
-                    className="w-[72px] h-[72px] rounded-full border-4 bg-white flex items-center justify-center shadow-lg relative"
-                    style={{ borderColor: objectiveFlow[3].color }}
+                    className="w-[72px] h-[72px] rounded-full border-4 flex items-center justify-center shadow-lg relative"
+                    style={{ borderColor: objectiveFlow[3].color, backgroundColor: '#061a2e' }}
                   >
-                    <div className={`w-full h-full rounded-full flex items-center justify-center ${objectiveFlow[3].accentBg}`}>
+                    <div className="w-full h-full rounded-full flex items-center justify-center bg-white/[0.04]">
                       {objectiveFlow[3].icon}
                     </div>
                     <span 
@@ -1319,7 +1291,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                       04
                     </span>
                   </div>
-                  <span className="text-xs font-black text-[#061a2e] group-hover:text-[#2bb673] mt-2 px-4 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-sm whitespace-nowrap font-['Plus_Jakarta_Sans',sans-serif] transition-colors">
+                  <span className="text-xs font-black text-white group-hover:text-teal-300 mt-2 px-4 py-1.5 rounded-full bg-[#0B2440] border border-white/15 shadow-xl whitespace-nowrap font-['Plus_Jakarta_Sans',sans-serif] transition-colors">
                     {objectiveFlow[3].label}
                   </span>
                 </div>
@@ -1331,13 +1303,13 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                 {objectiveFlow.map((step) => (
                   <div 
                     key={step.num}
-                    className="flex flex-col items-center text-center p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs"
+                    className="flex flex-col items-center text-center p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 shadow-lg"
                   >
                     <div 
                       className="w-16 h-16 rounded-full border-3 flex items-center justify-center mb-2 shadow-sm relative"
-                      style={{ borderColor: step.color }}
+                      style={{ borderColor: step.color, backgroundColor: '#061a2e' }}
                     >
-                      <div className={`w-full h-full rounded-full flex items-center justify-center ${step.accentBg}`}>
+                      <div className="w-full h-full rounded-full flex items-center justify-center bg-white/[0.04]">
                         {step.icon}
                       </div>
                       <span 
@@ -1347,7 +1319,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
                         {step.num}
                       </span>
                     </div>
-                    <h4 className="text-xs font-black text-[#061a2e] font-['Plus_Jakarta_Sans',sans-serif] leading-tight">
+                    <h4 className="text-xs font-black text-white font-['Plus_Jakarta_Sans',sans-serif] leading-tight">
                       {step.label}
                     </h4>
                   </div>
@@ -1357,25 +1329,25 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
             </div>
 
             {/* Bottom Progression Stepper Matrix (UI/UX Segmented Flow) */}
-            <div className="pt-8 border-t border-slate-200/80">
+            <div className="pt-8 border-t border-white/10">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto">
                 {objectiveFlow.map((step) => (
                   <div 
                     key={step.num}
-                    className="p-3.5 rounded-2xl bg-white border border-slate-200/90 hover:border-[#007791] hover:shadow-md transition-all flex items-center gap-3 group cursor-default"
+                    className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-emerald-400/40 hover:bg-white/[0.05] transition-all flex items-center gap-3 group cursor-default"
                   >
                     <span 
                       className="w-8 h-8 rounded-xl font-mono font-black text-xs flex items-center justify-center shrink-0 shadow-2xs transition-colors"
                       style={{ 
-                        backgroundColor: `${step.color}15`, 
+                        backgroundColor: `${step.color}20`, 
                         color: step.color,
-                        borderColor: `${step.color}40`,
+                        borderColor: `${step.color}50`,
                         borderWidth: '1px'
                       }}
                     >
                       {step.num}
                     </span>
-                    <span className="text-xs sm:text-sm font-black text-[#061a2e] font-['Plus_Jakarta_Sans',sans-serif] group-hover:text-[#007791] transition-colors leading-snug">
+                    <span className="text-xs sm:text-sm font-bold text-white font-['Plus_Jakarta_Sans',sans-serif] group-hover:text-emerald-300 transition-colors leading-snug">
                       {step.label}
                     </span>
                   </div>
