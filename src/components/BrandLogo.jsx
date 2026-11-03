@@ -1,12 +1,14 @@
 import React from 'react';
 import { imgUrl } from '../utils/imgUrl';
 
-export const BrandLogo = ({ variant = "full", size = "normal", className = "" }) => {
+export const BrandLogo = ({ variant = "full", size = "normal", className = "", customSrc = null }) => {
   const isDark = variant === "dark" || variant === "footer";
   const isProtect = variant === "taxation";
 
-  // Purely use the provided logo SVG files
-  const logoSrc = isProtect
+  // Purely use the provided logo SVG files or customSrc if passed
+  const logoSrc = customSrc
+    ? customSrc
+    : isProtect
     ? '/Logo/evolve-taxation-advisory.svg'
     : isDark
     ? '/Logo/evolve-corporate-business-solutions-white.svg'

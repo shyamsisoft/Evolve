@@ -273,3 +273,38 @@
   animation: handWave 2.8s ease-in-out infinite;
 }
 
+
+
+/* ======================================================== */
+/* CMS DRAWER & MODAL FORM CONTROLS: CRISP READABLE TEXT   */
+/* ======================================================== */
+.cms-drawer,
+.cms-drawer *,
+.cms-image-gallery {
+  color: #0f172a;
+}
+
+.cms-drawer input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.cms-drawer textarea,
+.cms-drawer select,
+.cms-image-gallery input {
+  color: #0f172a !important;
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+.cms-drawer input:focus,
+.cms-drawer textarea:focus,
+.cms-drawer select:focus {
+  color: #0f172a !important;
+  background-color: #ffffff !important;
+  border-color: #007791 !important;
+  outline: none !important;
+}
+
+.cms-drawer input::placeholder,
+.cms-drawer textarea::placeholder,
+.cms-image-gallery input::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+}

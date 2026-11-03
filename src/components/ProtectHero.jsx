@@ -3,7 +3,16 @@ import { ArrowRight, ChevronRight, ShieldCheck } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 import { PrimaryButton } from './PrimaryButton';
 
-export const ProtectHero = ({ onBack, onOpenContact }) => {
+export const ProtectHero = ({ data = {}, onBack, onOpenContact }) => {
+  const hero = {
+    badge: data?.badge || "BRAND PILLAR: PROTECT",
+    title: data?.title || "Tax & Compliance",
+    tagline: data?.tagline || "Strong financial foundations provide confidence.",
+    paragraph1: data?.paragraph1 || "Tax and compliance are fundamental to a well-managed organisation. We provide practical tax and compliance support while connecting compliance with the broader finance function.",
+    paragraph2: data?.paragraph2 || "When financial information, systems, processes and compliance obligations work together, organisations have greater confidence in the numbers.",
+    ctaText: data?.ctaText || "Request a Compliance Health Check",
+    bgImage: data?.bgImage || "/images/tax_compliance.jpg"
+  };
   return (
     <section className="relative min-h-[75vh] flex items-center bg-[#061a2e] text-white overflow-hidden py-16 sm:py-20 lg:py-24 border-b border-white/10 font-['Plus_Jakarta_Sans',sans-serif]">
       
@@ -11,7 +20,7 @@ export const ProtectHero = ({ onBack, onOpenContact }) => {
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {/* Right side executive imagery */}
         <img
-          src={imgUrl("/images/tax_compliance.jpg")}
+          src={imgUrl(hero.bgImage)}
           alt="Tax & Compliance"
           className="absolute right-0 top-0 bottom-0 w-full lg:w-3/5 h-full object-cover object-center opacity-45"
           onError={(e) => {
@@ -55,7 +64,7 @@ export const ProtectHero = ({ onBack, onOpenContact }) => {
         <div className="flex items-center space-x-3.5 pt-0.5">
           <div className="inline-flex items-center space-x-2.5 text-xs font-black uppercase tracking-widest text-emerald-400 bg-white/[0.04] border border-emerald-500/30 px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.15)] backdrop-blur-md">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            <span>BRAND PILLAR: PROTECT</span>
+            <span>{hero.badge}</span>
           </div>
         </div>
 
@@ -78,7 +87,7 @@ export const ProtectHero = ({ onBack, onOpenContact }) => {
 
         {/* 4. CTA Button */}
         <div className="pt-2 flex flex-wrap items-center gap-4">
-          <PrimaryButton onClick={onOpenContact}>Request a Compliance Health Check</PrimaryButton>
+          <PrimaryButton onClick={onOpenContact}>{hero.ctaText}</PrimaryButton>
         </div>
 
         {/* 5. Trust / Metric Strip */}

@@ -3,7 +3,16 @@ import { ArrowRight, ChevronRight, TrendingUp } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 import { PrimaryButton } from './PrimaryButton';
 
-export const LeadHero = ({ onBack, onOpenContact }) => {
+export const LeadHero = ({ data = {}, onBack, onOpenContact }) => {
+  const hero = {
+    badge: data?.badge || "BRAND PILLAR: LEAD",
+    title: data?.title || "CFO & FP&A Advisory",
+    tagline: data?.tagline || "Financial leadership when you need it.",
+    paragraph1: data?.paragraph1 || "Organisations don't always need another accountant. Sometimes they need someone who can step back from the numbers, understand the bigger picture and help leadership make better decisions.",
+    paragraph2: data?.paragraph2 || "We provide CFO and FP&A capability for organisations that need greater financial clarity, stronger planning or additional senior finance expertise.",
+    ctaText: data?.ctaText || "Start a CFO Conversation",
+    bgImage: data?.bgImage || "/images/cfo_advisory.jpg"
+  };
   return (
     <section className="relative min-h-[75vh] flex items-center bg-[#061a2e] text-white overflow-hidden py-16 sm:py-20 lg:py-24 border-b border-white/10 font-['Plus_Jakarta_Sans',sans-serif]">
       
@@ -11,7 +20,7 @@ export const LeadHero = ({ onBack, onOpenContact }) => {
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {/* Right side executive imagery */}
         <img
-          src={imgUrl("/images/cfo_advisory.jpg")}
+          src={imgUrl(hero.bgImage)}
           alt="CFO & FP&A Advisory"
           className="absolute right-0 top-0 bottom-0 w-full lg:w-3/5 h-full object-cover object-center opacity-40"
           onError={(e) => {
@@ -57,7 +66,7 @@ export const LeadHero = ({ onBack, onOpenContact }) => {
         <div className="flex items-center space-x-3.5 pt-0.5">
           <div className="inline-flex items-center space-x-2.5 text-xs font-black uppercase tracking-widest text-emerald-400 bg-white/[0.04] border border-emerald-500/30 px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.15)] backdrop-blur-md">
             <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
-            <span>BRAND PILLAR: LEAD</span>
+            <span>{hero.badge}</span>
           </div>
         </div>
 
@@ -83,7 +92,7 @@ export const LeadHero = ({ onBack, onOpenContact }) => {
 
         {/* 4. CTA Button */}
         <div className="pt-2 flex flex-wrap items-center gap-4">
-          <PrimaryButton onClick={onOpenContact}>Start a CFO Conversation</PrimaryButton>
+          <PrimaryButton onClick={onOpenContact}>{hero.ctaText}</PrimaryButton>
         </div>
 
         {/* 5. Trust / Metric Strip */}

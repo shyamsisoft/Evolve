@@ -158,6 +158,18 @@ export function App() {
               ...step,
               ...(parsed.processFlow?.steps?.[idx] || {})
             }))
+          },
+          contactData: {
+            ...initialSiteData.contactData,
+            ...(parsed.contactData || {})
+          },
+          socialLinks: {
+            ...initialSiteData.socialLinks,
+            ...(parsed.socialLinks || {})
+          },
+          brandSettings: {
+            ...initialSiteData.brandSettings,
+            ...(parsed.brandSettings || {})
           }
         };
       } catch (e) {
@@ -292,6 +304,7 @@ export function App() {
 
       <Header
         data={fixedData.header}
+        brandSettings={fixedData.brandSettings || initialSiteData.brandSettings}
         activePage={activePage}
         adminUser={adminUser}
         onOpenLogin={() => setIsLoginOpen(true)}
@@ -343,24 +356,28 @@ export function App() {
           />
         ) : activePage === 'growing-businesses' ? (
           <GrowingBusinessesPage
+            data={fixedData.whoWeHelpDetailPages?.['growing-businesses']}
             onBack={() => navigateTo('who-we-help')}
             onOpenContact={() => setIsContactOpen(true)}
             onSelectAudience={(id) => navigateTo(id)}
           />
         ) : activePage === 'non-profit-community' || activePage === 'not-for-profit' || activePage === 'nfp' ? (
           <NotForProfitPage
+            data={fixedData.whoWeHelpDetailPages?.['non-profit-community']}
             onBack={() => navigateTo('who-we-help')}
             onOpenContact={() => setIsContactOpen(true)}
             onSelectAudience={(id) => navigateTo(id)}
           />
         ) : activePage === 'established-corporate' || activePage === 'corporate' ? (
           <EstablishedCorporatePage
+            data={fixedData.whoWeHelpDetailPages?.['established-corporate']}
             onBack={() => navigateTo('who-we-help')}
             onOpenContact={() => setIsContactOpen(true)}
             onSelectAudience={(id) => navigateTo(id)}
           />
         ) : activePage === 'local-government' || activePage === 'councils' ? (
           <LocalGovernmentPage
+            data={fixedData.whoWeHelpDetailPages?.['local-government']}
             onBack={() => navigateTo('who-we-help')}
             onOpenContact={() => setIsContactOpen(true)}
             onSelectAudience={(id) => navigateTo(id)}
@@ -442,6 +459,7 @@ export function App() {
         <FooterCTA
           ctaData={fixedData.ctaBanner}
           footerData={fixedData.footer}
+          socialLinks={fixedData.socialLinks || initialSiteData.socialLinks}
           adminUser={adminUser}
           onOpenLogin={() => setIsLoginOpen(true)}
           onToggleCMS={() => setIsCMSOpen(!isCMSOpen)}

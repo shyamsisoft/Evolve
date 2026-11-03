@@ -20,13 +20,13 @@ import { SectionDivider } from './SectionDivider';
 import { PrimaryButton } from './PrimaryButton';
 import { OwnerLedToManagementLedFlow } from './OwnerLedToManagementLedFlow';
 
-export const GrowingBusinessesPage = ({ onBack, onOpenContact, onSelectAudience }) => {
+export const GrowingBusinessesPage = ({ data = {}, onBack, onOpenContact, onSelectAudience }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   // 1. Key Solutions (Exact 9 items from Source of Truth)
-  const keySolutions = [
+  const defaultKeySolutions = [
     {
       num: "01",
       title: "Fractional CFO",
@@ -92,6 +92,14 @@ export const GrowingBusinessesPage = ({ onBack, onOpenContact, onSelectAudience 
     }
   ];
 
+  const keySolutions = (data?.keySolutions && data.keySolutions.length > 0)
+    ? data.keySolutions.map((s, idx) => ({
+        ...defaultKeySolutions[idx % defaultKeySolutions.length],
+        ...s,
+        icon: defaultKeySolutions[idx % defaultKeySolutions.length]?.icon
+      }))
+    : defaultKeySolutions;
+
   return (
     <div className="pt-20 sm:pt-24 pb-20 bg-[#061a2e] text-white font-['Inter',sans-serif] selection:bg-[#18B0A6] selection:text-[#061a2e] animate-in fade-in duration-300">
 
@@ -155,7 +163,7 @@ export const GrowingBusinessesPage = ({ onBack, onOpenContact, onSelectAudience 
               Growing Business Solutions
             </h1>
             <p className="text-xl sm:text-2xl text-emerald-400 font-bold tracking-tight">
-              Financial leadership for organisations ready for their next stage.
+              {data?.hero?.tagline || "Financial leadership for organisations ready for their next stage."}
             </p>
 
             <div className="pt-1 space-y-3 max-w-3xl text-slate-200">

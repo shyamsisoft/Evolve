@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 
-const transformationServices = [
+const defaultTransformationServices = [
   {
     num: "01",
     title: "Transformation strategy",
@@ -80,10 +80,18 @@ const transformationServices = [
 ];
 
 export default function FinanceTransformationServicesGrid({
+  services = null,
   videoSrc = null,
   gifSrc = null,
   posterSrc = '/images/scale_cfo_executive.png'
 }) {
+  const transformationServices = (services && services.length > 0)
+    ? services.map((s, idx) => ({
+        ...defaultTransformationServices[idx % defaultTransformationServices.length],
+        ...s,
+        icon: defaultTransformationServices[idx % defaultTransformationServices.length]?.icon
+      }))
+    : defaultTransformationServices;
   const [activeIdx, setActiveIdx] = useState(0);
   const activeService = transformationServices[activeIdx] || transformationServices[0];
 

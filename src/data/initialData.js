@@ -74,6 +74,7 @@ export const initialSiteData = {
   processFlow: {
     badge: "DRIVE GROWTH WITH CLARITY & STRATEGY",
     heading: "From numbers to better decisions",
+    subtitle: "Financial information should do more than describe the past. It should help you understand where you are today, where you are heading and what decisions need to be made. Our role is to help turn financial information into practical insight — and insight into action.",
     exploreText: "Explore Insights",
     characterImage: "/images/character_advisor.png?v=4",
     bgImage: "/images/finance_transform.jpg",
@@ -211,7 +212,21 @@ export const initialSiteData = {
         title: "CFO & FP&A Advisory",
         desc: "Strategic financial leadership and performance insight for organisations that need greater clarity, capability or additional senior finance support.",
         image: "/images/cfo_advisory.jpg",
-        iconType: "lead"
+        iconType: "lead",
+        capabilities: [
+          "CFO advisory",
+          "Fractional CFO support",
+          "FP&A",
+          "Budgeting & forecasting",
+          "Cash-flow management",
+          "Financial modelling",
+          "Management reporting",
+          "KPI frameworks",
+          "Scenario analysis",
+          "Board and executive reporting",
+          "Business partnering",
+          "Strategic financial analysis"
+        ]
       },
       {
         id: "build",
@@ -219,7 +234,19 @@ export const initialSiteData = {
         title: "Finance Functions & Operating Models",
         desc: "Build a finance function that supports the organisation with the right people, processes, systems and governance.",
         image: "/images/finance_build.jpg",
-        iconType: "build"
+        iconType: "build",
+        capabilities: [
+          "Finance Health Checks",
+          "Finance operating models",
+          "Target operating models",
+          "Finance organisation design",
+          "Process improvement",
+          "Month-end improvement",
+          "Management reporting",
+          "Controls and governance",
+          "Finance capability uplift",
+          "Outsourced and augmented finance support"
+        ]
       },
       {
         id: "transform",
@@ -227,7 +254,22 @@ export const initialSiteData = {
         title: "Finance Transformation, Data & Technology",
         desc: "Connect people, process, technology and data to improve performance and enable change.",
         image: "/images/finance_transform.jpg",
-        iconType: "transform"
+        iconType: "transform",
+        capabilities: [
+          "Finance transformation",
+          "ERP implementation and optimisation",
+          "TechnologyOne",
+          "Finance data integration",
+          "Data migration",
+          "Data models",
+          "Reporting architecture",
+          "Power BI",
+          "Financial analytics",
+          "Automation",
+          "Process redesign",
+          "Systems optimisation",
+          "Transformation program support"
+        ]
       },
       {
         id: "protect",
@@ -235,7 +277,19 @@ export const initialSiteData = {
         title: "Tax & Compliance",
         desc: "Strong financial foundations provide confidence and ensure your organisation meets its obligations.",
         image: "/images/tax_compliance.jpg",
-        iconType: "protect"
+        iconType: "protect",
+        capabilities: [
+          "Business taxation",
+          "BAS",
+          "GST",
+          "PAYG",
+          "Payroll compliance",
+          "Superannuation reviews",
+          "FBT",
+          "Tax compliance",
+          "Compliance Health Checks",
+          "Finance and compliance process reviews"
+        ]
       }
     ]
   },
@@ -368,78 +422,120 @@ export const initialSiteData = {
   whoWeHelpDetailPages: {
     "growing-businesses": {
       id: "growing-businesses",
-      title: "Growing Businesses",
-      subtitle: "When growth creates financial complexity.",
-      tagline: "Specialist financial leadership, scalable operating models, and FP&A insight tailored for fast-scaling mid-market enterprises.",
-      bgImage: "/images/growing_businesses.jpg",
-      challenges: [
-        "Outgrowing basic accounting software and manual spreadsheets",
-        "Managing cash flow burn while scaling operations and inventory",
-        "Need for investor and lender-ready financial presentations",
-        "Structuring finance team roles without heavy permanent overhead"
+      hero: {
+        badge: "GROWING BUSINESS SOLUTIONS",
+        title: "Growing Businesses",
+        tagline: "Financial leadership for organisations ready for their next stage.",
+        paragraph1: "Growing businesses often reach a point where traditional accounting is no longer enough. Growth creates opportunity, but it also creates financial complexity. As organisations grow, informal processes, spreadsheets, and traditional accounting struggle to keep pace.",
+        paragraph2: "We provide practical finance capability that can grow with your organisation.",
+        ctaText: "Start a Conversation",
+        bgImage: "/images/growing_businesses.jpg"
+      },
+      keySolutions: [
+        { num: "01", title: "Fractional CFO", desc: "Senior financial leadership tailored to your growth phase." },
+        { num: "02", title: "Budgeting & Forecasting", desc: "Build clear financial planning frameworks and predictive rolling models." },
+        { num: "03", title: "Cash Flow Visibility", desc: "Gain full transparency over future cash requirements and working capital needs." },
+        { num: "04", title: "Management Reporting", desc: "Transform raw operational and financial numbers into decision-ready insights." },
+        { num: "05", title: "Financial Modelling", desc: "Model growth scenarios, staffing, pricing, and capital investment requirements." },
+        { num: "06", title: "KPIs & Performance Frameworks", desc: "Identify and track the key operational metrics that drive performance." },
+        { num: "07", title: "Finance Health Checks", desc: "Conduct structured reviews across people, processes, systems, and controls." },
+        { num: "08", title: "Process Improvement & Systems", desc: "Optimize financial workflows and eliminate manual reporting overhead." },
+        { num: "09", title: "Tax & Compliance", desc: "Connect compliance obligations directly into broader finance function operations." }
       ],
-      solutions: [
-        "Fractional CFO & Growth Strategy",
-        "Driver-Based Financial Forecasting",
-        "Working Capital & Burn Management",
-        "Scalable ERP System Selection"
+      flowStages: [
+        "Looking backwards",
+        "Understanding performance",
+        "Predicting the future",
+        "Managing performance"
       ]
     },
     "established-corporate": {
       id: "established-corporate",
-      title: "Established & Corporate",
-      subtitle: "Specialist finance capability when you need it.",
-      tagline: "Unlocking corporate performance, business intelligence automation, governance defense, and enterprise transformation.",
-      bgImage: "/images/established_corporate.jpg",
-      challenges: [
-        "Complex multi-entity financial consolidation and reporting friction",
-        "Legacy technology debt impeding real-time executive decision-making",
-        "Internal capacity bottlenecks during major acquisitions or restructuring",
-        "Enhancing board reporting governance and risk controls"
+      hero: {
+        badge: "ESTABLISHED & CORPORATE ORGANISATIONS",
+        title: "Established & Corporate Organisations",
+        tagline: "Specialist finance capability when you need it.",
+        paragraph1: "Established organisations often have capable internal finance teams. The challenge isn't always a lack of finance capability; sometimes you need specialist capability for a particular problem, transformation program or period of change.",
+        paragraph2: "We work alongside CFOs, Finance Directors, transformation teams, and operational leaders as an extension of your team.",
+        ctaText: "Discuss Your Requirement",
+        bgImage: "/images/established_corporate.jpg"
+      },
+      coreSupportAreas: [
+        { num: "01", area: "FP&A", desc: "Planning, forecasting, modelling, performance analysis, and business partnering." },
+        { num: "02", area: "Target Operating Models", desc: "Current-state assessment, future-state design, organization design, process ownership, service delivery models." },
+        { num: "03", area: "Finance Data", desc: "Integration, migration, mapping, data models, reporting datasets." },
+        { num: "04", area: "Reporting Architecture", desc: "Management reporting, KPI frameworks, dashboards, Power BI." },
+        { num: "05", area: "Finance Transformation", desc: "ERP, TechnologyOne, automation, process redesign, program delivery." },
+        { num: "06", area: "Finance Function", desc: "Health checks, capability uplift, operating models, process improvement." }
       ],
-      solutions: [
-        "Multi-Entity Finance Operating Models",
-        "PowerBI Data & Analytics Pipelines",
-        "M&A Financial Integration Support",
-        "Corporate Governance & Internal Controls"
+      howWeWork: [
+        "Specialist advisors offering independent strategic guidance",
+        "Transformation partners guiding complex organizational and systems change",
+        "Project resources executing high-value finance workstreams",
+        "FP&A capability strengthening planning, modelling, and business insight",
+        "Independent reviewers assessing finance health, controls, and architecture",
+        "Finance transformation specialists driving process redesign and technology adoption"
       ]
     },
     "non-profit-community": {
       id: "non-profit-community",
-      title: "Not-for-Profit & Community",
-      subtitle: "Financial capability that supports your purpose.",
-      tagline: "Purpose-driven financial stewardship, grant acquittals, fund accounting, and board governance transparency.",
-      bgImage: "/images/non_profit_community.jpg",
-      challenges: [
-        "Managing tied and untied grant funding streams accurately",
-        "Demonstrating transparent financial stewardship to boards and donors",
-        "Navigating complex NFP tax exemptions and statutory reporting",
-        "Balancing mission delivery with long-term fiscal sustainability"
+      hero: {
+        badge: "NOT-FOR-PROFIT & COMMUNITY SOLUTIONS",
+        title: "Not-for-Profit & Community Organisations",
+        tagline: "Financial capability that supports your purpose.",
+        paragraph1: "Financial sustainability and community impact are closely connected.",
+        paragraph2: "Financial sustainability enables organisations to deliver their purpose with confidence. We help NFP and community organisations understand their financial position, strengthen their finance functions, and make better-informed decisions.",
+        ctaText: "Discuss Your NFP's Finance Needs",
+        bgImage: "/images/non_profit_community.jpg"
+      },
+      keySolutions: [
+        { num: "01", title: "CFO Advisory & Financial Sustainability" },
+        { num: "02", title: "Budgeting & Forecasting" },
+        { num: "03", title: "Cash-Flow Management" },
+        { num: "04", title: "Board Reporting" },
+        { num: "05", title: "Funding and Grant Reporting" },
+        { num: "06", title: "NDIS Financial Management" },
+        { num: "07", title: "Financial Modelling" },
+        { num: "08", title: "Finance Health Checks" },
+        { num: "09", title: "Finance Transformation & Reporting Analytics" }
       ],
-      solutions: [
-        "NFP Fund Accounting & Grant Management",
-        "Board Financial Visibility & Governance",
-        "Cost Allocation & Program Profitability",
-        "Audit Preparation & Statutory Filings"
+      keyQuestions: [
+        "Are we financially sustainable?",
+        "Where are our greatest risks?",
+        "Are our programs financially viable?",
+        "How much cash do we need?",
+        "Are our funding arrangements sustainable?",
+        "Does our board have the information it needs?",
+        "Is our finance function supporting our purpose?"
       ]
     },
     "local-government": {
       id: "local-government",
-      title: "Local Government & Public Sector",
-      subtitle: "Better financial insight for better public outcomes.",
-      tagline: "Public sector financial management, long-term asset planning, rate-setting analytics, and community transparency.",
-      bgImage: "/images/local_government.jpg",
-      challenges: [
-        "Long-term financial planning across municipal infrastructure assets",
-        "Meeting statutory local government reporting frameworks and audits",
-        "Optimizing rate setting and public service budget allocations",
-        "Modernizing legacy civic software and financial systems"
+      hero: {
+        badge: "LOCAL GOVERNMENT SOLUTIONS",
+        title: "Local Government / Councils",
+        tagline: "Better financial insight for better public outcomes.",
+        paragraph1: "Councils operate in complex environments where financial sustainability, planning, governance, and service delivery are closely connected.",
+        paragraph2: "We combine finance, transformation, systems, data, and reporting capability to support councils in achieving better public outcomes.",
+        ctaText: "Discuss Your Council's Finance Challenge",
+        bgImage: "/images/local_government.jpg"
+      },
+      keySolutions: [
+        { num: "01", title: "Budgeting & Long-Term Financial Planning" },
+        { num: "02", title: "FP&A & Financial Modelling" },
+        { num: "03", title: "Forecasting & Management Reporting" },
+        { num: "04", title: "TechnologyOne Optimisation" },
+        { num: "05", title: "Finance Transformation" },
+        { num: "06", title: "Data, BI & Reporting Architecture" },
+        { num: "07", title: "Process Improvement & Capability Uplift" }
       ],
-      solutions: [
-        "Long-Term Financial Strategy (LTFS)",
-        "Civic Asset & Capital Works Financial Modeling",
-        "Statutory Annual Financial Statements",
-        "Public Finance Transformation & Training"
+      healthCheckDimensions: [
+        "People",
+        "Processes",
+        "Systems",
+        "Data",
+        "Reporting",
+        "Controls"
       ]
     }
   },
@@ -452,25 +548,49 @@ export const initialSiteData = {
         id: "growing-businesses",
         title: "Growing Businesses",
         desc: "When growth creates financial complexity.",
-        image: "/images/growing_businesses.jpg"
+        image: "/images/growing_businesses.jpg",
+        focusAreas: [
+          "Fractional CFO",
+          "Forecasting & Cash Flow",
+          "Financial Modelling",
+          "Health Checks"
+        ]
       },
       {
         id: "established-corporate",
         title: "Established & Corporate",
         desc: "Specialist finance capability when you need it.",
-        image: "/images/established_corporate.jpg"
+        image: "/images/established_corporate.jpg",
+        focusAreas: [
+          "FP&A & Modelling",
+          "Target Operating Models",
+          "Power BI & Analytics",
+          "ERP & TechOne"
+        ]
       },
       {
         id: "non-profit-community",
         title: "Not-for-Profit & Community",
         desc: "Financial capability that supports your purpose.",
-        image: "/images/non_profit_community.jpg"
+        image: "/images/non_profit_community.jpg",
+        focusAreas: [
+          "CFO Advisory",
+          "Funding & Grants",
+          "NDIS Management",
+          "Board Reporting"
+        ]
       },
       {
         id: "local-government",
         title: "Local Government",
         desc: "Better financial insight for better public outcomes.",
-        image: "/images/local_government.jpg"
+        image: "/images/local_government.jpg",
+        focusAreas: [
+          "Budgeting & LTFS",
+          "Financial Modelling",
+          "TechnologyOne & BI",
+          "Health Checks"
+        ]
       }
     ]
   },
@@ -665,11 +785,383 @@ export const initialSiteData = {
     ]
   },
   contactData: {
-    title: "Contact Our Advisory Team",
-    subtitle: "We're here to help. Reach out to discuss how we can support your financial, transformation, or compliance goals.",
+    eyebrow: "DIRECT EXECUTIVE ENGAGEMENT",
+    title: "Contact",
+    subtitle: "Let's talk about what your organisation needs next.",
+    introLead: "You may know exactly what support you need. Or you may simply know that finance, reporting, systems, compliance or organisational change isn't working as well as it should.",
+    introSublead: "Either way, let's start with a conversation.",
+    introText: "Tell us a little about your organisation, the challenge you are facing and what you are looking to achieve. We'll help determine where Evolve can add value.",
+    phone: "+61 2 9000 0000",
+    email: "enquiries@evolvecorporate.com.au",
+    hours: "Monday – Friday: 8:30 AM – 5:30 PM AEST",
+    confidentialityNotice: "Confidential Consultation with Senior Advisory Specialists",
     offices: [
-      { city: "Corporate Headquarters", address: "Financial District Executive Tower", phone: "+1 (800) 555-EVOLVE", email: "advisory@evolve.com" }
+      {
+        city: "Sydney (Principal Office)",
+        address: "Level 28, 200 George Street, Sydney NSW 2000",
+        phone: "+61 2 9000 0000",
+        email: "sydney@evolvecorporate.com.au",
+        isPrimary: true
+      },
+      {
+        city: "Melbourne",
+        address: "Level 14, 333 Collins Street, Melbourne VIC 3000",
+        phone: "+61 3 9000 0000",
+        email: "melbourne@evolvecorporate.com.au",
+        isPrimary: false
+      },
+      {
+        city: "Brisbane",
+        address: "Level 21, 345 Queen Street, Brisbane QLD 4000",
+        phone: "+61 7 3000 0000",
+        email: "brisbane@evolvecorporate.com.au",
+        isPrimary: false
+      }
     ]
+  },
+  socialLinks: {
+    linkedin: "https://www.linkedin.com/company/evolve-corporate-and-business-solutions",
+    youtube: "https://youtube.com/@evolvecorporate",
+    twitter: ""
+  },
+  brandSettings: {
+    mainLogoDark: "/Logo/evolve-corporate-business-solutions-white.svg",
+    mainLogoLight: "/Logo/evolve-corporate-business-solutions.svg",
+    taxLogoDark: "/Logo/evolve-taxation-advisory.svg"
+  },
+        pillarPagesData: {
+    lead: {
+      hero: {
+        badge: "BRAND PILLAR: LEAD",
+        title: "CFO & FP&A Advisory",
+        tagline: "Financial leadership when you need it.",
+        paragraph1: "Organisations don't always need another accountant. Sometimes they need someone who can step back from the numbers, understand the bigger picture and help leadership make better decisions.",
+        paragraph2: "We provide CFO and FP&A capability for organisations that need greater financial clarity, stronger planning or additional senior finance expertise.",
+        ctaText: "Start a CFO Conversation",
+        bgImage: "/images/cfo_advisory.jpg"
+      },
+      beyondQuestions: [
+        { num: "01", question: "What is driving our performance?" },
+        { num: "02", question: "Where are we heading?" },
+        { num: "03", question: "Do we have enough cash?" },
+        { num: "04", question: "What risks are emerging?" },
+        { num: "05", question: "Can we afford the next investment?" },
+        { num: "06", question: "Which areas are performing?" },
+        { num: "07", question: "What happens if our assumptions change?" },
+        { num: "08", question: "What should management focus on next?" }
+      ],
+      cfoServices: [
+        {
+          id: "strategy",
+          title: "Financial Strategy",
+          desc: "Translate strategic objectives into practical financial plans.",
+          category: "strategy",
+          categoryLabel: "Strategy & Capital",
+          image: "/images/cfo_advisory.jpg"
+        },
+        {
+          id: "budgeting",
+          title: "Budgeting & Forecasting",
+          desc: "Build budgets and rolling forecasts that support decision-making.",
+          category: "planning",
+          categoryLabel: "Planning & Liquidity",
+          image: "/images/cap_module_1.jpg"
+        },
+        {
+          id: "cash-flow",
+          title: "Cash Flow & Working Capital",
+          desc: "Improve visibility and control over liquidity and capital requirements.",
+          category: "planning",
+          categoryLabel: "Planning & Liquidity",
+          image: "/images/cap_module_2.jpg"
+        },
+        {
+          id: "board-reporting",
+          title: "Board & Stakeholder Reporting",
+          desc: "Provide clear, insightful financial reporting for leadership and boards.",
+          category: "reporting",
+          categoryLabel: "Reporting & Governance",
+          image: "/images/step_leadership.jpg"
+        },
+        {
+          id: "modelling",
+          title: "Financial Modelling & Decision Support",
+          desc: "Model scenarios, capital investments and commercial opportunities.",
+          category: "strategy",
+          categoryLabel: "Strategy & Capital",
+          image: "/images/finance_transform.jpg"
+        },
+        {
+          id: "governance",
+          title: "Governance & Financial Control",
+          desc: "Strengthen oversight, financial discipline and internal processes.",
+          category: "reporting",
+          categoryLabel: "Reporting & Governance",
+          image: "/images/cap_module_3.jpg"
+        },
+        {
+          id: "interim",
+          title: "Interim CFO & Leadership Cover",
+          desc: "Provide senior capability during growth, transition or recruitment.",
+          category: "partnering",
+          categoryLabel: "Performance & Partnering",
+          image: "/images/why_experience.jpg"
+        },
+        {
+          id: "partnering",
+          title: "Business Partnering",
+          desc: "Connect financial outcomes with operational decisions.",
+          category: "partnering",
+          categoryLabel: "Performance & Partnering",
+          image: "/images/finance_meeting.jpg"
+        }
+      ],
+      triggerPoints: [
+        "Reports tell you what happened but not why.",
+        "Cash flow is becoming harder to predict.",
+        "Your business is growing faster than your finance function.",
+        "Your board wants better financial insight.",
+        "You are making significant investment decisions.",
+        "Your finance team needs senior-level support.",
+        "You want greater confidence in your forecasts."
+      ]
+    },
+    build: {
+      hero: {
+        badge: "BRAND PILLAR: BUILD",
+        title: "Finance Functions & Operating Models",
+        tagline: "Build a finance function that supports the organisation.",
+        paragraph1: "A strong finance function provides more than accurate transactions.",
+        paragraph2: "It provides reliable information, efficient processes, effective controls and insight for decision-making. We help organisations assess, design and improve their finance functions.",
+        ctaText: "Request a Finance Health Check",
+        bgImage: "/images/finance_build.jpg"
+      },
+      healthCheckDimensions: [
+        {
+          id: "people",
+          num: "01",
+          name: "People",
+          color: "#6366f1",
+          bgLight: "bg-indigo-50 border-indigo-200 text-indigo-700",
+          accentBg: "bg-indigo-600",
+          accentText: "text-indigo-600",
+          items: [
+            "Capability",
+            "Capacity",
+            "Roles and responsibilities",
+            "Leadership",
+            "Business partnering"
+          ]
+        },
+        {
+          id: "processes",
+          num: "02",
+          name: "Processes",
+          color: "#007791",
+          bgLight: "bg-teal-50 border-teal-200 text-[#007791]",
+          accentBg: "bg-[#007791]",
+          accentText: "text-[#007791]",
+          items: [
+            "Month-end",
+            "Procure-to-pay",
+            "Order-to-cash",
+            "Reconciliations",
+            "Reporting",
+            "Forecasting"
+          ]
+        },
+        {
+          id: "systems",
+          num: "03",
+          name: "Systems",
+          color: "#0ea5e9",
+          bgLight: "bg-sky-50 border-sky-200 text-sky-700",
+          accentBg: "bg-sky-600",
+          accentText: "text-sky-600",
+          items: [
+            "ERP utilisation",
+            "System configuration",
+            "Integration",
+            "Automation",
+            "Data quality"
+          ]
+        },
+        {
+          id: "reporting",
+          num: "04",
+          name: "Reporting",
+          color: "#10b981",
+          bgLight: "bg-emerald-50 border-emerald-200 text-emerald-700",
+          accentBg: "bg-emerald-600",
+          accentText: "text-emerald-600",
+          items: [
+            "Management reporting",
+            "Board reporting",
+            "KPIs",
+            "Budget reporting",
+            "Forecasting"
+          ]
+        },
+        {
+          id: "controls",
+          num: "05",
+          name: "Controls & Governance",
+          color: "#f59e0b",
+          bgLight: "bg-amber-50 border-amber-200 text-amber-700",
+          accentBg: "bg-amber-600",
+          accentText: "text-amber-600",
+          items: [
+            "Financial controls",
+            "Reconciliations",
+            "Delegations",
+            "Compliance",
+            "Risk"
+          ]
+        }
+      ],
+      tomSupportItems: [
+        "Current-state assessment",
+        "Future-state design",
+        "Finance organisation design",
+        "Roles and responsibilities",
+        "Service delivery models",
+        "Process ownership",
+        "Governance",
+        "Technology requirements",
+        "Capability requirements",
+        "Implementation planning"
+      ]
+    },
+    transform: {
+      hero: {
+        badge: "BRAND PILLAR: TRANSFORM",
+        title: "Finance Transformation, Data & Technology",
+        tagline: "Connect people, process, technology and data.",
+        paragraph1: "Technology alone does not transform finance. Transformation succeeds when systems, processes, data and people work together to create measurable improvement.",
+        paragraph2: "Technology should make finance better — simpler, faster, more reliable, and more insightful.",
+        ctaText: "Discuss a Transformation Requirement",
+        bgImage: "/images/finance_transform.jpg"
+      },
+      services: [
+        { num: "01", title: "Transformation strategy", scope: "Strategic roadmap & digital operating model alignment", deliverable: "Target architecture & phased investment plan" },
+        { num: "02", title: "Current-state assessment", scope: "Systems diagnostic & process gap analysis", deliverable: "Capability heatmap & risk register" },
+        { num: "03", title: "Future-state design", scope: "Target operating model & automated workflows", deliverable: "Future-state process blueprints & role profiles" },
+        { num: "04", title: "Process redesign", scope: "Cycle velocity & workflow standardization", deliverable: "Streamlined SOPs & approval matrices" },
+        { num: "05", title: "ERP implementation and optimisation", scope: "Core ERP configuration & performance tuning", deliverable: "General ledger & subledger alignment" },
+        { num: "06", title: "Automation", scope: "Rules-based automated reconciliation pipelines", deliverable: "Exception tracking & automated data loads" },
+        { num: "07", title: "Reporting transformation", scope: "Self-service BI models & management dashboards", deliverable: "Unified executive financial telemetry" },
+        { num: "08", title: "Finance capability uplift", scope: "Skills transition to commercial partnering", deliverable: "Upskilling framework & decision playbooks" },
+        { num: "09", title: "Transformation program support", scope: "Program governance & risk mitigation", deliverable: "PMO leadership & milestone assurance" }
+      ],
+      dataIntegrationItems: [
+        "Data mapping",
+        "Migration",
+        "Data structures",
+        "Data models",
+        "Chart of Accounts",
+        "System integration",
+        "Data quality",
+        "Reporting datasets"
+      ],
+      transformationTriggers: [
+        "Finance relies heavily on spreadsheets.",
+        "Reporting is highly manual.",
+        "Your ERP is not delivering expected benefits.",
+        "Different systems produce inconsistent information.",
+        "Data is difficult to reconcile.",
+        "Management lacks timely insight.",
+        "Processes haven't kept pace with organizational growth.",
+        "You are implementing a new ERP.",
+        "Your finance team spends too much time processing and too little time analysing."
+      ]
+    },
+    protect: {
+      hero: {
+        badge: "BRAND PILLAR: PROTECT",
+        title: "Tax & Compliance",
+        tagline: "Strong financial foundations provide confidence.",
+        paragraph1: "Tax and compliance are fundamental to a well-managed organisation. We provide practical tax and compliance support while connecting compliance with the broader finance function.",
+        paragraph2: "When financial information, systems, processes and compliance obligations work together, organisations have greater confidence in the numbers.",
+        ctaText: "Request a Compliance Health Check",
+        bgImage: "/images/tax_compliance.jpg"
+      },
+      coreServices: [
+        {
+          id: "business-taxation",
+          title: "Business Taxation",
+          advisorRole: "Corporate Tax Lead",
+          advisorDesc: "Specialized corporate tax planning, group structures, and statutory compliance across mid-market enterprises.",
+          character: "/images/character_advisor.png",
+          characterAlt: "Corporate Tax Strategy Lead",
+          items: [
+            "Company tax",
+            "Trust taxation",
+            "Partnership taxation",
+            "Tax compliance",
+            "Tax planning",
+            "Financial information supporting tax obligations"
+          ]
+        },
+        {
+          id: "bas-gst",
+          title: "BAS & GST",
+          advisorRole: "Indirect Tax & BAS Specialist",
+          advisorDesc: "Accurate monthly & quarterly BAS lodging, detailed GST classification reviews, and reconciliations.",
+          character: "/images/scale_cfo_executive.png",
+          characterAlt: "Indirect Tax & BAS Specialist",
+          items: [
+            "BAS preparation",
+            "GST reviews",
+            "GST coding reviews",
+            "GST reconciliations",
+            "Transaction reviews",
+            "Process improvement"
+          ]
+        },
+        {
+          id: "payroll-super",
+          title: "Payroll, PAYG & Superannuation",
+          advisorRole: "Payroll & Employment Taxes Lead",
+          advisorDesc: "Mitigating workforce compliance risk with rigorous general ledger ties, PAYG withholding, and super audits.",
+          character: "/images/cfo_cartoon_character.png",
+          characterAlt: "Payroll Compliance & Superannuation Director",
+          items: [
+            "PAYG withholding",
+            "Superannuation reviews",
+            "Payroll compliance reviews",
+            "Pay component reviews",
+            "Payroll-to-general-ledger reconciliation",
+            "Process reviews"
+          ]
+        },
+        {
+          id: "fbt",
+          title: "Fringe Benefits Tax (FBT)",
+          advisorRole: "FBT & Remuneration Lead",
+          advisorDesc: "Comprehensive benefit calculations, statutory return preparation, and ongoing salary packaging advice.",
+          character: "/images/character_female_lead.png",
+          characterAlt: "FBT & Remuneration Advisor",
+          items: [
+            "FBT reviews",
+            "Calculations",
+            "Return preparation",
+            "Process reviews",
+            "Identification of potential FBT issues"
+          ]
+        }
+      ],
+      healthCheckStages: [
+        "GST",
+        "BAS",
+        "PAYG",
+        "Payroll",
+        "Superannuation",
+        "FBT",
+        "Tax",
+        "Reconciliations",
+        "Records"
+      ]
+    }
   },
   ctaBanner: {
     tag: "LET'S MOVE FORWARD",

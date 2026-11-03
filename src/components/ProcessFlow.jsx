@@ -164,6 +164,11 @@ export const ProcessFlow = ({ data, onNavigate }) => {
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-black text-white tracking-tight leading-tight mt-2">
                 {data?.heading || "From numbers to better decisions"}
               </h2>
+
+              {/* Explanatory Paragraph from Document */}
+              <p className="mt-3 text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
+                {data?.subtitle || "Financial information should do more than describe the past. It should help you understand where you are today, where you are heading and what decisions need to be made. Our role is to help turn financial information into practical insight — and insight into action."}
+              </p>
             </div>
 
 

@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PillarIcon } from './BrandLogo';
 import { ArrowRight } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 
 export const WhatWeDo = ({ data, onSelectService }) => {
+  const [expandedCards, setExpandedCards] = useState({});
+
+  const toggleExpand = (id, e) => {
+    e.stopPropagation();
+    setExpandedCards(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
   return (
     <section id="what-we-do" className="py-14 sm:py-20 bg-[#061a2e] text-white relative overflow-hidden border-b border-white/10 font-['Inter',sans-serif]">
       {/* Background Decorative Lighting */}
@@ -58,6 +67,59 @@ export const WhatWeDo = ({ data, onSelectService }) => {
                   <p className="text-sm text-slate-300 leading-relaxed font-normal">
                     {item.desc}
                   </p>
+
+                  {/* Capabilities List — Balanced View with Expandable +More */}
+                  {item.capabilities && item.capabilities.length > 0 && (() => {
+                    const isExpanded = !!expandedCards[item.id];
+                    const maxInitial = 5;
+                    const visibleCaps = isExpanded ? item.capabilities : item.capabilities.slice(0, maxInitial);
+                    const remainingCount = item.capabilities.length - maxInitial;
+
+                    return (
+                      <div className="pt-2.5 border-t border-white/10 space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-teal-300">
+                            {item.pillar === 'LEAD' 
+                              ? 'We help leaders with:' 
+                              : item.pillar === 'PROTECT' 
+                              ? 'Services include:' 
+                              : 'We help with:'}
+                          </span>
+                          {isExpanded && (
+                            <button
+                              type="button"
+                              onClick={(e) => toggleExpand(item.id, e)}
+                              className="text-[10px] font-bold text-slate-400 hover:text-white transition-colors cursor-pointer"
+                            >
+                              Show less
+                            </button>
+                          )}
+                        </div>
+
+                        <div className="flex flex-wrap gap-1.5">
+                          {visibleCaps.map((cap, cIdx) => (
+                            <span
+                              key={cIdx}
+                              className="inline-block text-[10.5px] font-medium bg-white/[0.05] hover:bg-white/[0.09] text-slate-300 px-2.5 py-1 rounded-md border border-white/10 transition-colors"
+                            >
+                              {cap}
+                            </span>
+                          ))}
+
+                          {!isExpanded && remainingCount > 0 && (
+                            <button
+                              type="button"
+                              onClick={(e) => toggleExpand(item.id, e)}
+                              className="inline-block text-[10.5px] font-bold text-teal-300 bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/25 px-2.5 py-1 rounded-md transition-all cursor-pointer hover:scale-105 active:scale-95"
+                              title="Click to view all services"
+                            >
+                              +{remainingCount} more
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })()}
                 </div>
               </div>
 

@@ -21,13 +21,13 @@ import { SectorNavigatorSection } from './SectorNavigatorSection';
 import { SectionDivider } from './SectionDivider';
 import { PrimaryButton } from './PrimaryButton';
 
-export const NotForProfitPage = ({ onBack, onOpenContact, onSelectAudience }) => {
+export const NotForProfitPage = ({ data = {}, onBack, onOpenContact, onSelectAudience }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   // 1. Key Solutions (Exact 9 items from Source of Truth)
-  const keySolutions = [
+  const defaultKeySolutions = [
     {
       num: "01",
       title: "CFO Advisory & Financial Sustainability",
@@ -84,8 +84,17 @@ export const NotForProfitPage = ({ onBack, onOpenContact, onSelectAudience }) =>
     }
   ];
 
+  const keySolutions = (data?.keySolutions && data.keySolutions.length > 0)
+    ? data.keySolutions.map((s, idx) => ({
+        ...defaultKeySolutions[idx % defaultKeySolutions.length],
+        ...(typeof s === 'string' ? { title: s } : s),
+        icon: defaultKeySolutions[idx % defaultKeySolutions.length]?.icon,
+        image: defaultKeySolutions[idx % defaultKeySolutions.length]?.image
+      }))
+    : defaultKeySolutions;
+
   // 2. Key Questions We Help Answer (Exact 7 questions from Source of Truth)
-  const keyQuestions = [
+  const defaultKeyQuestions = [
     "Are we financially sustainable?",
     "Where are our greatest risks?",
     "Are our programs financially viable?",
@@ -94,6 +103,10 @@ export const NotForProfitPage = ({ onBack, onOpenContact, onSelectAudience }) =>
     "Does our board have the information it needs?",
     "Is our finance function supporting our purpose?"
   ];
+
+  const keyQuestions = (data?.keyQuestions && data.keyQuestions.length > 0)
+    ? data.keyQuestions
+    : defaultKeyQuestions;
 
   return (
     <div className="pt-20 sm:pt-24 pb-20 bg-[#061a2e] text-white font-['Inter',sans-serif] selection:bg-[#18B0A6] selection:text-[#061a2e] animate-in fade-in duration-300">
@@ -158,7 +171,7 @@ export const NotForProfitPage = ({ onBack, onOpenContact, onSelectAudience }) =>
               Not-for-Profit &amp; Community Organisations
             </h1>
             <p className="text-xl sm:text-2xl text-emerald-400 font-bold tracking-tight">
-              Financial capability that supports your purpose.
+              {data?.hero?.tagline || "Financial capability that supports your purpose."}
             </p>
 
             <div className="pt-1 space-y-3 max-w-3xl text-slate-200">

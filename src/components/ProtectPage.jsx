@@ -15,13 +15,13 @@ import { CapabilityNavigatorSection } from './CapabilityNavigatorSection';
 import { ProtectHero } from './ProtectHero';
 import { SectionDivider } from './SectionDivider';
 
-export const ProtectPage = ({ onBack, onOpenContact, onSelectService }) => {
+export const ProtectPage = ({ data = {}, onBack, onOpenContact, onSelectService }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   // Core Services verbatim data with distinct dedicated advisor characters
-  const coreServices = [
+  const defaultCoreServices = [
     {
       id: "business-taxation",
       title: "Business Taxation",
@@ -99,8 +99,17 @@ export const ProtectPage = ({ onBack, onOpenContact, onSelectService }) => {
     }
   ];
 
+  const coreServices = (data?.coreServices && data.coreServices.length > 0)
+    ? data.coreServices.map((svc, idx) => ({
+        ...defaultCoreServices[idx % defaultCoreServices.length],
+        ...svc,
+        icon: defaultCoreServices[idx % defaultCoreServices.length]?.icon,
+        character: svc.character || defaultCoreServices[idx % defaultCoreServices.length]?.character
+      }))
+    : defaultCoreServices;
+
   // Compliance Health Check 9 stages verbatim
-  const healthCheckStages = [
+  const defaultHealthCheckStages = [
     "GST",
     "BAS",
     "PAYG",
@@ -112,13 +121,17 @@ export const ProtectPage = ({ onBack, onOpenContact, onSelectService }) => {
     "Records"
   ];
 
+  const healthCheckStages = (data?.healthCheckStages && data.healthCheckStages.length > 0)
+    ? data.healthCheckStages
+    : defaultHealthCheckStages;
+
   return (
     <div className="pt-20 sm:pt-24 pb-0 bg-[#061a2e] text-white font-['Plus_Jakarta_Sans',sans-serif] selection:bg-[#2bb673] selection:text-white">
 
       {/* ======================================================== */}
       {/* 1. HERO SECTION (EXECUTIVE B2B HERO)                      */}
       {/* ======================================================== */}
-      <ProtectHero onBack={onBack} onOpenContact={onOpenContact} />
+      <ProtectHero data={data?.hero} onBack={onBack} onOpenContact={onOpenContact} />
 
 
       {/* SECTION DIVIDER */}

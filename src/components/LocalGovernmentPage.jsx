@@ -22,13 +22,13 @@ import { SectorNavigatorSection } from './SectorNavigatorSection';
 import { SectionDivider } from './SectionDivider';
 import { PrimaryButton } from './PrimaryButton';
 
-export const LocalGovernmentPage = ({ onBack, onOpenContact, onSelectAudience }) => {
+export const LocalGovernmentPage = ({ data = {}, onBack, onOpenContact, onSelectAudience }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   // 1. Key Solutions (Exact 7 items from Source of Truth)
-  const keySolutions = [
+  const defaultKeySolutions = [
     {
       num: "01",
       title: "Budgeting & Long-Term Financial Planning",
@@ -73,8 +73,17 @@ export const LocalGovernmentPage = ({ onBack, onOpenContact, onSelectAudience })
     }
   ];
 
+  const keySolutions = (data?.keySolutions && data.keySolutions.length > 0)
+    ? data.keySolutions.map((s, idx) => ({
+        ...defaultKeySolutions[idx % defaultKeySolutions.length],
+        ...(typeof s === 'string' ? { title: s } : s),
+        icon: defaultKeySolutions[idx % defaultKeySolutions.length]?.icon,
+        image: defaultKeySolutions[idx % defaultKeySolutions.length]?.image
+      }))
+    : defaultKeySolutions;
+
   // 2. Council Finance Health Check Dimensions (Exact 6 stages from Source of Truth)
-  const healthCheckStages = [
+  const defaultHealthCheckStages = [
     { num: "01", name: "People", icon: <Users className="w-5 h-5 text-emerald-400" /> },
     { num: "02", name: "Processes", icon: <Workflow className="w-5 h-5 text-teal-400" /> },
     { num: "03", name: "Systems", icon: <Cpu className="w-5 h-5 text-cyan-400" /> },
@@ -82,6 +91,14 @@ export const LocalGovernmentPage = ({ onBack, onOpenContact, onSelectAudience })
     { num: "05", name: "Reporting", icon: <BarChart3 className="w-5 h-5 text-teal-400" /> },
     { num: "06", name: "Controls", icon: <ShieldCheck className="w-5 h-5 text-cyan-400" /> }
   ];
+
+  const healthCheckStages = (data?.healthCheckDimensions && data.healthCheckDimensions.length > 0)
+    ? data.healthCheckDimensions.map((d, idx) => ({
+        ...defaultHealthCheckStages[idx % defaultHealthCheckStages.length],
+        ...(typeof d === 'string' ? { name: d } : d),
+        icon: defaultHealthCheckStages[idx % defaultHealthCheckStages.length]?.icon
+      }))
+    : defaultHealthCheckStages;
 
   return (
     <div className="pt-20 sm:pt-24 pb-20 bg-[#061a2e] text-white font-['Inter',sans-serif] selection:bg-[#18B0A6] selection:text-[#061a2e] animate-in fade-in duration-300">
@@ -146,7 +163,7 @@ export const LocalGovernmentPage = ({ onBack, onOpenContact, onSelectAudience })
               Local Government
             </h1>
             <p className="text-xl sm:text-2xl text-emerald-400 font-bold tracking-tight">
-              Better financial insight for better public outcomes.
+              {data?.hero?.tagline || "Better financial insight for better public outcomes."}
             </p>
 
             <div className="pt-1 space-y-3 max-w-3xl text-slate-200">

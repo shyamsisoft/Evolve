@@ -5,6 +5,7 @@ import { imgUrl } from '../utils/imgUrl';
 
 export const Header = ({
   data,
+  brandSettings,
   activePage,
   adminUser,
   onOpenLogin,
@@ -40,7 +41,10 @@ export const Header = ({
         <div className="flex items-center justify-between gap-3">
           {/* Brand Logo */}
           <button onClick={onGoHome} className="flex items-center text-left flex-shrink-0 cursor-pointer">
-            <BrandLogo variant={activePage === 'protect' ? 'taxation' : 'dark'} />
+            <BrandLogo 
+              variant={activePage === 'protect' ? 'taxation' : 'dark'} 
+              customSrc={activePage === 'protect' ? brandSettings?.taxLogoDark : brandSettings?.mainLogoDark}
+            />
           </button>
 
           {/* Desktop Navigation - Strictly One Line */}

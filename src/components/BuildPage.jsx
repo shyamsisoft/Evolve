@@ -32,7 +32,7 @@ import { CapabilityNavigatorSection } from './CapabilityNavigatorSection';
 import { BuildHero } from './BuildHero';
 import { SectionDivider } from './SectionDivider';
 
-export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
+export const BuildPage = ({ data = {}, onBack, onOpenContact, onSelectService }) => {
   const [activeMaturityStage, setActiveMaturityStage] = useState(0);
   const [selectedHealthDim, setSelectedHealthDim] = useState(0);
   const [healthCheckView, setHealthCheckView] = useState('radial');
@@ -42,7 +42,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
   }, []);
 
     // 1. Finance Health Check - 5 Key Dimensions (Exact source of truth copy)
-  const healthCheckDimensions = [
+  const defaultHealthCheckDimensions = [
     {
       id: "people",
       num: "01",
@@ -131,6 +131,14 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
     }
   ];
 
+  const healthCheckDimensions = (data?.healthCheckDimensions && data.healthCheckDimensions.length > 0)
+    ? data.healthCheckDimensions.map((dim, idx) => ({
+        ...defaultHealthCheckDimensions[idx % defaultHealthCheckDimensions.length],
+        ...dim,
+        icon: defaultHealthCheckDimensions[idx % defaultHealthCheckDimensions.length]?.icon
+      }))
+    : defaultHealthCheckDimensions;
+
   // Polar coordinate helper for Interactive Radial Gauge
   const p2c = (cx, cy, r, deg) => {
     const rad = (deg * Math.PI) / 180.0;
@@ -188,7 +196,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
   ];
 
   // 3. Target Operating Model Support - 10 Items (Exact source of truth copy)
-  const tomSupportItems = [
+  const defaultTomSupportItems = [
     "Current-state assessment",
     "Future-state design",
     "Finance organisation design",
@@ -200,6 +208,10 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
     "Capability requirements",
     "Implementation planning"
   ];
+
+  const tomSupportItems = (data?.tomSupportItems && data.tomSupportItems.length > 0)
+    ? data.tomSupportItems
+    : defaultTomSupportItems;
 
   // 4. Finance Capability Uplift - 5 Stages (Exact source of truth copy)
   const capabilityCurve = [
@@ -283,7 +295,7 @@ export const BuildPage = ({ onBack, onOpenContact, onSelectService }) => {
       {/* ======================================================== */}
       {/* 1. HERO SECTION (EXECUTIVE B2B HERO)                      */}
       {/* ======================================================== */}
-      <BuildHero onBack={onBack} onOpenContact={onOpenContact} />
+      <BuildHero data={data?.hero} onBack={onBack} onOpenContact={onOpenContact} />
 
 
       {/* SECTION DIVIDER */}

@@ -20,13 +20,13 @@ import { SectorNavigatorSection } from './SectorNavigatorSection';
 import { SectionDivider } from './SectionDivider';
 import { PrimaryButton } from './PrimaryButton';
 
-export const EstablishedCorporatePage = ({ onBack, onOpenContact, onSelectAudience }) => {
+export const EstablishedCorporatePage = ({ data = {}, onBack, onOpenContact, onSelectAudience }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   // 1. Core Support Areas (Exact 6 items from Source of Truth Table)
-  const coreSupportAreas = [
+  const defaultCoreSupportAreas = [
     {
       num: "01",
       area: "FP&A",
@@ -80,6 +80,14 @@ export const EstablishedCorporatePage = ({ onBack, onOpenContact, onSelectAudien
     "Independent reviewers assessing finance health, controls, and architecture",
     "Finance transformation specialists driving process redesign and technology adoption"
   ];
+
+  const coreSupportAreas = (data?.coreSupportAreas && data.coreSupportAreas.length > 0)
+    ? data.coreSupportAreas.map((s, idx) => ({
+        ...defaultCoreSupportAreas[idx % defaultCoreSupportAreas.length],
+        ...s,
+        icon: defaultCoreSupportAreas[idx % defaultCoreSupportAreas.length]?.icon
+      }))
+    : defaultCoreSupportAreas;
 
   return (
     <div className="pt-20 sm:pt-24 pb-20 bg-[#061a2e] text-white font-['Inter',sans-serif] selection:bg-[#18B0A6] selection:text-[#061a2e] animate-in fade-in duration-300">
@@ -144,7 +152,7 @@ export const EstablishedCorporatePage = ({ onBack, onOpenContact, onSelectAudien
               Established &amp; Corporate Organisations
             </h1>
             <p className="text-xl sm:text-2xl text-emerald-400 font-bold tracking-tight">
-              Specialist finance capability when you need it.
+              {data?.hero?.tagline || "Specialist finance capability when you need it."}
             </p>
 
             <div className="pt-1 space-y-3 max-w-3xl text-slate-200">

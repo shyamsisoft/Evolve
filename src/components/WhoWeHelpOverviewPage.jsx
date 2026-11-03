@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { ArrowRight, ArrowLeft, Building2, TrendingUp, Users2, Landmark, CheckCircle2 } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
-import { SectorNavigatorSection } from './SectorNavigatorSection';
 import { SectionDivider } from './SectionDivider';
 import { PrimaryButton } from './PrimaryButton';
 
@@ -15,56 +14,79 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
       id: "growing-businesses",
       title: "Growing Businesses",
       subtitle: "When growth creates financial complexity.",
-      desc: "Specialist financial leadership, scalable operating models, and FP&A insight tailored for fast-scaling mid-market enterprises.",
+      desc: "Growing businesses often reach a point where traditional accounting is no longer enough. Growth creates opportunity, but it also creates financial complexity. We provide practical finance capability that can grow with your organisation.",
       image: imgUrl("/images/growing_businesses.jpg"),
       icon: <TrendingUp className="w-8 h-8 text-emerald-400" />,
-      bullets: [
-        "Fractional CFO & Growth Strategy",
-        "Driver-Based Financial Forecasting",
-        "Working Capital & Burn Management",
-        "Scalable ERP System Selection"
+      scopeLabel: "Key Solutions:",
+      buttonText: "View Growing Businesses Sector Page",
+      solutions: [
+        "Fractional CFO",
+        "Budgeting & Forecasting",
+        "Cash Flow Visibility",
+        "Management Reporting",
+        "Financial Modelling",
+        "KPIs & Performance Frameworks",
+        "Finance Health Checks",
+        "Process Improvement & Systems",
+        "Tax & Compliance"
       ]
     },
     {
       id: "established-corporate",
       title: "Established & Corporate",
       subtitle: "Specialist finance capability when you need it.",
-      desc: "Unlocking corporate performance, business intelligence automation, governance defense, and enterprise transformation.",
+      desc: "Established organisations often have capable internal finance teams. The challenge isn't always a lack of finance capability; sometimes you need specialist capability for a particular problem, transformation program or period of change.",
       image: imgUrl("/images/established_corporate.jpg"),
       icon: <Building2 className="w-8 h-8 text-emerald-400" />,
-      bullets: [
-        "Multi-Entity Finance Operating Models",
-        "PowerBI Data & Analytics Pipelines",
-        "M&A Financial Integration Support",
-        "Corporate Governance & Internal Controls"
+      scopeLabel: "Core Support Areas:",
+      buttonText: "View Established & Corporate Sector Page",
+      solutions: [
+        "FP&A",
+        "Target Operating Models",
+        "Finance Data",
+        "Reporting Architecture",
+        "Finance Transformation",
+        "Finance Function"
       ]
     },
     {
       id: "non-profit-community",
       title: "Not-for-Profit & Community",
       subtitle: "Financial capability that supports your purpose.",
-      desc: "Purpose-driven financial stewardship, grant acquittals, fund accounting, and board governance transparency.",
+      desc: "Financial sustainability and community impact are closely connected. Financial sustainability enables organisations to deliver their purpose with confidence. We help NFP and community organisations understand their financial position, strengthen their finance functions, and make better-informed decisions.",
       image: imgUrl("/images/non_profit_community.jpg"),
       icon: <Users2 className="w-8 h-8 text-emerald-400" />,
-      bullets: [
-        "NFP Fund Accounting & Grant Management",
-        "Board Financial Visibility & Governance",
-        "Cost Allocation & Program Profitability",
-        "Audit Preparation & Statutory Filings"
+      scopeLabel: "Key Solutions:",
+      buttonText: "View Not-for-Profit & Community Sector Page",
+      solutions: [
+        "CFO Advisory & Financial Sustainability",
+        "Budgeting & Forecasting",
+        "Cash-Flow Management",
+        "Board Reporting",
+        "Funding and Grant Reporting",
+        "NDIS Financial Management",
+        "Financial Modelling",
+        "Finance Health Checks",
+        "Finance Transformation & Reporting Analytics"
       ]
     },
     {
       id: "local-government",
       title: "Local Government & Public Sector",
       subtitle: "Better financial insight for better public outcomes.",
-      desc: "Public sector financial management, long-term asset planning, rate-setting analytics, and community transparency.",
+      desc: "Councils operate in complex environments where financial sustainability, planning, governance, and service delivery are closely connected. We combine finance, transformation, systems, data, and reporting capability to support councils in achieving better public outcomes.",
       image: imgUrl("/images/local_government.jpg"),
       icon: <Landmark className="w-8 h-8 text-emerald-400" />,
-      bullets: [
-        "Long-Term Financial Strategy (LTFS)",
-        "Civic Asset & Capital Works Financial Modeling",
-        "Statutory Annual Financial Statements",
-        "Public Finance Transformation & Training"
+      scopeLabel: "Key Solutions:",
+      buttonText: "View Local Government Sector Page",
+      solutions: [
+        "Budgeting & Long-Term Financial Planning",
+        "FP&A & Financial Modelling",
+        "Forecasting & Management Reporting",
+        "TechnologyOne Optimisation",
+        "Finance Transformation",
+        "Data, BI & Reporting Architecture",
+        "Process Improvement & Capability Uplift"
       ]
     }
   ];
@@ -147,7 +169,6 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
               Practical Guidance Built Around Your Organisation's Needs
             </span>
           </div>
-
         </div>
       </section>
 
@@ -191,14 +212,18 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
 
                   <div className="p-7 space-y-5">
                     <p className="text-base text-slate-300 font-normal leading-relaxed">{item.desc}</p>
-                    <div className="space-y-2 pt-2 border-t border-white/10">
-                      <span className="text-xs font-bold uppercase text-teal-400 tracking-wider block mb-2">Tailored Solutions:</span>
-                      {item.bullets.map((b, bIdx) => (
-                        <div key={bIdx} className="flex items-center space-x-2 text-sm font-medium text-slate-200">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                          <span>{b}</span>
-                        </div>
-                      ))}
+                    <div className="space-y-3 pt-3 border-t border-white/10">
+                      <span className="text-xs font-bold uppercase text-teal-400 tracking-wider block">
+                        {item.scopeLabel || "Key Solutions:"}
+                      </span>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
+                        {item.solutions.map((sol, sIdx) => (
+                          <div key={sIdx} className="flex items-center space-x-2 text-xs font-medium text-slate-200">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+                            <span>{sol}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -209,7 +234,7 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
                     onClick={() => onSelectAudience(item.id)}
                     className="w-full brand-button-gradient text-white text-sm font-bold py-3.5 px-6 rounded-2xl flex items-center justify-center space-x-2 shadow-md hover:shadow-lg cursor-pointer"
                   >
-                    <span>View {item.title} Sector Page</span>
+                    <span>{item.buttonText || `View ${item.title} Sector Page`}</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -219,14 +244,6 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
 
         </div>
       </section>
-
-      {/* PRE-FOOTER CALL TO ACTION & SECTOR NAVIGATOR */}
-      <SectorNavigatorSection
-        currentSector="overview"
-        onOpenContact={onOpenContact}
-        onSelectAudience={onSelectAudience}
-        onBack={onBack}
-      />
 
     </div>
   );

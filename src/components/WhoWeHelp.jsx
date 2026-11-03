@@ -78,6 +78,18 @@ export const WhoWeHelp = ({ data, onSelectAudience }) => {
                 <p className="text-sm text-slate-300 leading-relaxed font-normal">
                   {item.desc}
                 </p>
+                {item.focusAreas && item.focusAreas.length > 0 && (
+                  <div className="flex flex-wrap gap-1 pt-1">
+                    {item.focusAreas.map((area, aIdx) => (
+                      <span
+                        key={aIdx}
+                        className="text-[10px] bg-[#061a2e]/85 text-slate-300 px-2 py-0.5 rounded-md border border-white/10"
+                      >
+                        {area}
+                      </span>
+                    ))}
+                  </div>
+                )}
                 <div className="pt-2">
                   <button
                     type="button"

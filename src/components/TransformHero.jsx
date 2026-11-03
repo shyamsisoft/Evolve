@@ -3,7 +3,16 @@ import { ArrowRight, ChevronRight, Workflow } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 import { PrimaryButton } from './PrimaryButton';
 
-export const TransformHero = ({ onBack, onOpenContact }) => {
+export const TransformHero = ({ data = {}, onBack, onOpenContact }) => {
+  const hero = {
+    badge: data?.badge || "BRAND PILLAR: TRANSFORM",
+    title: data?.title || "Finance Transformation, Data & Technology",
+    tagline: data?.tagline || "Connect people, process, technology and data.",
+    paragraph1: data?.paragraph1 || "Technology alone does not transform finance. Transformation succeeds when systems, processes, data and people work together to create measurable improvement.",
+    paragraph2: data?.paragraph2 || "Technology should make finance better — simpler, faster, more reliable, and more insightful.",
+    ctaText: data?.ctaText || "Discuss a Transformation Requirement",
+    bgImage: data?.bgImage || "/images/finance_transform.jpg"
+  };
   return (
     <section className="relative min-h-[75vh] flex items-center bg-[#061a2e] text-white overflow-hidden py-16 sm:py-20 lg:py-24 border-b border-white/10 font-['Plus_Jakarta_Sans',sans-serif]">
       
@@ -11,7 +20,7 @@ export const TransformHero = ({ onBack, onOpenContact }) => {
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {/* Right side executive imagery */}
         <img
-          src={imgUrl("/images/finance_transform.jpg")}
+          src={imgUrl(hero.bgImage)}
           alt="Finance Transformation, Data & Technology"
           className="absolute right-0 top-0 bottom-0 w-full lg:w-3/5 h-full object-cover object-center opacity-45"
           onError={(e) => {
@@ -57,7 +66,7 @@ export const TransformHero = ({ onBack, onOpenContact }) => {
         <div className="flex items-center space-x-3.5 pt-0.5">
           <div className="inline-flex items-center space-x-2.5 text-xs font-black uppercase tracking-widest text-emerald-400 bg-white/[0.04] border border-emerald-500/30 px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.15)] backdrop-blur-md">
             <Workflow className="w-3.5 h-3.5 text-emerald-400" />
-            <span>BRAND PILLAR: TRANSFORM</span>
+            <span>{hero.badge}</span>
           </div>
         </div>
 
@@ -80,7 +89,7 @@ export const TransformHero = ({ onBack, onOpenContact }) => {
 
         {/* 4. CTA Button */}
         <div className="pt-2 flex flex-wrap items-center gap-4">
-          <PrimaryButton onClick={onOpenContact}>Discuss a Transformation Requirement</PrimaryButton>
+          <PrimaryButton onClick={onOpenContact}>{hero.ctaText}</PrimaryButton>
         </div>
 
         {/* 5. Trust / Metric Strip: Sleek horizontal 3-stat metric bar */}

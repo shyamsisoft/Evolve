@@ -27,7 +27,7 @@ import { SectionDivider } from './SectionDivider';
 import { TransformHero } from './TransformHero';
 import FinanceTransformationServicesGrid from './FinanceTransformationServicesGrid';
 
-export const TransformPage = ({ onBack, onOpenContact, onSelectService }) => {
+export const TransformPage = ({ data = {}, onBack, onOpenContact, onSelectService }) => {
   const [selectedTriggers, setSelectedTriggers] = useState(new Set([0, 1]));
   const [activePipelineStage, setActivePipelineStage] = useState(0);
 
@@ -48,7 +48,7 @@ export const TransformPage = ({ onBack, onOpenContact, onSelectService }) => {
   };
 
   // 2. Data Integration Items (8 Exact words from Source of Truth)
-  const dataIntegrationItems = [
+  const defaultDataIntegrationItems = [
     { title: "Data mapping", icon: <Network className="w-4 h-4 text-emerald-600" /> },
     { title: "Migration", icon: <Zap className="w-4 h-4 text-teal-600" /> },
     { title: "Data structures", icon: <Layers3 className="w-4 h-4 text-emerald-600" /> },
@@ -58,6 +58,13 @@ export const TransformPage = ({ onBack, onOpenContact, onSelectService }) => {
     { title: "Data quality", icon: <CheckCircle2 className="w-4 h-4 text-emerald-600" /> },
     { title: "Reporting datasets", icon: <BarChart3 className="w-4 h-4 text-teal-600" /> }
   ];
+
+  const dataIntegrationItems = (data?.dataIntegrationItems && data.dataIntegrationItems.length > 0)
+    ? data.dataIntegrationItems.map((item, idx) => ({
+        title: typeof item === 'string' ? item : (item.title || item),
+        icon: defaultDataIntegrationItems[idx % defaultDataIntegrationItems.length]?.icon
+      }))
+    : defaultDataIntegrationItems;
 
   // 3. Reporting Architecture Flow (5 Exact Stages from Source of Truth)
   const reportingArchitectureFlow = [
@@ -79,7 +86,7 @@ export const TransformPage = ({ onBack, onOpenContact, onSelectService }) => {
   ];
 
   // 5. When Transformation Makes Sense (9 Exact triggers from source of truth)
-  const transformationTriggers = [
+  const defaultTransformationTriggers = [
     { num: "01", text: "Finance relies heavily on spreadsheets.", icon: <FileSpreadsheet className="w-5 h-5 text-emerald-600 stroke-[2.2]" /> },
     { num: "02", text: "Reporting is highly manual.", icon: <Clock className="w-5 h-5 text-emerald-600 stroke-[2.2]" /> },
     { num: "03", text: "Your ERP is not delivering expected benefits.", icon: <AlertCircle className="w-5 h-5 text-teal-600 stroke-[2.2]" /> },
@@ -91,15 +98,23 @@ export const TransformPage = ({ onBack, onOpenContact, onSelectService }) => {
     { num: "09", text: "Your finance team spends too much time processing and too little time analysing.", icon: <PieChart className="w-5 h-5 text-emerald-600 stroke-[2.2]" /> }
   ];
 
+  const transformationTriggers = (data?.transformationTriggers && data.transformationTriggers.length > 0)
+    ? data.transformationTriggers.map((t, idx) => ({
+        num: String(idx + 1).padStart(2, '0'),
+        text: typeof t === 'string' ? t : (t.text || t.title),
+        icon: defaultTransformationTriggers[idx % defaultTransformationTriggers.length]?.icon
+      }))
+    : defaultTransformationTriggers;
+
   return (
     <div className="pt-20 sm:pt-24 pb-0 bg-[#061a2e] text-white font-['Plus_Jakarta_Sans',sans-serif] selection:bg-emerald-500 selection:text-slate-950">
 
       {/* 1. HERO SECTION */}
-      <TransformHero onBack={onBack} onOpenContact={onOpenContact} />
+      <TransformHero data={data?.hero} onBack={onBack} onOpenContact={onOpenContact} />
 
       {/* 2. FINANCE TRANSFORMATION SERVICES */}
       <SectionDivider />
-      <FinanceTransformationServicesGrid />
+      <FinanceTransformationServicesGrid services={data?.services} />
 
       {/* 3. FINANCE DATA INTEGRATION & ARCHITECTURE */}
       <SectionDivider />

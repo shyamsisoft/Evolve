@@ -39,7 +39,7 @@ import { CapabilityNavigatorSection } from './CapabilityNavigatorSection';
 import { LeadHero } from './LeadHero';
 import { SectionDivider } from './SectionDivider';
 
-export const CFOAdvisoryPage = ({ onBack, onOpenContact, onSelectService }) => {
+export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectService }) => {
   const [activeTelemetryTab, setActiveTelemetryTab] = useState(0);
   const [cfoFilter, setCfoFilter] = useState('all');
 
@@ -80,7 +80,7 @@ export const CFOAdvisoryPage = ({ onBack, onOpenContact, onSelectService }) => {
   }, [activeTelemetryTab]);
 
   // 8 Core Questions for "Beyond reporting the numbers"
-  const beyondQuestions = [
+  const defaultBeyondQuestions = [
     {
       num: "01",
       question: "What is driving our performance?",
@@ -123,8 +123,16 @@ export const CFOAdvisoryPage = ({ onBack, onOpenContact, onSelectService }) => {
     }
   ];
 
+  const beyondQuestions = (data?.beyondQuestions && data.beyondQuestions.length > 0)
+    ? data.beyondQuestions.map((q, idx) => ({
+        num: q.num || String(idx + 1).padStart(2, '0'),
+        question: typeof q === 'string' ? q : q.question,
+        icon: defaultBeyondQuestions[idx % defaultBeyondQuestions.length]?.icon
+      }))
+    : defaultBeyondQuestions;
+
   // 8 CFO Advisory Services (Exact 100% Fidelity to Source of Truth)
-  const cfoServices = [
+  const defaultCfoServices = [
     {
       id: "strategy",
       title: "Financial Strategy",
@@ -199,6 +207,14 @@ export const CFOAdvisoryPage = ({ onBack, onOpenContact, onSelectService }) => {
     }
   ];
 
+  const cfoServices = (data?.cfoServices && data.cfoServices.length > 0)
+    ? data.cfoServices.map((s, idx) => ({
+        ...defaultCfoServices[idx % defaultCfoServices.length],
+        ...s,
+        icon: defaultCfoServices[idx % defaultCfoServices.length]?.icon
+      }))
+    : defaultCfoServices;
+
   // 12 FP&A Capabilities
   const fpaCapabilities = [
     { name: "Planning", tag: "Strategy Alignment", icon: <Target className="w-4.5 h-4.5 stroke-[2.2]" /> },
@@ -228,7 +244,7 @@ export const CFOAdvisoryPage = ({ onBack, onOpenContact, onSelectService }) => {
   ];
 
   // Organisational Triggers ("When should you consider CFO advisory?")
-  const triggerPoints = [
+  const defaultTriggerPoints = [
     "Reports tell you what happened but not why.",
     "Cash flow is becoming harder to predict.",
     "Your business is growing faster than your finance function.",
@@ -237,6 +253,10 @@ export const CFOAdvisoryPage = ({ onBack, onOpenContact, onSelectService }) => {
     "Your finance team needs senior-level support.",
     "You want greater confidence in your forecasts."
   ];
+
+  const triggerPoints = (data?.triggerPoints && data.triggerPoints.length > 0)
+    ? data.triggerPoints
+    : defaultTriggerPoints;
 
   const triggerIcons = [
     <FileSearch className="w-5 h-5 stroke-[2.3]" />,
@@ -252,7 +272,7 @@ export const CFOAdvisoryPage = ({ onBack, onOpenContact, onSelectService }) => {
     <div className="pt-20 sm:pt-24 pb-0 bg-[#061a2e] text-white font-['Inter',sans-serif] animate-in fade-in duration-300">
       
       {/* 1. HERO SECTION (EXECUTIVE B2B HERO) */}
-      <LeadHero onBack={onBack} onOpenContact={onOpenContact} />
+      <LeadHero data={data?.hero} onBack={onBack} onOpenContact={onOpenContact} />
 
 
       {/* SECTION DIVIDER */}
