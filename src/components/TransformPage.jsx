@@ -271,7 +271,7 @@ export const TransformPage = ({ data = {}, onBack, onOpenContact, onSelectServic
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="space-y-3">
-            <span className="inline-block text-xs font-semibold tracking-wider uppercase text-emerald-400 border-l-2 border-emerald-400 pl-3">
+            <span className="inline-block text-xs font-bold tracking-wider uppercase text-emerald-700 border-l-2 border-emerald-600 pl-3">
               PLATFORMS &amp; TOOLING
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#061a2e] tracking-tight leading-snug">
@@ -286,7 +286,7 @@ export const TransformPage = ({ data = {}, onBack, onOpenContact, onSelectServic
               <div className="space-y-6">
                 
                 <div className="flex items-center gap-3.5 border-b border-slate-200 pb-5">
-                  <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/10 text-emerald-300 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-teal-50 border border-teal-200 text-[#007791] flex items-center justify-center group-hover:bg-teal-100 transition-colors shadow-2xs">
                     <Server className="w-6 h-6 stroke-[2.2]" />
                   </div>
                   <h3 className="text-2xl font-bold text-[#061a2e] tracking-tight">
@@ -301,7 +301,7 @@ export const TransformPage = ({ data = {}, onBack, onOpenContact, onSelectServic
                       key={idx}
                       className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-emerald-400 shadow-xs transition-all flex items-center gap-3"
                     >
-                      <span className="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 flex items-center justify-center text-[10px] font-black shrink-0">
+                      <span className="w-5 h-5 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-700 flex items-center justify-center text-[10px] font-black shrink-0">
                         <Check className="w-3.5 h-3.5 stroke-[3]" />
                       </span>
                       <span className="text-xs sm:text-sm font-semibold text-slate-700">
@@ -321,7 +321,7 @@ export const TransformPage = ({ data = {}, onBack, onOpenContact, onSelectServic
               <div className="space-y-6">
                 
                 <div className="flex items-center gap-3.5 border-b border-slate-200 pb-5">
-                  <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/10 text-emerald-300 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center group-hover:bg-emerald-100 transition-colors shadow-2xs">
                     <BarChart3 className="w-6 h-6 stroke-[2.2]" />
                   </div>
                   <h3 className="text-2xl font-bold text-[#061a2e] tracking-tight">
@@ -330,8 +330,8 @@ export const TransformPage = ({ data = {}, onBack, onOpenContact, onSelectServic
                 </div>
 
                 {/* Exact Copy Value Statement */}
-                <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
-                  <p className="text-base sm:text-lg font-semibold text-slate-200 leading-relaxed">
+                <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                  <p className="text-base sm:text-lg font-bold text-[#061a2e] leading-relaxed">
                     Turn financial and operational data into clear, actionable information for leaders.
                   </p>
                 </div>

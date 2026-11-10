@@ -108,13 +108,13 @@ export default function FinanceTransformationServicesGrid({
         
         {/* Section Header */}
         <div className="space-y-3 mb-12 sm:mb-16">
-          <span className="inline-block text-xs font-semibold tracking-wider uppercase text-emerald-400 border-l-2 border-emerald-400 pl-3">
+          <span className="inline-block text-xs font-bold tracking-wider uppercase text-emerald-700 border-l-2 border-emerald-600 pl-3">
             SPECIALIST SERVICES
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#061a2e] tracking-tight leading-snug">
             Finance Transformation Services
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-700 font-medium leading-relaxed">
             We support organisations with:
           </p>
         </div>
@@ -135,14 +135,14 @@ export default function FinanceTransformationServicesGrid({
                   onClick={() => setActiveIdx(idx)}
                   className={`w-full text-left rounded-xl transition-all duration-200 px-5 py-4 flex items-center justify-between cursor-pointer border ${
                     isActive 
-                      ? 'bg-white/[0.08] border-emerald-400/60 shadow-[0_4px_20px_rgba(16,185,129,0.15)] ring-1 ring-emerald-400/30' 
-                      : 'bg-slate-50 border-slate-200 hover:bg-white hover:border-emerald-400 shadow-xs'
+                      ? 'bg-emerald-50/90 border-emerald-500 shadow-md ring-1 ring-emerald-500/20' 
+                      : 'bg-slate-50 border-slate-200 hover:bg-white hover:border-emerald-400/60 shadow-xs'
                   }`}
                 >
                   <div className="flex items-center space-x-4 min-w-0">
                     {/* Numeric Index Badge */}
                     <span className={`font-mono text-xs font-bold w-7 shrink-0 transition-colors ${
-                      isActive ? 'text-[#007791] font-extrabold' : 'text-slate-500'
+                      isActive ? 'text-emerald-700 font-black' : 'text-slate-600 font-bold'
                     }`}>
                       {service.num}
                     </span>
@@ -150,15 +150,15 @@ export default function FinanceTransformationServicesGrid({
                     {/* Service Icon */}
                     <div className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all shrink-0 ${
                       isActive 
-                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/40' 
-                        : 'bg-white/10 text-slate-400 border border-white/10'
+                        ? 'bg-emerald-600 text-white shadow-xs' 
+                        : 'bg-white text-slate-700 border border-slate-200 shadow-2xs'
                     }`}>
                       <Icon className="w-4.5 h-4.5 stroke-[2.2]" />
                     </div>
 
                     {/* Service Title */}
-                    <span className={`text-base sm:text-[17px] font-semibold tracking-tight truncate transition-colors ${
-                      isActive ? 'text-[#061a2e] font-bold' : 'text-slate-700'
+                    <span className={`text-base sm:text-[17px] tracking-tight truncate transition-colors ${
+                      isActive ? 'text-[#061a2e] font-black' : 'text-slate-800 font-semibold'
                     }`}>
                       {service.title}
                     </span>
@@ -167,9 +167,9 @@ export default function FinanceTransformationServicesGrid({
                   {/* Active Indicator dot */}
                   <div className="flex items-center space-x-2 shrink-0 ml-3">
                     {isActive ? (
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
                     ) : (
-                      <ChevronRight className="w-4 h-4 text-slate-500" />
+                      <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-slate-600" />
                     )}
                   </div>
                 </div>
@@ -200,34 +200,34 @@ export default function FinanceTransformationServicesGrid({
               <div className="w-full relative z-20 -mt-6 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-xl space-y-3.5 transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="text-[11px] font-mono font-bold tracking-wider uppercase text-emerald-400">
+                    <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+                    <span className="text-[11px] font-mono font-bold tracking-wider uppercase text-emerald-700">
                       Phase {activeService.num} / 09
                     </span>
                   </div>
-                  <span className="text-emerald-400 font-mono text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30">
+                  <span className="text-emerald-800 font-mono text-[10px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded bg-emerald-50 border border-emerald-300">
                     Active Capability Focus
                   </span>
                 </div>
 
-                <h4 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                <h4 className="text-xl sm:text-2xl font-black text-[#061a2e] tracking-tight">
                   {activeService.title}
                 </h4>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2.5 border-t border-white/10 text-xs">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-slate-200 text-xs">
                   <div>
-                    <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400 block mb-1">
+                    <span className="text-[11px] uppercase font-mono font-bold tracking-wider text-[#007791] block mb-1">
                       Operational Focus
                     </span>
-                    <span className="font-semibold text-slate-200 leading-snug block">
+                    <span className="text-sm font-semibold text-slate-800 leading-snug block">
                       {activeService.scope}
                     </span>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase font-mono tracking-wider text-emerald-400 block mb-1">
+                    <span className="text-[11px] uppercase font-mono font-bold tracking-wider text-emerald-700 block mb-1">
                       Key Output
                     </span>
-                    <span className="font-semibold text-slate-200 leading-snug block">
+                    <span className="text-sm font-semibold text-slate-800 leading-snug block">
                       {activeService.deliverable}
                     </span>
                   </div>
