@@ -26,16 +26,16 @@ export const ApproachWhyUs = ({ data, onOpenContact }) => {
   const getWhyUsIcon = (iconName) => {
     switch (iconName) {
       case 'BarChart3':
-        return <BarChart3 className="w-5 h-5 text-emerald-400" />;
+        return <BarChart3 className="w-5 h-5 text-[#007791]" />;
       case 'Settings':
-        return <Settings className="w-5 h-5 text-emerald-400" />;
+        return <Settings className="w-5 h-5 text-[#007791]" />;
       case 'Target':
-        return <Target className="w-5 h-5 text-emerald-400" />;
+        return <Target className="w-5 h-5 text-[#007791]" />;
       case 'Users':
-        return <Users className="w-5 h-5 text-emerald-400" />;
+        return <Users className="w-5 h-5 text-[#007791]" />;
       case 'Shield':
       default:
-        return <Shield className="w-5 h-5 text-emerald-400" />;
+        return <Shield className="w-5 h-5 text-[#007791]" />;
     }
   };
 
@@ -89,7 +89,7 @@ export const ApproachWhyUs = ({ data, onOpenContact }) => {
       {/* SECTION 1: OUR APPROACH (INTERACTIVE TABBED METHODOLOGY & DEEP DIVE) */}
       <section 
         id="our-approach" 
-        className="relative py-20 bg-[#061a2e] text-white border-b border-white/10 overflow-hidden font-['Inter',sans-serif]"
+        className="relative py-20 bg-white text-[#061a2e] border-b border-slate-200 overflow-hidden font-['Inter',sans-serif]"
       >
         {/* Soft Radial Ambient Lighting */}
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -98,13 +98,13 @@ export const ApproachWhyUs = ({ data, onOpenContact }) => {
           
           {/* Header */}
           <div className="mb-12 text-center sm:text-left">
-            <span className="inline-block text-xs font-bold text-teal-300 uppercase tracking-widest bg-white/[0.04] px-3.5 py-1.5 rounded-full border border-teal-500/30 mb-3 font-['Plus_Jakarta_Sans',sans-serif]">
+            <span className="inline-block text-xs font-bold text-[#007791] uppercase tracking-widest bg-teal-50 px-3.5 py-1.5 rounded-full border border-teal-200 mb-3 font-['Plus_Jakarta_Sans',sans-serif]">
               METHODOLOGY &amp; EXECUTION
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight font-['Plus_Jakarta_Sans',sans-serif]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#061a2e] tracking-tight font-['Plus_Jakarta_Sans',sans-serif]">
               {data.approachTitle || "Our approach"}
             </h2>
-            <p className="text-base sm:text-lg text-slate-300 font-normal mt-2 max-w-2xl leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 font-normal mt-2 max-w-2xl leading-relaxed">
               {data.approachSubtitle || "How we work"}
             </p>
           </div>
@@ -127,7 +127,7 @@ export const ApproachWhyUs = ({ data, onOpenContact }) => {
                   className={`rounded-2xl flex flex-col justify-between overflow-hidden transition-all duration-300 text-left group cursor-pointer relative focus:outline-none backdrop-blur-md ${
                     isSelected
                       ? 'bg-white/[0.08] border border-teal-400 ring-2 ring-teal-400/40 shadow-2xl -translate-y-2 scale-[1.01]'
-                      : 'bg-white/[0.03] border border-white/10 hover:border-white/20 hover:bg-white/[0.06] hover:-translate-y-0.5'
+                      : 'bg-slate-50 border border-slate-200 hover:border-teal-400 hover:bg-white hover:-translate-y-0.5 shadow-xs'
                   }`}
                 >
                   {/* Top Active Linear Progress Bar Indicator */}
@@ -148,6 +148,8 @@ export const ApproachWhyUs = ({ data, onOpenContact }) => {
                       <img
                         src={imgUrl(step.image || defaultApproachImages[idx % defaultApproachImages.length])}
                         alt={step.title}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-75 transition-all duration-500"
                         onError={(e) => {
                           const fallback = imgUrl(defaultApproachImages[idx % defaultApproachImages.length]);
@@ -186,7 +188,7 @@ export const ApproachWhyUs = ({ data, onOpenContact }) => {
 
                     {/* Card Body Description */}
                     <div className="p-5 pt-4">
-                      <p className="text-sm text-slate-300 leading-relaxed min-h-[90px] font-normal">
+                      <p className="text-sm text-slate-600 leading-relaxed min-h-[90px] font-normal">
                         {step.desc}
                       </p>
                     </div>
@@ -194,16 +196,16 @@ export const ApproachWhyUs = ({ data, onOpenContact }) => {
 
                   {/* Card Footer with Step Tag & Interactive Circle Arrow */}
                   <div className="p-5 pt-0 mt-auto w-full">
-                    <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                    <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
                       <span className={`text-xs font-bold tracking-widest uppercase transition-colors font-mono ${
-                        isSelected ? 'text-teal-300' : 'text-slate-400 group-hover:text-teal-300'
+                        isSelected ? 'text-[#007791]' : 'text-slate-600 group-hover:text-[#007791]'
                       }`}>
                         Step {step.num || `0${stepNumber}`}
                       </span>
                       <span className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 border ${
                         isSelected 
                           ? 'bg-emerald-500 text-slate-950 border-transparent rotate-90 scale-110 shadow-lg' 
-                          : 'bg-white/[0.04] text-slate-400 border-white/10 group-hover:bg-emerald-500 group-hover:text-slate-950 group-hover:border-transparent group-hover:translate-x-0.5'
+                          : 'bg-slate-100 text-slate-600 border-slate-200 group-hover:bg-emerald-600 group-hover:text-white group-hover:border-transparent group-hover:translate-x-0.5'
                       }`}>
                         <ArrowRight className="w-4 h-4" />
                       </span>
@@ -231,7 +233,7 @@ export const ApproachWhyUs = ({ data, onOpenContact }) => {
           </div>
 
           {/* Selected Step Image and Description Showcase Panel */}
-          <div className="mt-2 rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 lg:p-7 shadow-2xl relative overflow-hidden transition-all duration-300 backdrop-blur-md">
+          <div className="mt-2 rounded-2xl border border-slate-200 bg-slate-50/80 p-5 sm:p-6 lg:p-7 shadow-xl relative overflow-hidden transition-all duration-300">
             
             {/* Ambient Radial Accent */}
             <div className="pointer-events-none absolute -right-20 -top-20 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl" />
@@ -245,6 +247,8 @@ export const ApproachWhyUs = ({ data, onOpenContact }) => {
                     <img
                       src={imgUrl(selectedStep.image || defaultApproachImages[(activePhase - 1) % defaultApproachImages.length])}
                       alt={selectedStep.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-700"
                       onError={(e) => {
                         const fallback = imgUrl(defaultApproachImages[(activePhase - 1) % defaultApproachImages.length]);
@@ -275,31 +279,31 @@ export const ApproachWhyUs = ({ data, onOpenContact }) => {
 
                 {/* Selected Step Description & Details (lg:col-span-7) */}
                 <div className="lg:col-span-7 flex flex-col justify-center">
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] border border-teal-500/30 text-teal-300 mb-3 self-start font-['Plus_Jakarta_Sans',sans-serif]">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-teal-50 border border-teal-200 text-[#007791] mb-3 self-start font-['Plus_Jakarta_Sans',sans-serif]">
                     <span className="w-1.5 h-1.5 rounded-full bg-teal-400" />
                     Step {selectedStep.num || `0${activePhase}`} • Methodology in Focus
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2 font-['Plus_Jakarta_Sans',sans-serif]">
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#061a2e] tracking-tight mb-2 font-['Plus_Jakarta_Sans',sans-serif]">
                     {selectedStep.title}
                   </h3>
 
-                  <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed mb-4">
+                  <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed mb-4">
                     {selectedStep.desc}
                   </p>
 
                   {/* Highlights / Key Activities for this step */}
                   <div className="space-y-2 mb-6">
                     {(stepHighlights[activePhase] || []).map((highlight, hIdx) => (
-                      <div key={hIdx} className="flex items-start gap-2.5 p-2 rounded-xl bg-white/[0.02] border border-white/10 hover:border-teal-400/40 hover:bg-white/[0.04] transition-all">
+                      <div key={hIdx} className="flex items-start gap-2.5 p-2 rounded-xl bg-white border border-slate-200 hover:border-teal-400/50 transition-all shadow-xs">
                         <div className="w-5 h-5 rounded-md bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
                           <CheckCircle2 className="w-3.5 h-3.5" />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <span className="text-xs font-bold text-white block leading-tight font-['Plus_Jakarta_Sans',sans-serif]">
+                          <span className="text-xs font-bold text-[#061a2e] block leading-tight font-['Plus_Jakarta_Sans',sans-serif]">
                             {highlight.title}
                           </span>
-                          <span className="text-xs text-slate-400 leading-snug">
+                          <span className="text-xs text-slate-500 leading-snug">
                             {highlight.desc}
                           </span>
                         </div>
@@ -319,7 +323,7 @@ export const ApproachWhyUs = ({ data, onOpenContact }) => {
                       <ArrowRight className="w-4 h-4 ml-1" />
                     </button>
                     
-                    <span className="text-xs text-slate-400 font-medium flex items-center gap-1.5">
+                    <span className="text-xs text-slate-600 font-medium flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                       Auto-rotates every 4.5s • Click any card above to focus
                     </span>
@@ -338,7 +342,7 @@ export const ApproachWhyUs = ({ data, onOpenContact }) => {
       <SectionDivider />
 
       {/* SECTION 2: WHY US? */}
-      <section id="why-us" className="py-20 bg-[#061a2e] border-b border-white/10 text-white font-['Inter',sans-serif]">
+      <section id="why-us" className="py-20 sm:py-28 bg-[#061a2e] border-b border-white/10 text-white font-['Inter',sans-serif]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="mb-12 text-center sm:text-left">
@@ -372,6 +376,8 @@ export const ApproachWhyUs = ({ data, onOpenContact }) => {
                       <img
                         src={imgUrl(item.image || defaultWhyUsImages[idx % defaultWhyUsImages.length])}
                         alt={item.title}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-75 transition-transform duration-700"
                         onError={(e) => {
                           const fallback = imgUrl(defaultWhyUsImages[idx % defaultWhyUsImages.length]);

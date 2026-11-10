@@ -98,7 +98,7 @@ export default function FinanceTransformationServicesGrid({
   return (
     <section 
       id="finance-transformation-services"
-      className="py-20 sm:py-28 bg-[#061a2e] border-b border-white/10 relative overflow-hidden scroll-mt-28 font-['Plus_Jakarta_Sans',sans-serif]"
+      className="py-20 sm:py-28 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden scroll-mt-28 font-['Plus_Jakarta_Sans',sans-serif]"
     >
       {/* Refined Ambient Glows */}
       <div className="absolute top-1/4 right-0 w-[550px] h-[550px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
@@ -111,10 +111,10 @@ export default function FinanceTransformationServicesGrid({
           <span className="inline-block text-xs font-semibold tracking-wider uppercase text-emerald-400 border-l-2 border-emerald-400 pl-3">
             SPECIALIST SERVICES
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-snug">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#061a2e] tracking-tight leading-snug">
             Finance Transformation Services
           </h2>
-          <p className="text-sm sm:text-base text-slate-300 font-medium leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
             We support organisations with:
           </p>
         </div>
@@ -136,13 +136,13 @@ export default function FinanceTransformationServicesGrid({
                   className={`w-full text-left rounded-xl transition-all duration-200 px-5 py-4 flex items-center justify-between cursor-pointer border ${
                     isActive 
                       ? 'bg-white/[0.08] border-emerald-400/60 shadow-[0_4px_20px_rgba(16,185,129,0.15)] ring-1 ring-emerald-400/30' 
-                      : 'bg-white/[0.03] border-white/10 hover:bg-white/[0.05] hover:border-white/20'
+                      : 'bg-slate-50 border-slate-200 hover:bg-white hover:border-emerald-400 shadow-xs'
                   }`}
                 >
                   <div className="flex items-center space-x-4 min-w-0">
                     {/* Numeric Index Badge */}
                     <span className={`font-mono text-xs font-bold w-7 shrink-0 transition-colors ${
-                      isActive ? 'text-emerald-300 font-extrabold' : 'text-slate-400'
+                      isActive ? 'text-[#007791] font-extrabold' : 'text-slate-500'
                     }`}>
                       {service.num}
                     </span>
@@ -158,7 +158,7 @@ export default function FinanceTransformationServicesGrid({
 
                     {/* Service Title */}
                     <span className={`text-base sm:text-[17px] font-semibold tracking-tight truncate transition-colors ${
-                      isActive ? 'text-white' : 'text-slate-200'
+                      isActive ? 'text-[#061a2e] font-bold' : 'text-slate-700'
                     }`}>
                       {service.title}
                     </span>
@@ -197,7 +197,7 @@ export default function FinanceTransformationServicesGrid({
               />
 
               {/* Active Service Detail Panel (Frosted Glass Briefing Card) */}
-              <div className="w-full relative z-20 -mt-6 bg-[#061a2e]/90 backdrop-blur-xl p-5 sm:p-6 rounded-2xl border border-white/15 shadow-2xl space-y-3.5 transition-all duration-300">
+              <div className="w-full relative z-20 -mt-6 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-xl space-y-3.5 transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />

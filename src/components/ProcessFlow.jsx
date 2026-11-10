@@ -268,6 +268,8 @@ export const ProcessFlow = ({ data, onNavigate }) => {
                         <img 
                           src={imgUrl(steps[0]?.image || '/images/step_numbers.jpg')} 
                           alt="Numbers Ledger"
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-full object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0c1f38] via-[#0c1f38]/70 to-transparent" />
@@ -344,6 +346,8 @@ export const ProcessFlow = ({ data, onNavigate }) => {
                         <img 
                           src={imgUrl(steps[1]?.image || '/images/step_insight.jpg')} 
                           alt="Insight Graph"
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-full object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0a2336] via-[#0a2336]/65 to-transparent" />
@@ -427,6 +431,8 @@ export const ProcessFlow = ({ data, onNavigate }) => {
                         <img 
                           src={imgUrl(steps[2]?.image || '/images/step_leadership.jpg')} 
                           alt="Leadership Decision"
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-full object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0c1f38] via-[#0c1f38]/70 to-transparent" />

@@ -22,6 +22,8 @@ export const BrandLogo = ({ variant = "full", size = "normal", className = "", c
     <img
       src={imgUrl(logoSrc)}
       alt={isProtect ? "EVOLVE Taxation & Advisory" : "EVOLVE Corporate & Business Solutions"}
+      loading="eager"
+      decoding="async"
       className={className ? `object-contain select-none ${className}` : defaultClasses}
     />
   );

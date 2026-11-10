@@ -212,6 +212,8 @@ export const TransformPage = ({ data = {}, onBack, onOpenContact, onSelectServic
                 <img
                   src={imgUrl("/images/step_insight.jpg")}
                   alt="Data Integration"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover opacity-65 group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/50 to-transparent" />
@@ -265,14 +267,14 @@ export const TransformPage = ({ data = {}, onBack, onOpenContact, onSelectServic
 
       {/* 4. TECHNOLOGYONE & POWER BI ANALYTICS */}
       <SectionDivider />
-      <section className="py-20 sm:py-28 bg-[#061a2e] border-b border-white/10 relative overflow-hidden">
+      <section className="py-20 sm:py-28 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="space-y-3">
             <span className="inline-block text-xs font-semibold tracking-wider uppercase text-emerald-400 border-l-2 border-emerald-400 pl-3">
               PLATFORMS &amp; TOOLING
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-snug">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#061a2e] tracking-tight leading-snug">
               TechnologyOne &amp; Power BI Analytics
             </h2>
           </div>
@@ -280,14 +282,14 @@ export const TransformPage = ({ data = {}, onBack, onOpenContact, onSelectServic
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
             
             {/* CARD 1: TechnologyOne */}
-            <div className="p-8 sm:p-10 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-emerald-400/50 transition-all duration-300 flex flex-col justify-between group">
+            <div className="p-8 sm:p-10 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-400 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
               <div className="space-y-6">
                 
-                <div className="flex items-center gap-3.5 border-b border-white/10 pb-5">
+                <div className="flex items-center gap-3.5 border-b border-slate-200 pb-5">
                   <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/10 text-emerald-300 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
                     <Server className="w-6 h-6 stroke-[2.2]" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white tracking-tight">
+                  <h3 className="text-2xl font-bold text-[#061a2e] tracking-tight">
                     TechnologyOne
                   </h3>
                 </div>
@@ -297,12 +299,12 @@ export const TransformPage = ({ data = {}, onBack, onOpenContact, onSelectServic
                   {technologyOneItems.map((item, idx) => (
                     <div 
                       key={idx}
-                      className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-emerald-400/40 hover:bg-white/[0.07] transition-all flex items-center gap-3"
+                      className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-emerald-400 shadow-xs transition-all flex items-center gap-3"
                     >
                       <span className="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 flex items-center justify-center text-[10px] font-black shrink-0">
                         <Check className="w-3.5 h-3.5 stroke-[3]" />
                       </span>
-                      <span className="text-xs sm:text-sm font-semibold text-slate-200">
+                      <span className="text-xs sm:text-sm font-semibold text-slate-700">
                         {item}
                       </span>
                     </div>
@@ -315,14 +317,14 @@ export const TransformPage = ({ data = {}, onBack, onOpenContact, onSelectServic
             </div>
 
             {/* CARD 2: Power BI & Financial Analytics */}
-            <div className="p-8 sm:p-10 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-emerald-400/50 transition-all duration-300 flex flex-col justify-between group">
+            <div className="p-8 sm:p-10 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-400 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
               <div className="space-y-6">
                 
-                <div className="flex items-center gap-3.5 border-b border-white/10 pb-5">
+                <div className="flex items-center gap-3.5 border-b border-slate-200 pb-5">
                   <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/10 text-emerald-300 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
                     <BarChart3 className="w-6 h-6 stroke-[2.2]" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white tracking-tight">
+                  <h3 className="text-2xl font-bold text-[#061a2e] tracking-tight">
                     Power BI &amp; Financial Analytics
                   </h3>
                 </div>
@@ -339,6 +341,8 @@ export const TransformPage = ({ data = {}, onBack, onOpenContact, onSelectServic
                   <img
                     src={imgUrl("/images/finance_transform.jpg")}
                     alt="Power BI & Financial Analytics"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-70"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e]/90 via-transparent to-transparent" />

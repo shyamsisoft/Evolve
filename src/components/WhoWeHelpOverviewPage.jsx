@@ -104,6 +104,9 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
           <img
             src={imgUrl("/images/hero_summit.jpg")}
             alt="Who We Help Overview"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover object-center opacity-30 transform scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/95 to-[#007791]/40" />
@@ -113,8 +116,7 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
         {/* Ambient Radial Lights */}
         <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#007791]/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#2bb673]/15 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-6 sm:space-y-7">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 w-full space-y-6 sm:space-y-7">
           
           {/* Breadcrumb Navigation */}
           <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs sm:text-sm font-semibold text-slate-300">
@@ -144,16 +146,16 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
             </div>
           </div>
 
-          {/* Main Headline & Value Proposition Narrative */}
-          <div className="space-y-4 max-w-4xl">
+          {/* Main Headline & Value Proposition Narrative (Growing Entire Width) */}
+          <div className="space-y-4 w-full">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
               Who We Help
             </h1>
-            <p className="text-xl sm:text-2xl text-emerald-400 font-bold tracking-tight">
+            <p className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-emerald-300 via-teal-200 to-white bg-clip-text text-transparent tracking-tight">
               Finance capability tailored to your organisation's stage and sector.
             </p>
 
-            <div className="pt-1 space-y-3 max-w-3xl text-slate-200">
+            <div className="pt-2 space-y-3 text-slate-200 w-full">
               <p className="text-base sm:text-lg lg:text-xl font-medium leading-relaxed text-slate-100">
                 Whether you are a fast-growing business, established enterprise, community organisation or local government authority, we tailor our finance leadership to your operational reality.
               </p>
@@ -169,6 +171,7 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
               Practical Guidance Built Around Your Organisation's Needs
             </span>
           </div>
+
         </div>
       </section>
 
@@ -176,7 +179,7 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
       <SectionDivider />
 
       {/* 4 SECTOR SHOWCASE GRID */}
-      <section className="py-20 bg-[#061a2e] text-white border-b border-white/10 relative overflow-hidden">
+      <section className="py-20 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden">
         {/* Ambient Glow */}
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#007791]/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#2bb673]/10 rounded-full blur-3xl pointer-events-none" />
@@ -187,7 +190,7 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
             {audiences.map((item) => (
               <div
                 key={item.id}
-                className="bg-white/[0.03] backdrop-blur-md rounded-3xl overflow-hidden border border-white/10 hover:border-emerald-500/50 hover:bg-white/[0.06] shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group"
+                className="bg-white rounded-3xl overflow-hidden border border-slate-200 hover:border-emerald-500/50 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group"
               >
                 <div>
                   <div className="relative h-56 overflow-hidden">
@@ -211,14 +214,14 @@ export const WhoWeHelpOverviewPage = ({ onSelectAudience, onBack, onOpenContact 
                   </div>
 
                   <div className="p-7 space-y-5">
-                    <p className="text-base text-slate-300 font-normal leading-relaxed">{item.desc}</p>
-                    <div className="space-y-3 pt-3 border-t border-white/10">
-                      <span className="text-xs font-bold uppercase text-teal-400 tracking-wider block">
+                    <p className="text-base text-slate-600 font-normal leading-relaxed">{item.desc}</p>
+                    <div className="space-y-3 pt-3 border-t border-slate-100">
+                      <span className="text-xs font-bold uppercase text-[#007791] tracking-wider block">
                         {item.scopeLabel || "Key Solutions:"}
                       </span>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
                         {item.solutions.map((sol, sIdx) => (
-                          <div key={sIdx} className="flex items-center space-x-2 text-xs font-medium text-slate-200">
+                          <div key={sIdx} className="flex items-center space-x-2 text-xs font-medium text-slate-700">
                             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                             <span>{sol}</span>
                           </div>

@@ -446,7 +446,7 @@ export function App() {
             />
 
             {/* Section 6: Who We Help */}
-            <SectionDivider />
+            <SectionDivider variant="light" />
             <WhoWeHelp
               data={fixedData.whoWeHelp}
               onSelectAudience={(id) => navigateTo(id)}

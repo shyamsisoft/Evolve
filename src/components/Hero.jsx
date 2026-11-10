@@ -53,21 +53,20 @@ export const Hero = ({ data, onOpenContact, onNavigate }) => {
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const [touchStartX, setTouchStartX] = useState(null);
   const [touchEndX, setTouchEndX] = useState(null);
-  const slideDuration = 6500; // 6.5s per slide
+  const slideDuration = 5000; // 5s auto slide
 
-  // Auto-advance timer
+  // Continuous Auto-advance timer
   useEffect(() => {
-    if (slides.length <= 1 || isPaused) return;
+    if (slides.length <= 1) return;
 
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, slideDuration);
 
     return () => clearInterval(timer);
-  }, [slides.length, isPaused, currentSlide]);
+  }, [slides.length]);
 
   const handlePrev = () => {
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
@@ -114,8 +113,6 @@ export const Hero = ({ data, onOpenContact, onNavigate }) => {
     <section 
       id="home" 
       className="relative min-h-[680px] sm:min-h-[760px] lg:min-h-screen flex flex-col justify-between pt-28 sm:pt-32 lg:pt-36 pb-6 sm:pb-8 overflow-hidden select-none bg-[#061a2e]"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -148,8 +145,8 @@ export const Hero = ({ data, onOpenContact, onNavigate }) => {
       })}
 
       {/* Hero Content Area */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-8 sm:py-12">
-        <div className="max-w-3xl text-white space-y-4 sm:space-y-6 lg:space-y-7">
+      <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 w-full my-auto py-8 sm:py-12">
+        <div className="text-white space-y-4 sm:space-y-6 lg:space-y-7">
           
           {/* Animated Subhead Tag / Badge */}
           <div 
@@ -157,7 +154,7 @@ export const Hero = ({ data, onOpenContact, onNavigate }) => {
             className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-300 shadow-md animate-in fade-in slide-in-from-bottom-2 duration-500"
           >
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#2bb673] animate-pulse" />
-            <span className="truncate max-w-[280px] sm:max-w-none">{activeSlideData.badge}</span>
+            <span>{activeSlideData.badge}</span>
           </div>
 
           {/* Animated Main Headline - Scaled for Narrow Viewports */}
@@ -171,7 +168,7 @@ export const Hero = ({ data, onOpenContact, onNavigate }) => {
           {/* Animated Subtext */}
           <p 
             key={`sub-${currentSlide}`}
-            className="text-xs sm:text-base lg:text-xl text-gray-200 font-normal leading-relaxed max-w-2xl line-clamp-3 sm:line-clamp-none animate-in fade-in slide-in-from-bottom-4 duration-700"
+            className="text-base sm:text-lg lg:text-2xl text-slate-100 font-normal leading-relaxed max-w-5xl xl:max-w-6xl animate-in fade-in slide-in-from-bottom-4 duration-700"
           >
             {activeSlideData.subtitle}
           </p>
@@ -202,8 +199,27 @@ export const Hero = ({ data, onOpenContact, onNavigate }) => {
         </div>
       </div>
 
+      {/* Slide Navigation Dots / Indicators */}
+      {slides.length > 1 && (
+        <div className="relative z-20 flex items-center justify-center gap-2 pb-2">
+          {slides.map((slide, idx) => (
+            <button
+              key={slide.id || idx}
+              type="button"
+              onClick={() => setCurrentSlide(idx)}
+              className={`transition-all duration-300 rounded-full cursor-pointer ${
+                idx === currentSlide
+                  ? 'w-8 h-2 bg-gradient-to-r from-[#007791] via-[#18B0A6] to-[#2bb673]'
+                  : 'w-2 h-2 bg-white/35 hover:bg-white/60'
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
+        </div>
+      )}
+
       {/* 4-Pillar Executive Quick-Bar Docked at Bottom */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-3 sm:pb-5">
+      <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 w-full pb-3 sm:pb-5">
         <div className="bg-[#061a2e]/85 backdrop-blur-md p-2.5 sm:p-3 rounded-2xl border border-white/15 shadow-2xl">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
             {pillars.map((pillar) => (

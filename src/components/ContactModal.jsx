@@ -62,6 +62,8 @@ export const ContactModal = ({ isOpen, onClose }) => {
             <img
               src={imgUrl('/images/hero_summit.jpg')}
               alt="Evolve Advisory"
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover"
             />
           </div>

@@ -1,9 +1,9 @@
 // Prepend Vite's base URL so images resolve correctly on GitHub Pages
-// In dev: BASE_URL = '/'  → '/images/x.jpg' stays '/images/x.jpg'
-// In prod (GitHub Pages): BASE_URL = '/Evolve/' → '/Evolve/images/x.jpg'
-const BASE = import.meta.env.BASE_URL || '/';
+// In dev: BASE_URL = '/'  → '/images/x.webp' stays '/images/x.webp'
+// In prod (GitHub Pages): BASE_URL = '/Evolve/' → '/Evolve/images/x.webp'
+const BASE = (typeof import.meta !== 'undefined' && import.meta.env?.BASE_URL) || '/';
 
-export const imgUrl = (path) => {
+export const imgUrl = (path, options = {}) => {
   if (!path || typeof path !== 'string') return path;
   
   // Already absolute external URL (http/https) or data/blob URI – leave untouched
@@ -33,6 +33,16 @@ export const imgUrl = (path) => {
     while (clean.startsWith(baseSegment + '/')) {
       clean = clean.slice(baseSegment.length + 1).replace(/^\/+/, '');
     }
+  }
+
+  // Automatically prefer ultra-fast, modern .webp for local images in images/
+  // Preserves .gif animations and .svg vectors.
+  const preferWebp = options.preferWebp !== false;
+  if (preferWebp && clean.startsWith('images/')) {
+    clean = clean.replace(/\.(png|jpe?g)(\?.*)?$/i, (match, ext, query) => `.webp${query || ''}`);
+  }
+
+  if (baseSegment) {
     return `${normalizedBase}${clean}`;
   }
 

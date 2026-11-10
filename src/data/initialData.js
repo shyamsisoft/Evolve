@@ -275,20 +275,19 @@ export const initialSiteData = {
         id: "protect",
         pillar: "PROTECT",
         title: "Tax & Compliance",
-        desc: "Strong financial foundations provide confidence and ensure your organisation meets its obligations.",
+        desc: "Professional taxation, bookkeeping and advisory services for individuals and businesses.",
         image: "/images/tax_compliance.jpg",
         iconType: "protect",
         capabilities: [
+          "Individual tax returns ($99)",
           "Business taxation",
-          "BAS",
-          "GST",
-          "PAYG",
-          "Payroll compliance",
+          "Bookkeeping services",
+          "BAS & GST",
+          "Payroll & PAYG",
           "Superannuation reviews",
           "FBT",
-          "Tax compliance",
-          "Compliance Health Checks",
-          "Finance and compliance process reviews"
+          "Tax planning & compliance",
+          "Compliance Health Checks"
         ]
       }
     ]

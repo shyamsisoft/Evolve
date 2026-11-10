@@ -796,11 +796,10 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
               {showLivePreview && (
                 <div className="rounded-2xl overflow-hidden border border-slate-700 shadow-lg relative bg-[#061a2e] text-white p-5 space-y-3">
                   <div className="absolute inset-0 opacity-40 pointer-events-none">
-                    <img
-                      src={imgUrl(currentSlideObj.bgImage || '/images/hero_summit.jpg')}
+                    <img src={imgUrl(currentSlideObj.bgImage || '/images/hero_summit.jpg')}
                       alt="Preview"
                       className="w-full h-full object-cover"
-                    />
+                     loading="lazy" decoding="async" />
                     <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/80 to-transparent"></div>
                   </div>
                   <div className="relative z-10 space-y-2">
@@ -899,11 +898,10 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
               <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-white p-4 space-y-3">
                 <div className="flex flex-col sm:flex-row gap-3 items-center">
                   <div className="w-full sm:w-2/5 h-24 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 relative shrink-0">
-                    <img
-                      src={imgUrl(data.section2.image || '/images/finance_meeting.jpg')}
+                    <img src={imgUrl(data.section2.image || '/images/finance_meeting.jpg')}
                       alt="Preview"
                       className="w-full h-full object-cover"
-                    />
+                     loading="lazy" decoding="async" />
                     <span className="absolute bottom-1 left-1 bg-[#061a2e]/80 text-[8px] font-bold text-white px-1.5 py-0.5 rounded">
                       Live Card Preview
                     </span>
@@ -1076,11 +1074,10 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                 <div className="rounded-2xl overflow-hidden border border-slate-700 shadow-md bg-[#061a2e] text-white p-4 relative">
                   {/* Miniature Background Image Graphic */}
                   <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-                    <img
-                      src={imgUrl(processData.bgImage || '/images/finance_transform.jpg')}
+                    <img src={imgUrl(processData.bgImage || '/images/finance_transform.jpg')}
                       alt="Section Preview BG"
                       className="w-full h-full object-cover opacity-45 filter brightness-95"
-                    />
+                     loading="lazy" decoding="async" />
                     <div className="absolute inset-0 bg-gradient-to-b from-[#061a2e]/90 via-[#061a2e]/60 to-[#061a2e]/95" />
                     <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e]/85 via-transparent to-[#061a2e]/80" />
                   </div>
@@ -1089,11 +1086,10 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                     <div className="flex items-start justify-between gap-3">
                       {/* Character Thumbnail */}
                       <div className="w-16 h-20 rounded-xl overflow-hidden bg-slate-800/80 border border-slate-600 shadow-xs shrink-0 flex items-end justify-center">
-                        <img
-                          src={imgUrl(processData.characterImage || '/images/character_advisor.png')}
+                        <img src={imgUrl(processData.characterImage || '/images/character_advisor.png')}
                           alt="Character"
                           className="max-h-full object-contain"
-                        />
+                         loading="lazy" decoding="async" />
                       </div>
 
                       {/* Header details */}
@@ -1115,11 +1111,10 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                       {(processData.steps || []).map((st, i) => (
                         <div key={st.id || i} className="bg-white rounded-lg p-1.5 border border-slate-200 shadow-xs flex flex-col justify-between">
                           <div className="h-10 rounded overflow-hidden mb-1 relative bg-slate-900">
-                            <img
-                              src={imgUrl(st.image || (i === 0 ? '/images/step_numbers.jpg' : i === 1 ? '/images/step_insight.jpg' : '/images/step_leadership.jpg'))}
+                            <img src={imgUrl(st.image || (i === 0 ? '/images/step_numbers.jpg' : i === 1 ? '/images/step_insight.jpg' : '/images/step_leadership.jpg'))}
                               alt={st.title}
                               className="w-full h-full object-cover"
-                            />
+                             loading="lazy" decoding="async" />
                             <span className="absolute top-0.5 left-0.5 text-[8px] font-black text-white bg-black/60 px-1 rounded">
                               {st.num}
                             </span>
@@ -1326,11 +1321,10 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                 {/* Sub-view: Why Us Live Cards */}
                 {(approachPreviewSubTab === 'whyUs' || approachPreviewSubTab === 'all') && (
                   <div className="relative rounded-2xl overflow-hidden p-3 border border-slate-700/80 bg-[#061a2e]">
-                    <img
-                      src={imgUrl(data.approachAndWhyUs?.whyUsBgImage || '/images/established_corporate.jpg')}
+                    <img src={imgUrl(data.approachAndWhyUs?.whyUsBgImage || '/images/established_corporate.jpg')}
                       alt="Why Us Bg Preview"
                       className="absolute inset-0 w-full h-full object-cover opacity-25 pointer-events-none"
-                    />
+                     loading="lazy" decoding="async" />
                     <div className="absolute inset-0 bg-gradient-to-b from-[#061a2e]/90 via-[#061a2e]/80 to-[#061a2e]/95 pointer-events-none" />
 
                     <div className="relative z-10 space-y-2">
@@ -1355,11 +1349,10 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                             className="bg-slate-800/90 rounded-xl overflow-hidden border border-slate-700/80 p-2 space-y-1.5 group hover:border-emerald-500/50 transition-all shadow-xs"
                           >
                             <div className="h-20 rounded-lg overflow-hidden relative bg-slate-950">
-                              <img
-                                src={imgUrl(item.image)}
+                              <img src={imgUrl(item.image)}
                                 alt={item.title}
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                              />
+                               loading="lazy" decoding="async" />
                               <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/40 to-transparent"></div>
                               
                               {/* Floating Icon */}
@@ -1413,11 +1406,10 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                 {/* Sub-view: Our Approach Live Cards */}
                 {(approachPreviewSubTab === 'approach' || approachPreviewSubTab === 'all') && (
                   <div className="relative rounded-2xl overflow-hidden p-3 border border-slate-700/80 bg-[#061a2e] mt-2">
-                    <img
-                      src={imgUrl(data.approachAndWhyUs?.approachBgImage || '/images/hero_summit.jpg')}
+                    <img src={imgUrl(data.approachAndWhyUs?.approachBgImage || '/images/hero_summit.jpg')}
                       alt="Our Approach Bg Preview"
                       className="absolute inset-0 w-full h-full object-cover opacity-25 pointer-events-none"
-                    />
+                     loading="lazy" decoding="async" />
                     <div className="absolute inset-0 bg-gradient-to-b from-[#061a2e]/90 via-[#002238]/80 to-[#061a2e]/95 pointer-events-none" />
 
                     <div className="relative z-10 space-y-2">
@@ -1442,11 +1434,10 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                             className="bg-slate-800/90 rounded-xl overflow-hidden border border-slate-700/80 p-2 space-y-1.5 group hover:border-[#007791]/60 transition-all shadow-xs"
                           >
                             <div className="h-20 rounded-lg overflow-hidden relative bg-slate-950">
-                              <img
-                                src={imgUrl(step.image)}
+                              <img src={imgUrl(step.image)}
                                 alt={step.title}
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                              />
+                               loading="lazy" decoding="async" />
                               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
                               
                               {/* Step Badge */}
@@ -1872,11 +1863,10 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                 {data.whatWeDo.items.map((item, idx) => (
                   <div key={item.id || idx} className="rounded-xl overflow-hidden border border-slate-200 bg-white p-2.5 space-y-1.5 shadow-xs">
                     <div className="h-16 rounded-lg overflow-hidden relative bg-slate-100">
-                      <img
-                        src={imgUrl(item.image)}
+                      <img src={imgUrl(item.image)}
                         alt={item.title}
                         className="w-full h-full object-cover"
-                      />
+                       loading="lazy" decoding="async" />
                       <span className="absolute top-1 left-1 bg-[#061a2e]/80 text-[8px] font-black text-emerald-400 px-1.5 py-0.5 rounded">
                         {item.pillar}
                       </span>
@@ -2988,11 +2978,10 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                 {data.whoWeHelp.items.map((item, idx) => (
                   <div key={item.id || idx} className="rounded-xl overflow-hidden border border-slate-200 bg-white p-2.5 space-y-1.5 shadow-xs">
                     <div className="h-16 rounded-lg overflow-hidden relative bg-slate-100">
-                      <img
-                        src={imgUrl(item.image)}
+                      <img src={imgUrl(item.image)}
                         alt={item.title}
                         className="w-full h-full object-cover"
-                      />
+                       loading="lazy" decoding="async" />
                       <span className="absolute bottom-1 left-1 bg-[#061a2e]/80 text-[8px] font-bold text-white px-1.5 py-0.5 rounded">
                         Sector {idx + 1}
                       </span>
@@ -3204,11 +3193,10 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
             {showLivePreview && (
               <div className="rounded-2xl overflow-hidden border border-slate-800 shadow-lg relative bg-[#061a2e] text-white p-4 space-y-2">
                 <div className="absolute inset-0 opacity-25 pointer-events-none">
-                  <img
-                    src={imgUrl(data.ctaBanner.bgImage || '/images/hero_summit.jpg')}
+                  <img src={imgUrl(data.ctaBanner.bgImage || '/images/hero_summit.jpg')}
                     alt="Preview"
                     className="w-full h-full object-cover"
-                  />
+                   loading="lazy" decoding="async" />
                 </div>
                 <div className="relative z-10 space-y-1">
                   <span className="text-[9px] font-bold text-emerald-400 uppercase tracking-wider">
@@ -3232,7 +3220,6 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">Tagline</label>
               <input
-                className="w-full px-2.5 py-1.5 bg-white text-slate-900 placeholder:text-slate-400 rounded-lg border border-slate-300 text-xs focus:border-[#007791] focus:outline-none"
                 type="text"
                 value={data.ctaBanner.tag}
                 onChange={(e) =>
@@ -3248,7 +3235,6 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">Headline</label>
               <textarea
-                className="w-full px-2.5 py-1.5 bg-white text-slate-900 placeholder:text-slate-400 rounded-lg border border-slate-300 text-xs focus:border-[#007791] focus:outline-none"
                 rows={2}
                 value={data.ctaBanner.title}
                 onChange={(e) =>
@@ -3264,7 +3250,6 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">Subtitle</label>
               <textarea
-                className="w-full px-2.5 py-1.5 bg-white text-slate-900 placeholder:text-slate-400 rounded-lg border border-slate-300 text-xs focus:border-[#007791] focus:outline-none"
                 rows={2}
                 value={data.ctaBanner.subtitle}
                 onChange={(e) =>
@@ -3326,7 +3311,6 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
             <div className="relative">
               <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               <input
-                className="w-full px-2.5 py-1.5 bg-white text-slate-900 placeholder:text-slate-400 rounded-lg border border-slate-300 text-xs focus:border-[#007791] focus:outline-none"
                 type="text"
                 value={gallerySearch}
                 onChange={(e) => setGallerySearch(e.target.value)}
@@ -3355,12 +3339,11 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                       className="relative w-full sm:w-36 h-24 rounded-xl overflow-hidden bg-slate-900 shrink-0 group cursor-pointer"
                       onClick={() => setZoomImage(asset)}
                     >
-                      <img
-                        src={imgUrl(asset.url)}
+                      <img src={imgUrl(asset.url)}
                         alt={asset.label}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         loading="lazy"
-                      />
+                       decoding="async" />
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
                         <Maximize2 className="w-4 h-4" />
                       </div>
@@ -3380,7 +3363,6 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
                       <div className="pt-1 flex flex-wrap items-center gap-1.5">
                         {/* Quick Apply Dropdown */}
                         <select
-                          className="w-full px-2.5 py-1.5 bg-white text-slate-900 placeholder:text-slate-400 rounded-lg border border-slate-300 text-xs focus:border-[#007791] focus:outline-none"
                           defaultValue=""
                           onChange={(e) => {
                             if (e.target.value) {
@@ -3566,11 +3548,10 @@ export const CMSDrawer = ({ isOpen, onClose, data, activeFont, onChangeFont, onU
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative h-72 sm:h-96 w-full bg-slate-900 overflow-hidden">
-              <img
-                src={imgUrl(zoomImage.url)}
+              <img src={imgUrl(zoomImage.url)}
                 alt={zoomImage.label}
                 className="w-full h-full object-cover"
-              />
+               loading="lazy" decoding="async" />
               <button
                 type="button"
                 onClick={() => setZoomImage(null)}

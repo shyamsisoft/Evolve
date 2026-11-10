@@ -37,6 +37,9 @@ export const ServiceDetailPage = ({ serviceId, pageData, onBack, onOpenContact, 
           <img
             src={imgUrl(service.bgImage)}
             alt={service.title}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover object-center opacity-30 transform scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/92 to-[#007791]/50"></div>
@@ -75,11 +78,11 @@ export const ServiceDetailPage = ({ serviceId, pageData, onBack, onOpenContact, 
             </div>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white max-w-4xl leading-[1.12]">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white max-w-5xl leading-[1.12]">
             {service.title}
           </h1>
 
-          <p className="text-lg sm:text-xl text-gray-200 font-medium max-w-3xl leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-200 font-medium max-w-4xl leading-relaxed">
             {service.tagline}
           </p>
 
@@ -253,6 +256,8 @@ export const ServiceDetailPage = ({ serviceId, pageData, onBack, onOpenContact, 
                     <img
                       src={moduleImages[idx % moduleImages.length]}
                       alt={cap.name}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-[#061a2e]/60 to-transparent"></div>

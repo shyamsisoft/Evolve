@@ -46,7 +46,7 @@ export const WhoWeHelpDetailPage = ({ audienceId, data, onBack, onOpenContact, o
       {/* VISUAL HERO BANNER */}
       <section className="relative bg-[#061a2e] text-white py-16 overflow-hidden">
         <div className="absolute inset-0 opacity-35">
-          <img src={imgUrl(audience.bgImage)} alt={audience.title} className="w-full h-full object-cover" />
+          <img src={imgUrl(audience.bgImage)} alt={audience.title} loading="eager" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/90 to-[#007791]/40"></div>
 
@@ -67,11 +67,11 @@ export const WhoWeHelpDetailPage = ({ audienceId, data, onBack, onOpenContact, o
             <span>Sector Growth Roadmap</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white max-w-4xl leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white max-w-5xl leading-tight">
             {audience.title}
           </h1>
 
-          <p className="text-lg sm:text-xl text-gray-200 font-medium max-w-3xl leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-200 font-medium max-w-4xl leading-relaxed">
             {audience.tagline}
           </p>
 
@@ -131,6 +131,8 @@ export const WhoWeHelpDetailPage = ({ audienceId, data, onBack, onOpenContact, o
               <img
                 src={imgUrl(audience.bgImage)}
                 alt={audience.title}
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 opacity-60 group-hover:opacity-75"
               />
               {/* Dark Gradient Overlay */}
@@ -296,6 +298,8 @@ export const WhoWeHelpDetailPage = ({ audienceId, data, onBack, onOpenContact, o
                   <img
                     src={imgUrl(sec.image)}
                     alt={sec.title}
+                    loading="lazy"
+                    decoding="async"
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-40 group-hover:opacity-60"
                   />
                   {/* Gradient Overlay */}

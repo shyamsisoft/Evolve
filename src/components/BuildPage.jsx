@@ -785,6 +785,8 @@ export const BuildPage = ({ data = {}, onBack, onOpenContact, onSelectService })
                     <img
                       src={imgUrl("/images/why_transformation.jpg")}
                       alt="Finance Operating Models"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
                       onError={(e) => {
                         const fallback = imgUrl("/images/approach_design.jpg");
@@ -893,6 +895,8 @@ export const BuildPage = ({ data = {}, onBack, onOpenContact, onSelectService })
                     <img
                       src={imgUrl("/images/why_practical.jpg")}
                       alt="Target Operating Model Support"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
                       onError={(e) => {
                         const fallback = imgUrl("/images/finance_build.jpg");

@@ -151,6 +151,8 @@ export const SectorNavigatorSection = ({
             <img
               src={imgUrl(`${characterImage}?v=clean10`)}
               alt="Scale-Up Financial Advisory Partner"
+              loading="lazy"
+              decoding="async"
               className="relative z-10 max-h-[340px] sm:max-h-[380px] lg:max-h-[440px] xl:max-h-[480px] w-auto object-contain drop-shadow-[0_25px_40px_rgba(0,0,0,0.6)] select-none pointer-events-none"
             />
           </div>

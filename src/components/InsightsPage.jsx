@@ -26,11 +26,11 @@ export const InsightsPage = ({ data, onBack, onOpenContact, onSelectArticle }) =
       {/* HERO BANNER */}
       <section className="relative bg-[#061a2e] text-white py-16 overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 opacity-25">
-          <img src={imgUrl('/images/cfo_advisory.jpg')} alt="Insights" className="w-full h-full object-cover" />
+          <img src={imgUrl('/images/cfo_advisory.jpg')} alt="Insights" loading="eager" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/90 to-[#007791]/40" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 w-full space-y-6">
           <div className="flex items-center space-x-3 text-xs sm:text-sm font-bold text-slate-300">
             <button 
               type="button"
@@ -44,11 +44,11 @@ export const InsightsPage = ({ data, onBack, onOpenContact, onSelectArticle }) =
             <span className="text-white">Insights &amp; Thought Leadership</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white max-w-4xl leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white w-full leading-tight">
             {data.title}
           </h1>
 
-          <p className="text-lg sm:text-xl text-slate-300 font-normal max-w-3xl leading-relaxed">
+          <p className="text-lg sm:text-xl text-slate-300 font-normal w-full max-w-5xl leading-relaxed">
             {data.subtitle}
           </p>
         </div>
@@ -56,14 +56,14 @@ export const InsightsPage = ({ data, onBack, onOpenContact, onSelectArticle }) =
 
       {/* FILTER & ARTICLES HUB */}
       <SectionDivider />
-      <section className="py-20 bg-[#061a2e] text-white border-b border-white/10 relative overflow-hidden">
+      <section className="py-20 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden">
         {/* Ambient Glow */}
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#007791]/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           
           {/* SEARCH & FILTER BAR */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-white/[0.03] backdrop-blur-md p-4 rounded-2xl border border-white/10 shadow-sm">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200 shadow-sm">
             <div className="flex items-center space-x-2 overflow-x-auto w-full md:w-auto">
               {categories.map((cat) => (
                 <button
@@ -72,8 +72,8 @@ export const InsightsPage = ({ data, onBack, onOpenContact, onSelectArticle }) =
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                     selectedCategory === cat
-                      ? 'bg-white/[0.12] text-white border border-white/20 shadow-xs'
-                      : 'bg-white/[0.03] text-slate-300 hover:text-white hover:bg-white/[0.06]'
+                      ? 'bg-[#007791] text-white shadow-xs'
+                      : 'bg-white text-slate-700 border border-slate-200 hover:text-[#007791] hover:bg-slate-50'
                   }`}
                 >
                   {cat}
@@ -88,7 +88,7 @@ export const InsightsPage = ({ data, onBack, onOpenContact, onSelectArticle }) =
                 placeholder="Search articles..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-white/[0.04] text-white rounded-xl border border-white/15 text-xs focus:outline-none focus:border-teal-400 placeholder:text-slate-400"
+                className="w-full pl-10 pr-4 py-2 bg-white text-slate-900 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-teal-500 placeholder:text-slate-400 shadow-xs"
               />
             </div>
           </div>
@@ -103,14 +103,14 @@ export const InsightsPage = ({ data, onBack, onOpenContact, onSelectArticle }) =
               >
                 <div>
                   <div className="relative h-52 overflow-hidden">
-                    <img src={imgUrl(art.image)} alt={art.title} className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700" />
+                    <img src={imgUrl(art.image)} alt={art.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700" />
                     <div className="absolute top-4 left-4 px-3 py-1 bg-[#061a2e]/90 backdrop-blur-md border border-white/15 rounded-full text-xs font-bold text-teal-400">
                       {art.category}
                     </div>
                   </div>
 
                   <div className="p-6 space-y-3">
-                    <div className="flex items-center space-x-4 text-xs font-bold text-slate-400">
+                    <div className="flex items-center space-x-4 text-xs font-bold text-slate-500">
                       <span className="flex items-center space-x-1">
                         <Calendar className="w-3.5 h-3.5" />
                         <span>{art.date}</span>
@@ -122,11 +122,11 @@ export const InsightsPage = ({ data, onBack, onOpenContact, onSelectArticle }) =
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors leading-snug">
+                    <h3 className="text-xl font-bold text-[#061a2e] group-hover:text-[#007791] transition-colors leading-snug">
                       {art.title}
                     </h3>
 
-                    <p className="text-sm text-slate-300 font-normal leading-relaxed">
+                    <p className="text-sm text-slate-600 font-normal leading-relaxed">
                       {art.summary}
                     </p>
                   </div>

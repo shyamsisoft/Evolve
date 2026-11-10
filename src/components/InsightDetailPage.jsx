@@ -26,7 +26,7 @@ export const InsightDetailPage = ({ articleId, articles = [], onBack, onOpenCont
       {/* 1. HERO BANNER HEADER */}
       <section className="relative bg-[#061a2e] text-white pt-32 pb-20 overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
-          <img src={imgUrl(article.image)} alt={article.title} className="w-full h-full object-cover" />
+          <img src={imgUrl(article.image)} alt={article.title} loading="eager" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/95 to-[#007791]/60" />
 
@@ -55,7 +55,7 @@ export const InsightDetailPage = ({ articleId, articles = [], onBack, onOpenCont
             {article.title}
           </h1>
 
-          <div className="flex flex-wrap items-center gap-6 text-xs sm:text-sm font-bold text-slate-300 pt-3 border-t border-white/10">
+          <div className="flex flex-wrap items-center gap-6 text-xs sm:text-sm font-bold text-slate-300 pt-3 border-t border-slate-200">
             <div className="flex items-center space-x-2">
               <User className="w-4 h-4 text-[#2bb673]" />
               <span>EVOLVE Senior Advisory Board</span>
@@ -74,7 +74,7 @@ export const InsightDetailPage = ({ articleId, articles = [], onBack, onOpenCont
 
       {/* 2. EDITORIAL BOOK READING LAYOUT */}
       <SectionDivider />
-      <section className="py-16 bg-[#061a2e] text-white border-b border-white/10 relative overflow-hidden">
+      <section className="py-16 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -84,37 +84,37 @@ export const InsightDetailPage = ({ articleId, articles = [], onBack, onOpenCont
               
               {/* Executive Synopsis Box */}
               {article.synopsis && (
-                <div className="p-8 rounded-3xl bg-white/[0.03] backdrop-blur-md border-l-8 border-l-[#2bb673] border border-white/10 shadow-xl space-y-3">
+                <div className="p-8 rounded-3xl bg-emerald-50/70 border-l-8 border-l-[#2bb673] border border-emerald-200 shadow-sm space-y-3">
                   <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-teal-400">
                     <BookOpen className="w-4 h-4 text-[#2bb673]" />
                     <span>Executive Synopsis</span>
                   </div>
-                  <p className="text-lg font-bold text-white leading-relaxed italic">
+                  <p className="text-lg font-bold text-[#061a2e] leading-relaxed italic">
                     "{article.synopsis}"
                   </p>
                 </div>
               )}
 
               {/* Main Reading Content (Book / Whitepaper Format) */}
-              <div className="bg-white/[0.03] backdrop-blur-md p-8 sm:p-12 rounded-3xl border border-white/10 shadow-xl space-y-10 text-slate-200 leading-relaxed font-normal">
+              <div className="bg-white p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-md space-y-10 text-slate-700 leading-relaxed font-normal">
                 
                 {/* Dynamic Content Sections */}
                 {article.chapters && article.chapters.length > 0 ? (
                   article.chapters.map((ch, idx) => (
                     <React.Fragment key={idx}>
                       <div className="space-y-4">
-                        <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                        <h2 className="text-lg sm:text-xl font-bold text-[#061a2e] tracking-tight">
                           {ch.title}
                         </h2>
-                        <p className="text-base sm:text-lg leading-relaxed text-slate-300 whitespace-pre-line">
+                        <p className="text-base sm:text-lg leading-relaxed text-slate-700 whitespace-pre-line">
                           {ch.content}
                         </p>
                       </div>
 
                       {/* Inject Quote Pullout after Chapter 01 */}
                       {idx === 0 && article.quotePullout && (
-                        <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 text-white space-y-2">
-                          <span className="text-xs font-bold uppercase text-teal-400 tracking-wider block">Key Executive Takeaway</span>
+                        <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-[#061a2e] space-y-2">
+                          <span className="text-xs font-bold uppercase text-[#007791] tracking-wider block">Key Executive Takeaway</span>
                           <p className="text-base font-bold leading-snug">
                             "{article.quotePullout}"
                           </p>
@@ -123,21 +123,21 @@ export const InsightDetailPage = ({ articleId, articles = [], onBack, onOpenCont
 
                       {/* Inject Pillars Grid after Chapter 01 or 02 */}
                       {idx === 1 && article.pillars && article.pillars.length > 0 && (
-                        <div className="space-y-6 pt-4 border-t border-white/10">
+                        <div className="space-y-6 pt-4 border-t border-slate-200">
                           <div className="inline-block px-3 py-1 bg-white/[0.08] text-teal-300 text-xs font-bold uppercase tracking-wider rounded-md border border-white/10">
                             Strategic Pillars
                           </div>
-                          <h3 className="text-xl font-bold text-white">
+                          <h3 className="text-xl font-bold text-[#061a2e]">
                             Core Framework Drivers
                           </h3>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {article.pillars.map((pil, pIdx) => (
-                              <div key={pIdx} className="p-6 bg-white/[0.04] rounded-2xl border border-white/10 space-y-2">
+                              <div key={pIdx} className="p-6 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
                                 <div className="flex items-center space-x-2 text-teal-400 font-bold text-base">
                                   <CheckCircle2 className="w-5 h-5 text-emerald-400" />
                                   <span>{pil.step || `0${pIdx+1}`}. {pil.title}</span>
                                 </div>
-                                <p className="text-xs text-slate-300 font-normal leading-relaxed">
+                                <p className="text-xs text-slate-600 font-normal leading-relaxed">
                                   {pil.desc}
                                 </p>
                               </div>
@@ -150,7 +150,7 @@ export const InsightDetailPage = ({ articleId, articles = [], onBack, onOpenCont
                 ) : (
                   /* Fallback default section if chapters not provided */
                   <div className="space-y-4">
-                    <h2 className="text-lg sm:text-xl font-bold text-white">
+                    <h2 className="text-lg sm:text-xl font-bold text-[#061a2e]">
                       Executive Advisory Deep-Dive
                     </h2>
                     <p className="text-base sm:text-lg leading-relaxed text-slate-300">
@@ -173,7 +173,7 @@ export const InsightDetailPage = ({ articleId, articles = [], onBack, onOpenCont
                   <span className="text-xs font-bold uppercase text-[#2bb673] tracking-widest">
                     Publication Details
                   </span>
-                  <h3 className="text-xl font-bold text-white">
+                  <h3 className="text-xl font-bold text-[#061a2e]">
                     {article.category} Briefing
                   </h3>
                   <span className="text-xs text-slate-300 block font-normal">
@@ -232,6 +232,8 @@ export const InsightDetailPage = ({ articleId, articles = [], onBack, onOpenCont
                           <img
                             src={imgUrl(rel.image)}
                             alt={rel.title}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                           />
                         </div>

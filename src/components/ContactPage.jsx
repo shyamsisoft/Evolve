@@ -97,6 +97,9 @@ export const ContactPage = ({ onBack, data }) => {
           <img
             src={imgUrl('/images/contact_office.jpg')}
             alt="Contact EVOLVE"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover object-center opacity-30 transform scale-105"
             onError={(e) => {
               const fallback = imgUrl('/images/established_corporate.jpg');
@@ -110,8 +113,7 @@ export const ContactPage = ({ onBack, data }) => {
         {/* Ambient Radial Lights */}
         <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#007791]/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#2bb673]/15 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-6 sm:space-y-7">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 w-full space-y-6 sm:space-y-7">
           
           {/* Breadcrumb Navigation */}
           <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs sm:text-sm font-semibold text-slate-300">
@@ -141,16 +143,16 @@ export const ContactPage = ({ onBack, data }) => {
             </div>
           </div>
 
-          <div className="space-y-4 max-w-4xl">
+          <div className="space-y-4 w-full">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight uppercase">
               {contactData.title || 'CONTACT'}
             </h1>
 
-            <p className="text-xl sm:text-2xl font-bold text-emerald-400 tracking-tight">
+            <p className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-emerald-300 via-teal-200 to-white bg-clip-text text-transparent tracking-tight">
               {contactData.subtitle || "Let's talk about what your organisation needs next."}
             </p>
 
-            <div className="pt-1 space-y-2.5 max-w-3xl text-slate-200">
+            <div className="pt-2 space-y-3 text-slate-200 w-full">
               <p className="text-base sm:text-lg font-medium leading-relaxed text-slate-100">
                 {contactData.introLead || "You may know exactly what support you need. Or you may simply know that finance, reporting, systems, compliance or organisational change isn't working as well as it should."}
               </p>
@@ -186,7 +188,7 @@ export const ContactPage = ({ onBack, data }) => {
       {/* 2. SPLIT SECTION: CONTACT DETAILS + INTERACTIVE FORM     */}
       {/* ======================================================== */}
       <SectionDivider />
-      <section id="contact-form" className="py-16 sm:py-24 bg-[#061a2e] border-b border-white/10 relative overflow-hidden">
+      <section id="contact-form" className="py-16 sm:py-24 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden">
         {/* Subtle Ambient Glow */}
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#007791]/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#2bb673]/10 rounded-full blur-3xl pointer-events-none" />
@@ -201,15 +203,15 @@ export const ContactPage = ({ onBack, data }) => {
             <div className="lg:col-span-5 space-y-6">
               
               {/* Primary Direct Contact Box */}
-              <div className="p-7 sm:p-8 rounded-3xl bg-white/[0.03] backdrop-blur-md border border-white/10 shadow-xl space-y-6">
+              <div className="p-7 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm space-y-6">
                 <div>
                   <span className="text-[11px] font-bold tracking-widest text-[#2bb673] uppercase bg-emerald-500/10 border border-emerald-500/25 px-3 py-1 rounded-full inline-block">
                     DIRECT ADVISORY DESK
                   </span>
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight mt-3">
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-[#061a2e] tracking-tight mt-3">
                     Direct Contact
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-300 font-normal mt-1">
+                  <p className="text-xs sm:text-sm text-slate-600 font-normal mt-1">
                     Connect directly with our senior corporate and financial practice leadership.
                   </p>
                 </div>
@@ -218,16 +220,16 @@ export const ContactPage = ({ onBack, data }) => {
                   {/* Telephone */}
                   {contactData.phone && (
                     <div className="flex items-start space-x-3.5 group">
-                      <div className="p-3 rounded-xl bg-white/[0.05] border border-white/10 text-emerald-400 group-hover:bg-[#007791] group-hover:text-white transition-all shrink-0">
+                      <div className="p-3 rounded-xl bg-white border border-slate-200 shadow-xs text-emerald-400 group-hover:bg-[#007791] group-hover:text-white transition-all shrink-0">
                         <Phone className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block">
                           Advisory Telephone
                         </span>
                         <a 
                           href={`tel:${contactData.phone.replace(/\s+/g, '')}`}
-                          className="text-base sm:text-lg font-bold text-white hover:text-emerald-400 transition-colors"
+                          className="text-base sm:text-lg font-bold text-[#061a2e] hover:text-[#007791] transition-colors"
                         >
                           {contactData.phone}
                         </a>
@@ -238,16 +240,16 @@ export const ContactPage = ({ onBack, data }) => {
                   {/* Email */}
                   {contactData.email && (
                     <div className="flex items-start space-x-3.5 group">
-                      <div className="p-3 rounded-xl bg-white/[0.05] border border-white/10 text-teal-400 group-hover:bg-[#007791] group-hover:text-white transition-all shrink-0">
+                      <div className="p-3 rounded-xl bg-white border border-slate-200 shadow-xs text-teal-400 group-hover:bg-[#007791] group-hover:text-white transition-all shrink-0">
                         <Mail className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block">
                           Official Enquiry Email
                         </span>
                         <a 
                           href={`mailto:${contactData.email}`}
-                          className="text-base sm:text-lg font-bold text-white hover:text-teal-300 transition-colors break-all"
+                          className="text-base sm:text-lg font-bold text-[#061a2e] hover:text-[#007791] transition-colors break-all"
                         >
                           {contactData.email}
                         </a>
@@ -258,14 +260,14 @@ export const ContactPage = ({ onBack, data }) => {
                   {/* Business Hours */}
                   {contactData.hours && (
                     <div className="flex items-start space-x-3.5 group">
-                      <div className="p-3 rounded-xl bg-white/[0.05] border border-white/10 text-cyan-400 shrink-0">
+                      <div className="p-3 rounded-xl bg-white border border-slate-200 shadow-xs text-cyan-400 shrink-0">
                         <Clock className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block">
                           Consultation Hours
                         </span>
-                        <p className="text-sm font-semibold text-slate-200">
+                        <p className="text-sm font-semibold text-slate-700">
                           {contactData.hours}
                         </p>
                       </div>
@@ -276,10 +278,10 @@ export const ContactPage = ({ onBack, data }) => {
 
               {/* Corporate Office Locations */}
               {contactData.offices && contactData.offices.length > 0 && (
-                <div className="p-7 sm:p-8 rounded-3xl bg-white/[0.03] backdrop-blur-md border border-white/10 shadow-xl space-y-5">
+                <div className="p-7 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm space-y-5">
                   <div className="flex items-center space-x-2.5">
                     <Building2 className="w-5 h-5 text-emerald-400" />
-                    <h3 className="text-lg font-bold text-white tracking-tight">
+                    <h3 className="text-lg font-bold text-[#061a2e] tracking-tight">
                       Corporate Locations
                     </h3>
                   </div>
@@ -288,28 +290,28 @@ export const ContactPage = ({ onBack, data }) => {
                     {contactData.offices.map((office, idx) => (
                       <div 
                         key={idx}
-                        className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 space-y-1.5 hover:border-emerald-500/40 transition-colors"
+                        className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-1.5 hover:border-[#007791]/50 transition-colors"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="text-xs sm:text-sm font-bold text-emerald-300">
+                          <span className="text-xs sm:text-sm font-bold text-[#061a2e]">
                             {office.city}
                           </span>
                           {office.isPrimary && (
-                            <span className="text-[10px] font-bold text-teal-300 bg-teal-500/15 border border-teal-500/30 px-2 py-0.5 rounded-full uppercase">
+                            <span className="text-[10px] font-bold text-[#007791] bg-teal-50 border border-teal-200 px-2 py-0.5 rounded-full uppercase">
                               Principal
                             </span>
                           )}
                         </div>
                         {office.address && (
-                          <div className="flex items-start space-x-2 text-xs text-slate-300 font-medium">
+                          <div className="flex items-start space-x-2 text-xs text-slate-600 font-medium">
                             <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0 mt-0.5" />
                             <span>{office.address}</span>
                           </div>
                         )}
                         {office.phone && (
-                          <div className="flex items-center space-x-2 text-xs text-slate-400 pt-1">
+                          <div className="flex items-center space-x-2 text-xs text-slate-500 pt-1">
                             <Phone className="w-3 h-3 text-slate-400 shrink-0" />
-                            <a href={`tel:${office.phone.replace(/\s+/g, '')}`} className="hover:text-white transition-colors">
+                            <a href={`tel:${office.phone.replace(/\s+/g, '')}`} className="hover:text-[#007791] transition-colors">
                               {office.phone}
                             </a>
                           </div>
@@ -324,10 +326,10 @@ export const ContactPage = ({ onBack, data }) => {
               <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/25 flex items-start space-x-3.5">
                 <ShieldCheck className="w-5 h-5 text-[#2bb673] shrink-0 mt-0.5" />
                 <div className="space-y-1">
-                  <span className="text-xs font-bold text-white uppercase tracking-wider block">
+                  <span className="text-xs font-bold text-[#061a2e] uppercase tracking-wider block">
                     Strict Commercial Confidentiality
                   </span>
-                  <p className="text-[11px] text-slate-300 leading-relaxed font-normal">
+                  <p className="text-[11px] text-slate-600 leading-relaxed font-normal">
                     All initial briefings, financial diagnostics, and strategic consultations are protected under commercial non-disclosure protocols.
                   </p>
                 </div>
@@ -339,13 +341,13 @@ export const ContactPage = ({ onBack, data }) => {
             {/* RIGHT COLUMN: INTERACTIVE CONSULTATION ENQUIRY FORM  */}
             {/* ---------------------------------------------------- */}
             <div className="lg:col-span-7">
-              <div className="bg-white/[0.03] backdrop-blur-md rounded-3xl p-7 sm:p-10 lg:p-12 border border-white/10 shadow-2xl space-y-7">
+              <div className="bg-white rounded-3xl p-7 sm:p-10 lg:p-12 border border-slate-200 shadow-xl space-y-7">
                 
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#061a2e] tracking-tight">
                     Start a Conversation
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-300 font-normal mt-1">
+                  <p className="text-xs sm:text-sm text-slate-600 font-normal mt-1">
                     Select your area of interest and tell us about your objectives.
                   </p>
                 </div>
@@ -355,10 +357,10 @@ export const ContactPage = ({ onBack, data }) => {
                     <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-[#2bb673] border border-emerald-500/30 flex items-center justify-center mx-auto shadow-sm">
                       <CheckCircle className="w-10 h-10" />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-white">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#061a2e]">
                       Thank You for Reaching Out
                     </h3>
-                    <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+                    <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
                       We have received your enquiry. An EVOLVE senior advisory director will review your requirements and respond within one business day.
                     </p>
                   </div>
@@ -367,7 +369,7 @@ export const ContactPage = ({ onBack, data }) => {
                     
                     {/* How can we help? Service Selection */}
                     <div className="space-y-3">
-                      <label className="block text-xs font-bold text-white uppercase tracking-wider">
+                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                         How can we help? (Select Practice Area)
                       </label>
                       
@@ -381,8 +383,8 @@ export const ContactPage = ({ onBack, data }) => {
                               onClick={() => setSelectedService(opt.label)}
                               className={`text-left p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-2.5 ${
                                 isSelected 
-                                  ? 'bg-white/[0.08] border-teal-400 ring-2 ring-teal-400/30 text-white shadow-xs' 
-                                  : 'bg-white/[0.03] border-white/10 hover:border-white/20 text-slate-300 hover:text-white'
+                                  ? 'bg-teal-50 border-teal-500 ring-2 ring-teal-400/30 text-[#061a2e] font-bold shadow-xs' 
+                                  : 'bg-slate-50 border-slate-200 hover:border-teal-400 text-slate-700 hover:text-[#061a2e]'
                               }`}
                             >
                               <div className="flex items-center gap-2.5 min-w-0">
@@ -405,7 +407,7 @@ export const ContactPage = ({ onBack, data }) => {
                     {/* Organisation & Full Name */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
-                        <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+                        <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                           Organisation Name
                         </label>
                         <input
@@ -414,12 +416,12 @@ export const ContactPage = ({ onBack, data }) => {
                           value={formData.organization}
                           onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                           placeholder="Your organisation or entity"
-                          className="w-full px-4 py-3 rounded-xl border border-white/15 text-sm bg-white/[0.04] text-white placeholder:text-slate-400 focus:bg-white/[0.08] focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-400/20 transition-all"
+                          className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm bg-white text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-[#007791] focus:ring-2 focus:ring-[#007791]/20 transition-all shadow-xs"
                         />
                       </div>
 
                       <div className="space-y-1.5">
-                        <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+                        <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                           Your Name
                         </label>
                         <input
@@ -428,7 +430,7 @@ export const ContactPage = ({ onBack, data }) => {
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           placeholder="Full name"
-                          className="w-full px-4 py-3 rounded-xl border border-white/15 text-sm bg-white/[0.04] text-white placeholder:text-slate-400 focus:bg-white/[0.08] focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-400/20 transition-all"
+                          className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm bg-white text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-[#007791] focus:ring-2 focus:ring-[#007791]/20 transition-all shadow-xs"
                         />
                       </div>
                     </div>
@@ -436,7 +438,7 @@ export const ContactPage = ({ onBack, data }) => {
                     {/* Work Email & Phone Number */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
-                        <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+                        <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                           Work Email
                         </label>
                         <input
@@ -445,12 +447,12 @@ export const ContactPage = ({ onBack, data }) => {
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="email@organisation.com"
-                          className="w-full px-4 py-3 rounded-xl border border-white/15 text-sm bg-white/[0.04] text-white placeholder:text-slate-400 focus:bg-white/[0.08] focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-400/20 transition-all"
+                          className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm bg-white text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-[#007791] focus:ring-2 focus:ring-[#007791]/20 transition-all shadow-xs"
                         />
                       </div>
 
                       <div className="space-y-1.5">
-                        <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+                        <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                           Contact Phone (Optional)
                         </label>
                         <input
@@ -458,14 +460,14 @@ export const ContactPage = ({ onBack, data }) => {
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           placeholder="+61 400 000 000"
-                          className="w-full px-4 py-3 rounded-xl border border-white/15 text-sm bg-white/[0.04] text-white placeholder:text-slate-400 focus:bg-white/[0.08] focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-400/20 transition-all"
+                          className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm bg-white text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-[#007791] focus:ring-2 focus:ring-[#007791]/20 transition-all shadow-xs"
                         />
                       </div>
                     </div>
 
                     {/* Message / Strategic Challenge */}
                     <div className="space-y-1.5">
-                      <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                         Tell us about the challenge you are facing or your key objectives
                       </label>
                       <textarea
@@ -474,7 +476,7 @@ export const ContactPage = ({ onBack, data }) => {
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         placeholder="Provide details on your current financial, operational, systems or governance objectives..."
-                        className="w-full px-4 py-3 rounded-xl border border-white/15 text-sm bg-white/[0.04] text-white placeholder:text-slate-400 focus:bg-white/[0.08] focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-400/20 transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm bg-white text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-[#007791] focus:ring-2 focus:ring-[#007791]/20 transition-all shadow-xs"
                       />
                     </div>
 

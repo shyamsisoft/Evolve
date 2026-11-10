@@ -111,6 +111,9 @@ export const AboutPage = ({ onBack, onOpenContact }) => {
           <img
             src={imgUrl("/images/why_experience.jpg")}
             alt="About EVOLVE"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover object-center opacity-30 transform scale-105"
             onError={(e) => {
               const fallback = imgUrl("/images/established_corporate.jpg");
@@ -124,8 +127,7 @@ export const AboutPage = ({ onBack, onOpenContact }) => {
         {/* Ambient Radial Lights */}
         <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#007791]/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#2bb673]/15 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-6 sm:space-y-7">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 w-full space-y-6 sm:space-y-7">
           
           {/* Breadcrumb Navigation */}
           <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs sm:text-sm font-semibold text-slate-300">
@@ -155,44 +157,49 @@ export const AboutPage = ({ onBack, onOpenContact }) => {
             </div>
           </div>
 
-          <div className="space-y-4 max-w-4xl">
+          <div className="space-y-4 w-full">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
               ABOUT EVOLVE
             </h1>
 
             {/* Lead Tagline */}
-            <p className="text-xl sm:text-2xl font-bold text-emerald-400 tracking-tight">
+            <p className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-emerald-300 via-teal-200 to-white bg-clip-text text-transparent tracking-tight">
               Built at the intersection of finance, transformation and technology.
             </p>
 
-            {/* Overview Narrative */}
-            <div className="pt-1 space-y-4 max-w-3xl text-slate-200">
+            {/* Overview Narrative (Growing Entire Width) */}
+            <div className="pt-2 space-y-4 text-slate-200 w-full">
               <p className="text-base sm:text-lg lg:text-xl font-medium leading-relaxed text-slate-100">
                 Evolve was established to bridge a gap we repeatedly saw in organisations.
               </p>
               
-              <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md">
-                <p className="text-base sm:text-lg font-medium text-slate-100 leading-relaxed">
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md">
+                <p className="text-sm sm:text-base font-medium text-slate-100 leading-relaxed">
                   Businesses often have access to accountants, technology specialists and consultants — but the problems they face sit across all three.
                 </p>
               </div>
 
               {/* Connected Chain */}
-              <div className="space-y-2 pt-2 border-l-2 border-emerald-400/60 pl-4 text-sm sm:text-base text-slate-300 font-medium">
+              <div className="space-y-1.5 pt-1 border-l-2 border-emerald-400/60 pl-4 text-xs sm:text-sm text-slate-300 font-medium">
                 <p>Financial decisions depend on good data.</p>
-                <p>Good data depends on effective systems and processes.</p>
-                <p>And transformation only creates value when people actually use the solution and the organisation realises the benefit.</p>
+                <p>Data depends on well-implemented systems.</p>
+                <p>Systems depend on clear processes.</p>
+                <p>And none of it works without capable people.</p>
               </div>
+
+              <p className="text-xs sm:text-sm text-slate-300 font-normal leading-relaxed pt-1">
+                We combine senior finance leadership with hands-on systems, data and transformation capability to deliver practical, long-term improvement.
+              </p>
             </div>
           </div>
 
-          {/* CTA Button */}
+          {/* Immediate Call to Action Button */}
           <div className="pt-2 flex flex-wrap items-center gap-4">
             <PrimaryButton onClick={onOpenContact}>Start a Conversation</PrimaryButton>
 
             <span className="text-xs sm:text-sm text-slate-300 font-medium flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              Independent Senior Perspective & Practical Outcomes
+              Independent Executive Financial Advisory
             </span>
           </div>
 
@@ -203,7 +210,7 @@ export const AboutPage = ({ onBack, onOpenContact }) => {
       {/* 2. CONNECTED DISCIPLINES SECTION                         */}
       {/* ======================================================== */}
       <SectionDivider />
-      <section className="py-20 sm:py-24 bg-[#061a2e] text-white border-b border-white/10 relative overflow-hidden">
+      <section className="py-20 sm:py-24 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
@@ -224,19 +231,19 @@ export const AboutPage = ({ onBack, onOpenContact }) => {
             {/* Right Column: Content */}
             <div className="lg:col-span-6 space-y-6">
               
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-snug">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#061a2e] tracking-tight leading-snug">
                 Evolve brings these disciplines together.
               </h2>
 
-              <div className="p-6 rounded-2xl bg-white/[0.03] backdrop-blur-md border border-white/10">
-                <p className="text-base sm:text-lg lg:text-xl font-medium text-slate-200 leading-relaxed">
+              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-xs">
+                <p className="text-base sm:text-lg lg:text-xl font-medium text-slate-700 leading-relaxed">
                   We work with organisations to understand the problem, create practical solutions and turn those solutions into measurable outcomes.
                 </p>
               </div>
 
               <div className="pt-2">
-                <div className="inline-block p-4 sm:p-5 rounded-2xl bg-white/[0.04] text-white shadow-lg border border-white/10 backdrop-blur-md">
-                  <p className="text-base sm:text-lg font-bold tracking-wide text-emerald-300">
+                <div className="inline-block p-4 sm:p-5 rounded-2xl bg-teal-50 text-[#007791] shadow-sm border border-teal-200">
+                  <p className="text-base sm:text-lg font-bold tracking-wide text-[#007791]">
                     Finance. Transformation. Technology. One connected approach.
                   </p>
                 </div>

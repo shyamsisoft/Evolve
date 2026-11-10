@@ -279,7 +279,7 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
       <SectionDivider />
 
       {/* 2. "BEYOND REPORTING THE NUMBERS" SECTION (Left: Content & Questions, Right: Executive Images) */}
-      <section className="py-20 sm:py-24 bg-[#061a2e] border-b border-white/10 relative overflow-hidden font-['Inter',sans-serif]">
+      <section className="py-20 sm:py-24 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden font-['Inter',sans-serif]">
         
         {/* Soft Radial Glow */}
         <div className="pointer-events-none absolute -top-40 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
@@ -294,13 +294,13 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
               
               {/* Header */}
               <div className="space-y-3 mb-6">
-                <span className="inline-block text-xs font-bold text-teal-300 uppercase tracking-widest bg-white/[0.04] px-3.5 py-1.5 rounded-full border border-teal-500/30 font-['Plus_Jakarta_Sans',sans-serif]">
+                <span className="inline-block text-xs font-bold text-[#007791] uppercase tracking-widest bg-teal-50 px-3.5 py-1.5 rounded-full border border-teal-200 font-['Plus_Jakarta_Sans',sans-serif]">
                   STRATEGIC DIAGNOSTICS
                 </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-tight font-['Plus_Jakarta_Sans',sans-serif]">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#061a2e] tracking-tight leading-tight font-['Plus_Jakarta_Sans',sans-serif]">
                   Beyond reporting the numbers
                 </h2>
-                <p className="text-base sm:text-lg font-semibold text-emerald-300">
+                <p className="text-base sm:text-lg font-semibold text-emerald-700">
                   Effective financial leadership helps answer:
                 </p>
               </div>
@@ -310,22 +310,22 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
                 {beyondQuestions.map((item, idx) => (
                   <div
                     key={idx}
-                    className="bg-white/[0.03] rounded-2xl p-3.5 sm:p-4 border border-white/10 hover:border-emerald-400/50 hover:bg-white/[0.06] shadow-md transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-3.5 group cursor-default backdrop-blur-md"
+                    className="bg-slate-50 rounded-2xl p-3.5 sm:p-4 border border-slate-200 hover:border-emerald-400 hover:bg-white shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-3.5 group cursor-default"
                   >
                     {/* Icon & Number Badge */}
-                    <div className="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/10 group-hover:bg-emerald-500/15 group-hover:border-emerald-500/30 flex items-center justify-center shrink-0 transition-colors shadow-xs">
+                    <div className="w-11 h-11 rounded-xl bg-white border border-slate-200 group-hover:border-emerald-400 flex items-center justify-center shrink-0 transition-colors shadow-xs">
                       {item.icon}
                     </div>
 
                     <div className="space-y-0.5 flex-1 min-w-0">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-bold text-slate-400 group-hover:text-emerald-400 transition-colors uppercase tracking-wider font-mono">
+                        <span className="text-[10px] font-bold text-slate-500 group-hover:text-emerald-700 transition-colors uppercase tracking-wider font-mono">
                           Question {item.num}
                         </span>
                         <span className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-emerald-400 transition-colors" />
                       </div>
 
-                      <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-teal-200 transition-colors leading-snug">
+                      <h3 className="text-sm sm:text-base font-bold text-[#061a2e] group-hover:text-[#007791] transition-colors leading-snug">
                         {item.question}
                       </h3>
                     </div>
@@ -349,6 +349,8 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
                   loop
                   muted={isVideoMuted}
                   playsInline
+                  preload="metadata"
+                  poster={imgUrl("/images/cfo_advisory.webp")}
                   className="w-full h-full object-cover rounded-2xl sm:rounded-3xl opacity-90 group-hover:opacity-100 transition-opacity"
                 >
                   <source src={imgUrl("/videos/gemini_generated_video_a22d2ef6.mp4")} type="video/mp4" />
@@ -497,6 +499,8 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
                           <img
                             src={imgUrl(svc.image)}
                             alt={svc.title}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-75"
                             onError={(e) => {
                               const fallback = imgUrl("/images/cfo_advisory.jpg");
@@ -560,7 +564,7 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
       <SectionDivider />
 
       {/* 4. STRATEGIC EXECUTION: FRACTIONAL CFO SUPPORT & FP&A CAPABILITIES */}
-      <section className="py-20 sm:py-24 bg-[#061a2e] border-b border-white/10 relative overflow-hidden font-['Inter',sans-serif]">
+      <section className="py-20 sm:py-24 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden font-['Inter',sans-serif]">
         
         {/* Soft Radial Ambient Lighting */}
         <div className="pointer-events-none absolute top-10 left-10 w-[500px] h-[500px] bg-teal-500/10 rounded-full blur-3xl" />
@@ -570,16 +574,16 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
           
           {/* Main Section Header */}
           <div className="max-w-3xl space-y-3">
-            <div className="inline-flex items-center gap-2 text-xs font-bold text-teal-300 uppercase tracking-widest bg-white/[0.04] px-3.5 py-1.5 rounded-full border border-teal-500/30 font-['Plus_Jakarta_Sans',sans-serif]">
+            <div className="inline-flex items-center gap-2 text-xs font-bold text-[#007791] uppercase tracking-widest bg-teal-50 px-3.5 py-1.5 rounded-full border border-teal-200 font-['Plus_Jakarta_Sans',sans-serif]">
               <Target className="w-3.5 h-3.5 text-teal-300" />
               <span>STRATEGIC EXECUTION &amp; SPECIALIST CAPABILITY</span>
             </div>
             
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight font-['Plus_Jakarta_Sans',sans-serif]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#061a2e] tracking-tight font-['Plus_Jakarta_Sans',sans-serif]">
               FP&amp;A Capability &amp; Flexible Leadership
             </h2>
             
-            <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
               Tailored high-calibre planning capabilities and senior financial leadership engineered to match your organisation's scale, complexity, and momentum.
             </p>
           </div>
@@ -590,7 +594,7 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
             {/* ======================================================== */}
             {/* LEFT CONTAINER: FP&A Capabilities (lg:col-span-6) */}
             {/* ======================================================== */}
-            <div className="lg:col-span-6 group bg-white/[0.03] rounded-3xl overflow-hidden border border-white/10 hover:border-teal-400/50 shadow-2xl transition-all duration-500 flex flex-col justify-between backdrop-blur-md">
+            <div className="lg:col-span-6 group bg-slate-50/80 rounded-3xl overflow-hidden border border-slate-200 hover:border-teal-400 shadow-md hover:shadow-xl transition-all duration-500 flex flex-col justify-between">
               
               <div>
                 {/* Photo Media Header with Floating Emblem */}
@@ -599,6 +603,8 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
                     <img
                       src={imgUrl("/images/why_transformation.jpg")}
                       alt="FP&A Capabilities"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-75"
                       onError={(e) => {
                         const fallback = imgUrl("/images/finance_transform.jpg");
@@ -633,20 +639,20 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
                   
                   {/* Title & Value Statement */}
                   <div className="space-y-2">
-                    <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-teal-300 transition-colors tracking-tight leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#061a2e] group-hover:text-[#007791] transition-colors tracking-tight leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
                       FP&amp;A Capabilities
                     </h3>
-                    <p className="text-sm font-normal text-slate-300 leading-relaxed">
+                    <p className="text-sm font-normal text-slate-600 leading-relaxed">
                       For established and larger organisations, we provide specialist FP&amp;A capability across:
                     </p>
                   </div>
 
                   {/* Enterprise Capability Matrix Header */}
-                  <div className="flex items-center justify-between px-3.5 py-2 bg-white/[0.04] rounded-xl border border-white/10">
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400 font-['Plus_Jakarta_Sans',sans-serif]">
+                  <div className="flex items-center justify-between px-3.5 py-2 bg-white rounded-xl border border-slate-200 shadow-xs">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-600 font-['Plus_Jakarta_Sans',sans-serif]">
                       Enterprise Capability Matrix
                     </span>
-                    <span className="text-[11px] font-bold text-teal-300 font-mono">
+                    <span className="text-[11px] font-bold text-[#007791] font-mono">
                       Full-Scope FP&amp;A
                     </span>
                   </div>
@@ -656,17 +662,17 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
                     {fpaCapabilities.map((cap, idx) => (
                       <div 
                         key={idx}
-                        className="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-xl bg-white/[0.02] border border-white/10 hover:border-teal-400/40 hover:bg-white/[0.05] transition-all group/item"
+                        className="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200 hover:border-teal-400 hover:bg-slate-50 shadow-xs transition-all group/item"
                       >
-                        <div className="w-8 h-8 rounded-lg bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-300 shrink-0 mt-0.5 group-hover/item:bg-teal-500 group-hover/item:text-slate-950 transition-colors shadow-xs">
+                        <div className="w-8 h-8 rounded-lg bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-[#007791] shrink-0 mt-0.5 group-hover/item:bg-teal-500 group-hover/item:text-slate-950 transition-colors shadow-xs">
                           {cap.icon}
                         </div>
 
                         <div className="min-w-0 flex-1">
-                          <h4 className="text-xs sm:text-[13px] font-bold text-white group-hover/item:text-teal-200 transition-colors leading-tight font-['Plus_Jakarta_Sans',sans-serif]">
+                          <h4 className="text-xs sm:text-[13px] font-bold text-[#061a2e] group-hover/item:text-[#007791] transition-colors leading-tight font-['Plus_Jakarta_Sans',sans-serif]">
                             {cap.name}
                           </h4>
-                          <span className="text-[10px] font-normal text-slate-400 block mt-0.5 leading-tight">
+                          <span className="text-[10px] font-normal text-slate-500 block mt-0.5 leading-tight">
                             {cap.tag}
                           </span>
                         </div>
@@ -685,7 +691,7 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
             {/* ======================================================== */}
             {/* RIGHT CONTAINER: Fractional CFO Support (lg:col-span-6) */}
             {/* ======================================================== */}
-            <div className="lg:col-span-6 group bg-white/[0.03] rounded-3xl overflow-hidden border border-white/10 hover:border-emerald-500/50 shadow-2xl transition-all duration-500 flex flex-col justify-between backdrop-blur-md">
+            <div className="lg:col-span-6 group bg-slate-50/80 rounded-3xl overflow-hidden border border-slate-200 hover:border-emerald-500/50 shadow-md hover:shadow-xl transition-all duration-500 flex flex-col justify-between">
               
               <div>
                 {/* Photo Media Header with Floating Emblem */}
@@ -694,6 +700,8 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
                     <img
                       src={imgUrl("/images/why_flexible.jpg")}
                       alt="Fractional CFO Support"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-75"
                       onError={(e) => {
                         const fallback = imgUrl("/images/cfo_advisory.jpg");
@@ -728,20 +736,20 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
                   
                   {/* Title & Value Statement */}
                   <div className="space-y-2">
-                    <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-emerald-300 transition-colors tracking-tight leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#061a2e] group-hover:text-[#007791] transition-colors tracking-tight leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
                       Fractional CFO Support
                     </h3>
-                    <p className="text-sm font-normal text-slate-300 leading-relaxed">
+                    <p className="text-sm font-normal text-slate-600 leading-relaxed">
                       A fractional CFO provides senior financial leadership without the commitment of a full-time appointment.
                     </p>
                   </div>
 
                   {/* Scenarios Header Bar */}
-                  <div className="flex items-center justify-between px-3.5 py-2 bg-white/[0.04] rounded-xl border border-white/10">
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400 font-['Plus_Jakarta_Sans',sans-serif]">
+                  <div className="flex items-center justify-between px-3.5 py-2 bg-white rounded-xl border border-slate-200 shadow-xs">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-600 font-['Plus_Jakarta_Sans',sans-serif]">
                       This can be valuable when:
                     </span>
-                    <span className="text-[11px] font-bold text-emerald-400 font-mono">
+                    <span className="text-[11px] font-bold text-emerald-700 font-mono">
                       8 Key Scenarios
                     </span>
                   </div>
@@ -751,12 +759,12 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
                     {fractionalScenarios.map((scenario, idx) => (
                       <div 
                         key={idx}
-                        className="flex items-center gap-3 p-2.5 sm:p-3 rounded-xl bg-white/[0.02] border border-white/10 hover:border-emerald-400/40 hover:bg-white/[0.05] transition-all group/item"
+                        className="flex items-center gap-3 p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200 hover:border-emerald-400 hover:bg-slate-50 shadow-xs transition-all group/item"
                       >
                         <span className="w-6 h-6 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 group-hover/item:bg-emerald-500 group-hover/item:text-slate-950 transition-colors shadow-2xs">
                           <Check className="w-3.5 h-3.5 stroke-[3]" />
                         </span>
-                        <span className="text-xs sm:text-sm font-semibold text-slate-200 leading-snug group-hover/item:text-white transition-colors">
+                        <span className="text-xs sm:text-sm font-semibold text-slate-700 leading-snug group-hover/item:text-[#061a2e] transition-colors">
                           {scenario}
                         </span>
                       </div>
@@ -816,6 +824,8 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
                   <img
                     src={imgUrl("/images/why_experience.jpg")}
                     alt="When to consider CFO advisory"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-75"
                     onError={(e) => {
                       const fallback = imgUrl("/images/cfo_advisory.jpg");

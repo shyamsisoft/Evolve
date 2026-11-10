@@ -4,7 +4,7 @@ import { imgUrl } from '../utils/imgUrl';
 
 export const FinanceMoreThanNumbers = ({ data, onSelectWhatWeDoOverview }) => {
   return (
-    <section className="py-14 sm:py-20 lg:py-24 bg-[#061a2e] text-white relative border-b border-white/10 font-['Inter',sans-serif] overflow-hidden">
+    <section className="py-14 sm:py-20 lg:py-24 bg-white text-[#061a2e] relative border-b border-slate-200 font-['Inter',sans-serif] overflow-hidden">
       {/* Soft Radial Ambient Lighting */}
       <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -14,11 +14,11 @@ export const FinanceMoreThanNumbers = ({ data, onSelectWhatWeDoOverview }) => {
           
           {/* Left Column: Text & Narrative */}
           <div className="lg:col-span-6 space-y-5 sm:space-y-6">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-tight font-['Plus_Jakarta_Sans',sans-serif]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#061a2e] tracking-tight leading-tight font-['Plus_Jakarta_Sans',sans-serif]">
               {data.heading}
             </h2>
 
-            <div className="space-y-3 sm:space-y-4 text-sm sm:text-base lg:text-[17px] text-slate-300 leading-relaxed font-normal">
+            <div className="space-y-3 sm:space-y-4 text-sm sm:text-base lg:text-[17px] text-slate-600 leading-relaxed font-normal">
               <p>{data.paragraph1}</p>
               <p>{data.paragraph2}</p>
             </div>
@@ -44,9 +44,9 @@ export const FinanceMoreThanNumbers = ({ data, onSelectWhatWeDoOverview }) => {
 
           {/* Right Column: Photo Card with Floating Callout Badge */}
           <div className="lg:col-span-6 relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl group border border-white/10 bg-slate-950">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl group border border-slate-200 bg-slate-100">
               <img
-                src={data.image || imgUrl("/images/finance_meeting.jpg")}
+                src={imgUrl(data.image || "/images/finance_meeting.jpg")}
                 alt="Executive finance strategy"
                 loading="lazy"
                 decoding="async"
@@ -55,12 +55,12 @@ export const FinanceMoreThanNumbers = ({ data, onSelectWhatWeDoOverview }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e]/60 via-transparent to-transparent"></div>
 
               {/* Floating Top Right Callout Badge */}
-              <div className="absolute top-3 right-3 sm:top-6 sm:right-6 max-w-[210px] sm:max-w-[300px] bg-[#0B2440]/90 backdrop-blur-md border border-white/15 p-3 sm:p-5 rounded-xl sm:rounded-2xl shadow-2xl space-y-1 sm:space-y-2 animate-in fade-in zoom-in-95 duration-500">
+              <div className="absolute top-3 right-3 sm:top-6 sm:right-6 max-w-[210px] sm:max-w-[300px] bg-white/95 backdrop-blur-md border border-slate-200 p-3 sm:p-5 rounded-xl sm:rounded-2xl shadow-2xl space-y-1 sm:space-y-2 animate-in fade-in zoom-in-95 duration-500">
                 <div className="flex items-center space-x-1.5 sm:space-x-2 text-[#2bb673]">
                   <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                   <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-emerald-400 font-mono">Core Impact</span>
                 </div>
-                <p className="text-xs sm:text-base lg:text-lg font-bold text-white leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
+                <p className="text-xs sm:text-base lg:text-lg font-bold text-[#061a2e] leading-snug font-['Plus_Jakarta_Sans',sans-serif]">
                   {data.calloutText}
                 </p>
               </div>
