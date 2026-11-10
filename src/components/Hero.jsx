@@ -53,9 +53,20 @@ export const Hero = ({ data, onOpenContact, onNavigate }) => {
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [visitedSlides, setVisitedSlides] = useState(() => new Set([0, 1]));
   const [touchStartX, setTouchStartX] = useState(null);
   const [touchEndX, setTouchEndX] = useState(null);
   const slideDuration = 5000; // 5s auto slide
+
+  // Lazily include slides as they are navigated or queued up next
+  useEffect(() => {
+    setVisitedSlides((prev) => {
+      const next = new Set(prev);
+      next.add(currentSlide);
+      next.add((currentSlide + 1) % slides.length);
+      return next;
+    });
+  }, [currentSlide, slides.length]);
 
   // Continuous Auto-advance timer
   useEffect(() => {
@@ -127,16 +138,18 @@ export const Hero = ({ data, onOpenContact, onNavigate }) => {
               isActive ? 'opacity-100 z-0' : 'opacity-0 -z-10 pointer-events-none'
             }`}
           >
-            <img
-              src={imgUrl(slide.bgImage || data?.bgImage || "/images/hero_summit.jpg")}
-              alt={slide.title}
-              fetchPriority={idx === 0 ? "high" : "low"}
-              loading={idx === 0 ? "eager" : "lazy"}
-              decoding="async"
-              className={`w-full h-full object-cover object-center transform transition-transform duration-7000 ease-out ${
-                isActive ? 'scale-108' : 'scale-100'
-              }`}
-            />
+            {visitedSlides.has(idx) && (
+              <img
+                src={imgUrl(slide.bgImage || data?.bgImage || "/images/hero_summit.jpg")}
+                alt={slide.title}
+                fetchPriority={idx === 0 ? "high" : "low"}
+                loading={idx === 0 ? "eager" : "lazy"}
+                decoding="async"
+                className={`w-full h-full object-cover object-center transform transition-transform duration-7000 ease-out ${
+                  isActive ? 'scale-108' : 'scale-100'
+                }`}
+              />
+            )}
             {/* Multi-Layer Corporate Gradient Overlays for High Text Contrast */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e]/95 via-[#061a2e]/80 to-[#061a2e]/40 sm:to-transparent/30" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#061a2e] via-transparent to-[#061a2e]/50" />
