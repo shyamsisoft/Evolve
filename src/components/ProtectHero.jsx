@@ -97,7 +97,7 @@ export const ProtectHero = ({ data = {}, onBack, onOpenContact }) => {
         <div className="pt-4 font-['Inter',sans-serif] space-y-5 w-full">
 
           <p className="text-base sm:text-lg lg:text-xl text-slate-200 font-medium leading-relaxed">
-            At EVOLVE TAXATION &amp; ADVISORY, we make managing your tax obligations simpler, easier and less stressful. We provide reliable, affordable and personalised taxation, bookkeeping and advisory services to individuals, sole traders and small businesses.
+            At <span className="font-extrabold bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-300 bg-clip-text text-transparent">EVOLVE TAXATION &amp; ADVISORY</span>, we make managing your tax obligations simpler, easier and less stressful. We provide reliable, affordable and personalised taxation, bookkeeping and advisory services to individuals, sole traders and small businesses.
           </p>
 
           <div className="inline-flex items-baseline gap-3 py-3 px-5 rounded-2xl bg-emerald-500/15 border border-emerald-500/30">

@@ -265,7 +265,7 @@ export const ProtectPage = ({ data = {}, onBack, onOpenContact, onSelectService 
               <p className="text-xs sm:text-sm text-slate-600 font-normal">
                 Professional service. Affordable pricing. Confidence in every return.
               </p>
-              <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#061a2e]">
+              <p className="text-xs sm:text-[13px] font-black uppercase tracking-wider bg-gradient-to-r from-[#007791] via-[#0A7FA8] to-[#2bb673] bg-clip-text text-transparent">
                 EVOLVE TAXATION &amp; ADVISORY
               </p>
             </div>
@@ -298,7 +298,7 @@ export const ProtectPage = ({ data = {}, onBack, onOpenContact, onSelectService 
               CLIENT VALUE COMMITMENT
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-snug">
-              With EVOLVE TAXATION &amp; ADVISORY, You Can Expect:
+              With <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-300 bg-clip-text text-transparent">EVOLVE TAXATION &amp; ADVISORY</span>, You Can Expect:
             </h2>
             <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
               We hold ourselves to rigorous standards of transparency, precision, and service delivery across every individual and commercial engagement.
@@ -339,7 +339,7 @@ export const ProtectPage = ({ data = {}, onBack, onOpenContact, onSelectService 
                   Your Tax Matters. Your Business Matters. Your Future Matters.
                 </p>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Let EVOLVE take the complexity out of your tax and bookkeeping responsibilities, so you can focus on what matters most.
+                  Let <span className="font-extrabold bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">EVOLVE</span> take the complexity out of your tax and bookkeeping responsibilities, so you can focus on what matters most.
                 </p>
               </div>
               <button
