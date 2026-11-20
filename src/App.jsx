@@ -53,8 +53,21 @@ function fixImagePaths(obj) {
 
 export function App() {
   const [initialRoute] = useState(() => parseCurrentRoute());
-  const [activePage, setActivePage] = useState(initialRoute.page);
+  const [adminUser, setAdminUser] = useState(() => {
+    try {
+      const saved = localStorage.getItem('evolve_admin_user');
+      return saved ? JSON.parse(saved) : null;
+    } catch (e) {
+      return null;
+    }
+  });
+
+  const [activePage, setActivePage] = useState(() => {
+    return initialRoute.page === 'admin' ? null : initialRoute.page;
+  });
   const [activeArticleId, setActiveArticleId] = useState(initialRoute.articleId || 'a1');
+  const [isLoginOpen, setIsLoginOpen] = useState(() => initialRoute.page === 'admin' && !adminUser);
+  const [isCMSOpen, setIsCMSOpen] = useState(() => initialRoute.page === 'admin' && !!adminUser);
   const [siteData, setSiteData] = useState(() => {
     const saved = localStorage.getItem('evolve_site_cms_data');
     if (saved) {
@@ -185,7 +198,10 @@ export function App() {
 
   // Seamless URL migration (e.g. if arriving via legacy hash or redirect query)
   useEffect(() => {
-    if (initialRoute.shouldReplaceUrl) {
+    if (initialRoute.page === 'admin' && adminUser) {
+      const cleanUrl = buildRouteUrl(null);
+      window.history.replaceState({ page: null, articleId: null }, '', cleanUrl);
+    } else if (initialRoute.shouldReplaceUrl) {
       const cleanUrl = buildRouteUrl(initialRoute.page, initialRoute.articleId);
       window.history.replaceState({ page: initialRoute.page, articleId: initialRoute.articleId }, '', cleanUrl);
     }
@@ -193,6 +209,21 @@ export function App() {
 
   // Centralized navigation function: updates HTML5 History (clean URL) & sets state
   const navigateTo = (pageId, articleId = null, replace = false) => {
+    if (pageId === 'admin' || pageId === 'login') {
+      const targetUrl = buildRouteUrl('admin');
+      if (replace) {
+        window.history.replaceState({ page: 'admin', articleId: null }, '', targetUrl);
+      } else {
+        window.history.pushState({ page: 'admin', articleId: null }, '', targetUrl);
+      }
+      if (adminUser) {
+        setIsCMSOpen(true);
+      } else {
+        setIsLoginOpen(true);
+      }
+      return;
+    }
+
     const targetUrl = buildRouteUrl(pageId, articleId);
     if (replace) {
       window.history.replaceState({ page: pageId, articleId }, '', targetUrl);
@@ -210,16 +241,27 @@ export function App() {
   useEffect(() => {
     const handlePopState = () => {
       const route = parseCurrentRoute();
-      setActivePage(route.page);
-      if (route.articleId) {
-        setActiveArticleId(route.articleId);
+      if (route.page === 'admin') {
+        if (adminUser) {
+          setIsCMSOpen(true);
+          const cleanUrl = buildRouteUrl(activePage, activeArticleId);
+          window.history.replaceState({ page: activePage, articleId: activeArticleId }, '', cleanUrl);
+        } else {
+          setIsLoginOpen(true);
+        }
+      } else {
+        setIsLoginOpen(false);
+        setActivePage(route.page);
+        if (route.articleId) {
+          setActiveArticleId(route.articleId);
+        }
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
+  }, [activePage, activeArticleId, adminUser]);
 
   // Purge any accidental hash navigation (e.g. #what-we-do) and maintain clean paths
   useEffect(() => {
@@ -240,17 +282,17 @@ export function App() {
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, [activePage, activeArticleId]);
+
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [isCMSOpen, setIsCMSOpen] = useState(false);
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [adminUser, setAdminUser] = useState(() => {
-    try {
-      const saved = localStorage.getItem('evolve_admin_user');
-      return saved ? JSON.parse(saved) : null;
-    } catch (e) {
-      return null;
+
+  const handleCloseLogin = () => {
+    setIsLoginOpen(false);
+    const route = parseCurrentRoute();
+    if (route.page === 'admin') {
+      const returnUrl = buildRouteUrl(activePage, activeArticleId);
+      window.history.replaceState({ page: activePage, articleId: activeArticleId }, '', returnUrl);
     }
-  });
+  };
 
   const handleLoginSuccess = (user) => {
     setAdminUser(user);
@@ -258,7 +300,13 @@ export function App() {
     if (user?.sessionToken) {
       localStorage.setItem('evolve_session_token', user.sessionToken);
     }
+    setIsLoginOpen(false);
     setIsCMSOpen(true);
+    const route = parseCurrentRoute();
+    if (route.page === 'admin') {
+      const returnUrl = buildRouteUrl(activePage, activeArticleId);
+      window.history.replaceState({ page: activePage, articleId: activeArticleId }, '', returnUrl);
+    }
   };
 
   const handleLogout = async () => {
@@ -509,10 +557,10 @@ export function App() {
       />
 
       {/* Admin Portal Login Modal */}
-      <ErrorBoundary onReset={() => setIsLoginOpen(false)}>
+      <ErrorBoundary onReset={handleCloseLogin}>
         <AdminLoginModal
           isOpen={isLoginOpen}
-          onClose={() => setIsLoginOpen(false)}
+          onClose={handleCloseLogin}
           onLoginSuccess={handleLoginSuccess}
         />
       </ErrorBoundary>

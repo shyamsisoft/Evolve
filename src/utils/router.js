@@ -45,6 +45,8 @@ const ROUTE_ALIASES = {
   'about': 'about',
   'contact': 'contact',
   'insights': 'insights',
+  'admin': 'admin',
+  'login': 'admin',
 };
 
 export function parseCurrentRoute() {
@@ -118,6 +120,10 @@ export function buildRouteUrl(pageId, articleId = null) {
 
   if (pageId === 'insight-detail') {
     return `${base}/insights/${articleId || 'a1'}`;
+  }
+
+  if (pageId === 'admin' || pageId === 'login') {
+    return `${base}/admin`;
   }
 
   // Canonical paths for service & audience pillars

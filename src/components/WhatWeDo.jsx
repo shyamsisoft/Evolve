@@ -14,12 +14,12 @@ export const WhatWeDo = ({ data, onSelectService }) => {
     }));
   };
   return (
-    <section id="what-we-do" className="py-16 sm:py-24 bg-white text-[#061a2e] relative overflow-hidden border-b border-slate-200 font-['Inter',sans-serif]">
+    <section id="what-we-do" className="py-10 sm:py-14 bg-white text-[#061a2e] relative overflow-hidden border-b border-slate-200 font-['Inter',sans-serif]">
       {/* Background Decorative Lighting */}
       <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#007791]/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-[#2bb673]/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         {/* Section Header */}
         <div className="mb-14">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#061a2e] mb-3">

@@ -38,7 +38,7 @@
 .font-outfit { font-family: 'Outfit', sans-serif; }
 .font-sora { font-family: 'Sora', sans-serif; }
 
-/* Brand Theme Variables */
+/* Brand Theme Variables & shadcn/ui Theme Tokens */
 :root {
   --color-navy: #061a2e;
   --color-navy-light: #0d2847;
@@ -48,6 +48,54 @@
   --color-emerald-light: #34d399;
   --color-bg-light: #f0f5fa;
   --color-card-bg: #ffffff;
+
+  /* shadcn/ui mapped to EVOLVE Executive Palette */
+  --background: #ffffff;
+  --foreground: #061a2e;
+  --card: #ffffff;
+  --card-foreground: #061a2e;
+  --popover: #ffffff;
+  --popover-foreground: #061a2e;
+  --primary: #061a2e;
+  --primary-foreground: #ffffff;
+  --secondary: #f0f5fa;
+  --secondary-foreground: #061a2e;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #2bb673;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #2bb673;
+  --radius: 0.5rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 /* Custom Gradients */

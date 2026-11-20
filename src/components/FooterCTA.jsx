@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrandLogo } from './BrandLogo';
-import { Lock, LogOut, Settings } from 'lucide-react';
+import { Settings } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 
 export const FooterCTA = ({ ctaData, footerData, socialLinks, adminUser, onOpenLogin, onToggleCMS, onLogout, onOpenContact, onGoHome, onNavigate }) => {
   return (
     <>
       {/* Pre-footer CTA Banner */}
-      <section className="relative py-14 sm:py-20 bg-[#061a2e] text-white overflow-hidden border-b border-slate-800">
+      <section className="relative py-10 sm:py-14 bg-[#061a2e] text-white overflow-hidden border-b border-slate-800">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 opacity-25 pointer-events-none">
           <img
@@ -20,7 +20,7 @@ export const FooterCTA = ({ ctaData, footerData, socialLinks, adminUser, onOpenL
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/90 to-[#007791]/40"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Title & Tag */}
@@ -56,7 +56,7 @@ export const FooterCTA = ({ ctaData, footerData, socialLinks, adminUser, onOpenL
 
       {/* Main Footer */}
       <footer id="contact" className="bg-[#04111f] text-white py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
           
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-12 border-b border-slate-800">
             {/* Logo */}
@@ -125,33 +125,26 @@ export const FooterCTA = ({ ctaData, footerData, socialLinks, adminUser, onOpenL
               <button onClick={() => onNavigate?.('contact')} className="hover:text-gray-200 transition-colors cursor-pointer">Privacy Policy</button>
               <span>|</span>
               <button onClick={() => onNavigate?.('contact')} className="hover:text-gray-200 transition-colors cursor-pointer">Terms</button>
-              <span>|</span>
-              {adminUser ? (
-                <div className="inline-flex items-center space-x-2.5">
-                  <button
-                    onClick={onToggleCMS}
-                    className="text-emerald-400 hover:text-emerald-300 font-bold flex items-center space-x-1 transition-colors cursor-pointer"
-                  >
-                    <Settings className="w-3.5 h-3.5" />
-                    <span>Settings: Edit Site CMS</span>
-                  </button>
-                  <span>&bull;</span>
-                  <button
-                    onClick={onLogout}
-                    className="text-slate-400 hover:text-rose-400 font-semibold transition-colors cursor-pointer"
-                  >
-                    Logout ({adminUser.name})
-                  </button>
-                </div>
-              ) : (
-                <button
-                  onClick={onOpenLogin}
-                  className="hover:text-gray-200 transition-colors flex items-center space-x-1 cursor-pointer text-slate-500 hover:text-slate-300"
-                  title="Admin Portal Login"
-                >
-                  <Lock className="w-3 h-3" />
-                  <span>Admin Portal</span>
-                </button>
+              {adminUser && (
+                <>
+                  <span>|</span>
+                  <div className="inline-flex items-center space-x-2.5">
+                    <button
+                      onClick={onToggleCMS}
+                      className="text-emerald-400 hover:text-emerald-300 font-bold flex items-center space-x-1 transition-colors cursor-pointer"
+                    >
+                      <Settings className="w-3.5 h-3.5" />
+                      <span>Settings: Edit Site CMS</span>
+                    </button>
+                    <span>&bull;</span>
+                    <button
+                      onClick={onLogout}
+                      className="text-slate-400 hover:text-rose-400 font-semibold transition-colors cursor-pointer"
+                    >
+                      Logout ({adminUser.name})
+                    </button>
+                  </div>
+                </>
               )}
             </div>
           </div>

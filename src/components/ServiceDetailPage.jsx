@@ -29,10 +29,10 @@ export const ServiceDetailPage = ({ serviceId, pageData, onBack, onOpenContact, 
   }, [serviceId]);
 
   return (
-    <div className="pt-24 pb-20 bg-[#f7f9fc] animate-in fade-in duration-300">
+    <div className="pt-16 sm:pt-18 pb-10 bg-[#f7f9fc] animate-in fade-in duration-300">
       
       {/* 1. EXECUTIVE CORPORATE HERO BANNER */}
-      <section className="relative min-h-[60vh] flex items-center bg-[#061a2e] text-white overflow-hidden py-20 border-b border-slate-800">
+      <section className="relative bg-[#061a2e] text-white overflow-hidden pt-6 sm:pt-8 pb-8 sm:pb-10 border-b border-slate-800">
         <div className="absolute inset-0 z-0">
           <img
             src={imgUrl(service.bgImage)}
@@ -49,7 +49,7 @@ export const ServiceDetailPage = ({ serviceId, pageData, onBack, onOpenContact, 
         {/* Decorative Financial Grid & Lighting */}
         <div className="absolute inset-0 bg-[radial-gradient(#007791_1px,transparent_1px)] [background-size:24px_24px] opacity-15 pointer-events-none"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-7">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 w-full space-y-7">
           
           {/* Breadcrumbs */}
           <div className="flex items-center space-x-3 text-xs sm:text-sm font-bold text-gray-300">
@@ -100,13 +100,13 @@ export const ServiceDetailPage = ({ serviceId, pageData, onBack, onOpenContact, 
       </section>
 
       {/* 3. EXECUTIVE PROBLEM SOLVING & CHALLENGES — VISUAL FRICTION VS SOLUTION SUITE */}
-      <section className="py-20 bg-gradient-to-b from-[#f8fafc] via-white to-[#f0f5fa] border-t border-slate-200/80 relative overflow-hidden">
+      <section className="py-10 sm:py-14 bg-gradient-to-b from-[#f8fafc] via-white to-[#f0f5fa] border-t border-slate-200/80 relative overflow-hidden">
         
         {/* Ambient Subtle Background Glow */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-rose-500/5 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#2bb673]/5 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-12">
           
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -229,8 +229,8 @@ export const ServiceDetailPage = ({ serviceId, pageData, onBack, onOpenContact, 
       </section>
 
       {/* 4. FINANCIAL CAPABILITY MODULES WITH PHOTO HEADERS */}
-      <section className="py-20 bg-[#f0f5fa] border-y border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section className="py-10 sm:py-14 bg-[#f0f5fa] border-y border-slate-200/80">
+        <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-12">
           
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <span className="text-xs font-black text-[#2bb673] uppercase tracking-widest">
@@ -297,11 +297,11 @@ export const ServiceDetailPage = ({ serviceId, pageData, onBack, onOpenContact, 
       </section>
 
       {/* 5. METHODOLOGY ROADMAP — CIRCULAR EXECUTIVE DESIGN */}
-      <section className="py-24 bg-gradient-to-b from-[#f8fafc] via-white to-[#f0f5fa] border-t border-slate-200/80 relative overflow-hidden">
+      <section className="py-10 sm:py-14 bg-gradient-to-b from-[#f8fafc] via-white to-[#f0f5fa] border-t border-slate-200/80 relative overflow-hidden">
         {/* Subtle Background Radial Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-r from-[#007791]/5 via-[#2bb673]/5 to-[#061a2e]/5 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-16">
           
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto space-y-3">
@@ -423,12 +423,12 @@ export const ServiceDetailPage = ({ serviceId, pageData, onBack, onOpenContact, 
       </section>
 
       {/* 6. PILLAR SWITCHER BAR */}
-      <section className="py-20 bg-[#041220] text-white relative overflow-hidden">
+      <section className="py-10 sm:py-14 bg-[#041220] text-white relative overflow-hidden">
         {/* Subtle Background Glow Elements */}
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#007791]/10 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#2bb673]/10 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between border-b border-slate-800/80 pb-6 gap-4">
             <div>
               <div className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-[#2bb673] mb-1">

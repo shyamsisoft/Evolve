@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrandLogo, PillarIcon } from './BrandLogo';
-import { Menu, X, ChevronDown, Sliders, Lock, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown, Sliders, ArrowRight } from 'lucide-react';
 import { imgUrl } from '../utils/imgUrl';
 
 export const Header = ({
@@ -99,7 +99,7 @@ export const Header = ({
       {/* Top accent line — 2px teal/emerald gradient */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#007791] via-[#2bb673] to-[#007791] opacity-90 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         <div className="flex items-center justify-between gap-4">
 
           {/* ── Brand Logo (Light theme logo for white header) ── */}
@@ -321,7 +321,7 @@ export const Header = ({
           </div>
 
           {/* Admin controls */}
-          {adminUser ? (
+          {adminUser && (
             <div className="px-4 pb-4 border-t border-slate-200 pt-3 flex items-center justify-between">
               <button
                 onClick={() => { setMobileMenuOpen(false); onToggleCMS(); }}
@@ -335,16 +335,6 @@ export const Header = ({
                 className="text-xs font-semibold text-rose-600 py-1 cursor-pointer"
               >
                 Logout ({adminUser.name})
-              </button>
-            </div>
-          ) : (
-            <div className="px-4 pb-4 border-t border-slate-200 pt-3">
-              <button
-                onClick={() => { setMobileMenuOpen(false); onOpenLogin(); }}
-                className="text-xs font-semibold text-slate-500 hover:text-slate-800 flex items-center gap-1.5 py-1 cursor-pointer transition-colors"
-              >
-                <Lock className="w-3 h-3" />
-                <span>Admin Portal</span>
               </button>
             </div>
           )}

@@ -98,13 +98,13 @@ export default function FinanceTransformationServicesGrid({
   return (
     <section 
       id="finance-transformation-services"
-      className="py-20 sm:py-28 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden scroll-mt-28 font-['Plus_Jakarta_Sans',sans-serif]"
+      className="py-10 sm:py-14 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden scroll-mt-28 font-['Plus_Jakarta_Sans',sans-serif]"
     >
       {/* Refined Ambient Glows */}
       <div className="absolute top-1/4 right-0 w-[550px] h-[550px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-[450px] h-[450px] bg-teal-500/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         
         {/* Section Header */}
         <div className="space-y-3 mb-12 sm:mb-16">

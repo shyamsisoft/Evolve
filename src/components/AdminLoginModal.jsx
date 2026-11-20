@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, ShieldCheck, UserCheck, AlertCircle, KeyRound, Mail, ArrowRight, Eye, EyeOff } from 'lucide-react';
+import { X, ShieldCheck, AlertCircle, KeyRound, Mail, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import { DUMMY_ADMIN_USERS } from '../data/dummyAdminUsers';
 
 export const AdminLoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
@@ -40,15 +40,9 @@ export const AdminLoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
         if (onClose) onClose();
       } else {
         setIsLoading(false);
-        setError('Invalid credentials. Please click one of the demo admin accounts below.');
+        setError('Invalid administrator credentials. Please check your username and password.');
       }
     }, 250);
-  };
-
-  const handleQuickFill = (user) => {
-    setIdentifier(user.email);
-    setPassword(user.password);
-    setError('');
   };
 
   return (
@@ -146,39 +140,6 @@ export const AdminLoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
-
-          {/* Quick Click-to-Fill Credentials */}
-          <div className="mt-4 pt-4 border-t border-white/10 space-y-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
-              Quick Click-to-Fill Credentials
-            </span>
-
-            <div className="space-y-1.5">
-              {DUMMY_ADMIN_USERS.map((user, idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => handleQuickFill(user)}
-                  className="w-full text-left p-2.5 rounded-xl border border-white/10 bg-white/[0.03] hover:border-emerald-500/50 hover:bg-white/[0.06] transition-all flex items-center justify-between group cursor-pointer"
-                >
-                  <div>
-                    <div className="text-xs font-bold text-white flex items-center space-x-1.5">
-                      <UserCheck className="w-3.5 h-3.5 text-teal-400" />
-                      <span>{user.name}</span>
-                      <span className="text-[10px] font-normal text-slate-400">({user.role})</span>
-                    </div>
-                    <div className="text-[11px] text-slate-400 mt-0.5 font-mono">
-                      {user.email} &bull; pass: <span className="text-teal-300 font-semibold">{user.password}</span>
-                    </div>
-                  </div>
-                  <span className="text-xs text-emerald-400 font-bold opacity-0 group-hover:opacity-100 transition-opacity">
-                    Fill &rarr;
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-
         </div>
 
       </div>

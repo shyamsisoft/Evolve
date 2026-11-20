@@ -4,12 +4,12 @@ import { imgUrl } from '../utils/imgUrl';
 
 export const FinanceMoreThanNumbers = ({ data, onSelectWhatWeDoOverview }) => {
   return (
-    <section className="py-14 sm:py-20 lg:py-24 bg-white text-[#061a2e] relative border-b border-slate-200 font-['Inter',sans-serif] overflow-hidden">
+    <section className="py-10 sm:py-14 lg:py-16 bg-white text-[#061a2e] relative border-b border-slate-200 font-['Inter',sans-serif] overflow-hidden">
       {/* Soft Radial Ambient Lighting */}
       <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
           
           {/* Left Column: Text & Narrative */}

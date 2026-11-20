@@ -89,12 +89,12 @@ export const ApproachWhyUs = ({ data, onOpenContact }) => {
       {/* SECTION 1: OUR APPROACH (INTERACTIVE TABBED METHODOLOGY & DEEP DIVE) */}
       <section 
         id="our-approach" 
-        className="relative py-20 bg-white text-[#061a2e] border-b border-slate-200 overflow-hidden font-['Inter',sans-serif]"
+        className="relative py-10 sm:py-14 bg-white text-[#061a2e] border-b border-slate-200 overflow-hidden font-['Inter',sans-serif]"
       >
         {/* Soft Radial Ambient Lighting */}
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
           
           {/* Header */}
           <div className="mb-12 text-center sm:text-left">
@@ -342,8 +342,8 @@ export const ApproachWhyUs = ({ data, onOpenContact }) => {
       <SectionDivider />
 
       {/* SECTION 2: WHY US? */}
-      <section id="why-us" className="py-20 sm:py-28 bg-[#061a2e] border-b border-white/10 text-white font-['Inter',sans-serif]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="why-us" className="py-10 sm:py-14 bg-[#061a2e] border-b border-white/10 text-white font-['Inter',sans-serif]">
+        <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
           {/* Header */}
           <div className="mb-12 text-center sm:text-left">
             <span className="inline-block text-xs font-bold text-emerald-400 uppercase tracking-widest bg-white/[0.04] px-3.5 py-1.5 rounded-full border border-emerald-500/30 mb-3 font-['Plus_Jakarta_Sans',sans-serif]">

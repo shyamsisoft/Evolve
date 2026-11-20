@@ -18,12 +18,12 @@ export const WhoWeHelp = ({ data, onSelectAudience }) => {
   };
 
   return (
-    <section id="who-we-help" className="py-16 sm:py-24 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden font-['Inter',sans-serif]">
+    <section id="who-we-help" className="py-10 sm:py-14 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden font-['Inter',sans-serif]">
       {/* Background Subtle Ambient Lighting */}
       <div className="absolute top-1/2 -left-40 w-96 h-96 bg-[#007791]/8 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 -right-40 w-96 h-96 bg-[#2bb673]/8 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         
         {/* Header Row */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12">

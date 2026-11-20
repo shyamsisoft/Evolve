@@ -41,16 +41,16 @@ export const WhoWeHelpDetailPage = ({ audienceId, data, onBack, onOpenContact, o
   ];
 
   return (
-    <div className="pt-24 pb-20 animate-in fade-in duration-300">
+    <div className="pt-16 sm:pt-18 pb-10 animate-in fade-in duration-300">
       
       {/* VISUAL HERO BANNER */}
-      <section className="relative bg-[#061a2e] text-white py-16 overflow-hidden">
+      <section className="relative bg-[#061a2e] text-white py-8 sm:py-10 overflow-hidden">
         <div className="absolute inset-0 opacity-35">
           <img src={imgUrl(audience.bgImage)} alt={audience.title} loading="eager" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/90 to-[#007791]/40"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-4">
           <div className="flex items-center space-x-3 text-xs sm:text-sm font-bold text-gray-300">
             <button onClick={onBack} className="inline-flex items-center space-x-1.5 text-emerald-400 hover:text-white transition-colors">
               <ArrowLeft className="w-4 h-4" />
@@ -85,13 +85,13 @@ export const WhoWeHelpDetailPage = ({ audienceId, data, onBack, onOpenContact, o
       </section>
 
       {/* VISUAL SECTOR CAPABILITY & FRICTION SHOWCASE */}
-      <section className="py-24 bg-gradient-to-b from-[#f8fafc] via-white to-[#f0f5fa] border-t border-slate-200/80 relative overflow-hidden">
+      <section className="py-10 sm:py-14 bg-gradient-to-b from-[#f8fafc] via-white to-[#f0f5fa] border-t border-slate-200/80 relative overflow-hidden">
         
         {/* Subtle Ambient Background Glow */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-rose-500/5 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#2bb673]/5 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-16">
           
           {/* Section Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -225,12 +225,12 @@ export const WhoWeHelpDetailPage = ({ audienceId, data, onBack, onOpenContact, o
       </section>
 
       {/* REDESIGNED EXECUTIVE EXPLORE OTHER SECTORS SECTION */}
-      <section className="py-20 bg-[#041220] text-white relative overflow-hidden">
+      <section className="py-10 sm:py-14 bg-[#041220] text-white relative overflow-hidden">
         {/* Subtle Background Glow Elements */}
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#007791]/10 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#2bb673]/10 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-10">
           
           {/* Section Header */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-slate-800/80 pb-6 gap-4">

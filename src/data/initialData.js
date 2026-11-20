@@ -76,7 +76,7 @@ export const initialSiteData = {
     heading: "From numbers to better decisions",
     subtitle: "Financial information should do more than describe the past. It should help you understand where you are today, where you are heading and what decisions need to be made. Our role is to help turn financial information into practical insight — and insight into action.",
     exploreText: "Explore Insights",
-    characterImage: "/images/character_advisor.png?v=4",
+    characterImage: "/images/character_advisor.png?v=clean_alpha",
     bgImage: "/images/finance_transform.jpg",
     steps: [
       {

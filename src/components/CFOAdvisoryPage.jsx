@@ -269,7 +269,7 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
   ];
 
   return (
-    <div className="pt-20 sm:pt-24 pb-0 bg-[#061a2e] text-white font-['Inter',sans-serif] animate-in fade-in duration-300">
+    <div className="pt-16 sm:pt-18 pb-0 bg-[#061a2e] text-white font-['Inter',sans-serif] animate-in fade-in duration-300">
       
       {/* 1. HERO SECTION (EXECUTIVE B2B HERO) */}
       <LeadHero data={data?.hero} onBack={onBack} onOpenContact={onOpenContact} />
@@ -279,13 +279,13 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
       <SectionDivider />
 
       {/* 2. "BEYOND REPORTING THE NUMBERS" SECTION (Left: Content & Questions, Right: Executive Images) */}
-      <section className="py-20 sm:py-24 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden font-['Inter',sans-serif]">
+      <section className="py-10 sm:py-14 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden font-['Inter',sans-serif]">
         
         {/* Soft Radial Glow */}
         <div className="pointer-events-none absolute -top-40 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
         <div className="pointer-events-none absolute -bottom-40 left-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
             
@@ -402,13 +402,13 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
       <SectionDivider />
 
       {/* 3. CFO ADVISORY SERVICES */}
-      <section className="py-20 sm:py-24 bg-[#061a2e] border-b border-white/10 relative overflow-hidden font-['Inter',sans-serif]">
+      <section className="py-10 sm:py-14 bg-[#061a2e] border-b border-white/10 relative overflow-hidden font-['Inter',sans-serif]">
         
         {/* Soft Radial Ambient Lighting */}
         <div className="pointer-events-none absolute -top-40 right-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-3xl" />
         <div className="pointer-events-none absolute bottom-0 -left-20 w-[450px] h-[450px] bg-teal-500/10 rounded-full blur-3xl" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
+        <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-12 relative z-10">
           
           {/* Main Section Header with Brand Alignment */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-white/10 pb-8">
@@ -564,13 +564,13 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
       <SectionDivider />
 
       {/* 4. STRATEGIC EXECUTION: FRACTIONAL CFO SUPPORT & FP&A CAPABILITIES */}
-      <section className="py-20 sm:py-24 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden font-['Inter',sans-serif]">
+      <section className="py-10 sm:py-14 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden font-['Inter',sans-serif]">
         
         {/* Soft Radial Ambient Lighting */}
         <div className="pointer-events-none absolute top-10 left-10 w-[500px] h-[500px] bg-teal-500/10 rounded-full blur-3xl" />
         <div className="pointer-events-none absolute bottom-10 right-10 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-3xl" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
+        <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-12 relative z-10">
           
           {/* Main Section Header */}
           <div className="max-w-3xl space-y-3">
@@ -788,12 +788,12 @@ export const CFOAdvisoryPage = ({ data = {}, onBack, onOpenContact, onSelectServ
       <SectionDivider />
 
       {/* 5. "WHEN SHOULD YOU CONSIDER CFO ADVISORY?" */}
-      <section className="py-20 sm:py-24 bg-[#061a2e] border-b border-white/10 relative overflow-hidden font-['Inter',sans-serif]">
+      <section className="py-10 sm:py-14 bg-[#061a2e] border-b border-white/10 relative overflow-hidden font-['Inter',sans-serif]">
         {/* Soft Radial Ambient Lighting */}
         <div className="absolute top-1/4 right-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 left-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             

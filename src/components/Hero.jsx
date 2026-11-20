@@ -123,7 +123,7 @@ export const Hero = ({ data, onOpenContact, onNavigate }) => {
   return (
     <section 
       id="home" 
-      className="relative min-h-[680px] sm:min-h-[760px] lg:min-h-screen flex flex-col justify-between pt-28 sm:pt-32 lg:pt-36 pb-6 sm:pb-8 overflow-hidden select-none bg-[#061a2e]"
+      className="relative min-h-[640px] sm:min-h-[700px] lg:h-screen lg:min-h-[760px] xl:min-h-[820px] flex flex-col justify-between pt-20 sm:pt-22 lg:pt-24 pb-4 sm:pb-6 overflow-hidden select-none bg-[#061a2e]"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -158,8 +158,8 @@ export const Hero = ({ data, onOpenContact, onNavigate }) => {
       })}
 
       {/* Hero Content Area */}
-      <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 w-full my-auto py-8 sm:py-12">
-        <div className="text-white space-y-4 sm:space-y-6 lg:space-y-7">
+      <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 w-full my-auto py-4 sm:py-6 lg:py-8">
+        <div className="text-white space-y-3 sm:space-y-4 lg:space-y-5">
           
           {/* Animated Subhead Tag / Badge */}
           <div 
@@ -170,21 +170,24 @@ export const Hero = ({ data, onOpenContact, onNavigate }) => {
             <span>{activeSlideData.badge}</span>
           </div>
 
-          {/* Animated Main Headline - Scaled for Narrow Viewports */}
-          <h1 
-            key={`title-${currentSlide}`}
-            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.18] sm:leading-[1.12] text-white animate-in fade-in slide-in-from-bottom-3 duration-600"
-          >
-            {activeSlideData.title}
-          </h1>
+          {/* Stable Text Frame to prevent layout jumps across slides */}
+          <div className="min-h-[140px] sm:min-h-[160px] md:min-h-[180px] lg:min-h-[200px] flex flex-col justify-start space-y-2 sm:space-y-3">
+            {/* Animated Main Headline - Scaled for Narrow Viewports */}
+            <h1 
+              key={`title-${currentSlide}`}
+              className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.15] sm:leading-[1.1] text-white animate-in fade-in slide-in-from-bottom-3 duration-600"
+            >
+              {activeSlideData.title}
+            </h1>
 
-          {/* Animated Subtext */}
-          <p 
-            key={`sub-${currentSlide}`}
-            className="text-base sm:text-lg lg:text-2xl text-slate-100 font-normal leading-relaxed max-w-5xl xl:max-w-6xl animate-in fade-in slide-in-from-bottom-4 duration-700"
-          >
-            {activeSlideData.subtitle}
-          </p>
+            {/* Animated Subtext */}
+            <p 
+              key={`sub-${currentSlide}`}
+              className="text-base sm:text-lg lg:text-xl xl:text-2xl text-slate-100 font-normal leading-relaxed max-w-4xl xl:max-w-5xl animate-in fade-in slide-in-from-bottom-4 duration-700"
+            >
+              {activeSlideData.subtitle}
+            </p>
+          </div>
 
           {/* Action CTAs */}
           <div 
@@ -212,27 +215,28 @@ export const Hero = ({ data, onOpenContact, onNavigate }) => {
         </div>
       </div>
 
-      {/* Slide Navigation Dots / Indicators */}
-      {slides.length > 1 && (
-        <div className="relative z-20 flex items-center justify-center gap-2 pb-2">
-          {slides.map((slide, idx) => (
-            <button
-              key={slide.id || idx}
-              type="button"
-              onClick={() => setCurrentSlide(idx)}
-              className={`transition-all duration-300 rounded-full cursor-pointer ${
-                idx === currentSlide
-                  ? 'w-8 h-2 bg-gradient-to-r from-[#007791] via-[#18B0A6] to-[#2bb673]'
-                  : 'w-2 h-2 bg-white/35 hover:bg-white/60'
-              }`}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
-        </div>
-      )}
+      {/* Bottom Area: Slide Navigation Dots + 4-Pillar Executive Quick-Bar Docked at Bottom */}
+      <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 w-full pb-2 sm:pb-3">
+        {/* Slide Navigation Dots / Indicators */}
+        {slides.length > 1 && (
+          <div className="flex items-center justify-center gap-2 pb-2.5 sm:pb-3.5">
+            {slides.map((slide, idx) => (
+              <button
+                key={slide.id || idx}
+                type="button"
+                onClick={() => setCurrentSlide(idx)}
+                className={`transition-all duration-300 rounded-full cursor-pointer ${
+                  idx === currentSlide
+                    ? 'w-8 h-2 bg-gradient-to-r from-[#007791] via-[#18B0A6] to-[#2bb673]'
+                    : 'w-2 h-2 bg-white/35 hover:bg-white/60'
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+        )}
 
-      {/* 4-Pillar Executive Quick-Bar Docked at Bottom */}
-      <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 w-full pb-3 sm:pb-5">
+        {/* 4-Pillar Executive Quick-Bar */}
         <div className="bg-[#061a2e]/85 backdrop-blur-md p-2.5 sm:p-3 rounded-2xl border border-white/15 shadow-2xl">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
             {pillars.map((pillar) => (

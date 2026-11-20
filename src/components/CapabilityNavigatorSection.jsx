@@ -71,7 +71,7 @@ export const CapabilityNavigatorSection = ({
     <section aria-labelledby="pillar-cta-heading" className="bg-[#061a2e] text-white">
       <SectionDivider />
       {/* Call to action */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 grid lg:grid-cols-12 gap-8 items-end">
+      <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 py-10 sm:py-12 grid lg:grid-cols-12 gap-6 sm:gap-8 items-end">
         <div className="lg:col-span-8 space-y-3">
           <h2 id="pillar-cta-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-snug">
             {headline}
@@ -87,7 +87,7 @@ export const CapabilityNavigatorSection = ({
 
       {/* Pillar navigator */}
       <SectionDivider />
-      <nav aria-label="What We Do pillars" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-14 space-y-6">
+      <nav aria-label="What We Do pillars" className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 py-8 sm:py-10 space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <h3 className="text-xs font-semibold tracking-wider uppercase text-slate-400">
             {currentPillar === 'overview' ? 'Explore Our 4 Capability Pillars' : 'Explore Other Capability Pillars'}

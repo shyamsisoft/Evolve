@@ -33,7 +33,7 @@ export const ProcessFlow = ({ data, onNavigate }) => {
   ];
 
   return (
-    <section className="relative py-12 sm:py-20 lg:py-24 bg-[#061a2e] text-white border-b border-white/10 overflow-hidden select-none">
+    <section className="relative py-10 sm:py-14 lg:py-16 bg-[#061a2e] text-white border-b border-white/10 overflow-hidden select-none">
       
       {/* Background Corporate Image with Atmospheric Depth Overlays */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -65,7 +65,7 @@ export const ProcessFlow = ({ data, onNavigate }) => {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         
         {/* Main Grid: Left Executive Character & Right Heading + 3D Perspective Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
@@ -94,7 +94,7 @@ export const ProcessFlow = ({ data, onNavigate }) => {
 
               {/* Executive Advisor Image - Balanced, Sharp Executive Scale */}
               <img
-                src={imgUrl((data?.characterImage ? data.characterImage.replace(/\?v=\d+/, '') : '/images/character_advisor.png') + '?v=4')}
+                src={imgUrl((data?.characterImage ? data.characterImage.replace(/\?v=[^&]+/, '') : '/images/character_advisor.png') + '?v=clean_alpha')}
                 alt="Corporate Financial Advisor"
                 loading="lazy"
                 decoding="async"

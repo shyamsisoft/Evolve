@@ -109,12 +109,12 @@ export const NotForProfitPage = ({ data = {}, onBack, onOpenContact, onSelectAud
     : defaultKeyQuestions;
 
   return (
-    <div className="pt-20 sm:pt-24 pb-20 bg-[#061a2e] text-white font-['Inter',sans-serif] selection:bg-[#18B0A6] selection:text-[#061a2e] animate-in fade-in duration-300">
+    <div className="pt-16 sm:pt-18 pb-10 bg-[#061a2e] text-white font-['Inter',sans-serif] selection:bg-[#18B0A6] selection:text-[#061a2e] animate-in fade-in duration-300">
 
       {/* ======================================================== */}
       {/* 1. HERO SECTION (EXACT DESIGN MATCH)                     */}
       {/* ======================================================== */}
-      <section className="relative min-h-[64vh] flex items-center bg-[#061a2e] text-white overflow-hidden py-16 sm:py-20 lg:py-24 border-b border-white/10">
+      <section className="relative bg-[#061a2e] text-white overflow-hidden pt-6 sm:pt-8 pb-8 sm:pb-10 border-b border-white/10">
         
         {/* Background Artwork with Brand Gradient Overlay */}
         <div className="absolute inset-0 z-0">
@@ -137,7 +137,7 @@ export const NotForProfitPage = ({ data = {}, onBack, onOpenContact, onSelectAud
         {/* Ambient Radial Lights */}
         <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#007791]/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#2bb673]/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 w-full space-y-6 sm:space-y-7">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 w-full space-y-4 sm:space-y-5">
           
           {/* Breadcrumb Navigation */}
           <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs sm:text-sm font-semibold text-slate-300">
@@ -205,12 +205,12 @@ export const NotForProfitPage = ({ data = {}, onBack, onOpenContact, onSelectAud
       {/* ======================================================== */}
       {/* 2. KEY SOLUTIONS (Exact 9 Items from Document)            */}
       {/* ======================================================== */}
-      <section className="py-20 sm:py-24 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden">
+      <section className="py-10 sm:py-14 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden">
         {/* Ambient Glow */}
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#007791]/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#2bb673]/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-12">
           
           <div className="max-w-3xl space-y-3">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#061a2e] tracking-tight leading-snug">
@@ -278,11 +278,11 @@ export const NotForProfitPage = ({ data = {}, onBack, onOpenContact, onSelectAud
       {/* ======================================================== */}
       {/* 3. KEY QUESTIONS WE HELP ANSWER (Exact 7 Questions)      */}
       {/* ======================================================== */}
-      <section className="py-20 sm:py-24 bg-[#061a2e] text-white border-b border-white/10 relative overflow-hidden">
+      <section className="py-10 sm:py-14 bg-[#061a2e] text-white border-b border-white/10 relative overflow-hidden">
         {/* Subtle Ambient Lighting */}
         <div className="absolute top-1/3 right-0 w-96 h-96 bg-[#007791]/15 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-12">
           
           <div className="max-w-3xl space-y-3">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-snug">

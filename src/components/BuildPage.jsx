@@ -290,7 +290,7 @@ export const BuildPage = ({ data = {}, onBack, onOpenContact, onSelectService })
   ];
 
   return (
-    <div className="pt-20 sm:pt-24 pb-0 bg-[#061a2e] text-white font-['Inter',sans-serif] animate-in fade-in duration-300">
+    <div className="pt-16 sm:pt-18 pb-0 bg-[#061a2e] text-white font-['Inter',sans-serif] animate-in fade-in duration-300">
       
       {/* ======================================================== */}
       {/* 1. HERO SECTION (EXECUTIVE B2B HERO)                      */}
@@ -304,12 +304,12 @@ export const BuildPage = ({ data = {}, onBack, onOpenContact, onSelectService })
       {/* ======================================================== */}
       {/* 2. FINANCE HEALTH CHECK: INTERACTIVE DIAGNOSTIC CONSOLE    */}
       {/* ======================================================== */}
-      <section className="py-20 sm:py-24 bg-[#061a2e] border-b border-white/10 relative overflow-hidden font-['Inter',sans-serif]">
+      <section className="py-10 sm:py-14 bg-[#061a2e] border-b border-white/10 relative overflow-hidden font-['Inter',sans-serif]">
         {/* Soft Radial Ambient Lighting */}
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-10">
           
           {/* Section Header with View Mode Switcher */}
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-2">
@@ -748,12 +748,12 @@ export const BuildPage = ({ data = {}, onBack, onOpenContact, onSelectService })
       {/* ======================================================== */}
       {/* 3. OPERATING MODELS (TOM) & TOM SUPPORT (TWO SIDE-BY-SIDE CONTAINERS) */}
       {/* ======================================================== */}
-      <section id="tom-section" className="py-20 sm:py-24 bg-[#061a2e] border-b border-white/10 relative overflow-hidden">
+      <section id="tom-section" className="py-10 sm:py-14 bg-[#061a2e] border-b border-white/10 relative overflow-hidden">
         {/* Soft Radial Ambient Lighting */}
         <div className="absolute top-10 left-10 w-96 h-96 bg-[#007791]/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#2bb673]/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-12">
           
           {/* Main Section Header */}
           <div className="max-w-3xl space-y-3">
@@ -959,12 +959,12 @@ export const BuildPage = ({ data = {}, onBack, onOpenContact, onSelectService })
       {/* ======================================================== */}
       {/* 4. FINANCE CAPABILITY UPLIFT (IMAGE PARITY & CURVE FLOW)  */}
       {/* ======================================================== */}
-      <section className="py-20 sm:py-24 bg-[#061a2e] border-b border-white/10 relative overflow-hidden font-['Inter',sans-serif]">
+      <section className="py-10 sm:py-14 bg-[#061a2e] border-b border-white/10 relative overflow-hidden font-['Inter',sans-serif]">
         {/* Soft Radial Ambient Lighting */}
         <div className="absolute top-1/4 right-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 left-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-12">
           
           {/* Section Header */}
           <div className="max-w-3xl space-y-3">
@@ -1175,12 +1175,12 @@ export const BuildPage = ({ data = {}, onBack, onOpenContact, onSelectService })
       {/* ======================================================== */}
       {/* 5. OUTSOURCED AND AUGMENTED FINANCE SUPPORT (EXACT COPY) */}
       {/* ======================================================== */}
-      <section id="outsourced-augmented-support" className="py-20 sm:py-24 bg-[#061a2e] border-b border-white/10 relative overflow-hidden">
+      <section id="outsourced-augmented-support" className="py-10 sm:py-14 bg-[#061a2e] border-b border-white/10 relative overflow-hidden">
         {/* Soft Radial Ambient Lighting */}
         <div className="absolute top-10 right-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-10 left-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-12">
           
           {/* Section Header */}
           <div className="max-w-3xl space-y-3">

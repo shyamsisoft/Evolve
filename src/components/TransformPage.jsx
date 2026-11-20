@@ -107,7 +107,7 @@ export const TransformPage = ({ data = {}, onBack, onOpenContact, onSelectServic
     : defaultTransformationTriggers;
 
   return (
-    <div className="pt-20 sm:pt-24 pb-0 bg-[#061a2e] text-white font-['Plus_Jakarta_Sans',sans-serif] selection:bg-emerald-500 selection:text-slate-950">
+    <div className="pt-16 sm:pt-18 pb-0 bg-[#061a2e] text-white font-['Plus_Jakarta_Sans',sans-serif] selection:bg-emerald-500 selection:text-slate-950">
 
       {/* 1. HERO SECTION */}
       <TransformHero data={data?.hero} onBack={onBack} onOpenContact={onOpenContact} />
@@ -118,12 +118,12 @@ export const TransformPage = ({ data = {}, onBack, onOpenContact, onSelectServic
 
       {/* 3. FINANCE DATA INTEGRATION & ARCHITECTURE */}
       <SectionDivider />
-      <section className="py-20 sm:py-28 bg-[#061a2e] border-b border-white/10 relative overflow-hidden">
+      <section className="py-10 sm:py-14 bg-[#061a2e] border-b border-white/10 relative overflow-hidden">
         {/* Ambient Subtle Radial Lights */}
         <div className="absolute top-10 left-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-14">
           
           {/* Section Header */}
           <div className="space-y-3">
@@ -267,8 +267,8 @@ export const TransformPage = ({ data = {}, onBack, onOpenContact, onSelectServic
 
       {/* 4. TECHNOLOGYONE & POWER BI ANALYTICS */}
       <SectionDivider />
-      <section className="py-20 sm:py-28 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section className="py-10 sm:py-14 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-12">
           
           <div className="space-y-3">
             <span className="inline-block text-xs font-bold tracking-wider uppercase text-emerald-700 border-l-2 border-emerald-600 pl-3">
@@ -363,8 +363,8 @@ export const TransformPage = ({ data = {}, onBack, onOpenContact, onSelectServic
 
       {/* 5. WHEN TRANSFORMATION MAKES SENSE */}
       <SectionDivider />
-      <section className="py-20 sm:py-28 bg-[#061a2e] border-b border-white/10 relative overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section className="py-10 sm:py-14 bg-[#061a2e] border-b border-white/10 relative overflow-hidden">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-12">
           
           <div className="space-y-3">
             <span className="inline-block text-xs font-semibold tracking-wider uppercase text-emerald-400 border-l-2 border-emerald-400 pl-3">

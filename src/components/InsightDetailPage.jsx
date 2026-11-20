@@ -21,16 +21,16 @@ export const InsightDetailPage = ({ articleId, articles = [], onBack, onOpenCont
   const related = articles.filter((a) => a.id !== article.id);
 
   return (
-    <div className="pt-24 pb-20 bg-[#061a2e] text-white min-h-screen animate-in fade-in duration-300 font-['Inter',sans-serif]">
+    <div className="pt-16 sm:pt-18 pb-10 bg-[#061a2e] text-white min-h-screen animate-in fade-in duration-300 font-['Inter',sans-serif]">
       
       {/* 1. HERO BANNER HEADER */}
-      <section className="relative bg-[#061a2e] text-white pt-32 pb-20 overflow-hidden border-b border-white/10">
+      <section className="relative bg-[#061a2e] text-white pt-8 sm:pt-10 pb-10 sm:pb-12 overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
           <img src={imgUrl(article.image)} alt={article.title} loading="eager" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/95 to-[#007791]/60" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-4">
           <div className="flex items-center space-x-3 text-xs sm:text-sm font-bold text-slate-300">
             <button 
               type="button"
@@ -74,8 +74,8 @@ export const InsightDetailPage = ({ articleId, articles = [], onBack, onOpenCont
 
       {/* 2. EDITORIAL BOOK READING LAYOUT */}
       <SectionDivider />
-      <section className="py-16 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-10 sm:py-14 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden">
+        <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             

@@ -21,16 +21,16 @@ export const InsightsPage = ({ data, onBack, onOpenContact, onSelectArticle }) =
   });
 
   return (
-    <div className="pt-24 pb-20 bg-[#061a2e] text-white min-h-screen animate-in fade-in duration-300 font-['Inter',sans-serif]">
+    <div className="pt-16 sm:pt-18 pb-10 bg-[#061a2e] text-white min-h-screen animate-in fade-in duration-300 font-['Inter',sans-serif]">
       
       {/* HERO BANNER */}
-      <section className="relative bg-[#061a2e] text-white py-16 overflow-hidden border-b border-white/10">
+      <section className="relative bg-[#061a2e] text-white py-8 sm:py-10 overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 opacity-25">
           <img src={imgUrl('/images/cfo_advisory.jpg')} alt="Insights" loading="eager" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#061a2e] via-[#061a2e]/90 to-[#007791]/40" />
 
-        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 w-full space-y-6">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 w-full space-y-4">
           <div className="flex items-center space-x-3 text-xs sm:text-sm font-bold text-slate-300">
             <button 
               type="button"
@@ -56,11 +56,11 @@ export const InsightsPage = ({ data, onBack, onOpenContact, onSelectArticle }) =
 
       {/* FILTER & ARTICLES HUB */}
       <SectionDivider />
-      <section className="py-20 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden">
+      <section className="py-10 sm:py-14 bg-white text-[#061a2e] border-b border-slate-200 relative overflow-hidden">
         {/* Ambient Glow */}
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#007791]/15 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-10">
           
           {/* SEARCH & FILTER BAR */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200 shadow-sm">

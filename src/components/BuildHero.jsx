@@ -15,7 +15,7 @@ export const BuildHero = ({ data = {}, onBack, onOpenContact }) => {
   };
 
   return (
-    <section className="relative min-h-[75vh] flex items-center bg-[#061a2e] text-white overflow-hidden py-16 sm:py-20 lg:py-24 border-b border-white/10 font-['Plus_Jakarta_Sans',sans-serif]">
+    <section className="relative bg-[#061a2e] text-white overflow-hidden pt-6 sm:pt-8 pb-8 sm:pb-10 border-b border-white/10 font-['Plus_Jakarta_Sans',sans-serif]">
       
       {/* Background & Visuals: Full-coverage cinematic background with rich contrast overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -46,7 +46,7 @@ export const BuildHero = ({ data = {}, onBack, onOpenContact }) => {
       <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-[450px] h-[450px] bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 w-full space-y-6 sm:space-y-7">
+      <div className="relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 w-full space-y-4 sm:space-y-5">
         
         {/* 1. Breadcrumb */}
         <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs sm:text-sm font-semibold text-slate-400">
