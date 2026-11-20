@@ -109,9 +109,9 @@ export const TaxationSideDock = ({ onOpenContact }) => {
 
   return (
     <div ref={dockRef}>
-      {/* 1. Minimized Slim Tab (Shifted higher to top-[18%] so it never collides with hero headline or subtitle) */}
+      {/* 1. Minimized Slim Tab (Positioned comfortably down from header/breadcrumbs) */}
       <div 
-        className={`fixed left-0 top-[18%] sm:top-[20%] z-40 transition-all duration-300 ease-in-out pointer-events-auto ${
+        className={`fixed left-0 top-[30%] sm:top-[32%] z-40 transition-all duration-300 ease-in-out pointer-events-auto ${
           isMinimized ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0 pointer-events-none'
         }`}
       >
@@ -132,7 +132,7 @@ export const TaxationSideDock = ({ onOpenContact }) => {
       {/* 2. Expanded Compact Vertical Dock */}
       <aside
         aria-label="Taxation Quick Navigation"
-        className={`fixed left-0 top-[17%] sm:top-[19%] z-40 transition-all duration-300 ease-in-out ${
+        className={`fixed left-0 top-[28%] sm:top-[30%] z-40 transition-all duration-300 ease-in-out ${
           isMinimized 
             ? '-translate-x-full opacity-0 pointer-events-none' 
             : 'translate-x-0 opacity-100 pointer-events-auto'
